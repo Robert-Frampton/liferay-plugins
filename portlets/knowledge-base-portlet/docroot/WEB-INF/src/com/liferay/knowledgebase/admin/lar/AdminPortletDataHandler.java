@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -43,9 +43,7 @@ import com.liferay.portal.kernel.util.MimeTypesUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
-import com.liferay.portal.kernel.xml.Document;
 import com.liferay.portal.kernel.xml.Element;
-import com.liferay.portal.kernel.xml.SAXReaderUtil;
 import com.liferay.portal.portletfilerepository.PortletFileRepositoryUtil;
 import com.liferay.portal.service.ServiceContext;
 
@@ -114,7 +112,7 @@ public class AdminPortletDataHandler extends BasePortletDataHandler {
 			"com.liferay.knowledgebase.admin",
 			portletDataContext.getScopeGroupId());
 
-		Element rootElement = addExportRootElement();
+		Element rootElement = addExportDataRootElement(portletDataContext);
 
 		rootElement.addAttribute(
 			"group-id", String.valueOf(portletDataContext.getScopeGroupId()));
@@ -123,7 +121,7 @@ public class AdminPortletDataHandler extends BasePortletDataHandler {
 		exportKBTemplates(portletDataContext, rootElement);
 		exportKBComments(portletDataContext, rootElement);
 
-		return rootElement.formattedString();
+		return getExportDataRootElementString(rootElement);
 	}
 
 	@Override
@@ -137,9 +135,7 @@ public class AdminPortletDataHandler extends BasePortletDataHandler {
 			portletDataContext.getSourceGroupId(),
 			portletDataContext.getScopeGroupId());
 
-		Document document = SAXReaderUtil.read(data);
-
-		Element rootElement = document.getRootElement();
+		Element rootElement = portletDataContext.getImportDataRootElement();
 
 		importKBArticles(portletDataContext, rootElement);
 		importKBTemplates(portletDataContext, rootElement);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -76,11 +76,13 @@ public class KBCommentLocalServiceWrapper implements KBCommentLocalService,
 	*
 	* @param kbComment the k b comment
 	* @return the k b comment that was removed
+	* @throws PortalException
 	* @throws SystemException if a system exception occurred
 	*/
 	public com.liferay.knowledgebase.model.KBComment deleteKBComment(
 		com.liferay.knowledgebase.model.KBComment kbComment)
-		throws com.liferay.portal.kernel.exception.SystemException {
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
 		return _kbCommentLocalService.deleteKBComment(kbComment);
 	}
 
@@ -281,7 +283,8 @@ public class KBCommentLocalServiceWrapper implements KBCommentLocalService,
 	}
 
 	public void deleteKBComments(java.lang.String className, long classPK)
-		throws com.liferay.portal.kernel.exception.SystemException {
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
 		_kbCommentLocalService.deleteKBComments(className, classPK);
 	}
 

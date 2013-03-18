@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,7 +18,6 @@ import com.liferay.chat.jabber.JabberUtil;
 import com.liferay.chat.service.StatusLocalServiceUtil;
 import com.liferay.chat.util.comparator.BuddyComparator;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.util.Time;
 import com.liferay.portlet.social.model.SocialRelationConstants;
 
 import java.util.ArrayList;
@@ -26,18 +25,15 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author Brian Wing Shun Chan
+ * @author Ankit Srivastava
  */
-public class ChatUtil {
+public class DefaultBuddyFinderImpl implements BuddyFinder {
 
-	public static final long MAX_POLL_LATENCY = Time.SECOND * 15;
-
-	public static final long ONLINE_DELTA = Time.MINUTE;
-
-	public static List<Object[]> getBuddies(long companyId, long userId)
+	public List<Object[]> getBuddies(long companyId, long userId)
 		throws SystemException {
 
-		long modifiedDate = System.currentTimeMillis() - ONLINE_DELTA;
+		long modifiedDate =
+			System.currentTimeMillis() - ChatConstants.ONLINE_DELTA;
 
 		List<Object[]> buddies = null;
 
