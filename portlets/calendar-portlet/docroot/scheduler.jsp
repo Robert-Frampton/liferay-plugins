@@ -27,6 +27,7 @@ boolean hideMonthView = ParamUtil.getBoolean(request, "hideMonthView");
 boolean hideWeekView = ParamUtil.getBoolean(request, "hideWeekView");
 boolean preventPersistence = ParamUtil.getBoolean(request, "preventPersistence");
 boolean readOnly = ParamUtil.getBoolean(request, "readOnly");
+String viewCalendarBookingURL = ParamUtil.getString(request, "viewCalendarBookingURL");
 %>
 
 <div class="calendar-portlet-wrapper" id="<portlet:namespace />scheduler"></div>
@@ -91,7 +92,8 @@ boolean readOnly = ParamUtil.getBoolean(request, "readOnly");
 				duration: <%= defaultDuration %>,
 				editCalendarBookingURL: '<%= HtmlUtil.escapeJS(editCalendarBookingURL) %>',
 				portletNamespace: '<portlet:namespace />',
-				template: new A.Template(A.one('#<portlet:namespace />eventRecorderTpl').text())
+				template: new A.Template(A.one('#<portlet:namespace />eventRecorderTpl').text()),
+				viewCalendarBookingURL: '<%= HtmlUtil.escapeJS(viewCalendarBookingURL) %>'
 			}
 		);
 	</c:if>
