@@ -217,9 +217,27 @@ public class CalendarBookingLocalServiceImpl
 			deleteCalendarBooking(childCalendarBooking);
 		}
 
+		// Subscriptions
+
+		subscriptionLocalService.deleteSubscriptions(
+			calendarBooking.getCompanyId(), CalendarBooking.class.getName(),
+			calendarBooking.getCalendarBookingId());
+
 		// Asset
 
 		assetEntryLocalService.deleteEntry(
+			CalendarBooking.class.getName(),
+			calendarBooking.getCalendarBookingId());
+
+		// Message boards
+
+		mbMessageLocalService.deleteDiscussionMessages(
+			CalendarBooking.class.getName(),
+			calendarBooking.getCalendarBookingId());
+
+		// Ratings
+
+		ratingsStatsLocalService.deleteStats(
 			CalendarBooking.class.getName(),
 			calendarBooking.getCalendarBookingId());
 
@@ -239,11 +257,9 @@ public class CalendarBookingLocalServiceImpl
 	}
 
 	public void deleteCalendarBookingInstance(
-			long calendarBookingId, long startTime, boolean allFollowing)
+			CalendarBooking calendarBooking, long startTime,
+			boolean allFollowing)
 		throws PortalException, SystemException {
-
-		CalendarBooking calendarBooking =
-			calendarBookingPersistence.findByPrimaryKey(calendarBookingId);
 
 		java.util.Calendar startTimeJCalendar = JCalendarUtil.getJCalendar(
 			startTime);
@@ -273,6 +289,16 @@ public class CalendarBookingLocalServiceImpl
 			RecurrenceSerializer.serialize(recurrenceObj));
 
 		calendarBookingPersistence.update(calendarBooking);
+	}
+
+	public void deleteCalendarBookingInstance(
+			long calendarBookingId, long startTime, boolean allFollowing)
+		throws PortalException, SystemException {
+
+		CalendarBooking calendarBooking =
+			calendarBookingPersistence.findByPrimaryKey(calendarBookingId);
+
+		deleteCalendarBookingInstance(calendarBooking, startTime, allFollowing);
 	}
 
 	public void deleteCalendarBookings(long calendarId)
@@ -595,10 +621,29 @@ public class CalendarBookingLocalServiceImpl
 			ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
-		deleteCalendarBookingInstance(
-			calendarBookingId, startTime, allFollowing);
+		CalendarBooking calendarBooking =
+			calendarBookingPersistence.findByPrimaryKey(calendarBookingId);
 
-		if (!allFollowing) {
+		String oldRecurrence = calendarBooking.getRecurrence();
+
+		deleteCalendarBookingInstance(calendarBooking, startTime, allFollowing);
+
+		if (allFollowing) {
+			Recurrence recurrenceObj = RecurrenceSerializer.deserialize(
+				recurrence);
+
+			if (oldRecurrence.equals(recurrence) &&
+				(recurrenceObj.getCount() > 0)) {
+
+				int index = RecurrenceUtil.getIndexOfInstance(
+					recurrence, calendarBooking.getStartTime(), startTime);
+
+				recurrenceObj.setCount(recurrenceObj.getCount() - index);
+
+				recurrence = RecurrenceSerializer.serialize(recurrenceObj);
+			}
+		}
+		else {
 			recurrence = StringPool.BLANK;
 		}
 
