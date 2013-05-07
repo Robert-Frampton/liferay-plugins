@@ -35,14 +35,14 @@
 
 	boolean online = status.getOnline();
 
-	JSONObject activePanelIdsJSONObject = null;
+	JSONObject settingsJSONObject = null;
 
 	String openPanelId = StringPool.BLANK;
 
-	if (Validator.isNotNull(status.getActivePanelIds())) {
-		activePanelIdsJSONObject = JSONFactoryUtil.createJSONObject(status.getActivePanelIds());
+	if (Validator.isNotNull(status.getSettings())) {
+		settingsJSONObject = JSONFactoryUtil.createJSONObject(status.getSettings());
 
-		openPanelId = activePanelIdsJSONObject.getString("open");
+		openPanelId = settingsJSONObject.getString("open");
 	}
 
 	String statusMessage = HtmlUtil.escape(status.getMessage());
@@ -151,7 +151,7 @@
 			</div>
 		</div>
 
-		<input id="activePanelIds" type="hidden" value="<%= HtmlUtil.escapeAttribute(status.getActivePanelIds()) %>" />
+		<input id="settings" type="hidden" value="<%= HtmlUtil.escapeAttribute(status.getSettings()) %>" />
 		<input id="chatPortletId" type="hidden" value="<%= portletDisplay.getId() %>" />
 
 		<div class="chat-extensions aui-helper-hidden">

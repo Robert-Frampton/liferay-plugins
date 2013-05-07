@@ -20,6 +20,7 @@ import com.liferay.chat.model.EntryConstants;
 import com.liferay.chat.model.Status;
 import com.liferay.chat.service.base.StatusLocalServiceBaseImpl;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONException;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
@@ -65,7 +66,7 @@ public class StatusLocalServiceImpl extends StatusLocalServiceBaseImpl {
 
 		if (status == null) {
 			status = statusLocalService.updateStatus(
-				userId, System.currentTimeMillis(), 1, 1, StringPool.BLANK,
+				userId, System.currentTimeMillis(), 1, 1, StringPool.BLANK, StringPool.BLANK,
 				StringPool.BLANK, 1);
 		}
 
@@ -75,12 +76,12 @@ public class StatusLocalServiceImpl extends StatusLocalServiceBaseImpl {
 	public Status updateStatus(long userId, long modifiedDate)
 		throws SystemException {
 
-		return updateStatus(userId, modifiedDate, -1, -1, null, null, -1);
+		return updateStatus(userId, modifiedDate, -1, -1, null, null, null, -1);
 	}
 
 	public Status updateStatus(
 			long userId, long modifiedDate, int online, int awake,
-			String activePanelIds, String message, int playSound)
+			String activePanelIds, String clearTimes, String message, int playSound)
 		throws SystemException {
 
 		Status status = statusPersistence.fetchByUserId(userId);
@@ -105,10 +106,35 @@ public class StatusLocalServiceImpl extends StatusLocalServiceBaseImpl {
 			status.setAwake((awake == 1) ? true : false);
 		}
 
+		String settings = null;
+
+		JSONObject settingsJSONObject = null;
+
+		if (status.getSettings().equals(StringPool.BLANK)) {
+			settingsJSONObject = JSONFactoryUtil.createJSONObject();
+		}
+		else {
+			try {
+				settings = status.getSettings();
+
+				settingsJSONObject = JSONFactoryUtil.createJSONObject(settings);
+			}
+			catch (JSONException jsone) {
+						_log.error(
+				"Could not create JSONObject out of " + settings);
+			}
+		}
+
 		if (Validator.isNotNull(activePanelIds)) {
 			try {
 				JSONObject activePanelIdsJSONObject =
 					JSONFactoryUtil.createJSONObject(activePanelIds);
+
+				settingsJSONObject.put("open", activePanelIdsJSONObject.getString("open"));
+
+				settingsJSONObject.put("minimized", activePanelIdsJSONObject.getJSONArray("minimized"));
+
+				settings = settingsJSONObject.toString();
 
 				long openPanelId = activePanelIdsJSONObject.getLong("open");
 
@@ -126,7 +152,24 @@ public class StatusLocalServiceImpl extends StatusLocalServiceBaseImpl {
 					"Unable to create a JSON object from " + activePanelIds);
 			}
 
-			status.setActivePanelIds(activePanelIds);
+			status.setSettings(settings);
+		}
+
+		if (Validator.isNotNull(clearTimes)) {
+			try {
+				JSONObject clearTimesJSONObject =
+					JSONFactoryUtil.createJSONObject(clearTimes);
+
+				settingsJSONObject.put("clearTimes", clearTimesJSONObject);
+
+				settings = settingsJSONObject.toString();
+			}
+			catch (JSONException jsone) {
+				_log.error(
+					"Unable to create a JSON object from " + clearTimes);
+			}
+
+			status.setSettings(settings);
 		}
 
 		if (message != null) {

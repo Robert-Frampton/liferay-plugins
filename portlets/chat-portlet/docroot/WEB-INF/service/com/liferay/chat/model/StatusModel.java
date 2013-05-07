@@ -116,20 +116,6 @@ public interface StatusModel extends BaseModel<Status> {
 	public void setModifiedDate(long modifiedDate);
 
 	/**
-	 * Returns the last clear of this status.
-	 *
-	 * @return the last clear of this status
-	 */
-	public long getLastClear();
-
-	/**
-	 * Sets the last clear of this status.
-	 *
-	 * @param lastClear the last clear of this status
-	 */
-	public void setLastClear(long lastClear);
-
-	/**
 	 * Returns the online of this status.
 	 *
 	 * @return the online of this status
@@ -172,19 +158,19 @@ public interface StatusModel extends BaseModel<Status> {
 	public void setAwake(boolean awake);
 
 	/**
-	 * Returns the active panel IDs of this status.
+	 * Returns the settings of this status.
 	 *
-	 * @return the active panel IDs of this status
+	 * @return the settings of this status
 	 */
 	@AutoEscape
-	public String getActivePanelIds();
+	public String getSettings();
 
 	/**
-	 * Sets the active panel IDs of this status.
+	 * Sets the settings of this status.
 	 *
-	 * @param activePanelIds the active panel IDs of this status
+	 * @param settings the settings of this status
 	 */
-	public void setActivePanelIds(String activePanelIds);
+	public void setSettings(String settings);
 
 	/**
 	 * Returns the message of this status.

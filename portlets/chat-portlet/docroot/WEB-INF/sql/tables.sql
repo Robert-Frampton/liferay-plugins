@@ -11,10 +11,9 @@ create table Chat_Status (
 	statusId LONG not null primary key,
 	userId LONG,
 	modifiedDate LONG,
-	lastClear LONG,
 	online_ BOOLEAN,
 	awake BOOLEAN,
-	activePanelIds STRING null,
+	settings_ VARCHAR(1000) null,
 	message STRING null,
 	playSound BOOLEAN
 );

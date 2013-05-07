@@ -47,10 +47,9 @@ public class StatusWrapper implements Status, ModelWrapper<Status> {
 		attributes.put("statusId", getStatusId());
 		attributes.put("userId", getUserId());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("lastClear", getLastClear());
 		attributes.put("online", getOnline());
 		attributes.put("awake", getAwake());
-		attributes.put("activePanelIds", getActivePanelIds());
+		attributes.put("settings", getSettings());
 		attributes.put("message", getMessage());
 		attributes.put("playSound", getPlaySound());
 
@@ -76,12 +75,6 @@ public class StatusWrapper implements Status, ModelWrapper<Status> {
 			setModifiedDate(modifiedDate);
 		}
 
-		Long lastClear = (Long)attributes.get("lastClear");
-
-		if (lastClear != null) {
-			setLastClear(lastClear);
-		}
-
 		Boolean online = (Boolean)attributes.get("online");
 
 		if (online != null) {
@@ -94,10 +87,10 @@ public class StatusWrapper implements Status, ModelWrapper<Status> {
 			setAwake(awake);
 		}
 
-		String activePanelIds = (String)attributes.get("activePanelIds");
+		String settings = (String)attributes.get("settings");
 
-		if (activePanelIds != null) {
-			setActivePanelIds(activePanelIds);
+		if (settings != null) {
+			setSettings(settings);
 		}
 
 		String message = (String)attributes.get("message");
@@ -206,24 +199,6 @@ public class StatusWrapper implements Status, ModelWrapper<Status> {
 	}
 
 	/**
-	* Returns the last clear of this status.
-	*
-	* @return the last clear of this status
-	*/
-	public long getLastClear() {
-		return _status.getLastClear();
-	}
-
-	/**
-	* Sets the last clear of this status.
-	*
-	* @param lastClear the last clear of this status
-	*/
-	public void setLastClear(long lastClear) {
-		_status.setLastClear(lastClear);
-	}
-
-	/**
 	* Returns the online of this status.
 	*
 	* @return the online of this status
@@ -278,21 +253,21 @@ public class StatusWrapper implements Status, ModelWrapper<Status> {
 	}
 
 	/**
-	* Returns the active panel IDs of this status.
+	* Returns the settings of this status.
 	*
-	* @return the active panel IDs of this status
+	* @return the settings of this status
 	*/
-	public java.lang.String getActivePanelIds() {
-		return _status.getActivePanelIds();
+	public java.lang.String getSettings() {
+		return _status.getSettings();
 	}
 
 	/**
-	* Sets the active panel IDs of this status.
+	* Sets the settings of this status.
 	*
-	* @param activePanelIds the active panel IDs of this status
+	* @param settings the settings of this status
 	*/
-	public void setActivePanelIds(java.lang.String activePanelIds) {
-		_status.setActivePanelIds(activePanelIds);
+	public void setSettings(java.lang.String settings) {
+		_status.setSettings(settings);
 	}
 
 	/**

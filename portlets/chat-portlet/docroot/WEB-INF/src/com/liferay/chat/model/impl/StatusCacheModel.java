@@ -35,7 +35,7 @@ import java.io.ObjectOutput;
 public class StatusCacheModel implements CacheModel<Status>, Externalizable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(17);
 
 		sb.append("{statusId=");
 		sb.append(statusId);
@@ -43,14 +43,12 @@ public class StatusCacheModel implements CacheModel<Status>, Externalizable {
 		sb.append(userId);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
-		sb.append(", lastClear=");
-		sb.append(lastClear);
 		sb.append(", online=");
 		sb.append(online);
 		sb.append(", awake=");
 		sb.append(awake);
-		sb.append(", activePanelIds=");
-		sb.append(activePanelIds);
+		sb.append(", settings=");
+		sb.append(settings);
 		sb.append(", message=");
 		sb.append(message);
 		sb.append(", playSound=");
@@ -66,15 +64,14 @@ public class StatusCacheModel implements CacheModel<Status>, Externalizable {
 		statusImpl.setStatusId(statusId);
 		statusImpl.setUserId(userId);
 		statusImpl.setModifiedDate(modifiedDate);
-		statusImpl.setLastClear(lastClear);
 		statusImpl.setOnline(online);
 		statusImpl.setAwake(awake);
 
-		if (activePanelIds == null) {
-			statusImpl.setActivePanelIds(StringPool.BLANK);
+		if (settings == null) {
+			statusImpl.setSettings(StringPool.BLANK);
 		}
 		else {
-			statusImpl.setActivePanelIds(activePanelIds);
+			statusImpl.setSettings(settings);
 		}
 
 		if (message == null) {
@@ -95,10 +92,9 @@ public class StatusCacheModel implements CacheModel<Status>, Externalizable {
 		statusId = objectInput.readLong();
 		userId = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
-		lastClear = objectInput.readLong();
 		online = objectInput.readBoolean();
 		awake = objectInput.readBoolean();
-		activePanelIds = objectInput.readUTF();
+		settings = objectInput.readUTF();
 		message = objectInput.readUTF();
 		playSound = objectInput.readBoolean();
 	}
@@ -108,15 +104,14 @@ public class StatusCacheModel implements CacheModel<Status>, Externalizable {
 		objectOutput.writeLong(statusId);
 		objectOutput.writeLong(userId);
 		objectOutput.writeLong(modifiedDate);
-		objectOutput.writeLong(lastClear);
 		objectOutput.writeBoolean(online);
 		objectOutput.writeBoolean(awake);
 
-		if (activePanelIds == null) {
+		if (settings == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
 		}
 		else {
-			objectOutput.writeUTF(activePanelIds);
+			objectOutput.writeUTF(settings);
 		}
 
 		if (message == null) {
@@ -132,10 +127,9 @@ public class StatusCacheModel implements CacheModel<Status>, Externalizable {
 	public long statusId;
 	public long userId;
 	public long modifiedDate;
-	public long lastClear;
 	public boolean online;
 	public boolean awake;
-	public String activePanelIds;
+	public String settings;
 	public String message;
 	public boolean playSound;
 }

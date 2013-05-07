@@ -22,10 +22,9 @@
 		</id>
 		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="modifiedDate" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="lastClear" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="online" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="online_" />
 		<property name="awake" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
-		<property name="activePanelIds" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="settings" type="com.liferay.portal.dao.orm.hibernate.StringType" column="settings_" />
 		<property name="message" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="playSound" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
 	</class>

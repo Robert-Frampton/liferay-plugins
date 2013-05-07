@@ -63,14 +63,13 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 			{ "statusId", Types.BIGINT },
 			{ "userId", Types.BIGINT },
 			{ "modifiedDate", Types.BIGINT },
-			{ "lastClear", Types.BIGINT },
 			{ "online_", Types.BOOLEAN },
 			{ "awake", Types.BOOLEAN },
-			{ "activePanelIds", Types.VARCHAR },
+			{ "settings_", Types.VARCHAR },
 			{ "message", Types.VARCHAR },
 			{ "playSound", Types.BOOLEAN }
 		};
-	public static final String TABLE_SQL_CREATE = "create table Chat_Status (statusId LONG not null primary key,userId LONG,modifiedDate LONG,lastClear LONG,online_ BOOLEAN,awake BOOLEAN,activePanelIds STRING null,message STRING null,playSound BOOLEAN)";
+	public static final String TABLE_SQL_CREATE = "create table Chat_Status (statusId LONG not null primary key,userId LONG,modifiedDate LONG,online_ BOOLEAN,awake BOOLEAN,settings_ VARCHAR(1000) null,message STRING null,playSound BOOLEAN)";
 	public static final String TABLE_SQL_DROP = "drop table Chat_Status";
 	public static final String ORDER_BY_JPQL = " ORDER BY status.statusId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY Chat_Status.statusId ASC";
@@ -127,10 +126,9 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 		attributes.put("statusId", getStatusId());
 		attributes.put("userId", getUserId());
 		attributes.put("modifiedDate", getModifiedDate());
-		attributes.put("lastClear", getLastClear());
 		attributes.put("online", getOnline());
 		attributes.put("awake", getAwake());
-		attributes.put("activePanelIds", getActivePanelIds());
+		attributes.put("settings", getSettings());
 		attributes.put("message", getMessage());
 		attributes.put("playSound", getPlaySound());
 
@@ -157,12 +155,6 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 			setModifiedDate(modifiedDate);
 		}
 
-		Long lastClear = (Long)attributes.get("lastClear");
-
-		if (lastClear != null) {
-			setLastClear(lastClear);
-		}
-
 		Boolean online = (Boolean)attributes.get("online");
 
 		if (online != null) {
@@ -175,10 +167,10 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 			setAwake(awake);
 		}
 
-		String activePanelIds = (String)attributes.get("activePanelIds");
+		String settings = (String)attributes.get("settings");
 
-		if (activePanelIds != null) {
-			setActivePanelIds(activePanelIds);
+		if (settings != null) {
+			setSettings(settings);
 		}
 
 		String message = (String)attributes.get("message");
@@ -250,14 +242,6 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 		return _originalModifiedDate;
 	}
 
-	public long getLastClear() {
-		return _lastClear;
-	}
-
-	public void setLastClear(long lastClear) {
-		_lastClear = lastClear;
-	}
-
 	public boolean getOnline() {
 		return _online;
 	}
@@ -294,17 +278,17 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 		_awake = awake;
 	}
 
-	public String getActivePanelIds() {
-		if (_activePanelIds == null) {
+	public String getSettings() {
+		if (_settings == null) {
 			return StringPool.BLANK;
 		}
 		else {
-			return _activePanelIds;
+			return _settings;
 		}
 	}
 
-	public void setActivePanelIds(String activePanelIds) {
-		_activePanelIds = activePanelIds;
+	public void setSettings(String settings) {
+		_settings = settings;
 	}
 
 	public String getMessage() {
@@ -366,10 +350,9 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 		statusImpl.setStatusId(getStatusId());
 		statusImpl.setUserId(getUserId());
 		statusImpl.setModifiedDate(getModifiedDate());
-		statusImpl.setLastClear(getLastClear());
 		statusImpl.setOnline(getOnline());
 		statusImpl.setAwake(getAwake());
-		statusImpl.setActivePanelIds(getActivePanelIds());
+		statusImpl.setSettings(getSettings());
 		statusImpl.setMessage(getMessage());
 		statusImpl.setPlaySound(getPlaySound());
 
@@ -451,18 +434,16 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 
 		statusCacheModel.modifiedDate = getModifiedDate();
 
-		statusCacheModel.lastClear = getLastClear();
-
 		statusCacheModel.online = getOnline();
 
 		statusCacheModel.awake = getAwake();
 
-		statusCacheModel.activePanelIds = getActivePanelIds();
+		statusCacheModel.settings = getSettings();
 
-		String activePanelIds = statusCacheModel.activePanelIds;
+		String settings = statusCacheModel.settings;
 
-		if ((activePanelIds != null) && (activePanelIds.length() == 0)) {
-			statusCacheModel.activePanelIds = null;
+		if ((settings != null) && (settings.length() == 0)) {
+			statusCacheModel.settings = null;
 		}
 
 		statusCacheModel.message = getMessage();
@@ -480,7 +461,7 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(17);
 
 		sb.append("{statusId=");
 		sb.append(getStatusId());
@@ -488,14 +469,12 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 		sb.append(getUserId());
 		sb.append(", modifiedDate=");
 		sb.append(getModifiedDate());
-		sb.append(", lastClear=");
-		sb.append(getLastClear());
 		sb.append(", online=");
 		sb.append(getOnline());
 		sb.append(", awake=");
 		sb.append(getAwake());
-		sb.append(", activePanelIds=");
-		sb.append(getActivePanelIds());
+		sb.append(", settings=");
+		sb.append(getSettings());
 		sb.append(", message=");
 		sb.append(getMessage());
 		sb.append(", playSound=");
@@ -506,7 +485,7 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 	}
 
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(31);
+		StringBundler sb = new StringBundler(28);
 
 		sb.append("<model><model-name>");
 		sb.append("com.liferay.chat.model.Status");
@@ -525,10 +504,6 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 		sb.append(getModifiedDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>lastClear</column-name><column-value><![CDATA[");
-		sb.append(getLastClear());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>online</column-name><column-value><![CDATA[");
 		sb.append(getOnline());
 		sb.append("]]></column-value></column>");
@@ -537,8 +512,8 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 		sb.append(getAwake());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>activePanelIds</column-name><column-value><![CDATA[");
-		sb.append(getActivePanelIds());
+			"<column><column-name>settings</column-name><column-value><![CDATA[");
+		sb.append(getSettings());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>message</column-name><column-value><![CDATA[");
@@ -564,12 +539,11 @@ public class StatusModelImpl extends BaseModelImpl<Status>
 	private long _modifiedDate;
 	private long _originalModifiedDate;
 	private boolean _setOriginalModifiedDate;
-	private long _lastClear;
 	private boolean _online;
 	private boolean _originalOnline;
 	private boolean _setOriginalOnline;
 	private boolean _awake;
-	private String _activePanelIds;
+	private String _settings;
 	private String _message;
 	private boolean _playSound;
 	private long _columnBitmask;

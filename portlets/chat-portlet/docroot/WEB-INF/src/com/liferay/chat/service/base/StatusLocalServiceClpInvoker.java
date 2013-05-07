@@ -130,7 +130,7 @@ public class StatusLocalServiceClpInvoker {
 
 		_methodParameterTypes50 = new String[] {
 				"long", "long", "int", "int", "java.lang.String",
-				"java.lang.String", "int"
+				"java.lang.String", "java.lang.String", "int"
 			};
 	}
 
@@ -274,7 +274,8 @@ public class StatusLocalServiceClpInvoker {
 				((Integer)arguments[2]).intValue(),
 				((Integer)arguments[3]).intValue(),
 				(java.lang.String)arguments[4], (java.lang.String)arguments[5],
-				((Integer)arguments[6]).intValue());
+				(java.lang.String)arguments[6],
+				((Integer)arguments[7]).intValue());
 		}
 
 		throw new UnsupportedOperationException();

@@ -61,44 +61,28 @@ public class ChatPollerProcessor extends BasePollerProcessor {
 
 		getBuddies(pollerRequest, pollerResponse);
 		getEntries(pollerRequest, pollerResponse);
-		getClearTime(pollerRequest, pollerResponse);
+		getSettings(pollerRequest, pollerResponse);
 	}
 
 	@Override
 	protected void doSend(PollerRequest pollerRequest) throws Exception {
 		addEntry(pollerRequest);
 		updateStatus(pollerRequest);
-		clearHistory(pollerRequest);
 	}
 
-	protected void clearHistory(PollerRequest pollerRequest)
-		throws Exception {
-
-		long clearTime = getLong(pollerRequest, "clearTime");
-
-		long currentUserId = getLong(pollerRequest, "currentUserId");
-
-		if(clearTime != -1 && currentUserId != -1) {
-			Status status = StatusLocalServiceUtil.getUserStatus(currentUserId);
-
-			status.setModifiedDate(clearTime);
-			status.setLastClear(clearTime);
-
-			StatusLocalServiceUtil.updateStatus(status);
-		}
-	}
-
-	protected void getClearTime(
+	protected void getSettings(
 			PollerRequest pollerRequest, PollerResponse pollerResponse)
 		throws Exception {
 
-		long lastClearTime = StatusLocalServiceUtil.getUserStatus(pollerRequest.getUserId()).getLastClear();
+		Status userStatus = StatusLocalServiceUtil.getUserStatus(pollerRequest.getUserId());
 
-		JSONObject clearTimeJSON = JSONFactoryUtil.createJSONObject();
+		String settings = userStatus.getSettings();
 
-		clearTimeJSON.put("lastClearTime", lastClearTime);
+		if (!settings.equals("")) {
+			JSONObject settingsJSONObject = JSONFactoryUtil.createJSONObject(settings);
 
-		pollerResponse.setParameter("clearTime", clearTimeJSON);
+			pollerResponse.setParameter("settings", settingsJSONObject);
+		}
 	}
 
 	protected void getBuddies(
@@ -229,15 +213,16 @@ public class ChatPollerProcessor extends BasePollerProcessor {
 		int online = getInteger(pollerRequest, "online");
 		int awake = getInteger(pollerRequest, "awake");
 		String activePanelIds = getString(pollerRequest, "activePanelIds");
+		String clearTimes = getString(pollerRequest, "clearTimes");
 		String statusMessage = getString(pollerRequest, "statusMessage");
 		int playSound = getInteger(pollerRequest, "playSound");
 
 		if ((online != -1) || (awake != -1) || (activePanelIds != null) ||
-			(statusMessage != null) || (playSound != -1)) {
+			(clearTimes != null) || (statusMessage != null) || (playSound != -1)) {
 
 			StatusLocalServiceUtil.updateStatus(
 				pollerRequest.getUserId(), timestamp, online, awake,
-				activePanelIds, statusMessage, playSound);
+				activePanelIds, clearTimes , statusMessage, playSound);
 		}
 	}
 

@@ -130,7 +130,7 @@ public class StatusLocalServiceClp implements StatusLocalService {
 
 		_methodParameterTypes23 = new String[] {
 				"long", "long", "int", "int", "java.lang.String",
-				"java.lang.String", "int"
+				"java.lang.String", "java.lang.String", "int"
 			};
 	}
 
@@ -782,7 +782,8 @@ public class StatusLocalServiceClp implements StatusLocalService {
 
 	public com.liferay.chat.model.Status updateStatus(long userId,
 		long modifiedDate, int online, int awake,
-		java.lang.String activePanelIds, java.lang.String message, int playSound)
+		java.lang.String activePanelIds, java.lang.String clearTimes,
+		java.lang.String message, int playSound)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
@@ -799,6 +800,8 @@ public class StatusLocalServiceClp implements StatusLocalService {
 					awake,
 						
 					ClpSerializer.translateInput(activePanelIds),
+						
+					ClpSerializer.translateInput(clearTimes),
 						
 					ClpSerializer.translateInput(message),
 						

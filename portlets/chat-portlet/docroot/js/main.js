@@ -712,6 +712,10 @@ AUI().use(
 
 				instance._clearTime = 0;
 
+				instance._settings = null;
+
+				instance._menu = null;
+
 				Liferay.Poller.addListener(instance._portletId, instance._onPollerUpdate, instance);
 
 				Liferay.bind(
@@ -948,13 +952,25 @@ AUI().use(
 				instance._addChat(userId, chat);
 				instance._addPanel(userId, chat);
 
+				instance._clearTime = 0;
+
+				var clearTimes = null;
+
+				if (instance._settings) {
+					clearTimes = instance._settings["clearTimes"];
+
+					if (clearTimes) {
+						instance._clearTime = clearTimes[parseInt(userId)];
+					}
+				}
+
 				if (instance._entryCache && instance._entryCache[userId]) {
 					var entryCache = instance._entryCache[userId];
 
 					for (var i in entryCache) {
 						var entry = entryCache[i];
-
-						if (entry.flag && (entry.createDate > instance._clearTime)) {
+						//if (entry.flag && (entry.createDate > instance._clearTime)) {
+						if (entry.createDate > instance._clearTime) {
 							chat.update(
 								{
 									cache: true,
@@ -1052,7 +1068,7 @@ AUI().use(
 			_initializeActivePanels: function() {
 				var instance = this;
 
-				var activePanelIds = A.one('#activePanelIds').val() || '';
+				var activePanelIds = A.one('#settings').val() || '';
 
 				try {
 					activePanelIds = A.JSON.parse(activePanelIds);
@@ -1117,11 +1133,15 @@ AUI().use(
 
 				var panel = event.target;
 
-				instance._clearTime = Liferay.Chat.Util.getCurrentTimestamp();
+				var clearTime = Liferay.Chat.Util.getCurrentTimestamp();
+
+				var clearTimes = instance._settings["clearTimes"] || {};
+
+				clearTimes[instance._openPanelId] = clearTime;
 
 				instance.send(
 					{
-						clearTime: instance._clearTime,
+						clearTimes: A.JSON.stringify(clearTimes),
 						currentUserId: themeDisplay.getUserId()
 					}
 				);
@@ -1187,7 +1207,7 @@ AUI().use(
 			_onPollerUpdate: function(response, chunkId) {
 				var instance = this;
 
-				instance._clearTime = response.clearTime.lastClearTime;
+				instance._settings = response.settings;
 
 				instance._updateBuddies(response.buddies);
 

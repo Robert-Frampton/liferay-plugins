@@ -2093,10 +2093,9 @@ public class StatusPersistenceImpl extends BasePersistenceImpl<Status>
 		statusImpl.setStatusId(status.getStatusId());
 		statusImpl.setUserId(status.getUserId());
 		statusImpl.setModifiedDate(status.getModifiedDate());
-		statusImpl.setLastClear(status.getLastClear());
 		statusImpl.setOnline(status.isOnline());
 		statusImpl.setAwake(status.isAwake());
-		statusImpl.setActivePanelIds(status.getActivePanelIds());
+		statusImpl.setSettings(status.getSettings());
 		statusImpl.setMessage(status.getMessage());
 		statusImpl.setPlaySound(status.isPlaySound());
 
@@ -2414,7 +2413,7 @@ public class StatusPersistenceImpl extends BasePersistenceImpl<Status>
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
 	private static Log _log = LogFactoryUtil.getLog(StatusPersistenceImpl.class);
 	private static Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
-				"online"
+				"online", "settings"
 			});
 	private static Status _nullStatus = new StatusImpl() {
 			@Override
