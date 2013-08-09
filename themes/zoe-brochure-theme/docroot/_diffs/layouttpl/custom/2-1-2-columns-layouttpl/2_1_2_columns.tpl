@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-	<div class="portlet-layout">
+	<div class="portlet-layout row-fluid">
 		<div class="portlet-column portlet-column-first span6" id="column-4">
 			$processor.processColumn("column-4", "portlet-column-content portlet-column-content-first")
 		</div>
