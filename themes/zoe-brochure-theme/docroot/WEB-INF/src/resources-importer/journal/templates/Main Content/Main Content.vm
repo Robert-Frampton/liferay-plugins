@@ -23,7 +23,7 @@
 
 	<div class="aui-layout-content content-text">
 		#if ($col_count == 1 && $col-one.data != "")
-			<div class="aui-column aui-w100">
+			<div class="aui-column span12">
 				<div class="aui-column-content">
 					$col-one.data
 				</div>
@@ -31,13 +31,13 @@
 		#end
 
 		#if ($col_count == 2 && $col-one.data != "" && $col-two.data != "")
-			<div class="aui-column aui-column-first aui-w50">
+			<div class="aui-column aui-column-first span6">
 				<div class="aui-column-content">
 					$col-one.data
 				</div>
 			</div>
 
-			<div class="aui-column aui-column-last aui-w50">
+			<div class="aui-column aui-column-last span6">
 				<div class="aui-column-content">
 					$col-two.data
 				</div>
@@ -45,19 +45,19 @@
 		#end
 
 		#if ($col_count == 3 && $col-one.data != "" && $col-two.data != "" && $col-three.data != "")
-			<div class="aui-column aui-column-first aui-w33">
+			<div class="aui-column aui-column-first span4">
 				<div class="aui-column-content">
 					$col-one.data
 				</div>
 			</div>
 
-			<div class="aui-column aui-w33 center">
+			<div class="aui-column span4 center">
 				<div class="aui-column-content">
 					$col-two.data
 				</div>
 			</div>
 
-			<div class="aui-column aui-column-last aui-w33">
+			<div class="aui-column aui-column-last span4">
 				<div class="aui-column-content">
 					$col-three.data
 				</div>
