@@ -2,7 +2,7 @@
 
 #parse ($init)
 
-<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+<html class="$root_css_class" dir="#language("lang.dir")" lang="$w3c_language_id">
 
 <head>
 	<title>$the_title - $company_name</title>
@@ -14,65 +14,77 @@
 
 <body class="$css_class">
 
+<a href="#main-content" id="skip-to-content">#language("skip-to-content")</a>
+
 $theme.include($body_top_include)
 
 #if ($is_signed_in)
 	#dockbar()
 #end
 
-<div id="wrapper">
-	<a href="#main-content" id="skip-to-content">#language("skip-to-content")</a>
-
+<div class="container-fluid" id="wrapper">
 	<header id="banner" role="banner">
-		<div id="heading">
-			<h1 class="site-title">
-				<a class="$logo_css_class" href="$site_default_url" title="#language("go-to") $site_name">
-					<img alt="$logo_description" height="$site_logo_height" src="$site_logo" width="$site_logo_width" />
-				</a>
+		<div class="row-fluid">
+			<div class="span12">
+				<div id="heading">
+					<h1 class="site-title">
+						<a class="$logo_css_class" href="$site_default_url" title="#language("go-to") $site_name">
+							<img alt="$logo_description" height="$site_logo_height" src="$site_logo" width="$site_logo_width" />
+						</a>
 
-				#if ($show_site_name)
-					<span class="site-name" title="#language("go-to") $site_name">
-						$site_name
-					</span>
-				#end
-			</h1>
+						#if ($show_site_name)
+							<span class="site-name" title="#language("go-to") $site_name">
+								$site_name
+							</span>
+						#end
+					</h1>
 
-			<h2 class="page-title">
-				<span>$the_title</span>
-			</h2>
+					<h2 class="page-title">
+						<span>$the_title</span>
+					</h2>
 
-			#if ($theme_settings.display-header-social == true && $header_social)
-				$header_social
-			#end
+					#if ($theme_settings.display-header-social == true && $header_social)
+						$header_social
+					#end
 
-			#if (!$is_signed_in)
-				<a href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
-			#end
+					#if (!$is_signed_in)
+						<a href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
+					#end
+				</div>
+			</div>
 		</div>
 
 		#if ($has_navigation || $is_signed_in)
-			#parse ("$full_templates_path/navigation.vm")
+			<div class="row-fluid">
+				<div class="span12">
+					#parse ("$full_templates_path/navigation.vm")
+				</div>
+			</div>
 		#end
 	</header>
 
-	<div id="content">
-		<nav class="site-breadcrumbs" id="breadcrumbs">
-			<h1>
-				<span>#language("breadcrumbs")</span>
-			</h1>
+	<div class="row-fluid">
+		<div class="span12">
+			<div id="content">
+				<nav class="site-breadcrumbs" id="breadcrumbs">
+					<h1>
+						<span>#language("breadcrumbs")</span>
+					</h1>
 
-			#breadcrumbs()
-		</nav>
+					#breadcrumbs()
+				</nav>
 
-		#if ($selectable)
-			$theme.include($content_include)
-		#else
-			$portletDisplay.recycle()
+				#if ($selectable)
+					$theme.include($content_include)
+				#else
+					$portletDisplay.recycle()
 
-			$portletDisplay.setTitle($the_title)
+					$portletDisplay.setTitle($the_title)
 
-			$theme.wrapPortlet("portlet.vm", $content_include)
-		#end
+					$theme.wrapPortlet("portlet.vm", $content_include)
+				#end
+			</div>
+		</div>
 	</div>
 </div>
 
