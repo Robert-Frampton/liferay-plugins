@@ -124,7 +124,7 @@ String editCalendarBookingURL = ParamUtil.getString(request, "editCalendarBookin
 				id: 'addEvent'
 			},
 			{
-				caption: '<liferay-ui:message key="hide-this-calendar-from-the-list" />',
+				caption: '<liferay-ui:message key="hide-calendar" />',
 				fn: function(event) {
 					var instance = this;
 
