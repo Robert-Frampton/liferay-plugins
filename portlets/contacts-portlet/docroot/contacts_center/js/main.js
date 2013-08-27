@@ -163,7 +163,7 @@ AUI.add(
 
 						instance._contactsCheckBox = A.one('.contacts-result');
 
-						instance._checkAll = instance.byId('checkAll');
+						instance._checkAll = instance.byId('checkAllCheckbox');
 
 						instance._checkAll.on('click', instance._onCheckAll, instance);
 
@@ -389,15 +389,18 @@ AUI.add(
 					showPopup: function(title, uri) {
 						var instance = this;
 
-						instance._getPopup();
+						if (!instance._popup) {
+							instance._getPopup(title, uri);
+						}
+						else {
+							var iframeUri = instance._popup.iframe.get('uri');
 
-						instance._popup.show();
+							if (uri != iframeUri) {
+								instance._popup.iframe._uiSetUri(uri, iframeUri);
+							}
 
-						instance._popup.set('title', title);
-
-						instance._popup.io.set('uri', uri);
-
-						instance._popup.io.start();
+							instance._popup.show();
+						}
 					},
 
 					updateContacts: function(keywords, filterBy) {
@@ -460,12 +463,14 @@ AUI.add(
 
 										var data = event.request;
 
-										event.cfg.data = {
-											end: data.end || instance._maxResultCount,
-											filterBy: data.filterBy || filterBy,
-											keywords: data.keywords || '',
-											start: data.start || 0
-										}
+										event.cfg.data = instance.ns(
+											{
+												end: data.end || instance._maxResultCount,
+												filterBy: data.filterBy || filterBy,
+												keywords: data.keywords || '',
+												start: data.start || 0
+											}
+										);
 									}
 								},
 								source: url
@@ -538,9 +543,11 @@ AUI.add(
 											location.href = contact.redirect;
 										}
 									},
-									data: {
-										entryId: contact.entryId
-									}
+									data: instance.ns(
+										{
+											entryId: contact.entryId
+										}
+									),
 								}
 							);
 						}
@@ -557,7 +564,7 @@ AUI.add(
 						portletURL.setParameter('redirect', contact.redirect);
 						portletURL.setParameter('entryId', contact.entryId);
 						portletURL.setPortletId('1_WAR_contactsportlet');
-						portletURL.setWindowState('EXCLUSIVE');
+						portletURL.setWindowState('POP_UP');
 
 						instance.showPopup(Liferay.Language.get('update-contact'), portletURL.toString());
 					},
@@ -566,40 +573,37 @@ AUI.add(
 						var instance = this;
 
 						return function(query) {
-							return {
-								end: instance._maxResultCount,
-								filterBy: filterBy,
-								keywords: query,
-								start: 0
-							}
+							return instance.ns(
+								{
+									end: instance._maxResultCount,
+									filterBy: filterBy,
+									keywords: query,
+									start: 0
+								}
+							)
 						};
 					},
 
-					_getPopup: function() {
+					_getPopup: function(title, uri) {
 						var instance = this;
 
-						if (!instance._popup) {
-							var contactsPortlet = A.one('.contacts-portlet');
+						var config = {
+							dialog: {
+								on: {
+									'render': function(event) {
+										instance._popup = event.target;
+									}
+								},
+								cssClass: 'contact-dialog',
+								modal: true,
+								resizable: false,
+								width: 500
+							},
+							title: title,
+							uri: uri
+						};
 
-							instance._popup = new A.Dialog(
-								{
-									align: {
-										node: contactsPortlet,
-										points: ['tc', 'tc']
-									},
-									constrain2view: true,
-									cssClass: 'contact-dialog',
-									modal: true,
-									resizable: false,
-									width: 500
-								}
-							).plug(
-								A.Plugin.IO,
-								{
-									autoLoad: false
-								}
-							).render();
-						}
+						Liferay.Util.openWindow(config);
 					},
 
 					_onCheckAll: function(event) {
@@ -628,9 +632,11 @@ AUI.add(
 												instance.addContactResults(this.get('responseData'));
 											}
 										},
-										data: {
-											userIds: userIds.join()
-										},
+										data: instance.ns(
+											{
+												userIds: userIds.join()
+											}
+										),
 										dataType: 'json'
 									}
 								);
@@ -711,19 +717,22 @@ AUI.add(
 								boundingBox: instance._userToolbar,
 								children: [
 									{
+										icon: 'icon-edit',
+										label: Liferay.Language.get('edit'),
 										on: {
-										click: function(event) {
-											instance._editEntry(contact);
-										}},
-										icon: 'edit',
-										label: Liferay.Language.get('edit')
+											click: function(event) {
+												instance._editEntry(contact);
+											}
+										}
 									},
 									{
-										handler: function(event) {
-											instance._deleteEntry(contact);
-										},
-										icon: 'delete',
-										label: Liferay.Language.get('delete')
+										icon: 'icon-remove',
+										label: Liferay.Language.get('delete'),
+										on: {
+											click: function(event) {
+												instance._deleteEntry(contact);
+											}
+										}
 									}
 								]
 							}

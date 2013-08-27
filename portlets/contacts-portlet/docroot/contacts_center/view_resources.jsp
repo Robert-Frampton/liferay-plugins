@@ -55,7 +55,7 @@ boolean portalUser = ParamUtil.getBoolean(request, "portalUser");
 
 						var contactsToolbarChildren = [];
 
-						<portlet:renderURL var="viewEntryURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>">
+						<portlet:renderURL var="viewEntryURL" windowState="<%= LiferayWindowState.POP_UP.toString() %>">
 							<portlet:param name="mvcPath" value="/contacts_center/edit_entry.jsp" />
 							<portlet:param name="redirect" value="<%= redirect %>" />
 							<portlet:param name="entryId" value="<%= String.valueOf(entryId) %>" />
@@ -63,44 +63,46 @@ boolean portalUser = ParamUtil.getBoolean(request, "portalUser");
 
 						contactsToolbarChildren.push(
 							{
-								on: {
-								click: function(event) {
-									Liferay.ContactsCenter.showPopup('<%= UnicodeLanguageUtil.get(pageContext, "update-contact") %>', '<%= viewEntryURL %>');
-								}},
-								icon: 'edit',
+								icon: 'icon-edit',
 								id: '<portlet:namespace />edit',
-								label: '<%= UnicodeLanguageUtil.get(pageContext, "edit") %>'
+								label: '<%= UnicodeLanguageUtil.get(pageContext, "edit") %>',
+								on: {
+									click: function(event) {
+										Liferay.ContactsCenter.showPopup('<%= UnicodeLanguageUtil.get(pageContext, "update-contact") %>', '<%= viewEntryURL %>');
+									}
+								}
 							}
 						);
 
 						contactsToolbarChildren.push(
 							{
-								on: {
-								click: function(event) {
-									var confirmMessage = '<%= UnicodeLanguageUtil.format(pageContext, "are-you-sure-you-want-to-delete-x-from-your-contacts", entry.getFullName()) %>';
-
-									if (confirm(confirmMessage)) {
-										A.io.request(
-											'<portlet:actionURL name="deleteEntry" />',
-											{
-												after: {
-													failure: function(event, id, obj) {
-														Liferay.ContactsCenter.showMessage(false);
-													},
-													success: function(event, id, obj) {
-														location.href = '<%= HtmlUtil.escape(redirect) %>';
-													}
-												},
-												data: {
-													entryId: <%= entryId %>
-												}
-											}
-										);
-									}
-								}},
-								icon: 'delete',
+								icon: 'icon-remove',
 								id: '<portlet:namespace />delete',
-								label: '<%= UnicodeLanguageUtil.get(pageContext, "delete") %>'
+								label: '<%= UnicodeLanguageUtil.get(pageContext, "delete") %>',
+								on: {
+									click: function(event) {
+										var confirmMessage = '<%= UnicodeLanguageUtil.format(pageContext, "are-you-sure-you-want-to-delete-x-from-your-contacts", entry.getFullName()) %>';
+
+										if (confirm(confirmMessage)) {
+											A.io.request(
+												'<portlet:actionURL name="deleteEntry" />',
+												{
+													after: {
+														failure: function(event, id, obj) {
+															Liferay.ContactsCenter.showMessage(false);
+														},
+														success: function(event, id, obj) {
+															location.href = '<%= HtmlUtil.escape(redirect) %>';
+														}
+													},
+													data: {
+														<portlet:namespace />entryId: <%= entryId %>
+													}
+												}
+											);
+										}
+									}
+								}
 							}
 						);
 
@@ -154,13 +156,14 @@ boolean portalUser = ParamUtil.getBoolean(request, "portalUser");
 
 							contactsToolbarChildren.push(
 								{
-									on: {
-									click: function(event) {
-										Liferay.ContactsCenter._setVisibleSelectedUsersView();
-									}},
-									icon: 'back',
+									icon: 'icon-chevron-sign-left',
 									id: '<portlet:namespace />backSelection',
-									label: '<%= UnicodeLanguageUtil.get(pageContext, "back-to-selection") %>'
+									label: '<%= UnicodeLanguageUtil.get(pageContext, "back-to-selection") %>',
+									on: {
+										click: function(event) {
+											Liferay.ContactsCenter._setVisibleSelectedUsersView();
+										}
+									}
 								}
 							);
 

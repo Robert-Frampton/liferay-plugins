@@ -140,7 +140,7 @@ if (selUser != null) {
 								var redirect = responseData.redirect;
 
 								if (redirect) {
-									location.href = redirect;
+									Liferay.Util.getTop().location = redirect;
 								}
 							}
 						}

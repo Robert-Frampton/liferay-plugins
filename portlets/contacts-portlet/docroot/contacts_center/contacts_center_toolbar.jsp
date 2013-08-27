@@ -68,85 +68,91 @@ if (user2 != null) {
 	</div>
 </div>
 
-<aui:script position="inline" use="aui-dialog,aui-dialog-iframe-deprecated">
+<aui:script position="inline" use="aui-dialog,aui-dialog-iframe-deprecated,aui-toolbar">
 	var buttonRow = A.one('#<portlet:namespace />userToolbar');
 
 	var contactsToolbarChildren = [];
 
 	contactsToolbarChildren.push(
 		{
-			on: {
-			click: function(event) {
-				<portlet:namespace />relationAction(event, '<portlet:actionURL name="requestSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_BI_CONNECTION) %>" /></portlet:actionURL>');
-			}},
-			icon: 'add-coworker',
+			icon: 'icon-plus',
 			id: '<portlet:namespace />addConnectionButton',
 			label: '<%= UnicodeLanguageUtil.get(pageContext, "connect") %>',
+			on: {
+				click: function(event) {
+					<portlet:namespace />relationAction(event, '<portlet:actionURL name="requestSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_BI_CONNECTION) %>" /></portlet:actionURL>');
+				}
+			},
 			visible: <%= showAddAsConnectionButton %>
 		}
 	);
 
 	contactsToolbarChildren.push(
 		{
-			on: {
-			click: function(event) {
-				<portlet:namespace />relationAction(event, '<portlet:actionURL name="deleteSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_BI_CONNECTION) %>" /></portlet:actionURL>');
-			}},
-			icon: 'remove-coworker',
+			icon: 'icon-minus',
 			id: '<portlet:namespace />removeConnectionButton',
 			label: '<%= UnicodeLanguageUtil.get(pageContext, "disconnect") %>',
+			on: {
+				click: function(event) {
+					<portlet:namespace />relationAction(event, '<portlet:actionURL name="deleteSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_BI_CONNECTION) %>" /></portlet:actionURL>');
+				}
+			},
 			visible: <%= showRemoveAsConnectionButton %>
 		}
 	);
 
 	contactsToolbarChildren.push(
 		{
-			on: {
-			click: function(event) {
-				<portlet:namespace />relationAction(event, '<portlet:actionURL name="addSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_UNI_FOLLOWER) %>" /></portlet:actionURL>');
-			}},
-			icon: 'follow',
+			icon: 'icon-plus',
 			id: '<portlet:namespace />followButton',
 			label: '<%= UnicodeLanguageUtil.get(pageContext, "follow") %>',
+			on: {
+				click: function(event) {
+					<portlet:namespace />relationAction(event, '<portlet:actionURL name="addSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_UNI_FOLLOWER) %>" /></portlet:actionURL>');
+				}
+			},
 			visible: <%= showFollowButton %>
 		}
 	);
 
 	contactsToolbarChildren.push(
 		{
-			on: {
-			click: function(event) {
-				<portlet:namespace />relationAction(event, '<portlet:actionURL name="deleteSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_UNI_FOLLOWER) %>" /></portlet:actionURL>');
-			}},
-			icon: 'unfollow',
+			icon: 'icon-minus',
 			id: '<portlet:namespace />unfollowButton',
 			label: '<%= UnicodeLanguageUtil.get(pageContext, "unfollow") %>',
+			on: {
+				click: function(event) {
+					<portlet:namespace />relationAction(event, '<portlet:actionURL name="deleteSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_UNI_FOLLOWER) %>" /></portlet:actionURL>');
+				}
+			},
 			visible: <%= showUnFollowButton %>
 		}
 	);
 
 	contactsToolbarChildren.push(
 		{
-			on: {
-			click: function(event) {
-				<portlet:namespace />relationAction(event, '<portlet:actionURL name="addSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_UNI_ENEMY) %>" /></portlet:actionURL>');
-			}},
-			icon: 'block',
+			icon: 'icon-ban-circle',
 			id: '<portlet:namespace />blockButton',
 			label: '<%= UnicodeLanguageUtil.get(pageContext, "block") %>',
+			on: {
+				click: function(event) {
+					<portlet:namespace />relationAction(event, '<portlet:actionURL name="addSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_UNI_ENEMY) %>" /></portlet:actionURL>');
+				}
+			},
 			visible: <%= showBlockButton %>
 		}
 	);
 
 	contactsToolbarChildren.push(
 		{
-			on: {
-			click: function(event) {
-				<portlet:namespace />relationAction(event, '<portlet:actionURL name="deleteSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_UNI_ENEMY) %>" /></portlet:actionURL>');
-			}},
-			icon: 'unblock',
+			icon: 'icon-ok',
 			id: '<portlet:namespace />unblockButton',
 			label: '<%= UnicodeLanguageUtil.get(pageContext, "unblock") %>',
+			on: {
+				click: function(event) {
+					<portlet:namespace />relationAction(event, '<portlet:actionURL name="deleteSocialRelation" windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name="type" value="<%= String.valueOf(SocialRelationConstants.TYPE_UNI_ENEMY) %>" /></portlet:actionURL>');
+				}
+			},
 			visible: <%= showUnBlockButton %>
 		}
 	);
@@ -158,63 +164,71 @@ if (user2 != null) {
 	<c:if test="<%= Validator.isNotNull(servletContext) && (user2 == null || (user2.getUserId() != themeDisplay.getUserId())) %>">
 		contactsToolbarChildren.push(
 			{
-				on: {
-				click: function(event) {
-					<portlet:renderURL var="redirectURL" windowState="<%= LiferayWindowState.NORMAL.toString() %>" />
-
-					var uri = '<liferay-portlet:renderURL portletName="1_WAR_privatemessagingportlet" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>"><portlet:param name="mvcPath" value="/new_message.jsp" /><portlet:param name="redirect" value="<%= redirectURL %>" /></liferay-portlet:renderURL>';
-
-					<c:choose>
-						<c:when test="<%= user2 != null %>">
-							var userIds = [<%= user2.getUserId() %>];
-						</c:when>
-						<c:otherwise>
-							var userIds = A.all('.lfr-contact-grid-item input').val();
-						</c:otherwise>
-					</c:choose>
-
-					new A.Dialog(
-						{
-							align: Liferay.Util.Window.ALIGN_CENTER,
-							cssClass: 'private-messaging-portlet',
-							destroyOnClose: true,
-							modal: true,
-							title: '<%= UnicodeLanguageUtil.get(pageContext, "new-message") %>',
-							width: 600
-						}
-					).plug(
-						A.Plugin.IO,
-						{
-							data: {
-								userIds: userIds.join()
-							},
-							uri: uri
-						}
-					).render();
-				}},
-				icon: 'send-message',
+				icon: 'icon-envelope',
 				id: '<portlet:namespace />sendMessageButton',
-				label: '<%= UnicodeLanguageUtil.get(pageContext, "message") %>'
+				label: '<%= UnicodeLanguageUtil.get(pageContext, "message") %>',
+				on: {
+					click: function(event) {
+						<portlet:renderURL var="redirectURL" windowState="<%= LiferayWindowState.NORMAL.toString() %>" />
+
+						var uri = '<liferay-portlet:renderURL portletName="1_WAR_privatemessagingportlet" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>"><portlet:param name="mvcPath" value="/new_message.jsp" /><portlet:param name="redirect" value="<%= redirectURL %>" /></liferay-portlet:renderURL>';
+
+						<c:choose>
+							<c:when test="<%= user2 != null %>">
+								var userIds = [<%= user2.getUserId() %>];
+							</c:when>
+							<c:otherwise>
+								var userIds = A.all('.lfr-contact-grid-item input').val();
+							</c:otherwise>
+						</c:choose>
+
+						Liferay.Util.openWindow(
+							{
+								dialog: {
+									after: {
+										'render': function(event) {
+											event.target.plug(
+												A.Plugin.IO,
+												{
+													data: {
+														<portlet:namespace />userIds: userIds.join()
+													},
+													uri: uri
+												}
+											);
+										}
+									},
+									cssClass: 'private-messaging-portlet',
+									destroyOnHide: true,
+									modal: true,
+									width: 600
+								},
+								title: '<%= UnicodeLanguageUtil.get(pageContext, "new-message") %>'
+							}
+						);
+					}
+				}
 			}
 		);
 	</c:if>
 
 	contactsToolbarChildren.push(
 		{
-			on: {
-			click: function(event) {
-				<c:choose>
-					<c:when test="<%= (user2 != null) %>">
-						location.href = '<liferay-portlet:resourceURL id="exportVCard"><portlet:param name="userId" value="<%= String.valueOf(user2.getUserId()) %>" /></liferay-portlet:resourceURL>';
-					</c:when>
-					<c:otherwise>
-						location.href = '<liferay-portlet:resourceURL id="exportVCards" />&<portlet:namespace />userIds=' + A.all('.lfr-contact-grid-item input').val();
-					</c:otherwise>
-				</c:choose>
-			}},
-			icon: 'export',
+			icon: 'icon-save',
 			id: '<portlet:namespace />exportButton',
-			label: '<%= UnicodeLanguageUtil.get(pageContext, "vcard") %>'
+			label: '<%= UnicodeLanguageUtil.get(pageContext, "vcard") %>',
+			on: {
+				click: function(event) {
+					<c:choose>
+						<c:when test="<%= (user2 != null) %>">
+							location.href = '<liferay-portlet:resourceURL id="exportVCard"><portlet:param name="userId" value="<%= String.valueOf(user2.getUserId()) %>" /></liferay-portlet:resourceURL>';
+						</c:when>
+						<c:otherwise>
+							location.href = '<liferay-portlet:resourceURL id="exportVCards" />&<portlet:namespace />userIds=' + A.all('.lfr-contact-grid-item input').val();
+						</c:otherwise>
+					</c:choose>
+				}
+			}
 		}
 	);
 
@@ -270,12 +284,12 @@ if (user2 != null) {
 					}
 				},
 				data: {
-					end: end,
-					filterBy: contactFilerSelectValue,
-					keywords: searchInput.get('value'),
-					start: 0,
-					jsonFormat: true,
-					userIds: userIds.join()
+					<portlet:namespace />end: end,
+					<portlet:namespace />filterBy: contactFilerSelectValue,
+					<portlet:namespace />keywords: searchInput.get('value'),
+					<portlet:namespace />start: 0,
+					<portlet:namespace />jsonFormat: true,
+					<portlet:namespace />userIds: userIds.join()
 				},
 				dataType: 'json'
 			}

@@ -92,28 +92,28 @@ request.setAttribute("view_user.jsp-user", user2);
 							%>
 
 							<liferay-ui:icon
-								cssClass='<%= showConnectedRequestedIcon ? "disabled" : "disabled helper-hidden" %>'
+								cssClass='<%= showConnectedRequestedIcon ? "disabled" : "disabled hide" %>'
 								image="../social/coworker"
 								label="<%= true %>"
 								message="connection-requested"
 							/>
 
 							<liferay-ui:icon
-								cssClass='<%= showConnectedIcon ? "connected" : "connected helper-hidden" %>'
+								cssClass='<%= showConnectedIcon ? "connected" : "connected hide" %>'
 								image="../social/coworker"
 								label="<%= true %>"
 								message="connected"
 							/>
 
 							<liferay-ui:icon
-								cssClass='<%= showFollowingIcon ? "following" : "following helper-hidden" %>'
+								cssClass='<%= showFollowingIcon ? "following" : "following hide" %>'
 								image="../social/following"
 								label="<%= true %>"
 								message="following"
 							/>
 
 							<liferay-ui:icon
-								cssClass='<%= showBlockIcon ? "block" : "block helper-hidden" %>'
+								cssClass='<%= showBlockIcon ? "block" : "block hide" %>'
 								image="../social/block"
 								label="<%= true %>"
 								message="blocked"
@@ -350,36 +350,29 @@ request.setAttribute("view_user.jsp-user", user2);
 			var <portlet:namespace />openDialog = function(event) {
 				var node = event.currentTarget;
 
-				var uri = '<portlet:renderURL windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>"><portlet:param name="mvcPath" value="/contacts_center/edit_user_dialogs.jsp" /></portlet:renderURL>';
+				var uri = '<portlet:renderURL windowState="<%= LiferayWindowState.POP_UP.toString() %>"><portlet:param name="mvcPath" value="/contacts_center/edit_user_dialogs.jsp" /></portlet:renderURL>';
 
 				if (node.getAttribute('data-sectionId')) {
-					uri = Liferay.Util.addParams('curSectionId=' + node.getAttribute('data-sectionId'), uri) || uri;
+					uri = Liferay.Util.addParams('<portlet:namespace />curSectionId=' + node.getAttribute('data-sectionId'), uri) || uri;
 				}
 
 				if (node.getAttribute('data-extension')) {
-					uri = Liferay.Util.addParams('extension=' + node.getAttribute('data-extension'), uri) || uri;
+					uri = Liferay.Util.addParams('<portlet:namespace />extension=' + node.getAttribute('data-extension'), uri) || uri;
 				}
 
-				var dialog = new A.Dialog(
+				Liferay.Util.openWindow(
 					{
-						align: {
-							node: null,
-							points: ['tc', 'tc']
+						dialog:{
+							cssClass: 'profile-dialog',
+							destroyOnHide: true,
+							modal: true,
+							resizable: false,
+							width: 500
 						},
-						constrain2view: true,
-						cssClass: 'profile-dialog',
-						destroyOnClose: true,
-						modal: true,
-						resizable: false,
 						title: node.getAttribute('data-title'),
-						width: 500
-					}
-				).plug(
-					A.Plugin.IO,
-					{
 						uri: uri
 					}
-				).render();
+				);
 			};
 	</aui:script>
 </c:if>

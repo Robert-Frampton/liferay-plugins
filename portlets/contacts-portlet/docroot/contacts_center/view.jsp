@@ -87,7 +87,7 @@ portletURL.setWindowState(WindowState.NORMAL);
 			<aui:layout cssClass="toolbar">
 				<div class="filter-container">
 					<aui:layout cssClass="contact-group-filter">
-						<aui:button name="checkAll" type="checkbox" />
+						<aui:input name="checkAll" type="checkbox" label="" />
 
 						<c:if test="<%= !userPublicPage %>">
 							<aui:select cssClass="contact-group-filter-select" inlineField="true" label="" name="filterBy">
@@ -129,11 +129,7 @@ portletURL.setWindowState(WindowState.NORMAL);
 				</div>
 
 				<c:if test="<%= !showOnlySiteMembers %>">
-					<button class="add-contact buttonitem-content yui3-widget component buttonitem state-default buttonitem-icon-label" id="<portlet:namespace/>add-contact" type="button" value="add-contact">
-						<span class="buttonitem-icon icon icon-add"></span>
-
-						<span class="buttonitem-label"><liferay-ui:message key="add-contact" /></span>
-					</button>
+					<aui:button cssClass="add-contact pull-right" icon="icon-plus" name="add-contact" value="add-contact" />
 				</c:if>
 			</aui:layout>
 
@@ -450,10 +446,10 @@ portletURL.setWindowState(WindowState.NORMAL);
 								}
 							},
 							data: {
-								end: end,
-								filterBy: contactFilterSelect.get('value') || '<%= ContactsConstants.FILTER_BY_DEFAULT %>',
-								keywords: searchInput.get('value'),
-								start: start
+								<portlet:namespace />end: end,
+								<portlet:namespace />filterBy: contactFilterSelect.get('value') || '<%= ContactsConstants.FILTER_BY_DEFAULT %>',
+								<portlet:namespace />keywords: searchInput.get('value'),
+								<portlet:namespace />start: start
 							},
 							dataType: 'json'
 						}
@@ -486,7 +482,7 @@ portletURL.setWindowState(WindowState.NORMAL);
 									}
 								},
 								data: {
-									userId: userId
+									<portlet:namespace />userId: userId
 								},
 								dataType: 'json'
 							}
@@ -520,8 +516,8 @@ portletURL.setWindowState(WindowState.NORMAL);
 								}
 							},
 							data: {
-								showDetailView: true,
-								userId: userId
+								<portlet:namespace />showDetailView: true,
+								<portlet:namespace />userId: userId
 							}
 						}
 					);
@@ -539,7 +535,7 @@ portletURL.setWindowState(WindowState.NORMAL);
 						addContact.on(
 							'click',
 							function(event) {
-								contactsCenter.showPopup('<%= LanguageUtil.get(pageContext, "add-contact") %>', '<portlet:renderURL windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>"><portlet:param name="mvcPath" value="/contacts_center/edit_entry.jsp" /><portlet:param name="redirect" value="<%= currentURL %>" /></portlet:renderURL>');
+								contactsCenter.showPopup('<%= LanguageUtil.get(pageContext, "add-contact") %>', '<portlet:renderURL windowState="<%= LiferayWindowState.POP_UP.toString() %>"><portlet:param name="mvcPath" value="/contacts_center/edit_entry.jsp" /><portlet:param name="redirect" value="<%= currentURL %>" /></portlet:renderURL>');
 							}
 						);
 					}

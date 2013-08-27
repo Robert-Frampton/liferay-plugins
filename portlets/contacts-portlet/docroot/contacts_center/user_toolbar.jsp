@@ -182,28 +182,34 @@ else if (SocialRelationLocalServiceUtil.hasRelation(themeDisplay.getUserId(), us
 
 		var uri = '<liferay-portlet:renderURL portletName="1_WAR_privatemessagingportlet" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>"><portlet:param name="mvcPath" value="/new_message.jsp" /><portlet:param name="redirect" value="<%= redirectURL %>" /></liferay-portlet:renderURL>';
 
-		new A.Dialog(
+		Liferay.Util.openWindow(
 			{
-				align: Liferay.Util.Window.ALIGN_CENTER,
-				cssClass: 'private-messaging-portlet',
-				destroyOnClose: true,
-				modal: true,
-				title: '<%= UnicodeLanguageUtil.get(pageContext, "new-message") %>',
-				width: 600
-			}
-		).plug(
-			A.Plugin.IO,
-			{
-				data: {
-					userIds: <%= user2.getUserId() %>
+				dialog: {
+					after: {
+						'render': function(event) {
+							event.target.plug(
+								A.Plugin.IO,
+								{
+									data: {
+										<portlet:namespace />userIds: <%= user2.getUserId() %>
+									},
+									uri: uri
+								}
+							);
+						}
+					},
+					cssClass: 'private-messaging-portlet',
+					destroyOnHide: true,
+					modal: true,
+					width: 600
 				},
-				uri: uri
+				title: '<%= UnicodeLanguageUtil.get(pageContext, "new-message") %>'
 			}
-		).render();
+		);
 	}
 </aui:script>
 
-<aui:script use="aui-base,aui-dialog,aui-dialog-iframe-deprecated">
+<aui:script use="aui-base,aui-dialog,aui-dialog-iframe-deprecated,aui-io-plugin-deprecated">
 	<liferay-portlet:renderURL var="viewSummaryURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>">
 		<portlet:param name="mvcPath" value="/contacts_center/view_user.jsp" />
 		<portlet:param name="userId" value="<%= String.valueOf(user2.getUserId()) %>" />

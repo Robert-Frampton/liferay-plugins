@@ -80,9 +80,11 @@ if (entryId > 0) {
 				lastNameAnchor = node.getAttribute('data-lastNameAnchor');
 			}
 
-			var contactFilterSelect = A.one('#<portlet:namespace />filterBy');
+			var top = Liferay.Util.getTop();
 
-			var searchInput = A.one('.contacts-portlet #<portlet:namespace />name');
+			var contactFilterSelect = top.AUI().one('#<portlet:namespace />filterBy');
+
+			var searchInput = top.AUI().one('.contacts-portlet #<portlet:namespace />name');
 
 			A.io.request(
 				form.attr('action'),
@@ -100,17 +102,17 @@ if (entryId > 0) {
 								}
 							}
 							else {
-								Liferay.ContactsCenter.renderEntry(responseData);
+								top.Liferay.ContactsCenter.renderEntry(responseData);
 
-								Liferay.ContactsCenter.closePopup();
+								top.Liferay.ContactsCenter.closePopup();
 							}
 						}
 					},
 					data: {
-						end: end,
-						filterBy: contactFilterSelect.get('value') || '<%= ContactsConstants.FILTER_BY_DEFAULT %>',
-						keywords: searchInput.get('value'),
-						start: 0
+						<portlet:namespace />end: end,
+						<portlet:namespace />filterBy: contactFilterSelect.get('value') || '<%= ContactsConstants.FILTER_BY_DEFAULT %>',
+						<portlet:namespace />keywords: searchInput.get('value'),
+						<portlet:namespace />start: 0
 					},
 					dataType: 'json',
 					form: {
