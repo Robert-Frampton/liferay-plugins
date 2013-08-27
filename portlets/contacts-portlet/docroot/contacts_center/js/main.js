@@ -325,7 +325,7 @@ AUI.add(
 						var contacts = data.contacts;
 
 						if (contacts && (contacts.length > 0)) {
-							if (!instance._detailUserView.hasClass('aui-helper-hidden') && (contacts.length == 1)) {
+							if (!instance._detailUserView.hasClass('hide') && (contacts.length == 1)) {
 								var user = contacts[0].user;
 
 								instance._updateUserToolBar(user);
@@ -361,14 +361,14 @@ AUI.add(
 									message = instance._defaultMessageSuccess;
 								}
 
-								instance._messageContainer.html('<span class="portlet-msg-success">' + message + '</span>');
+								instance._messageContainer.html('<span class="alert alert-success">' + message + '</span>');
 							}
 							else {
 								if (!message || (message == '')) {
 									message = instance._defaultMessageError;
 								}
 
-								instance._messageContainer.html('<span class="portlet-msg-error">' + message + '</span>');
+								instance._messageContainer.html('<span class="alert alert-error">' + message + '</span>');
 							}
 						}
 					},
@@ -427,7 +427,7 @@ AUI.add(
 						instance._buttonUnBlockUserIds.length = 0;
 						instance._buttonUnFollowUserIds.length = 0;
 
-						A.all('.contacts-portlet .aui-toolbar-content button').hide();
+						A.all('.contacts-portlet .toolbar-content button').hide();
 
 						if (instance._sendMessageButton) {
 							instance._sendMessageButton.show();
@@ -711,9 +711,10 @@ AUI.add(
 								boundingBox: instance._userToolbar,
 								children: [
 									{
-										handler: function(event) {
+										on: {
+										click: function(event) {
 											instance._editEntry(contact);
-										},
+										}},
 										icon: 'edit',
 										label: Liferay.Language.get('edit')
 									},
@@ -1114,6 +1115,6 @@ AUI.add(
 	},
 	'',
 	{
-		requires: ['aui-dialog','aui-io-plugin','aui-toolbar','autocomplete-base','datasource-io','json-parse','liferay-portlet-base','liferay-portlet-url']
+		requires: ['aui-dialog','aui-io-plugin-deprecated','aui-toolbar','autocomplete-base','datasource-io','json-parse','liferay-portlet-base','liferay-portlet-url']
 	}
 );

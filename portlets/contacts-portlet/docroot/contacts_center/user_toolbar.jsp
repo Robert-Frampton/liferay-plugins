@@ -203,7 +203,7 @@ else if (SocialRelationLocalServiceUtil.hasRelation(themeDisplay.getUserId(), us
 	}
 </aui:script>
 
-<aui:script use="aui-base,aui-dialog,aui-dialog-iframe">
+<aui:script use="aui-base,aui-dialog,aui-dialog-iframe-deprecated">
 	<liferay-portlet:renderURL var="viewSummaryURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>">
 		<portlet:param name="mvcPath" value="/contacts_center/view_user.jsp" />
 		<portlet:param name="userId" value="<%= String.valueOf(user2.getUserId()) %>" />
