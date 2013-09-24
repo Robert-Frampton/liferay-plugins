@@ -65,10 +65,10 @@
 </div>
 
 <script type="text/javascript">
-	AUI().ready(
+	YUI().ready(
 		'aui-carousel',
-		function(A) {
-			new A.Carousel(
+		function(Y) {
+			new Y.Carousel(
 				{
 					contentBox: '#${content_id} #carousel',
 					height: $height.data,
