@@ -51,6 +51,21 @@ body.republican {
 		}
 	}
 
+	.modify-pages .delete-tab {
+		background: #9ACCEE url(../images/custom/nav_bg.png) repeat-x 0 -1px;
+		border: 2px solid #00446A;
+		color: #00446A;
+		font-size: 16px;
+		padding: 4px;
+		right: -10px;
+		top: 0;
+		z-index: 300;
+
+		&:hover {
+			color: #CC0000;
+		}
+	}
+
 	#content #main-content {
 		background-color: #F4F8FB;
 	}
