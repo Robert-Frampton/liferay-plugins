@@ -1,0 +1,104 @@
+@import "compass";
+@import "mixins";
+
+/* -------- Dockbar Color Variables -------- */
+
+$dockbarGradientEnd: #85A056;
+$dockbarGradientStart: #A7C86C;
+$dockbarOpenGradientEnd: #7C9057;
+$dockbarOpenGradientStart: #A0BA70;
+
+/* ---------- Dockbar ---------- */
+
+.aui {
+	.dockbar {
+		a:link {
+			text-shadow: none;
+		 }
+
+		.navbar-inner {
+			.nav {
+				background-color: $dockbarGradientEnd;
+			}
+
+			.nav-account-controls > li > a {
+					border: none;
+					color: #FFF;
+					font-size: 14px;
+					padding: 10px 15px;
+					text-shadow: none;
+			}
+
+			.dropdown-menu {
+				> .active > a {
+					background:	#B2CF7D;
+				}
+
+				> li > a {
+					&:hover {
+						background:	#B2CF7D;
+					}
+
+					&:focus {
+						background:	#B2CF7D;
+					}
+				}
+			}
+
+			.site-administration-menu li a:hover {
+				background:	#B2CF7D;
+			}
+		}
+
+		&.touch .dockbar .navbar-inner .nav-add-controls > li.toggle-controls {
+			visibility: visible;
+		}
+
+		.controls-hidden .dockbar {
+			.navbar-inner .nav-add-controls > li.toggle-controls {
+				visibility: visible;
+
+				> a.toggle-controls-link {
+					background: #F5AF45;
+				}
+			}
+		}
+	}
+
+	.dockbar-split .dockbar .navbar-inner .nav-add-controls > li > a {
+		background: #85a056;
+
+		&:hover {
+			background: #647840;
+		}
+
+		&.toggle-controls-link {
+			background: #BDBDBD;
+		}
+
+		.nav-item-label {
+			background: #545454;
+		}
+	}
+
+	/* ---------- Extras ---------- */
+
+	.dockbar {
+		.navbar-inner {
+			@include box-shadow(none);
+
+			.nav {
+				li.dropdown.open > .dropdown-toggle {
+					@include background-image(linear-gradient($dockbarOpenGradientStart, $dockbarOpenGradientEnd));
+					@include box-shadow(none);
+					@include filter-gradient($dockbarOpenGradientStart, $dockbarOpenGradientEnd, vertical);
+				}
+			}
+
+			.nav-account-controls {
+				@include background-image(linear-gradient($dockbarGradientStart 0%, $dockbarGradientStart 10%, $dockbarGradientEnd 100%));
+				@include filter-gradient($dockbarGradientStart, $dockbarGradientEnd, vertical);
+			}
+		}
+	}
+}
