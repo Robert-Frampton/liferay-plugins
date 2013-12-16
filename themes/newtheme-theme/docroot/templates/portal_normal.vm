@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+#parse ($init)
+
+<html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
+
+	<head>
+		<title>$the_title - $company_name</title>
+
+		<meta content="initial-scale=1.0, width=device-width" name="viewport" />
+
+		$theme.include($top_head_include)
+	</head>
+
+	<body class="$css_class">
+
+	<a href="#main-content" id="skip-to-content">#language ("skip-to-content")</a>
+
+	$theme.include($body_top_include)
+
+	#if ($is_signed_in)
+		#dockbar()
+	#end
+
+	<div class="container-fluid" id="wrapper">
+		<header id="banner" role="banner">
+			<ul>
+				<li>
+					<a href="http://localhost:8080/web/guest/home?p_p_id=141_INSTANCE_88ne4UaUKAYw&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_pos=1&p_p_col_count=2&p_r_p_564233524_resetCur=true&p_r_p_564233524_tag=writing" sl-processed="1">Writing</a>
+				</li>
+				<li>
+					<a href="http://localhost:8080/web/guest/home?p_p_id=141_INSTANCE_fOCV7omdub6K&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_pos=1&p_r_p_564233524_resetCur=true&p_r_p_564233524_tag=archeology" sl-processed="1">Archeology</a>
+				</li>
+				<li>
+					<a href="http://localhost:8080/web/guest/home?p_p_id=141_INSTANCE_fOCV7omdub6K&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_pos=1&p_r_p_564233524_resetCur=true&p_r_p_564233524_tag=blog" sl-processed="1">Blog</a>
+				</li>
+				<li>
+					<a href="http://localhost:8080/web/guest/home?p_p_id=141_INSTANCE_fOCV7omdub6K&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_pos=1&p_r_p_564233524_resetCur=true&p_r_p_564233524_tag=artifacts" sl-processed="1">Artifacts</a>
+				</li>
+				<li>
+					<a href="http://localhost:8080/web/guest/home?p_p_id=141_INSTANCE_fOCV7omdub6K&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_pos=1&p_r_p_564233524_resetCur=true&p_r_p_564233524_tag=random" sl-processed="1">Random</a>
+				</li>
+			</ul>
+		</header>
+		<div id="contentWrapper">
+			<div id="content">
+				<div id="heading">
+					<h1 class="site-title">
+						<a href="$site_default_url" title="#language_format ("go-to-x", [$site_name])">
+						#if ($show_site_name)
+							<span class="site-name" title="#language_format ("go-to-x", [$site_name])">
+								$site_name
+							</span>
+						#end
+						</a>
+					</h1>
+
+					<h2 class="page-title">
+						<span>$the_title</span>
+					</h2>
+				</div>
+
+				#if ($has_navigation || $is_signed_in)
+					#parse ("$full_templates_path/navigation.vm")
+				#end
+				<hr>
+				#if ($selectable)
+					$theme.include($content_include)
+				#else
+					$portletDisplay.recycle()
+
+					$portletDisplay.setTitle($the_title)
+
+					$theme.wrapPortlet("portlet.vm", $content_include)
+				#end
+			</div>
+		</div>
+		<div id="footerWrapper">
+			<div id="footerContent"  class="columns-1-3 row-fluid" role="main">
+				<div id="column-2" class="span4 yui3-dd-drop">
+					<div class="footerBlock">
+						<h4>ABOUT LIFERAY'S ISCA THEME</h4>
+						<p>This is a simple theme for Liferay.</p>
+					</div>
+					<div class="footerBlock">
+						<h4>BLOG STATS</h4>
+						<p>You are the first (and only) person to view this "blog".</p>
+					</div>
+					<div class="footerBlock">
+						<h4>WORD CLOUD</h4>
+						<p> One Word </p>
+					</div>
+				</div>
+				<div id="column-3" class="span4 yui3-dd-drop">
+					<div class="footerBlock">
+						<h4>SEARCH</h4>
+					</div>
+					<div class="footerBlock">
+						<h4>FOLLOW BLOG VIA EMAIL</h4>
+					</div>
+				</div>
+				<div id="column-4" class="span4 yui3-dd-drop">
+					<div class="footerBlock">
+						<h4>RECENT POSTS</h4>
+						<ul>
+							<li>
+								<a href="http://localhost:8080/web/guest/sample-page1" sl-processed="1">Sed elit leo&nbsp;fringilla</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/web/guest/sample-page1" sl-processed="1">Fall in&nbsp;Luxembourg</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/web/guest/sample-page1" sl-processed="1">Pellentesque Habitant&nbsp;Posuere</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/web/guest/sample-page1" sl-processed="1">Learn&nbsp;Liferay</a>
+							</li>
+							<li>
+								<a href="http://localhost:8080/web/guest/sample-page1" sl-processed="1">This is just another link!</a>
+							</li>
+					</ul>
+					</div>
+					<div class="footerBlock">
+						<h4>META</h4>
+							#if (!$is_signed_in)
+								<a data-redirect="$is_login_redirect_required" href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
+							#end
+					</div>
+				</div>
+	<!-- *this needs work*		<div class="portlet-layout row-fluid">
+					
+					<div id="column-2" class="portlet-column portlet-column-only span4 yui3-dd-drop">
+						<div id="layout-column_column-2" class="portlet-dropzone portlet-column-content portlet-column-content-only empty">
+						</div>
+					</div>
+					<div id="column-3" class="portlet-column portlet-column-only span4 yui3-dd-drop">
+						<div id="layout-column_column-3" class="portlet-dropzone portlet-column-content portlet-column-content-only empty">
+						</div>
+					</div>
+					<div id="column-4" class="portlet-column portlet-column-only span4 yui3-dd-drop">
+						<div id="layout-column_column-4" class="portlet-dropzone portlet-column-content portlet-column-content-only empty">
+						</div>
+					</div>
+				</div> -->
+			</div>
+			<footer id="footer" role="contentinfo">
+				<p class="powered-by">
+					#language ("powered-by") <a href="http://www.liferay.com" rel="external">Liferay</a>
+				</p>
+			</footer>
+		</div>
+	</div>
+
+	$theme.include($body_bottom_include)
+
+	$theme.include($bottom_include)
+
+	</body>
+
+</html>
