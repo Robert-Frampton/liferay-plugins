@@ -23,6 +23,14 @@ public class WebRTCConnection {
 		_webRTCClient = webRTCClient;
 	}
 
+	public long getInitiatedDurationTime() {
+		if (_initiatedTime == 0) {
+			return 0;
+		}
+
+		return System.currentTimeMillis() - _initiatedTime;
+	}
+
 	public State getState() {
 		return _state;
 	}
@@ -35,8 +43,10 @@ public class WebRTCConnection {
 		_state = state;
 
 		if (state == State.INITIATED) {
+			_initiatedTime = System.currentTimeMillis();
 		}
 		else {
+			_initiatedTime = 0;
 		}
 	}
 
@@ -46,6 +56,7 @@ public class WebRTCConnection {
 
 	}
 
+	private long _initiatedTime = 0;
 	private State _state = State.DISCONNECTED;
 	private WebRTCClient _webRTCClient;
 
