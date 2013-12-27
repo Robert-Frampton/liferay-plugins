@@ -18,5 +18,21 @@
 			"name": "Welcome",
 			"title": "Welcome"
 		}
+		{
+			"columns": [
+				[
+					"Beginning Content.html"
+				],
+				[
+					"Rich Content.html"
+				],
+				[
+					"Footer Disclaimers.html"
+				]
+			],
+			"friendlyURL": "/Additional_Story",
+			"name": "Additional Storytelling",
+			"title": "Additional Story Telling"
+		}
 	]
 }
