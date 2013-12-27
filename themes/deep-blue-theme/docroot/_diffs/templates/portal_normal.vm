@@ -65,9 +65,7 @@ $theme.include($body_top_include)
 		#end
 		</div>
 	</div>
-
 <div id="break"> </div>
-
 	<div id="footer" class="">
 		<div id="footerContent" class="row-fluid">
 			<div id="column-1" class="span6">
@@ -119,17 +117,6 @@ $theme.include($body_top_include)
 							<input type="image" border="0" align="absmiddle" title="Search" class="searchButton" src="http://localhost:8080/deep-blue-theme/images/common/search.png">
 						</div>
 					</form>
-				<!-- <div class="portlet-searchBar" id="yui_patched_v3_11_0_1_1386634633129_5086"> 
-        			<form onsubmit="spmr_3_search(); return false;" name="spmr_3_fm" method="get" action="http://localhost:8080/web/guest/home?p_p_id=3&amp;p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view&amp;p_p_col_id=column-3&amp;_3_struts_action=%2Fsearch%2Fsearch&amp;_3_redirect=%2Fweb%2Fguest%2Fhome" id="yui_patched_v3_11_0_1_1386634633129_5083">
-						<input type="hidden" value="3" name="p_p_id"><input type="hidden" value="0" name="p_p_lifecycle"><input type="hidden" value="maximized" name="p_p_state"><input type="hidden" value="view" name="p_p_mode"><input type="hidden" value="column-3" name="p_p_col_id"><input type="hidden" value="/search/search" name="_3_struts_action"><input type="hidden" value="/web/guest/home" name="_3_redirect">
-						<input type="text" value="" title="Search" size="30" name="_3_keywords" id="yui_patched_v3_11_0_1_1386634633129_5470" class="">
-						<select title="Scope " name="_3_groupId" id="yui_patched_v3_11_0_1_1386634633129_5082">
-							<option selected="" value="0">Everything</option>
-							<option value="10184" id="yui_patched_v3_11_0_1_1386634633129_5101">This Site</option>
-						</select>
-						<input type="image" border="0" align="absmiddle" title="Search" src="http://localhost:8080/deep-blue-theme/images/common/search.png">
-					</form>
-				</div> -->
 			</div>
 		</div>
 	</div>

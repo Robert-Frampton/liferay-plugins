@@ -11,11 +11,12 @@
 /* ----------- Variables ---------- */
 
 $top-bottom: 1px solid #EFEFEF;
+$main-background-color: #D0D0D0;
 
 /* ------ Base Styles ------ */
 
 .aui {
-    background-color: #D0D0D0;
+    background-color: $main-background-color;
 
     a {
         &:link, &:focus, &:visited {
@@ -29,7 +30,7 @@ $top-bottom: 1px solid #EFEFEF;
     }
 
     body {
-        background-color: #D0D0D0;
+        background-color: $main-background-color;
         font-family: Arvo, Georgia, Times, serif;
     }
 
@@ -226,13 +227,6 @@ $top-bottom: 1px solid #EFEFEF;
         img {
             display: none;
         }
-    }
-
-    .read-more-button {
-        background: #333;
-        color: #FFF;
-        float: right;
-        padding: 10px;
     }
 
     .social-bookmarks {
