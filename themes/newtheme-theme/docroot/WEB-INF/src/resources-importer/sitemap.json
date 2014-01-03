@@ -1,0 +1,96 @@
+{
+	"layoutTemplateId": "1_column",
+	"privatePages": [
+		{
+			"columns": [
+				[
+					{
+						"portletId": "101"
+					}
+				]
+			],
+			"friendlyURL": "/home",
+			"name": "Home",
+			"title": "Home"
+		},
+		{
+			"columns": [
+				[
+					{
+						"portletId": "33"
+					}
+				],
+				[
+					{
+						"portletId": "3"
+					},
+					{
+						"portletId": "71",
+					}
+				]
+			],
+			"friendlyURL": "/blogs",
+			"layoutTemplateId": "2_columns_iii",
+			"name": "Blogs",
+			"title": "Blogs"
+		},
+		{
+			"columns": [
+				[
+					"Rich Content.html"
+				],
+				[
+					{
+						"portletId": "3"
+					},
+					{
+						"portletId": "71"
+					}
+				]
+			],
+			"friendlyURL": "/link_applause",
+			"layouts": [
+				{
+					"columns": [
+						[
+							"On Apple Medleys.html",
+							"Ancient Script.html"
+						],
+						[
+							{
+								"portletId": "3"
+							},
+							{
+								"portletId": "71"
+							}
+						]
+					],
+					"friendlyURL": "/additional",
+					"layoutTemplateId": "2_columns_iii",
+					"name": "Additional Sub-Content",
+					"title": "Additional Sub-Content",
+					"layouts": [
+						{
+							"friendlyURL": "/subsubContent",
+							"name": "GC Content",
+							"title": "GC Content"
+						}
+					]
+				},
+				{
+					"friendlyURL": "/menuchild",
+					"name": "Menu Child",
+					"title": "Menu Child"
+				}
+			],
+			"layoutTemplateId": "2_columns_iii",
+			"name": "Link Applesause",
+			"title": "Link Applesause"
+		},
+		{
+			"friendlyURL": "/about",
+			"name": "About Us",
+			"title": "About Us"
+		}
+	]
+}
