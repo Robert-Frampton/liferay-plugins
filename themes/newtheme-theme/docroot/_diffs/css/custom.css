@@ -14,7 +14,7 @@
 		color: #E65A1E;
 		text-decoration: none;
 
-		&:hover, &:focus, &:active {
+		&:active, &:focus, &:hover {
 			color: #B73856;
 			text-decoration: none;
 		}
@@ -27,28 +27,23 @@
 		font-weight: 100;
 		line-height: 150%;
 
-
-		.user-name, .taglib-text, {
+		.taglib-text, .user-name {
 			color: #E65A1E;
 			text-decoration: none;
-			
+
 			&:active, &:focus, &:hover {
 				color: #B73856;
 				text-decoration: none;
 			}
 		}
 
-	table {
-		margin: auto;
-	}
+		table {
+			margin: auto;
+		}
 
 		.portlet-dockbar {
 			margin-bottom: -70px;
 		}
-	}
-
-	input[title="Search"] {
-		border-radius: 50px;
 	}
 
 	h1 {
@@ -76,9 +71,11 @@
 				list-style: none;
 				padding: 10px 18px;
 
-				a, a:focus, a:active, a:hover {
-					color: #BCB9B3;
-					text-decoration: none;
+				a {
+					&, &:active, &:focus, &:hover {
+						color: #BCB9B3;
+						text-decoration: none;
+					}
 				}
 			}
 		}
@@ -86,7 +83,6 @@
 
 	#contentWrapper {
 		background-color: #FFF;
-		box-shadow: 0 0 3px 1px rgba(0,0,0,0.15);
 		margin: auto;
 		max-width: 1000px;
 		padding: 6px;
@@ -95,7 +91,7 @@
 			border: 1px solid #E5E3E1;
 			color: #282828;
 			padding: 20px;
-		
+
 			hr {
 				margin: 0 auto 40px;
 				width: 85%;
@@ -129,12 +125,10 @@
 		text-align: center;
 
 		ul {
-			margin: none;
-			margin-bottom: 0;
+			margin: 0;
 
 			&.child-menu {
 				background-color: #FFF;
-				box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 				display: none;
 				left: 0;
 				margin: 1px auto;;
@@ -146,7 +140,10 @@
 
 				a {
 					font-weight: normal;
-					border: medium none;
+					border-bottom-width: medium;
+					border-left-width: 0;
+					border-right-width: 0;
+					border-top-width: medium;
 				}
 			}
 		}
@@ -161,7 +158,7 @@
 				color: #E65A1E;
 				font-size: 18px;
 
-				&:hover, &:focus, &:active {
+				&:active, &:focus, &:hover {
 					color: #B73856;
 					text-decoration: none;
 				}
@@ -169,15 +166,18 @@
 
 			.triangle {
 				color: #999;
-				font-size: .7em;
+				font-size: 0.7em;
 			}
 
 			.grandchild-menu {
 				border-color: #EEE;
-				border-style: none solid;
-				border-width: 0.5px;
+				border-bottom-width: 0;
+				border-left-style: solid;
+				border-left-width: 0.5px;
+				border-right-style: solid;
+				border-right-width: 0.5px;
+				border-top-width: 0;
 				bottom: 0;
-				box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 				display: none;
 				left: 100%;
 				margin-left: 0;
@@ -188,24 +188,24 @@
 			ul li {
 				background: #FFF;
 				border-color: #EEE;
-				border-style: solid solid none;
-				border-width: 0.5px;
+				border-style: solid;
+				border-bottom-width: 0;
+				border-left-width: 0.5px;
+				border-right-width: 0.5px;
+				border-top-width: 0.5px;
 				display: block;
 				padding: 10px 13px;
 
 				&:hover .grandchild-menu {
 					display: block;
 				}
-
 			}
 
 			&:hover {
-				ul.child-menu {
-					display: inline-block;
-				}
-
-				li.child-menu {
-					display: inline-block;
+				li, ul {
+					&.child-menu {
+						display: inline-block;
+					}
 				}
 			}
 		}
@@ -213,9 +213,9 @@
 
 	/* ----- portlet ----- */
 	.portlet .portlet-title-text {
-			font-size: 23px;
-			font-weight: normal;
-			margin-left: 10px;
+		font-size: 23px;
+		font-weight: normal;
+		margin-left: 10px;
 	}
 
 	.span4 .portlet .portlet-topper {
@@ -257,7 +257,7 @@
 		}
 	}
 
-	/*-- specifict to Asset Publisher --*/
+	/*-- specific to Asset Publisher --*/
 	.asset-abstract {
 		background-color: #FFFFFF;
 		border-bottom: 1px solid #E5E3E1;
@@ -266,8 +266,7 @@
 		padding: 0 0 37px;
 
 		&:after {
-			background: url("../images/fleuron.png") no-repeat #FFF center center;
-			border-radius: 10px;
+			background: url('../images/fleuron.png') no-repeat #FFF center center;
 			content: " ";
 			height: 25px;
 			left: 46%;
@@ -278,25 +277,22 @@
 	}
 
 	.asset-title {
-		border-bottom: none;
+		border-bottom-width: 0;
 		font-weight: 100;
 		margin-left: 20%;
 
 		a {
-			color: #000000;
+			color: #000;
 			text-decoration: none;
 
-			&:hover, &:active, &:focus {
+			&:active, &:focus, &:hover {
 				color: #E65A1E;
 				text-decoration: none;
-				transition: all 0.3s ease 0s;
 			}
 		}
 
 		img {
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-			background: url("../images/post-types.png") no-repeat scroll center -900px rgba(0, 0, 0, 0);
+			background: url('../images/post-types.png') no-repeat scroll center -900px rgba(0, 0, 0, 0);
 			display: block;
 			height: 36px;
 			left: 8.4%;
@@ -319,19 +315,16 @@
 
 		a .asset-small-image {
 			border: 6px solid #FFF;
-			box-shadow: 0 0 4px rgba(0,0,0,0.2);
 			padding: 0;
-
-			&:hover {
-				box-shadow: 0 0 4px rgba(0,0,0,0.75);
-			}
 		}
 	}
 
 	.asset-more > a {
 		background-color: #E9E6E0;
-		border: medium none;
-		border-radius: 4px;
+		border-bottom-width: medium;
+		border-left-width: 0;
+		border-right-width: 0;
+		border-top-width: medium;
 		color: #333231;
 		display: inline-block;
 		font-size: 0.65em;
@@ -342,14 +335,13 @@
 
 		&:hover {
 			background-color: #DCD8D1;
-			color: #000000;
+			color: #000;
 			text-decoration: none;
-			transition: all 0.3s ease 0s;
 		}
 	}
 
 	.asset-metadata {
-		border-bottom: none;
+		border-bottom-width: 0;
 		height: 50px;
 		left: 8.2%;
 		letter-spacing: 0.1em;
@@ -387,7 +379,7 @@
 
 		a {
 			color: #DDD;
-			
+
 			&:hover {
 				text-decoration: underline;
 			}
@@ -399,7 +391,7 @@
 		margin: auto;
 		max-width: 1000px;
 		padding: 0 10px;
-		
+
 		.footer-block {
 			margin-bottom: 35px;
 
@@ -409,10 +401,7 @@
 				font-weight: normal;
 				margin:0 4px 8px 0;
 				padding-bottom: 4px;
-			}
-
-			.searchfield {
-				border-radius: 100em;
+				text-transform: uppercase;
 			}
 
 			.subscribefield {
@@ -441,18 +430,45 @@
 
 	#footer {
 		padding: 12px 0 25px;
-		
+
 		p {
 			text-align: center;
-			
+
 			a {
-			color: #DDD;
-			font-size: 8;
+				color: #DDD;
+				font-size: 8;
 			}
 		}
 	}
 
 	/*----extras----*/
+
+	input[title="Search"] {
+		@include border-radius(50px);
+	}
+
+	#contentWrapper {
+		@include box-shadow(0 0 3px 1px rgba(0,0,0,0.15));
+	}
+
+	#navigation {
+		ul.child-menu {
+			@include box-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
+		}
+
+		li.grandchild-menu {
+			@include box-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
+		}
+	}
+
+	#footerContent {
+		.footer-block {
+			.searchfield {
+				@include border-radius(100em);
+			}
+		}
+	}
+
 	.portlet-dockbar {
 		@include transparent;
 
@@ -468,11 +484,27 @@
 	}
 
 	.asset-title {
+		a {
+			&:active, &:focus, &:hover {
+				@include transition-property(all);
+				@include transition-duration(0.3s);
+				@include transition-timing-function(ease);
+			}
+		}
+
 		img {
+			@include box-sizing(border-box);
+
 			&:hover {
 				@include opacity(0.7);
 				transition: all 0.3s ease 0s;
 			}
+		}
+	}
+
+	.asset-abstract {
+		&:after {
+			@include border-radius(10px);
 		}
 	}
 
@@ -482,8 +514,30 @@
 
 			&:hover {
 				@include opaque;
-				transition: all 0.3s ease 0s;
+				@include transition-property(all);
+				@include transition-duration(0.3s);
+				@include transition-timing-function(ease);
 			}
+		}
+	}
+
+	.asset-summary .asset-small-image {
+		a .asset-small-image {
+			@include box-shadow(0 0 4px rgba(0,0,0,0.2));
+
+			&:hover {
+				@include box-shadow(0 0 4px rgba(0,0,0,0.75));
+			}
+		}
+	}
+
+	.asset-more > a {
+		@include border-radius(4px);
+
+		&:hover {
+			@include transition-property(all);
+			@include transition-duration(0.3s);
+			@include transition-timing-function(ease);
 		}
 	}
 }

@@ -49,9 +49,6 @@
 				]
 			],
 			"friendlyURL": "/link_applause",
-			"layoutTemplateId": "2_columns_iii",
-			"name": "Link Applesause",
-			"title": "Link Applesause",
 			"layouts": [
 				{
 					"columns": [
@@ -85,7 +82,10 @@
 					"name": "Menu Child",
 					"title": "Menu Child"
 				}
-			]
+			],
+			"layoutTemplateId": "2_columns_iii",
+			"name": "Link Applesause",
+			"title": "Link Applesause"
 		},
 		{
 			"friendlyURL": "/about",

@@ -48,13 +48,11 @@
 				<div id="heading">
 					<h1 class="site-title">
 						<a href="$site_default_url" title="#language_format ("go-to-x", [$site_name])">
-						
-						#if ($show_site_name)
-							<span class="site-name" title="#language_format ("go-to-x", [$site_name])">
-								$site_name
-							</span>
-						#end
-
+							#if ($show_site_name)
+								<span class="site-name" title="#language_format ("go-to-x", [$site_name])">
+									$site_name
+								</span>
+							#end
 						</a>
 					</h1>
 
@@ -67,7 +65,7 @@
 					#parse ("$full_templates_path/navigation.vm")
 				#end
 
-				<hr>
+				<hr />
 
 				#if ($selectable)
 					$theme.include($content_include)
@@ -78,50 +76,60 @@
 
 					$theme.wrapPortlet("portlet.vm", $content_include)
 				#end
-
 			</div>
 		</div>
 
 		<div id="footerWrapper">
-			<div id="footerContent" class="columns-1-3 row-fluid" role="main">
-				<div id="column-2" class="span4">
+			<div class="columns-1-3 row-fluid" id="footerContent" role="main">
+				<div class="span4" id="column-2">
 					<div class="footer-block">
-						<h4>ABOUT LIFERAY'S ISCA THEME</h4>
-						<p>This is a simple theme for Liferay designed after <a href="http://iscademo.wordpress.com">Isca on Wordpress</a>.</p>
+						<h4>About Liferay's ISCA Theme</h4>
+
+						<p>
+							This is a simple theme for Liferay designed after <a href="http://iscademo.wordpress.com">Isca on Wordpress</a>.
+						</p>
 					</div>
 
 					<div class="footer-block">
-						<h4>STATS</h4>
+						<h4>Stats</h4>
+
 						<p>You are the first person to view this page.</p>
 					</div>
 
 					<div class="footer-block">
-						<h4>WORD CLOUD</h4>
+						<h4>Word Cloud</h4>
+
 						<p> One Word </p>
 					</div>
 				</div>
 
-				<div id="column-3" class="span4">
+				<div class="span4" id="column-3">
 					<div class="footer-block">
-						<h4>SEARCH</h4>
-						<form action="http://localhost:8080//" class="searchform" method="get">
-						<input type="text" placeholder="Search..." class="searchfield" name="s" value=""><input width="14" type="image" height="14" class="searchsubmit">
+						<h4>Search</h4>
+
+						<form action="http://localhost:8080" class="searchform" method="get">
+							<input class="searchfield" name="s" placeholder="Search..." type="text" value="" />
 						</form>
 					</div>
 
 					<div class="footer-block">
-						<h4>FOLLOW BLOG VIA EMAIL</h4>
-						<p>Enter your email in the form below to subscribe to all of our updates. We respect your privacy and promise not share your information with anyone else.</p>
-						<form action="http://localhost:8080//" class="subscribeform" method="get">
-						<input type="text" placeholder="Email address here..." class="subscribefield" name="s" value=""><input width="100%" type="image" height="14" class="subscribesubmit">
+						<h4>Follow Blog via Email</h4>
+
+						<p>
+							Enter your email in the form below to subscribe to all of our updates. We respect your privacy and promise not share your information with anyone else.
+						</p>
+
+						<form action="http://localhost:8080" class="subscribeform" method="get">
+							<input class="subscribefield" name="s" type="text" placeholder="Email address here..."  value="" />
 						</form>
+
 						<input type="submit" value="Follow">
 					</div>
 				</div>
 
-				<div id="column-4" class="span4">
+				<div class="span4" id="column-4">
 					<div class="footer-block">
-						<h4>RECENT POSTS</h4>
+						<h4>Recent Posts</h4>
 
 						<ul>
 							<li>
@@ -143,12 +151,11 @@
 					</div>
 
 					<div class="footer-block">
-						<h4>META</h4>
+						<h4>Meta</h4>
 
 						#if (!$is_signed_in)
 							<a data-redirect="$is_login_redirect_required" href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
 						#end
-
 					</div>
 				</div>
 			</div>
@@ -166,5 +173,4 @@
 	$theme.include($bottom_include)
 
 	</body>
-
 </html>
