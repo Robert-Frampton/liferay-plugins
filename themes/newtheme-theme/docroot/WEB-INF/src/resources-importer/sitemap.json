@@ -1,0 +1,148 @@
+{
+	"layoutTemplateId": "2_columns_iii",
+	"privatePages": [
+		{
+			"columns": [
+				[
+					"CreativeImage.html"
+				],
+				[
+					"Welcome.html"
+				]
+			],
+			"friendlyURL": "/home",
+			"name": "Welcome",
+			"title": "Welcome"
+		},
+		{
+			"columns": [
+				[
+					{
+						"portletId": "115"
+					},
+					{
+						"portletId": "33"
+					}
+				],
+				[
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Sign In.html",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "true",
+							"portletSetupTitle_en_US": "User login",
+							"portletSetupUseCustomTitle": "true"
+						}
+					},
+					{
+						"portletId": "85"
+					}
+				]
+			],
+			"friendlyURL": "/blog",
+			"name": "Blog",
+			"title": "Blog",
+			"layouts": [
+				{
+					"columns": [
+						[
+							"Blog.html"
+						],
+						[
+							{
+								"portletId": "56",
+								"portletPreferences": {
+									"articleId": "Sign In.html",
+									"groupId": "${groupId}",
+									"portletSetupShowBorders": "true",
+									"portletSetupTitle_en_US": "User login",
+									"portletSetupUseCustomTitle": "true"
+								}
+							},
+							{
+								"portletId": "85"
+							}
+						]
+					],
+					"friendlyURL": "/Blog1",
+					"name": "Blog #1",
+					"title": "Blog #1"
+				},
+				{
+					"friendlyURL": "/Blog2",
+					"name": "Blog #2",
+					"title": "Blog #2"
+				},
+				{
+					"friendlyURL": "/Blog3",
+					"name": "Blog #3",
+					"title": "Blog #3"
+				},
+			],
+		},
+		{
+			"columns": [
+				[
+					"Inspiration.html",
+					"InspirationImage1.html",
+					"InspirationImage2.html",
+					"InspirationImage3.html"
+				],
+				[
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Sign In.html",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "true",
+							"portletSetupTitle_en_US": "User login",
+							"portletSetupUseCustomTitle": "true"
+						}
+					},
+					{
+						"portletId": "85"
+					}
+				]
+			],
+			"friendlyURL": "/inspiration",
+			"name": "Inspiration",
+			"title": "Inspiration"
+		},
+		{
+			"friendlyURL": "/image-gallery",
+			"name": "Image Gallery",
+			"title": "Image Gallery"
+		},
+		{
+			"friendlyURL": "/resources",
+			"name": "Resources",
+			"title": "Resources"
+		},
+		{
+			"columns": [
+				[
+					"Contact.html"
+				],
+				[
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Sign In.html",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "true",
+							"portletSetupTitle_en_US": "User login",
+							"portletSetupUseCustomTitle": "true"
+						}
+					},
+					{
+						"portletId": "85"
+					}
+				]
+			],
+			"friendlyURL": "/contact",
+			"name": "Contact",
+			"title": "Contact"
+		}
+	]
+}
