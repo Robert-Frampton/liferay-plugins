@@ -34,14 +34,10 @@ page import="com.liferay.bbb.model.impl.BBBParticipantImpl" %><%@
 page import="com.liferay.bbb.service.BBBMeetingLocalServiceUtil" %><%@
 page import="com.liferay.bbb.service.BBBParticipantLocalServiceUtil" %><%@
 page import="com.liferay.bbb.service.BBBServerLocalServiceUtil" %><%@
-page import="com.liferay.bbb.service.BBBServerServiceUtil" %><%@
-page import="com.liferay.bbb.service.permission.AdminPermission" %><%@
 page import="com.liferay.bbb.service.permission.BBBMeetingPermission" %><%@
-page import="com.liferay.bbb.service.permission.BBBServerPermission" %><%@
 page import="com.liferay.bbb.service.permission.MeetingsPermission" %><%@
 page import="com.liferay.bbb.util.ActionKeys" %><%@
 page import="com.liferay.bbb.util.BBBAPIUtil" %><%@
-page import="com.liferay.bbb.util.PortletKeys" %><%@
 page import="com.liferay.portal.kernel.dao.search.ResultRow" %><%@
 page import="com.liferay.portal.kernel.language.UnicodeLanguageUtil" %><%@
 page import="com.liferay.portal.kernel.portlet.LiferayWindowState" %><%@
@@ -58,8 +54,7 @@ page import="com.liferay.portal.util.PortalUtil" %>
 page import="java.util.Collections" %><%@
 page import="java.util.List" %>
 
-<%@ page import="javax.portlet.PortletURL" %><%@
-page import="javax.portlet.WindowState" %>
+<%@ page import="javax.portlet.PortletURL" %>
 
 <portlet:defineObjects />
 
@@ -69,8 +64,4 @@ page import="javax.portlet.WindowState" %>
 PortletURL portletURL = renderResponse.createRenderURL();
 
 String currentURL = PortalUtil.getCurrentURL(request);
-
-String portletId = portletDisplay.getId();
-
-String templatePath = portletConfig.getInitParameter("template-path");
 %>
