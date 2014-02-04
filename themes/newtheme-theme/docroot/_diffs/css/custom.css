@@ -9,15 +9,30 @@
 .aui {
    background-color: #DDD;
 
+   p a {
+      color: #181818;
+
+      &:hover {
+         color: #E73420;
+      }
+   }
+
    body {
       background-color: #DDD;
       font-family: 'Open Sans', Helvetica, Arial, sans-serif;
       font-size: 14px;
 
-      a {
+      a { 
          &:hover {
             text-decoration: none;   
          }
+      }
+
+      .large-picture {
+         background: url(../images/bestResponsiveImg.jpg) no-repeat center center;
+         height: 400px;
+         margin: 417px auto 0;
+         max-width: 920px;
       }
 
       .btn.btn-primary {
@@ -38,7 +53,7 @@
       .navbar.navbar-static-top.dockbar {
          margin-right: 0;
          
-         li { 
+         li {
             a {
                background-color: #E73420;
                border: #181818 solid 1px;
@@ -172,14 +187,13 @@
          color: #FFF;
          height: 112px;
          letter-spacing: 1px;
-         margin: 40px auto 107px;
+         margin: 40px auto -292px;
          max-width: 920px;
          
          .site-title {
             a {
                float: left;
-               margin-left: 15px;
-               margin-top: 30px;
+               margin: 30px 0 0 15px;
             }
             
             .site-name {
@@ -190,12 +204,7 @@
          } 
 
          .page-title {
-            background: url(../images/bestResponsiveImg.jpg) no-repeat center center;   
-            font-size: 0px;
-            height: 400px;
-            max-width: 920px;
-            position: relative;
-            top: 219px;
+            display: none;
          }
 
          .sort-pages.modify-pages {
@@ -204,9 +213,7 @@
             }
 
             ul {
-               left: 190px;
-               position: relative;
-               top: -410px;
+               list-style-type: none;
 
                li.selected {
                   color: #FFF;
@@ -218,7 +225,6 @@
                }
 
                li {
-                  display: inline;
                   float: left;
                   line-height: 32px;
                   margin-top: 40px;
@@ -243,12 +249,11 @@
                      color: #DDD;
                      font-weight: 400;
                      line-height: 32px;
-                     padding-left: 15px;
-                     padding-right: 15px;
+                     padding: 0 15px 0;
                   }
 
                   ul.child-menu {
-                     margin: -50px 0 -20px 0px;
+                     margin: 0px 0 -20px 0px;
                      min-width: 180px;
                      opacity: 0;
                      position: absolute;
@@ -256,23 +261,21 @@
                      z-index: -1;
 
                      li {
+                        background-color: transparent;
                         color: white;
                         display: block;
                         height: 20px;
                         list-style-type: none;
                         margin-bottom: -10px;
-                        position: relative;
-                        right: 190px;
-                        top: 490px;
                         z-index: 3;
 
+                        .selected {
+                           background-color: transparent;
+                        }
+
                         &:first-child {
-                           margin-bottom: -40px;
-                           margin-top: 20px;
+                           margin: 10px 0 -20px -10px;
                            padding: 10px;
-                           position: relative;
-                           right: 200px;
-                           top: 470px;
                            
                            a {
                               border-top: none;
@@ -308,9 +311,7 @@
             color: #FFF;
             float: right;
             font-weight: 500;
-            left: -15px;
-            position: relative;
-            top: -364px;
+            padding: 10px;
 
             &:hover {
                color: #EB5647;
@@ -324,8 +325,7 @@
 
          #content {
             background-color: #DDD;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
             max-width: 920px;
 
             nav#breadcrumbs {
@@ -333,10 +333,11 @@
 
                ul.breadcrumb {
                   background-color: #FFF;
-                  bottom: 77px;   
+                  bottom: 495px;   
                   height: 47px;
+                  list-style-type: none;
                   margin: 0 auto;
-                  padding: 0;
+                  padding: 20;
                   position: relative;
                   text-align: center;
 
@@ -360,7 +361,7 @@
 
             #main-content {
                background-color: #FFF;
-               margin-top: 430px;
+               margin-top: 30px;
                position: relative;
 
                div.portlet-layout.row-fluid {
@@ -389,7 +390,27 @@
                         .portlet-body {
                            color: #666666;
                            font-weight: 400;
-                           line-height: 25.2px;  
+                           line-height: 25.2px;
+
+                           a {
+                              color: #181818;
+
+                              &:hover {
+                                 color: #E73420;
+                              }
+                           }
+
+                           .journal-content-article p a {
+                              color: #181818;
+
+                              &:hover {
+                                 color: #E73420;
+                              }
+                           }
+
+                           p {
+                              text-align: left;
+                           }
                         }
                      }
 
@@ -405,9 +426,9 @@
                   .portlet-column.portlet-column-first {
                      float: left;
                      height: 100%;
-                     margin-left: auto;
-                     margin-right: auto;
-                     min-height: 374px;   
+                     margin: 0 auto;
+                     min-height: 585px; 
+                     padding: 15px;  
                      width: 66%;
                   } 
 
@@ -415,10 +436,9 @@
                      background-color: #F9F9F9;
                      border-left: 1px solid #DDD;
                      float: right;
-                     height: 100%;
-                     margin-left: auto;
-                     margin-right: auto;
-                     min-height: 374px;
+                     margin: 0 auto;
+                     min-height: 585px;
+                     padding: 15px;
                      width: 34%;
                   }
                }
@@ -477,12 +497,8 @@
       #banner .sort-pages.modify-pages ul li ul.child-menu {
          @include transition(opacity .25s ease-in);
 
-         li {
-            @include border-radius(2px);
-
-            a {
-               @include border-radius(2px);
-            }     
+         li, li a {
+            @include border-radius(2px); 
          }
       }
 
@@ -490,11 +506,11 @@
          @include border-radius(5px); 
       }
 
-      nav#navigation ul li.selected {
-         @include border-radius(2px); 
+      ul.breadcrumb {
+         @include border-radius(0px);
       }
 
-      .nav li .dropdown .open .active, .nav li .dropdown .open .dropdown-toggle, .nav li .dropdown .active {
+      nav#navigation ul li.selected {
          @include border-radius(2px); 
       }
       
