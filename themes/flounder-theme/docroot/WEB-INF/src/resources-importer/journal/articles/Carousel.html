@@ -1,0 +1,28 @@
+<body>
+	<h3>Photo</h3>
+
+	<p>Here you can find all the photos you want!</p>
+
+	<script>
+		YUI().use(
+			'aui-carousel',
+			function(Y) {
+				new Y.Carousel(
+					{
+						contentBox: '#myCarousel',
+						height: 300,
+						intervalTime: 4,
+						width: 475
+					}
+				).render();
+			}
+		);
+	</script>
+
+	<div id="myCarousel">
+		<div class="carousel-item" style="background: url(http://mewzik.com/org/IMG_2748.jpg);"></div>
+		<div class="carousel-item" style="background: url(http://www.appalachianbluegrass.com/wp-content/uploads/2012/11/main-03.jpg);"></div>
+		<div class="carousel-item" style="background: url(http://www.appalachianbluegrass.com/wp-content/uploads/2012/11/main-02.jpg);"></div>
+		<div class="carousel-item" style="background: url(http://www.learnbluegrass.com/fiddlepic.gif);"></div>
+	</div>
+</body>

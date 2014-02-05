@@ -1,0 +1,68 @@
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element dataType="string" indexType="keyword" name="photoOneURL" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
+		<meta-data locale="en_US">
+			<entry name="label">
+				<![CDATA[Photo One URL]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[http://alloyui.com/carousel/img/1.jpg]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="string" indexType="keyword" name="photoTwoURL" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
+		<meta-data locale="en_US">
+			<entry name="label">
+				<![CDATA[Photo Two URL]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[http://alloyui.com/carousel/img/2.jpg]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="string" indexType="keyword" name="photoThreeURL" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
+		<meta-data locale="en_US">
+			<entry name="label">
+				<![CDATA[Photo Three URL]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[http://alloyui.com/carousel/img/3.jpg]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="string" indexType="keyword" name="photoFourURL" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
+		<meta-data locale="en_US">
+			<entry name="label">
+				<![CDATA[Photo Four URL]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[http://alloyui.com/carousel/img/4.jpg]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="integer" fieldNamespace="ddm" indexType="keyword" name="changeInterval" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-integer" width="small">
+		<meta-data locale="en_US">
+			<entry name="label">
+				<![CDATA[Change Interval (in seconds)]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[4]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+</root>

@@ -1,0 +1,21 @@
+<body>
+	<h3>Audio</h3>
+
+	<p>Here you can find all the audio you want!</p>
+
+	<script>
+		YUI().use(
+			'aui-audio',
+			function(Y) {
+				new Y.Audio(
+					{
+						boundingBox: '#myAudio',
+						url: 'http://alloyui.com/audio/zelda.mp3'
+					}
+				).render();
+			}
+		);
+	</script>
+
+	<div id="myAudio"></div>
+</body>
