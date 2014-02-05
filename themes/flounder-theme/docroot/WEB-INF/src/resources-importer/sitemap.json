@@ -1,0 +1,256 @@
+{
+	"layoutTemplateId": "2_columns_iii",
+	"privatePages": [
+		{
+			"friendlyURL": "/home",
+			"name": "Welcome",
+			"title": "Welcome",
+			"columns": [
+				[
+					"mando.html",
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "stuff.html",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "true",
+							"portletSetupUseCustomTitle": "true",
+							"portletSetupTitle_en_US": "Who We Are"
+						}
+					}
+				],
+				[
+					{
+						"portletId": "3"
+					},
+					{
+						"portletId": "85"
+					},
+					{
+						"portletId": "71"
+					},
+					{
+						"portletId": "73"
+					}
+				]
+			]
+		},
+		{
+			"columns": [	
+				[
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Mission Statement.html",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "true",
+							"portletSetupUseCustomTitle": "true",
+							"portletSetupTitle_en_US": "Mission Statement"
+						}
+					}
+				],
+				[
+					{
+						"portletId": "3"
+					},
+					{
+						"portletId": "85"
+					},
+					{
+						"portletId": "71"
+					},
+					{
+						"portletId": "73"
+					}
+				]
+			],
+			"friendlyURL": "/mission-statement",
+			"name": "Mission Statement",
+			"title": "Mission Statement"
+		},
+		{
+			"columns": [
+				[
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Audio.html",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "true",
+							"portletSetupUseCustomTitle": "true",
+							"portletSetupTitle_en_US": "Audio"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Video.html",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "true",
+							"portletSetupUseCustomTitle": "true",
+							"portletSetupTitle_en_US": "Video"
+						}
+					},
+					{
+						"portletId": "56",
+						"portletPreferences": {
+							"articleId": "Carousel.html",
+							"groupId": "${groupId}",
+							"portletSetupShowBorders": "true",
+							"portletSetupUseCustomTitle": "true",
+							"portletSetupTitle_en_US": "Photos"
+						}
+					}
+				],
+				[
+					{
+						"portletId": "3"
+					},
+					{
+						"portletId": "85"
+					},
+					{
+						"portletId": "71"
+					},
+					{
+						"portletId": "73"
+					}
+				]
+			],
+			"friendlyURL": "/media",
+			"name": "Media",
+			"title": "Media",
+			"layouts": [
+				{
+					"columns": [
+						[
+							{
+							"portletId": "56",
+							"portletPreferences": {
+								"articleId": "stuff.html",
+								"groupId": "${groupId}",
+								"portletSetupShowBorders": "true",
+								"portletSetupUseCustomTitle": "true",
+								"portletSetupTitle_en_US": "Who We Are"
+								}
+							}
+						],
+						[
+							{
+								"portletId": "3"
+							},
+							{
+								"portletId": "85"
+							},
+							{
+								"portletId": "71"
+							},
+							{
+								"portletId": "73"
+							}
+						]
+					],
+					"friendlyURL": "/audio",
+					"name": "Audio",
+					"title": "Audio"
+				},
+				{
+					"columns": [
+						[
+							"stuff.html"
+						],
+						[
+							{
+								"portletId": "3"
+							},
+							{
+								"portletId": "85"
+							},
+							{
+								"portletId": "71"
+							},
+							{
+								"portletId": "73"
+							}
+						]
+					],
+					"friendlyURL": "/videos",
+					"name": "Videos",
+					"title": "Videos"
+				},
+				{
+					"columns": [
+						[
+							"stuff.html"
+						],
+						[
+							{
+								"portletId": "3"
+							},
+							{
+								"portletId": "85"
+							},
+							{
+								"portletId": "71"
+							},
+							{
+								"portletId": "73"
+							}
+						]
+					],
+					"friendlyURL": "/photos",
+					"name": "Photos",
+					"title": "Photos"
+				}
+			]
+		},
+		{
+			"columns": [
+				[
+					"stuff.html"
+				],
+				[
+					{
+						"portletId": "3"
+					},
+					{
+						"portletId": "85"
+					},
+					{
+						"portletId": "71"
+					},
+					{
+						"portletId": "73"
+					}
+				]
+			],
+			"friendlyURL": "/about-us",
+			"name": "About Us",
+			"title": "About Us"
+		},
+		{
+			"columns": [
+				[
+					"stuff.html"
+				],
+				[
+					{
+						"portletId": "3"
+					},
+					{
+						"portletId": "85"
+					},
+					{
+						"portletId": "71"
+					},
+					{
+						"portletId": "73"
+					}
+				]
+			],
+			"friendlyURL": "/contact",
+			"name": "Contact",
+			"title": "Contact"
+		}
+	]
+}

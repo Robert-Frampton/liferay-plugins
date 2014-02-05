@@ -1,0 +1,43 @@
+#set ($firstPhoto = $photoOneURL.Data)
+#set ($secondPhoto = $photoTwoURL.Data)
+#set ($thridPhoto = $photoThreeURL.Data)
+#set ($fourthPhoto = $photoFourURL.Data)
+#set ($interval = $changeInterval.Data)
+
+<style>
+    .carousel-item {
+        border-radius: 10px 10px 10px 10px;
+        height: 100%;
+        opacity: 0;
+        width: 100%;
+  }
+</style>
+
+<body>
+	<h3>Photo</h3>
+
+	<p>Here you can find all the photos you want!</p>
+
+	<script>
+		YUI().use(
+			'aui-carousel',
+			function(Y) {
+				new Y.Carousel(
+					{
+						contentBox: '#myCarousel',
+						height: 300,
+						intervalTime: $interval,
+						width: 475
+					}
+				).render();
+			}
+		);
+	</script>
+
+	<div id="myCarousel">
+		<div class="carousel-item" style="background: url($firstPhoto);"></div>
+		<div class="carousel-item" style="background: url($secondPhoto);"></div>
+		<div class="carousel-item" style="background: url($thirdPhoto);"></div>
+		<div class="carousel-item" style="background: url($fourthPhoto);"></div>
+	</div>
+</body>

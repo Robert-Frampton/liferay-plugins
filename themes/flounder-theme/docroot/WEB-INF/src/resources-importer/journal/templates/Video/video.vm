@@ -1,0 +1,26 @@
+#set ($video = $videoURL.Data)
+#set ($height = $videoHeight.Data)
+#set ($width = $videoWidth.Data)
+
+<h3>Video</h3>
+
+<p>Here you can find all the videos you want!</p>
+
+<script>
+	YUI().use(
+	    'aui-base',
+		'aui-video',
+		function(Y) {
+		    new Y.Video(
+			    {
+			    	boundingBox: '#myVideo',
+			    	height: $height,
+			    	url: '$video',
+			    	width: $width
+			    }
+		    ).render()
+		}
+	);
+</script>
+
+<div id="myVideo"></div>
