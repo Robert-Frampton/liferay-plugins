@@ -24,45 +24,45 @@ import java.util.Arrays;
  */
 public class BBBMeetingServiceClpInvoker {
 	public BBBMeetingServiceClpInvoker() {
-		_methodName30 = "getBeanIdentifier";
+		_methodName28 = "getBeanIdentifier";
 
-		_methodParameterTypes30 = new String[] {  };
+		_methodParameterTypes28 = new String[] {  };
 
-		_methodName31 = "setBeanIdentifier";
+		_methodName29 = "setBeanIdentifier";
 
-		_methodParameterTypes31 = new String[] { "java.lang.String" };
+		_methodParameterTypes29 = new String[] { "java.lang.String" };
 
-		_methodName36 = "addBBBMeeting";
+		_methodName34 = "addBBBMeeting";
 
-		_methodParameterTypes36 = new String[] {
+		_methodParameterTypes34 = new String[] {
 				"long", "java.lang.String", "long", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"int", "java.util.List",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName37 = "deleteBBBMeeting";
+		_methodName35 = "deleteBBBMeeting";
 
-		_methodParameterTypes37 = new String[] { "long" };
+		_methodParameterTypes35 = new String[] { "long" };
 
-		_methodName38 = "getBBBMeeting";
+		_methodName36 = "getBBBMeeting";
 
-		_methodParameterTypes38 = new String[] { "long" };
+		_methodParameterTypes36 = new String[] { "long" };
 
-		_methodName39 = "getBBBMeetings";
+		_methodName37 = "getBBBMeetings";
 
-		_methodParameterTypes39 = new String[] {
+		_methodParameterTypes37 = new String[] {
 				"long", "int", "int",
 				"com.liferay.portal.kernel.util.OrderByComparator"
 			};
 
-		_methodName40 = "getBBBMeetingsCount";
+		_methodName38 = "getBBBMeetingsCount";
 
-		_methodParameterTypes40 = new String[] { "long" };
+		_methodParameterTypes38 = new String[] { "long" };
 
-		_methodName41 = "updateBBBMeeting";
+		_methodName39 = "updateBBBMeeting";
 
-		_methodParameterTypes41 = new String[] {
+		_methodParameterTypes39 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String", "java.util.List",
 				"com.liferay.portal.service.ServiceContext"
@@ -71,20 +71,20 @@ public class BBBMeetingServiceClpInvoker {
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
-		if (_methodName30.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes30, parameterTypes)) {
+		if (_methodName28.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes28, parameterTypes)) {
 			return BBBMeetingServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName31.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes31, parameterTypes)) {
+		if (_methodName29.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes29, parameterTypes)) {
 			BBBMeetingServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName36.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes36, parameterTypes)) {
+		if (_methodName34.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes34, parameterTypes)) {
 			return BBBMeetingServiceUtil.addBBBMeeting(((Long)arguments[0]).longValue(),
 				(java.lang.String)arguments[1],
 				((Long)arguments[2]).longValue(),
@@ -95,31 +95,31 @@ public class BBBMeetingServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[9]);
 		}
 
-		if (_methodName37.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes37, parameterTypes)) {
+		if (_methodName35.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes35, parameterTypes)) {
 			return BBBMeetingServiceUtil.deleteBBBMeeting(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName38.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes38, parameterTypes)) {
+		if (_methodName36.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes36, parameterTypes)) {
 			return BBBMeetingServiceUtil.getBBBMeeting(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName39.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes39, parameterTypes)) {
+		if (_methodName37.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes37, parameterTypes)) {
 			return BBBMeetingServiceUtil.getBBBMeetings(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue(),
 				(com.liferay.portal.kernel.util.OrderByComparator)arguments[3]);
 		}
 
-		if (_methodName40.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes40, parameterTypes)) {
+		if (_methodName38.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes38, parameterTypes)) {
 			return BBBMeetingServiceUtil.getBBBMeetingsCount(((Long)arguments[0]).longValue());
 		}
 
-		if (_methodName41.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes41, parameterTypes)) {
+		if (_methodName39.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes39, parameterTypes)) {
 			return BBBMeetingServiceUtil.updateBBBMeeting(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
@@ -131,10 +131,14 @@ public class BBBMeetingServiceClpInvoker {
 		throw new UnsupportedOperationException();
 	}
 
-	private String _methodName30;
-	private String[] _methodParameterTypes30;
-	private String _methodName31;
-	private String[] _methodParameterTypes31;
+	private String _methodName28;
+	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
+	private String _methodName34;
+	private String[] _methodParameterTypes34;
+	private String _methodName35;
+	private String[] _methodParameterTypes35;
 	private String _methodName36;
 	private String[] _methodParameterTypes36;
 	private String _methodName37;
@@ -143,8 +147,4 @@ public class BBBMeetingServiceClpInvoker {
 	private String[] _methodParameterTypes38;
 	private String _methodName39;
 	private String[] _methodParameterTypes39;
-	private String _methodName40;
-	private String[] _methodParameterTypes40;
-	private String _methodName41;
-	private String[] _methodParameterTypes41;
 }
