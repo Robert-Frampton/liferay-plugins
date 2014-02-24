@@ -1,4 +1,3 @@
-@import "compass";
 @import "mixins";
 
 @import url(custom_common.css);
@@ -128,6 +127,8 @@ $dockbarOpenGradientStart: #0EA6F9;
 		}
 
 		.staging-bar {
+			border-width: 0;
+
 			.staging-toggle {
 				color: #FFF;
 
@@ -313,6 +314,10 @@ $dockbarOpenGradientStart: #0EA6F9;
 				&.active > a {
 					background-color: $dockbarGradientStart;
 				}
+			}
+
+			* {
+				display: none;
 			}
 
 			> li > a {
@@ -538,7 +543,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 	/* ---------- Hudcrumbs ---------- */
 
 	.lfr-hudcrumbs {
-		position: fixed;
+		position: absolute;
 		top: 0;
 		z-index: 300;
 
