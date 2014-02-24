@@ -14,6 +14,7 @@
 
 package com.liferay.sync.engine.service;
 
+import com.liferay.sync.engine.model.ModelListener;
 import com.liferay.sync.engine.model.SyncFile;
 import com.liferay.sync.engine.model.SyncSite;
 import com.liferay.sync.engine.service.persistence.SyncSitePersistence;
@@ -36,13 +37,15 @@ import org.slf4j.LoggerFactory;
 public class SyncSiteService {
 
 	public static SyncSite addSyncSite(
-			String filePathName, long groupId, long syncAccountId)
+			long companyId, String filePathName, long groupId,
+			long syncAccountId)
 		throws Exception {
 
 		// Sync site
 
 		SyncSite syncSite = new SyncSite();
 
+		syncSite.setCompanyId(companyId);
 		syncSite.setFilePathName(filePathName);
 		syncSite.setGroupId(groupId);
 		syncSite.setSyncAccountId(syncAccountId);
@@ -130,6 +133,12 @@ public class SyncSiteService {
 		}
 
 		return _syncSitePersistence;
+	}
+
+	public static void registerModelListener(
+		ModelListener<SyncSite> modelListener) {
+
+		_syncSitePersistence.registerModelListener(modelListener);
 	}
 
 	public static SyncSite update(SyncSite syncSite) {
