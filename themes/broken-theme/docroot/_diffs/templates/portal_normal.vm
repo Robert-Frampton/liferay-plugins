@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 #parse ($init)
 
 <html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
@@ -28,7 +26,7 @@ $theme.include($body_top_include)
 					<img alt="$logo_description" height="$site_logo_height" src="$site_logo" width="$site_logo_width" />
 
 					#if ($show_site_name)
-						<span class="site-name" title="#language_format ("go-to-x", [$site_name])">
+						<span class="company-title site-name" title="#language_format ("go-to-x", [$site_name])">
 							$site_name
 						</span>
 					#end
@@ -38,7 +36,7 @@ $theme.include($body_top_include)
 		</div>
 
 		#if ($has_navigation || $is_signed_in)
-			#parse ("$full_templates_path/navigation.vm")
+			#include ("$full_templates_path/navigation.vm")
 		#end
 	</header>
 
@@ -62,7 +60,7 @@ $theme.include($body_top_include)
 		#end
 	</section>
 
-	<footer id="footer" role="contentinfo">
+	<footer class="site-footer" id="footer" role="contentinfo">
 		<p class="powered-by">
 			#language ("powered-by") <a href="http://www.liferay.com" rel="external">Liferay</a>
 		</p>
