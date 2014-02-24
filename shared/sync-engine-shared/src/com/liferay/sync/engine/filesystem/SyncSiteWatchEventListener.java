@@ -19,6 +19,7 @@ import com.liferay.sync.engine.model.SyncWatchEvent;
 import com.liferay.sync.engine.service.SyncFileService;
 import com.liferay.sync.engine.service.SyncWatchEventService;
 import com.liferay.sync.engine.util.FilePathNameUtil;
+import com.liferay.sync.engine.util.FileUtil;
 
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
@@ -37,23 +38,27 @@ public class SyncSiteWatchEventListener extends BaseWatchEventListener {
 	}
 
 	@Override
-	public void watchEvent(Path filePath, String kindName) {
-		addSyncWatchEvent(filePath, kindName);
+	public void watchEvent(String eventType, Path filePath) {
+		addSyncWatchEvent(eventType, filePath);
 	}
 
-	protected void addSyncWatchEvent(Path filePath, String kindName) {
+	protected void addSyncWatchEvent(String eventType, Path filePath) {
+		if (FileUtil.isIgnoredFilePath(filePath)) {
+			return;
+		}
+
 		try {
 			SyncWatchEventService.addSyncWatchEvent(
-				FilePathNameUtil.getFilePathName(filePath),
-				getFileType(filePath, kindName), kindName, getSyncAccountId());
+				eventType, FilePathNameUtil.getFilePathName(filePath),
+				getFileType(eventType, filePath), getSyncAccountId());
 		}
 		catch (Exception e) {
 			_logger.error(e.getMessage(), e);
 		}
 	}
 
-	protected String getFileType(Path filePath, String kindName) {
-		if (kindName.equals(SyncWatchEvent.ENTRY_DELETE)) {
+	protected String getFileType(String eventType, Path filePath) {
+		if (eventType.equals(SyncWatchEvent.EVENT_TYPE_DELETE)) {
 			SyncFile syncFile = SyncFileService.fetchSyncFile(
 				FilePathNameUtil.getFilePathName(filePath), getSyncAccountId());
 

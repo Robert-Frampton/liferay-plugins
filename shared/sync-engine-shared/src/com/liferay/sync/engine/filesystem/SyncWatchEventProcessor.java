@@ -30,9 +30,6 @@ import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,11 +39,6 @@ import org.slf4j.LoggerFactory;
  */
 public class SyncWatchEventProcessor implements Runnable {
 
-	public void process() {
-		_scheduledExecutorService.scheduleAtFixedRate(
-			this, 0, 3, TimeUnit.SECONDS);
-	}
-
 	@Override
 	public void run() {
 		if (_logger.isTraceEnabled()) {
@@ -54,7 +46,7 @@ public class SyncWatchEventProcessor implements Runnable {
 		}
 
 		List<SyncWatchEvent> syncWatchEvents = SyncWatchEventService.findAll(
-			"kindName", true);
+			"eventType", true);
 
 		for (SyncWatchEvent syncWatchEvent : syncWatchEvents) {
 			if (_processedSyncWatchEventIds.contains(
@@ -68,18 +60,19 @@ public class SyncWatchEventProcessor implements Runnable {
 
 			if (_logger.isDebugEnabled()) {
 				_logger.debug(
-					"Event file path {} file type {} kind name {} timestamp {}",
+					"Event type {} file path {} file type {} timestamp {}",
+					syncWatchEvent.getEventType(),
 					syncWatchEvent.getFilePathName(),
-					syncWatchEvent.getFileType(), syncWatchEvent.getKindName(),
+					syncWatchEvent.getFileType(),
 					syncWatchEvent.getTimestamp());
 			}
 
 			String fileType = syncWatchEvent.getFileType();
 
-			String kindName = syncWatchEvent.getKindName();
+			String eventType = syncWatchEvent.getEventType();
 
 			try {
-				if (kindName.equals(SyncWatchEvent.ENTRY_CREATE)) {
+				if (eventType.equals(SyncWatchEvent.EVENT_TYPE_CREATE)) {
 					if (fileType.equals(SyncFile.TYPE_FILE)) {
 						addFile(syncWatchEvent);
 					}
@@ -87,12 +80,17 @@ public class SyncWatchEventProcessor implements Runnable {
 						addFolder(syncWatchEvent);
 					}
 				}
-				else if (kindName.equals(SyncWatchEvent.ENTRY_DELETE)) {
+				else if (eventType.equals(SyncWatchEvent.EVENT_TYPE_DELETE)) {
 					if (fileType.equals(SyncFile.TYPE_FILE)) {
 						deleteFile(syncWatchEvent);
 					}
 					else {
 						deleteFolder(syncWatchEvent);
+					}
+				}
+				else if (eventType.equals(SyncWatchEvent.EVENT_TYPE_MODIFY)) {
+					if (fileType.equals(SyncFile.TYPE_FILE)) {
+						modifyFile(syncWatchEvent);
 					}
 				}
 			}
@@ -131,7 +129,7 @@ public class SyncWatchEventProcessor implements Runnable {
 
 		SyncWatchEvent relatedSyncWatchEvent =
 			SyncWatchEventService.fetchSyncWatchEvent(
-				syncFile.getFilePathName(), SyncWatchEvent.ENTRY_DELETE,
+				SyncWatchEvent.EVENT_TYPE_DELETE, syncFile.getFilePathName(),
 				syncWatchEvent.getTimestamp());
 
 		if (relatedSyncWatchEvent == null) {
@@ -194,7 +192,7 @@ public class SyncWatchEventProcessor implements Runnable {
 
 		SyncWatchEvent relatedSyncWatchEvent =
 			SyncWatchEventService.fetchSyncWatchEvent(
-				syncFile.getFilePathName(), SyncWatchEvent.ENTRY_DELETE,
+				SyncWatchEvent.EVENT_TYPE_DELETE, syncFile.getFilePathName(),
 				syncWatchEvent.getTimestamp());
 
 		if (relatedSyncWatchEvent == null) {
@@ -243,11 +241,25 @@ public class SyncWatchEventProcessor implements Runnable {
 			syncWatchEvent.getSyncAccountId(), syncFile);
 	}
 
+	protected void modifyFile(SyncWatchEvent syncWatchEvent) throws Exception {
+		Path filePath = Paths.get(syncWatchEvent.getFilePathName());
+
+		SyncFile syncFile = SyncFileService.fetchSyncFileByFileKey(
+			FileUtil.getFileKey(filePath), syncWatchEvent.getSyncAccountId());
+
+		String checksum = syncFile.getChecksum();
+
+		if (checksum.equals(FileUtil.getChecksum(filePath))) {
+			return;
+		}
+
+		SyncFileService.updateFileSyncFile(
+			filePath, syncWatchEvent.getSyncAccountId(), syncFile);
+	}
+
 	private static Logger _logger = LoggerFactory.getLogger(
 		SyncWatchEventProcessor.class);
 
 	private Set<Long> _processedSyncWatchEventIds = new HashSet<Long>();
-	private ScheduledExecutorService _scheduledExecutorService =
-		Executors.newSingleThreadScheduledExecutor();
 
 }
