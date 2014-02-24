@@ -1,5 +1,5 @@
 AUI().ready(
-	'liferay-hudcrumbs', 'liferay-navigation-interaction', 'liferay-sign-in-modal',
+	'aui-io-plugin-deprecated', 'liferay-hudcrumbs', 'liferay-navigation-interaction', 'liferay-sign-in-modal',
 	function(A) {
 		var navigation = A.one('#navigation');
 
@@ -24,6 +24,50 @@ AUI().ready(
 
 		if (signIn && signIn.getData('redirect') !== 'true') {
 			signIn.plug(Liferay.SignInModal);
+		}
+
+		A.one('#footer').delegate(
+			'click',
+			function(event) {
+				event.preventDefault();
+
+				Liferay.Util.openInDialog(event);
+			},
+			'a'
+		);
+
+		if (!Liferay.ThemeDisplay.isSignedIn()) {
+			siteBreadcrumbs.delegate(
+				'click',
+				function(event) {
+					event.preventDefault();
+
+					Liferay.Util.openWindow(
+						{
+							dialog: {
+								height: 390,
+								width: 560
+							},
+							title: Liferay.Language.get('sign-in')
+						},
+						function(dialogWindow) {
+							dialogWindow.bodyNode.plug(
+								A.Plugin.IO,
+								{
+									data: {
+										doAsUserId: themeDisplay.getDoAsUserIdEncoded(),
+										p_l_id: themeDisplay.getPlid(),
+										p_p_id: 58,
+										p_p_state: 'exclusive'
+									},
+									uri: themeDisplay.getPathMain() + '/portal/render_portlet'
+								}
+							);
+						}
+					);
+				},
+				'a'
+			);
 		}
 	}
 );
