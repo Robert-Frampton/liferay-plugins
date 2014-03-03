@@ -26,7 +26,9 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,9 +56,7 @@ public class SyncSiteService {
 
 		// Sync file
 
-		if (Files.notExists(Paths.get(filePathName))) {
-			Files.createDirectory(Paths.get(filePathName));
-		}
+		Files.createDirectories(Paths.get(filePathName));
 
 		SyncFileService.addSyncFile(
 			null, null, filePathName, FileUtil.getFileKey(filePathName),
@@ -74,6 +74,19 @@ public class SyncSiteService {
 			if (_logger.isDebugEnabled()) {
 				_logger.debug(sqle.getMessage(), sqle);
 			}
+		}
+	}
+
+	public static SyncSite fetchSyncSite(long syncSiteId) {
+		try {
+			return _syncSitePersistence.queryForId(syncSiteId);
+		}
+		catch (SQLException sqle) {
+			if (_logger.isDebugEnabled()) {
+				_logger.debug(sqle.getMessage(), sqle);
+			}
+
+			return null;
 		}
 	}
 
@@ -118,6 +131,31 @@ public class SyncSiteService {
 		}
 	}
 
+	public static List<Long> getActiveSyncSiteIds(long syncAccountId) {
+		try {
+			List<Long> activeSyncSiteIds = _activeSyncSiteIds.get(
+				syncAccountId);
+
+			if ((activeSyncSiteIds != null) && !activeSyncSiteIds.isEmpty()) {
+				return activeSyncSiteIds;
+			}
+
+			activeSyncSiteIds = _syncSitePersistence.findByA_S(
+				true, syncAccountId);
+
+			_activeSyncSiteIds.put(syncAccountId, activeSyncSiteIds);
+
+			return activeSyncSiteIds;
+		}
+		catch (SQLException sqle) {
+			if (_logger.isDebugEnabled()) {
+				_logger.debug(sqle.getMessage(), sqle);
+			}
+
+			return Collections.emptyList();
+		}
+	}
+
 	public static SyncSitePersistence getSyncSitePersistence() {
 		if (_syncSitePersistence != null) {
 			return _syncSitePersistence;
@@ -141,6 +179,18 @@ public class SyncSiteService {
 		_syncSitePersistence.registerModelListener(modelListener);
 	}
 
+	public static void setActiveSyncSiteIds(
+		long syncAccountId, List<Long> activeSyncSiteIds) {
+
+		_activeSyncSiteIds.put(syncAccountId, activeSyncSiteIds);
+	}
+
+	public static void unregisterModelListener(
+		ModelListener<SyncSite> modelListener) {
+
+		_syncSitePersistence.unregisterModelListener(modelListener);
+	}
+
 	public static SyncSite update(SyncSite syncSite) {
 		try {
 			_syncSitePersistence.createOrUpdate(syncSite);
@@ -159,6 +209,8 @@ public class SyncSiteService {
 	private static Logger _logger = LoggerFactory.getLogger(
 		SyncSiteService.class);
 
+	private static Map<Long, List<Long>> _activeSyncSiteIds =
+		new HashMap<Long, List<Long>>();
 	private static SyncSitePersistence _syncSitePersistence =
 		getSyncSitePersistence();
 
