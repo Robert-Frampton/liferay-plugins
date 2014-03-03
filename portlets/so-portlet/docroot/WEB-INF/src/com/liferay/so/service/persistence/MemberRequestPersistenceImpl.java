@@ -1695,7 +1695,7 @@ public class MemberRequestPersistenceImpl extends BasePersistenceImpl<MemberRequ
 			CacheRegistryUtil.clear(MemberRequestImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(MemberRequestImpl.class.getName());
+		EntityCacheUtil.clearCache(MemberRequestImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2003,7 +2003,7 @@ public class MemberRequestPersistenceImpl extends BasePersistenceImpl<MemberRequ
 
 		EntityCacheUtil.putResult(MemberRequestModelImpl.ENTITY_CACHE_ENABLED,
 			MemberRequestImpl.class, memberRequest.getPrimaryKey(),
-			memberRequest);
+			memberRequest, false);
 
 		clearUniqueFindersCache(memberRequest);
 		cacheUniqueFindersCache(memberRequest);

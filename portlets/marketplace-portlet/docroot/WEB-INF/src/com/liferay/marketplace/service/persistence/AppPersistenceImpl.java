@@ -2462,7 +2462,7 @@ public class AppPersistenceImpl extends BasePersistenceImpl<App>
 			CacheRegistryUtil.clear(AppImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(AppImpl.class.getName());
+		EntityCacheUtil.clearCache(AppImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2757,7 +2757,7 @@ public class AppPersistenceImpl extends BasePersistenceImpl<App>
 		}
 
 		EntityCacheUtil.putResult(AppModelImpl.ENTITY_CACHE_ENABLED,
-			AppImpl.class, app.getPrimaryKey(), app);
+			AppImpl.class, app.getPrimaryKey(), app, false);
 
 		clearUniqueFindersCache(app);
 		cacheUniqueFindersCache(app);

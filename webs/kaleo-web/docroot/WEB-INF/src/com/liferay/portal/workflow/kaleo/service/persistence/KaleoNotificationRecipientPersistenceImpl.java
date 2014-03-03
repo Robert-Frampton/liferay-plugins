@@ -1655,7 +1655,7 @@ public class KaleoNotificationRecipientPersistenceImpl
 			CacheRegistryUtil.clear(KaleoNotificationRecipientImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(KaleoNotificationRecipientImpl.class.getName());
+		EntityCacheUtil.clearCache(KaleoNotificationRecipientImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1904,7 +1904,7 @@ public class KaleoNotificationRecipientPersistenceImpl
 		EntityCacheUtil.putResult(KaleoNotificationRecipientModelImpl.ENTITY_CACHE_ENABLED,
 			KaleoNotificationRecipientImpl.class,
 			kaleoNotificationRecipient.getPrimaryKey(),
-			kaleoNotificationRecipient);
+			kaleoNotificationRecipient, false);
 
 		kaleoNotificationRecipient.resetOriginalValues();
 

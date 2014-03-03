@@ -1733,7 +1733,7 @@ public class WSRPConsumerPersistenceImpl extends BasePersistenceImpl<WSRPConsume
 			CacheRegistryUtil.clear(WSRPConsumerImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(WSRPConsumerImpl.class.getName());
+		EntityCacheUtil.clearCache(WSRPConsumerImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1978,7 +1978,8 @@ public class WSRPConsumerPersistenceImpl extends BasePersistenceImpl<WSRPConsume
 		}
 
 		EntityCacheUtil.putResult(WSRPConsumerModelImpl.ENTITY_CACHE_ENABLED,
-			WSRPConsumerImpl.class, wsrpConsumer.getPrimaryKey(), wsrpConsumer);
+			WSRPConsumerImpl.class, wsrpConsumer.getPrimaryKey(), wsrpConsumer,
+			false);
 
 		wsrpConsumer.resetOriginalValues();
 

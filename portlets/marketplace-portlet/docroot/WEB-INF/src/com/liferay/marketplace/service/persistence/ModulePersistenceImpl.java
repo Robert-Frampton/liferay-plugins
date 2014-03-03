@@ -1955,7 +1955,7 @@ public class ModulePersistenceImpl extends BasePersistenceImpl<Module>
 			CacheRegistryUtil.clear(ModuleImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(ModuleImpl.class.getName());
+		EntityCacheUtil.clearCache(ModuleImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2239,7 +2239,7 @@ public class ModulePersistenceImpl extends BasePersistenceImpl<Module>
 		}
 
 		EntityCacheUtil.putResult(ModuleModelImpl.ENTITY_CACHE_ENABLED,
-			ModuleImpl.class, module.getPrimaryKey(), module);
+			ModuleImpl.class, module.getPrimaryKey(), module, false);
 
 		clearUniqueFindersCache(module);
 		cacheUniqueFindersCache(module);

@@ -2395,7 +2395,7 @@ public class KaleoNotificationPersistenceImpl extends BasePersistenceImpl<KaleoN
 			CacheRegistryUtil.clear(KaleoNotificationImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(KaleoNotificationImpl.class.getName());
+		EntityCacheUtil.clearCache(KaleoNotificationImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2660,7 +2660,7 @@ public class KaleoNotificationPersistenceImpl extends BasePersistenceImpl<KaleoN
 
 		EntityCacheUtil.putResult(KaleoNotificationModelImpl.ENTITY_CACHE_ENABLED,
 			KaleoNotificationImpl.class, kaleoNotification.getPrimaryKey(),
-			kaleoNotification);
+			kaleoNotification, false);
 
 		kaleoNotification.resetOriginalValues();
 

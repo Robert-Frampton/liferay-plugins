@@ -891,7 +891,7 @@ public class EntryPersistenceImpl extends BasePersistenceImpl<Entry>
 			CacheRegistryUtil.clear(EntryImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(EntryImpl.class.getName());
+		EntityCacheUtil.clearCache(EntryImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1131,7 +1131,7 @@ public class EntryPersistenceImpl extends BasePersistenceImpl<Entry>
 		}
 
 		EntityCacheUtil.putResult(EntryModelImpl.ENTITY_CACHE_ENABLED,
-			EntryImpl.class, entry.getPrimaryKey(), entry);
+			EntryImpl.class, entry.getPrimaryKey(), entry, false);
 
 		clearUniqueFindersCache(entry);
 		cacheUniqueFindersCache(entry);

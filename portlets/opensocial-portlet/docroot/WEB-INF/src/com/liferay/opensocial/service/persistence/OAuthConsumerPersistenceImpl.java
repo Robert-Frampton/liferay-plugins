@@ -981,7 +981,7 @@ public class OAuthConsumerPersistenceImpl extends BasePersistenceImpl<OAuthConsu
 			CacheRegistryUtil.clear(OAuthConsumerImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(OAuthConsumerImpl.class.getName());
+		EntityCacheUtil.clearCache(OAuthConsumerImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1234,7 +1234,7 @@ public class OAuthConsumerPersistenceImpl extends BasePersistenceImpl<OAuthConsu
 
 		EntityCacheUtil.putResult(OAuthConsumerModelImpl.ENTITY_CACHE_ENABLED,
 			OAuthConsumerImpl.class, oAuthConsumer.getPrimaryKey(),
-			oAuthConsumer);
+			oAuthConsumer, false);
 
 		clearUniqueFindersCache(oAuthConsumer);
 		cacheUniqueFindersCache(oAuthConsumer);

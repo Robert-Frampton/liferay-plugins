@@ -50,13 +50,20 @@ for (long calendarId : calendarIds) {
 
 Calendar defaultCalendar = null;
 
-if ((userCalendars != null) && (userCalendars.size() > 0)) {
-	for (Calendar userCalendar : userCalendars) {
-		if (userCalendar.isDefaultCalendar()) {
-			defaultCalendar = userCalendar;
+List<Calendar> defaultCalendars = Collections.emptyList();
 
-			break;
-		}
+if ((groupCalendars != null) && (groupCalendars.size() > 0)) {
+	defaultCalendars = groupCalendars;
+}
+else if (userCalendars != null) {
+	defaultCalendars = userCalendars;
+}
+
+for (Calendar calendar : defaultCalendars) {
+	if (calendar.isDefaultCalendar()) {
+		defaultCalendar = calendar;
+
+		break;
 	}
 }
 
@@ -80,7 +87,7 @@ boolean columnOptionsVisible = GetterUtil.getBoolean(SessionClicks.get(request, 
 						<span class="calendar-portlet-list-text"><liferay-ui:message key="my-calendars" /></span>
 
 						<c:if test="<%= userCalendarResource != null %>">
-							<span class="calendar-list-item-arrow" data-calendarResourceId="<%= userCalendarResource.getCalendarResourceId() %>" tabindex="0"></span>
+							<span class="calendar-list-item-arrow" data-calendarResourceId="<%= userCalendarResource.getCalendarResourceId() %>" tabindex="0"><i class="icon-caret-down"></i></span>
 						</c:if>
 					</div>
 
@@ -94,7 +101,7 @@ boolean columnOptionsVisible = GetterUtil.getBoolean(SessionClicks.get(request, 
 						<span class="calendar-portlet-list-text"><liferay-ui:message key="current-site-calendars" /></span>
 
 						<c:if test="<%= CalendarResourcePermission.contains(permissionChecker, groupCalendarResource, ActionKeys.ADD_CALENDAR) %>">
-							<span class="calendar-list-item-arrow" data-calendarResourceId="<%= groupCalendarResource.getCalendarResourceId() %>" tabindex="0"></span>
+							<span class="calendar-list-item-arrow" data-calendarResourceId="<%= groupCalendarResource.getCalendarResourceId() %>" tabindex="0"><i class="icon-caret-down"></i></span>
 						</c:if>
 					</div>
 

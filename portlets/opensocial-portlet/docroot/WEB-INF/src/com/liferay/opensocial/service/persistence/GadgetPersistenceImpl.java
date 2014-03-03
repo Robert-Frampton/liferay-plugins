@@ -3177,7 +3177,7 @@ public class GadgetPersistenceImpl extends BasePersistenceImpl<Gadget>
 			CacheRegistryUtil.clear(GadgetImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(GadgetImpl.class.getName());
+		EntityCacheUtil.clearCache(GadgetImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -3465,7 +3465,7 @@ public class GadgetPersistenceImpl extends BasePersistenceImpl<Gadget>
 		}
 
 		EntityCacheUtil.putResult(GadgetModelImpl.ENTITY_CACHE_ENABLED,
-			GadgetImpl.class, gadget.getPrimaryKey(), gadget);
+			GadgetImpl.class, gadget.getPrimaryKey(), gadget, false);
 
 		clearUniqueFindersCache(gadget);
 		cacheUniqueFindersCache(gadget);

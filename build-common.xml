@@ -162,17 +162,24 @@ Error-Prone was automatically installed. Please rerun your task.
 		<attribute name="module.dir" />
 
 		<sequential>
+			<pathconvert property="module.dir.unix" targetos="unix">
+				<path location="@{module.dir}" />
+			</pathconvert>
+
 			<java
 				classname="com.liferay.portal.tools.SassToCssBuilder"
 				classpathref="portal.classpath"
+				failonerror="true"
 				fork="true"
 				newenvironment="true"
 			>
 				<jvmarg value="-Dliferay.lib.portal.dir=${app.server.lib.portal.dir}" />
 				<arg value="sass.dir=/" />
-				<arg value="sass.docroot.dir=@{module.dir}/docroot" />
+				<arg value="sass.docroot.dir=${module.dir.unix}/docroot" />
 				<arg value="sass.portal.common.dir=${app.server.portal.dir}/html/css/common" />
 			</java>
+
+			<var name="module.dir.unix" unset="true" />
 		</sequential>
 	</macrodef>
 
@@ -237,9 +244,9 @@ Error-Prone was automatically installed. Please rerun your task.
 							</then>
 						</elseif>
 						<elseif>
-							<equals arg1="@{macrodef.name}" arg2="javadoc-macro" />
+							<equals arg1="@{macrodef.name}" arg2="jar" />
 							<then>
-								<javadoc-macro
+								<jar-macro
 									module.dir="@{module.dir}"
 								/>
 							</then>
@@ -253,17 +260,17 @@ Error-Prone was automatically installed. Please rerun your task.
 							</then>
 						</elseif>
 						<elseif>
-							<equals arg1="@{macrodef.name}" arg2="jar-macro" />
+							<equals arg1="@{macrodef.name}" arg2="jar-source" />
 							<then>
-								<jar-macro
+								<jar-source
 									module.dir="@{module.dir}"
 								/>
 							</then>
 						</elseif>
 						<elseif>
-							<equals arg1="@{macrodef.name}" arg2="jar-source" />
+							<equals arg1="@{macrodef.name}" arg2="javadoc" />
 							<then>
-								<jar-source
+								<javadoc-macro
 									module.dir="@{module.dir}"
 								/>
 							</then>
@@ -285,7 +292,7 @@ Error-Prone was automatically installed. Please rerun your task.
 							</then>
 						</elseif>
 						<elseif>
-							<equals arg1="@{macrodef.name}" arg2="war-macro" />
+							<equals arg1="@{macrodef.name}" arg2="war" />
 							<then>
 								<war-macro
 									module.dir="@{module.dir}"
@@ -564,7 +571,7 @@ Error-Prone was automatically installed. Please rerun your task.
 								<available file="${sdk.dir}/shared/@{import.shared.current}/src" />
 								<then>
 									<call-macrodef-or-target
-										macrodef.name="jar-macro"
+										macrodef.name="jar"
 										module.dir="${sdk.dir}/shared/@{import.shared.current}"
 									/>
 
@@ -981,7 +988,7 @@ Please find a solution that does not require portal-impl.jar.
 				</or>
 				<then>
 					<call-macrodef-or-target
-						macrodef.name="war-macro"
+						macrodef.name="war"
 						module.dir="@{module.dir}"
 					/>
 
@@ -989,7 +996,7 @@ Please find a solution that does not require portal-impl.jar.
 				</then>
 				<else>
 					<call-macrodef-or-target
-						macrodef.name="jar-macro"
+						macrodef.name="jar"
 						module.dir="@{module.dir}"
 					/>
 
@@ -1021,7 +1028,7 @@ Please find a solution that does not require portal-impl.jar.
 			/>
 
 			<call-macrodef-or-target
-				macrodef.name="war-macro"
+				macrodef.name="war"
 				module.dir="@{module.dir}"
 			/>
 
@@ -1703,6 +1710,25 @@ Please find a solution that does not require portal-impl.jar.
 				</then>
 			</if>
 
+			<set-build-xml-var
+				build.xml.var.name="plugin-lib.additional.dir"
+				module.dir="@{module.dir}"
+			/>
+
+			<if>
+				<isset property="set-build-xml-var.return" />
+				<then>
+					<property name="plugin-lib.classpath.path" refid="plugin-lib.classpath" />
+
+					<path id="plugin-lib.classpath">
+						<fileset dir="@{module.dir}/${set-build-xml-var.return}" includes="*.jar" />
+						<pathelement path="${plugin-lib.classpath.path}" />
+					</path>
+
+					<var name="plugin-lib.classpath.path" unset="true" />
+				</then>
+			</if>
+
 			<var name="set-module-properties.build.xml.content" unset="true" />
 			<var name="set-module-properties.plugin.version" unset="true" />
 		</sequential>
@@ -1787,7 +1813,7 @@ Please find a solution that does not require portal-impl.jar.
 				</elseif>
 				<else>
 					<call-macrodef-or-target
-						macrodef.name="jar-macro"
+						macrodef.name="jar"
 						module.dir="@{module.dir}"
 					/>
 				</else>

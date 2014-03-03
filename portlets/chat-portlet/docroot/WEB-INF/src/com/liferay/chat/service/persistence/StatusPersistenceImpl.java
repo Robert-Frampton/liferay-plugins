@@ -1853,7 +1853,7 @@ public class StatusPersistenceImpl extends BasePersistenceImpl<Status>
 			CacheRegistryUtil.clear(StatusImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(StatusImpl.class.getName());
+		EntityCacheUtil.clearCache(StatusImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2127,7 +2127,7 @@ public class StatusPersistenceImpl extends BasePersistenceImpl<Status>
 		}
 
 		EntityCacheUtil.putResult(StatusModelImpl.ENTITY_CACHE_ENABLED,
-			StatusImpl.class, status.getPrimaryKey(), status);
+			StatusImpl.class, status.getPrimaryKey(), status, false);
 
 		clearUniqueFindersCache(status);
 		cacheUniqueFindersCache(status);

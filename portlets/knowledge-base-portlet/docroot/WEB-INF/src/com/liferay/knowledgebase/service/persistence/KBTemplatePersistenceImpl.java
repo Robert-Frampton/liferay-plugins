@@ -2360,7 +2360,7 @@ public class KBTemplatePersistenceImpl extends BasePersistenceImpl<KBTemplate>
 			CacheRegistryUtil.clear(KBTemplateImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(KBTemplateImpl.class.getName());
+		EntityCacheUtil.clearCache(KBTemplateImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2657,7 +2657,7 @@ public class KBTemplatePersistenceImpl extends BasePersistenceImpl<KBTemplate>
 		}
 
 		EntityCacheUtil.putResult(KBTemplateModelImpl.ENTITY_CACHE_ENABLED,
-			KBTemplateImpl.class, kbTemplate.getPrimaryKey(), kbTemplate);
+			KBTemplateImpl.class, kbTemplate.getPrimaryKey(), kbTemplate, false);
 
 		clearUniqueFindersCache(kbTemplate);
 		cacheUniqueFindersCache(kbTemplate);

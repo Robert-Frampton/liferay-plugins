@@ -1356,7 +1356,7 @@ public class MessagePersistenceImpl extends BasePersistenceImpl<Message>
 			CacheRegistryUtil.clear(MessageImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(MessageImpl.class.getName());
+		EntityCacheUtil.clearCache(MessageImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1620,7 +1620,7 @@ public class MessagePersistenceImpl extends BasePersistenceImpl<Message>
 		}
 
 		EntityCacheUtil.putResult(MessageModelImpl.ENTITY_CACHE_ENABLED,
-			MessageImpl.class, message.getPrimaryKey(), message);
+			MessageImpl.class, message.getPrimaryKey(), message, false);
 
 		clearUniqueFindersCache(message);
 		cacheUniqueFindersCache(message);

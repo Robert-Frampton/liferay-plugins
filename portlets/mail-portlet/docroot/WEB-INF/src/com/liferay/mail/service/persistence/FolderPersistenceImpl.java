@@ -895,7 +895,7 @@ public class FolderPersistenceImpl extends BasePersistenceImpl<Folder>
 			CacheRegistryUtil.clear(FolderImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(FolderImpl.class.getName());
+		EntityCacheUtil.clearCache(FolderImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1139,7 +1139,7 @@ public class FolderPersistenceImpl extends BasePersistenceImpl<Folder>
 		}
 
 		EntityCacheUtil.putResult(FolderModelImpl.ENTITY_CACHE_ENABLED,
-			FolderImpl.class, folder.getPrimaryKey(), folder);
+			FolderImpl.class, folder.getPrimaryKey(), folder, false);
 
 		clearUniqueFindersCache(folder);
 		cacheUniqueFindersCache(folder);

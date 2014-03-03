@@ -855,7 +855,7 @@ public class FavoriteSitePersistenceImpl extends BasePersistenceImpl<FavoriteSit
 			CacheRegistryUtil.clear(FavoriteSiteImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(FavoriteSiteImpl.class.getName());
+		EntityCacheUtil.clearCache(FavoriteSiteImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1104,7 +1104,8 @@ public class FavoriteSitePersistenceImpl extends BasePersistenceImpl<FavoriteSit
 		}
 
 		EntityCacheUtil.putResult(FavoriteSiteModelImpl.ENTITY_CACHE_ENABLED,
-			FavoriteSiteImpl.class, favoriteSite.getPrimaryKey(), favoriteSite);
+			FavoriteSiteImpl.class, favoriteSite.getPrimaryKey(), favoriteSite,
+			false);
 
 		clearUniqueFindersCache(favoriteSite);
 		cacheUniqueFindersCache(favoriteSite);

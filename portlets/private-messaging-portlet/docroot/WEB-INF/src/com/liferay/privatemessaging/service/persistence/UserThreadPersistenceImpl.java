@@ -2454,7 +2454,7 @@ public class UserThreadPersistenceImpl extends BasePersistenceImpl<UserThread>
 			CacheRegistryUtil.clear(UserThreadImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(UserThreadImpl.class.getName());
+		EntityCacheUtil.clearCache(UserThreadImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2765,7 +2765,7 @@ public class UserThreadPersistenceImpl extends BasePersistenceImpl<UserThread>
 		}
 
 		EntityCacheUtil.putResult(UserThreadModelImpl.ENTITY_CACHE_ENABLED,
-			UserThreadImpl.class, userThread.getPrimaryKey(), userThread);
+			UserThreadImpl.class, userThread.getPrimaryKey(), userThread, false);
 
 		clearUniqueFindersCache(userThread);
 		cacheUniqueFindersCache(userThread);

@@ -894,7 +894,7 @@ public class AccountPersistenceImpl extends BasePersistenceImpl<Account>
 			CacheRegistryUtil.clear(AccountImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(AccountImpl.class.getName());
+		EntityCacheUtil.clearCache(AccountImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1137,7 +1137,7 @@ public class AccountPersistenceImpl extends BasePersistenceImpl<Account>
 		}
 
 		EntityCacheUtil.putResult(AccountModelImpl.ENTITY_CACHE_ENABLED,
-			AccountImpl.class, account.getPrimaryKey(), account);
+			AccountImpl.class, account.getPrimaryKey(), account, false);
 
 		clearUniqueFindersCache(account);
 		cacheUniqueFindersCache(account);

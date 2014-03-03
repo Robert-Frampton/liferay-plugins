@@ -5219,7 +5219,7 @@ public class TasksEntryPersistenceImpl extends BasePersistenceImpl<TasksEntry>
 			CacheRegistryUtil.clear(TasksEntryImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(TasksEntryImpl.class.getName());
+		EntityCacheUtil.clearCache(TasksEntryImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -5531,7 +5531,7 @@ public class TasksEntryPersistenceImpl extends BasePersistenceImpl<TasksEntry>
 		}
 
 		EntityCacheUtil.putResult(TasksEntryModelImpl.ENTITY_CACHE_ENABLED,
-			TasksEntryImpl.class, tasksEntry.getPrimaryKey(), tasksEntry);
+			TasksEntryImpl.class, tasksEntry.getPrimaryKey(), tasksEntry, false);
 
 		tasksEntry.resetOriginalValues();
 

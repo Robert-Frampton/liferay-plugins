@@ -277,15 +277,10 @@ public class CalendarPortlet extends MVCPortlet {
 				enableComments, enableRatings, serviceContext);
 		}
 
-		boolean saveAndContinue = ParamUtil.getBoolean(
-			actionRequest, "saveAndContinue");
+		String redirect = getEditCalendarURL(
+			actionRequest, actionResponse, calendar);
 
-		if (saveAndContinue) {
-			String redirect = getEditCalendarURL(
-				actionRequest, actionResponse, calendar);
-
-			actionRequest.setAttribute(WebKeys.REDIRECT, redirect);
-		}
+		actionRequest.setAttribute(WebKeys.REDIRECT, redirect);
 	}
 
 	public void updateCalendarBooking(
@@ -318,6 +313,8 @@ public class CalendarPortlet extends MVCPortlet {
 
 		CalendarBooking calendarBooking = null;
 
+		String redirect = getRedirect(actionRequest, actionResponse);
+
 		if (calendarBookingId <= 0) {
 			calendarBooking = CalendarBookingServiceUtil.addCalendarBooking(
 				calendarId, childCalendarIds,
@@ -327,6 +324,10 @@ public class CalendarPortlet extends MVCPortlet {
 				endTimeJCalendar.getTimeInMillis(), allDay, recurrence,
 				reminders[0], remindersType[0], reminders[1], remindersType[1],
 				serviceContext);
+
+			redirect = HttpUtil.setParameter(
+				redirect, actionResponse.getNamespace() + "calendarBookingId",
+				calendarBooking.getCalendarBookingId());
 		}
 		else {
 			boolean updateCalendarBookingInstance = ParamUtil.getBoolean(
@@ -368,6 +369,7 @@ public class CalendarPortlet extends MVCPortlet {
 		}
 
 		actionRequest.setAttribute(WebKeys.CALENDAR_BOOKING, calendarBooking);
+		actionRequest.setAttribute(WebKeys.REDIRECT, redirect);
 	}
 
 	public void updateCalendarNotificationTemplate(
@@ -603,7 +605,11 @@ public class CalendarPortlet extends MVCPortlet {
 		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(
 			WebKeys.THEME_DISPLAY);
 
-		String editCalendarURL = PortalUtil.getLayoutFullURL(themeDisplay);
+		String editCalendarURL = getRedirect(actionRequest, actionResponse);
+
+		if (Validator.isNull(editCalendarURL)) {
+			editCalendarURL = PortalUtil.getLayoutFullURL(themeDisplay);
+		}
 
 		String namespace = actionResponse.getNamespace();
 
@@ -615,6 +621,9 @@ public class CalendarPortlet extends MVCPortlet {
 		editCalendarURL = HttpUtil.setParameter(
 			editCalendarURL, namespace + "redirect",
 			getRedirect(actionRequest, actionResponse));
+		editCalendarURL = HttpUtil.setParameter(
+			editCalendarURL, namespace + "backURL",
+			ParamUtil.getString(actionRequest, "backURL"));
 		editCalendarURL = HttpUtil.setParameter(
 			editCalendarURL, namespace + "calendarId",
 			calendar.getCalendarId());

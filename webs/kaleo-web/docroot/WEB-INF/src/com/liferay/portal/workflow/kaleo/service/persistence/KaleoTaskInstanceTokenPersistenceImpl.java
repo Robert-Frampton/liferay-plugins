@@ -1898,7 +1898,7 @@ public class KaleoTaskInstanceTokenPersistenceImpl extends BasePersistenceImpl<K
 			CacheRegistryUtil.clear(KaleoTaskInstanceTokenImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(KaleoTaskInstanceTokenImpl.class.getName());
+		EntityCacheUtil.clearCache(KaleoTaskInstanceTokenImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2202,7 +2202,8 @@ public class KaleoTaskInstanceTokenPersistenceImpl extends BasePersistenceImpl<K
 
 		EntityCacheUtil.putResult(KaleoTaskInstanceTokenModelImpl.ENTITY_CACHE_ENABLED,
 			KaleoTaskInstanceTokenImpl.class,
-			kaleoTaskInstanceToken.getPrimaryKey(), kaleoTaskInstanceToken);
+			kaleoTaskInstanceToken.getPrimaryKey(), kaleoTaskInstanceToken,
+			false);
 
 		clearUniqueFindersCache(kaleoTaskInstanceToken);
 		cacheUniqueFindersCache(kaleoTaskInstanceToken);

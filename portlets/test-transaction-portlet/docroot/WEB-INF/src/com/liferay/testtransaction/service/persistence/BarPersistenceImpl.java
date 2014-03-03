@@ -658,7 +658,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 			CacheRegistryUtil.clear(BarImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(BarImpl.class.getName());
+		EntityCacheUtil.clearCache(BarImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -846,7 +846,7 @@ public class BarPersistenceImpl extends BasePersistenceImpl<Bar>
 		}
 
 		EntityCacheUtil.putResult(BarModelImpl.ENTITY_CACHE_ENABLED,
-			BarImpl.class, bar.getPrimaryKey(), bar);
+			BarImpl.class, bar.getPrimaryKey(), bar, false);
 
 		bar.resetOriginalValues();
 

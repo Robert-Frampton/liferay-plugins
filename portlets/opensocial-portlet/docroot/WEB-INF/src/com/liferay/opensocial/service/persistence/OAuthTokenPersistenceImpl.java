@@ -1170,7 +1170,7 @@ public class OAuthTokenPersistenceImpl extends BasePersistenceImpl<OAuthToken>
 			CacheRegistryUtil.clear(OAuthTokenImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(OAuthTokenImpl.class.getName());
+		EntityCacheUtil.clearCache(OAuthTokenImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1432,7 +1432,7 @@ public class OAuthTokenPersistenceImpl extends BasePersistenceImpl<OAuthToken>
 		}
 
 		EntityCacheUtil.putResult(OAuthTokenModelImpl.ENTITY_CACHE_ENABLED,
-			OAuthTokenImpl.class, oAuthToken.getPrimaryKey(), oAuthToken);
+			OAuthTokenImpl.class, oAuthToken.getPrimaryKey(), oAuthToken, false);
 
 		clearUniqueFindersCache(oAuthToken);
 		cacheUniqueFindersCache(oAuthToken);

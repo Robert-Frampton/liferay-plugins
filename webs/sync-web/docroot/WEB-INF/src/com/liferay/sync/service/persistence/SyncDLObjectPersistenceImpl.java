@@ -897,7 +897,7 @@ public class SyncDLObjectPersistenceImpl extends BasePersistenceImpl<SyncDLObjec
 			CacheRegistryUtil.clear(SyncDLObjectImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(SyncDLObjectImpl.class.getName());
+		EntityCacheUtil.clearCache(SyncDLObjectImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1116,7 +1116,8 @@ public class SyncDLObjectPersistenceImpl extends BasePersistenceImpl<SyncDLObjec
 		}
 
 		EntityCacheUtil.putResult(SyncDLObjectModelImpl.ENTITY_CACHE_ENABLED,
-			SyncDLObjectImpl.class, syncDLObject.getPrimaryKey(), syncDLObject);
+			SyncDLObjectImpl.class, syncDLObject.getPrimaryKey(), syncDLObject,
+			false);
 
 		clearUniqueFindersCache(syncDLObject);
 		cacheUniqueFindersCache(syncDLObject);

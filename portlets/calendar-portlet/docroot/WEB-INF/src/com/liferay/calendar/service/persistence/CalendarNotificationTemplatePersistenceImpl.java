@@ -2395,7 +2395,7 @@ public class CalendarNotificationTemplatePersistenceImpl
 			CacheRegistryUtil.clear(CalendarNotificationTemplateImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(CalendarNotificationTemplateImpl.class.getName());
+		EntityCacheUtil.clearCache(CalendarNotificationTemplateImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2762,7 +2762,7 @@ public class CalendarNotificationTemplatePersistenceImpl
 		EntityCacheUtil.putResult(CalendarNotificationTemplateModelImpl.ENTITY_CACHE_ENABLED,
 			CalendarNotificationTemplateImpl.class,
 			calendarNotificationTemplate.getPrimaryKey(),
-			calendarNotificationTemplate);
+			calendarNotificationTemplate, false);
 
 		clearUniqueFindersCache(calendarNotificationTemplate);
 		cacheUniqueFindersCache(calendarNotificationTemplate);

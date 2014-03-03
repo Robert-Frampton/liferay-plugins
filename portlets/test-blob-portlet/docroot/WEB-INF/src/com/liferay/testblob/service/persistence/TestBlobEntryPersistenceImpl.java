@@ -670,7 +670,7 @@ public class TestBlobEntryPersistenceImpl extends BasePersistenceImpl<TestBlobEn
 			CacheRegistryUtil.clear(TestBlobEntryImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(TestBlobEntryImpl.class.getName());
+		EntityCacheUtil.clearCache(TestBlobEntryImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -880,7 +880,7 @@ public class TestBlobEntryPersistenceImpl extends BasePersistenceImpl<TestBlobEn
 
 		EntityCacheUtil.putResult(TestBlobEntryModelImpl.ENTITY_CACHE_ENABLED,
 			TestBlobEntryImpl.class, testBlobEntry.getPrimaryKey(),
-			testBlobEntry);
+			testBlobEntry, false);
 
 		testBlobEntry.resetOriginalValues();
 

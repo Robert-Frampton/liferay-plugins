@@ -47,12 +47,12 @@ String twitterSn = contact.getTwitterSn();
 		sb.append("</a>");
 		%>
 
-		<liferay-ui:message arguments="<%= sb.toString() %>" key="your-twitter-screen-name-is-x" />
+		<liferay-ui:message arguments="<%= sb.toString() %>" key="your-twitter-screen-name-is-x" translateArguments="<%= false %>" />
 	</c:when>
 	<c:otherwise>
 
 		<%
-		String configureHREF = "javascript:Liferay.Util.openWindow({id: '" + renderResponse.getNamespace() + "configureTwitter', title: '" + HtmlUtil.escapeAttribute(LanguageUtil.get(pageContext, "my-account")) + "', uri: '" + HtmlUtil.escapeAttribute(themeDisplay.getURLMyAccount() + "#_" + PortletKeys.MY_ACCOUNT + "_tab=_" + PortletKeys.MY_ACCOUNT + "_socialNetwork") + "'});";
+		String configureHREF = "javascript:Liferay.Util.openWindow({id: '" + renderResponse.getNamespace() + "configureTwitter', title: '" + HtmlUtil.escapeJS(LanguageUtil.get(pageContext, "my-account")) + "', uri: '" + HtmlUtil.escapeJS(themeDisplay.getURLMyAccount() + "#_" + PortletKeys.MY_ACCOUNT + "_tab=_" + PortletKeys.MY_ACCOUNT + "_socialNetwork") + "'});";
 		%>
 
 		<div class="alert alert-info">

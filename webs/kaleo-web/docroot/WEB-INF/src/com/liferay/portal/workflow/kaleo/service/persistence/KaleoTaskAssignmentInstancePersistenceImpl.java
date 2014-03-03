@@ -2173,7 +2173,7 @@ public class KaleoTaskAssignmentInstancePersistenceImpl
 			CacheRegistryUtil.clear(KaleoTaskAssignmentInstanceImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(KaleoTaskAssignmentInstanceImpl.class.getName());
+		EntityCacheUtil.clearCache(KaleoTaskAssignmentInstanceImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2446,7 +2446,7 @@ public class KaleoTaskAssignmentInstancePersistenceImpl
 		EntityCacheUtil.putResult(KaleoTaskAssignmentInstanceModelImpl.ENTITY_CACHE_ENABLED,
 			KaleoTaskAssignmentInstanceImpl.class,
 			kaleoTaskAssignmentInstance.getPrimaryKey(),
-			kaleoTaskAssignmentInstance);
+			kaleoTaskAssignmentInstance, false);
 
 		kaleoTaskAssignmentInstance.resetOriginalValues();
 

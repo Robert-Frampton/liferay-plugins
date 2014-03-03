@@ -2000,7 +2000,7 @@ public class WSRPProducerPersistenceImpl extends BasePersistenceImpl<WSRPProduce
 			CacheRegistryUtil.clear(WSRPProducerImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(WSRPProducerImpl.class.getName());
+		EntityCacheUtil.clearCache(WSRPProducerImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -2299,7 +2299,8 @@ public class WSRPProducerPersistenceImpl extends BasePersistenceImpl<WSRPProduce
 		}
 
 		EntityCacheUtil.putResult(WSRPProducerModelImpl.ENTITY_CACHE_ENABLED,
-			WSRPProducerImpl.class, wsrpProducer.getPrimaryKey(), wsrpProducer);
+			WSRPProducerImpl.class, wsrpProducer.getPrimaryKey(), wsrpProducer,
+			false);
 
 		clearUniqueFindersCache(wsrpProducer);
 		cacheUniqueFindersCache(wsrpProducer);

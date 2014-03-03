@@ -3783,7 +3783,7 @@ public class CalendarPersistenceImpl extends BasePersistenceImpl<Calendar>
 			CacheRegistryUtil.clear(CalendarImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(CalendarImpl.class.getName());
+		EntityCacheUtil.clearCache(CalendarImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -4120,7 +4120,7 @@ public class CalendarPersistenceImpl extends BasePersistenceImpl<Calendar>
 		}
 
 		EntityCacheUtil.putResult(CalendarModelImpl.ENTITY_CACHE_ENABLED,
-			CalendarImpl.class, calendar.getPrimaryKey(), calendar);
+			CalendarImpl.class, calendar.getPrimaryKey(), calendar, false);
 
 		clearUniqueFindersCache(calendar);
 		cacheUniqueFindersCache(calendar);

@@ -24,7 +24,7 @@ CalendarResource calendarResource = (CalendarResource)request.getAttribute(WebKe
 
 <liferay-ui:header
 	backURL="<%= redirect %>"
-	title='<%= LanguageUtil.format(pageContext, "x-calendars", calendarResource.getName(locale)) %>'
+	title='<%= LanguageUtil.format(pageContext, "x-calendars", calendarResource.getName(locale), false) %>'
 />
 
 <c:if test="<%= CalendarResourcePermission.contains(permissionChecker, calendarResource, ActionKeys.ADD_CALENDAR) %>">
@@ -32,6 +32,7 @@ CalendarResource calendarResource = (CalendarResource)request.getAttribute(WebKe
 		<liferay-portlet:renderURL var="editCalendarURL">
 			<liferay-portlet:param name="mvcPath" value="/edit_calendar.jsp" />
 			<liferay-portlet:param name="redirect" value="<%= currentURL %>" />
+			<liferay-portlet:param name="backURL" value="<%= currentURL %>" />
 			<liferay-portlet:param name="calendarResourceId" value="<%= String.valueOf(calendarResource.getCalendarResourceId()) %>" />
 		</liferay-portlet:renderURL>
 

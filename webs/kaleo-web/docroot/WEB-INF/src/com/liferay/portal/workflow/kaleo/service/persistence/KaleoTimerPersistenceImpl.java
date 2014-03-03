@@ -1338,7 +1338,7 @@ public class KaleoTimerPersistenceImpl extends BasePersistenceImpl<KaleoTimer>
 			CacheRegistryUtil.clear(KaleoTimerImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(KaleoTimerImpl.class.getName());
+		EntityCacheUtil.clearCache(KaleoTimerImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -1562,7 +1562,7 @@ public class KaleoTimerPersistenceImpl extends BasePersistenceImpl<KaleoTimer>
 		}
 
 		EntityCacheUtil.putResult(KaleoTimerModelImpl.ENTITY_CACHE_ENABLED,
-			KaleoTimerImpl.class, kaleoTimer.getPrimaryKey(), kaleoTimer);
+			KaleoTimerImpl.class, kaleoTimer.getPrimaryKey(), kaleoTimer, false);
 
 		kaleoTimer.resetOriginalValues();
 

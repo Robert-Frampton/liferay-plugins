@@ -628,7 +628,7 @@ public class ProjectsEntryPersistenceImpl extends BasePersistenceImpl<ProjectsEn
 			CacheRegistryUtil.clear(ProjectsEntryImpl.class.getName());
 		}
 
-		EntityCacheUtil.clearCache(ProjectsEntryImpl.class.getName());
+		EntityCacheUtil.clearCache(ProjectsEntryImpl.class);
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_ENTITY);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
@@ -824,7 +824,7 @@ public class ProjectsEntryPersistenceImpl extends BasePersistenceImpl<ProjectsEn
 
 		EntityCacheUtil.putResult(ProjectsEntryModelImpl.ENTITY_CACHE_ENABLED,
 			ProjectsEntryImpl.class, projectsEntry.getPrimaryKey(),
-			projectsEntry);
+			projectsEntry, false);
 
 		projectsEntry.resetOriginalValues();
 
