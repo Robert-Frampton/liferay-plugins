@@ -1,3 +1,5 @@
+@import "compass";
+
 body.orange, .orange .portlet {
 	background-color: #F3F1EF;
 }

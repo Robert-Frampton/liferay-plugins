@@ -1,3 +1,5 @@
+@import "compass/css3";
+@import "compass/typography/text/ellipsis";
 @import "mixins";
 
 @import url(custom_common.css);
@@ -15,6 +17,14 @@ $dockbarOpenGradientStart: #0EA6F9;
 
 .aui {
 	background-color: transparent;
+
+	body {
+		line-height: 20px;
+	}
+
+	input[type="text"] {
+		@include box-sizing(content-box);
+	}
 
 	.separator {
 		border-color: #BFBFBF transparent #FFF;
@@ -314,10 +324,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 				&.active > a {
 					background-color: $dockbarGradientStart;
 				}
-			}
-
-			* {
-				display: none;
 			}
 
 			> li > a {

@@ -3,6 +3,7 @@
 @import "compass";
 @import "compass/css3/user-interface";
 @import "mixins";
+@import "compass/utilities/text/ellipsis";
 
 @import url(custom_responsive.css);
 

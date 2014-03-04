@@ -7,15 +7,15 @@ AUI().ready(
 			navigation.plug(Liferay.NavigationInteraction);
 		}
 
-		var siteBreadcrumb = A.one('#breadcrumbs');
+		var siteBreadcrumbs = A.one('#breadcrumbs');
 
 		if (siteBreadcrumbs) {
 			siteBreadcrumbs.plug(A.Hudcrumbs);
 		}
 
-		A.getBody().delegate('click', eventHanler, 'a.logo');
+		A.getBody().delegate('click', eventHandler, 'a.logo');
 
-		var eventHandler function(event) {
+		var eventHandler = function(event) {
 			event.preventDefault();
 			alert(event.currentTarget.attr('title'));
 		}
