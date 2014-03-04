@@ -23,7 +23,19 @@ import com.liferay.sync.engine.service.persistence.BasePersistenceImpl;
  * @author Shinn Lok
  */
 @DatabaseTable(daoClass = BasePersistenceImpl.class, tableName = "SyncAccount")
-public class SyncAccount {
+public class SyncAccount extends StateAwareModel {
+
+	public static final int STATE_CONNECTED = 1;
+
+	public static final int STATE_DISCONNECTED = 0;
+
+	public static final int UI_EVENT_AUTHENTICATION_EXCEPTION = 1;
+
+	public static final int UI_EVENT_CONNECTION_EXCEPTION = 2;
+
+	public boolean getActive() {
+		return active;
+	}
 
 	public String getFilePathName() {
 		return filePathName;
@@ -49,6 +61,14 @@ public class SyncAccount {
 		return url;
 	}
 
+	public boolean isActive() {
+		return getActive();
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	public void setFilePathName(String filePathName) {
 		this.filePathName = filePathName;
 	}
@@ -72,6 +92,9 @@ public class SyncAccount {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	@DatabaseField(useGetSet = true)
+	protected boolean active;
 
 	@DatabaseField(useGetSet = true, width = 16777216)
 	protected String filePathName;

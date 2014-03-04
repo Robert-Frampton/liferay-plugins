@@ -26,6 +26,7 @@ import java.nio.file.Paths;
 
 import java.sql.SQLException;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -56,9 +57,7 @@ public class SyncAccountService {
 
 		// Sync file
 
-		if (Files.notExists(Paths.get(filePathName))) {
-			Files.createDirectory(Paths.get(filePathName));
-		}
+		Files.createDirectories(Paths.get(filePathName));
 
 		SyncFileService.addSyncFile(
 			null, null, filePathName, FileUtil.getFileKey(filePathName),
@@ -105,6 +104,27 @@ public class SyncAccountService {
 		}
 	}
 
+	public static List<Long> getActiveSyncAccountIds() {
+		try {
+			if ((_activeSyncAccountIds != null) &&
+				!_activeSyncAccountIds.isEmpty()) {
+
+				return _activeSyncAccountIds;
+			}
+
+			_activeSyncAccountIds = _syncAccountPersistence.findByActive(true);
+
+			return _activeSyncAccountIds;
+		}
+		catch (SQLException sqle) {
+			if (_logger.isDebugEnabled()) {
+				_logger.debug(sqle.getMessage(), sqle);
+			}
+
+			return Collections.emptyList();
+		}
+	}
+
 	public static SyncAccountPersistence getSyncAccountPersistence() {
 		if (_syncAccountPersistence != null) {
 			return _syncAccountPersistence;
@@ -128,6 +148,18 @@ public class SyncAccountService {
 		_syncAccountPersistence.registerModelListener(modelListener);
 	}
 
+	public static void setActiveSyncAccountIds(
+		List<Long> activeSyncAccountIds) {
+
+		_activeSyncAccountIds = activeSyncAccountIds;
+	}
+
+	public static void unregisterModelListener(
+		ModelListener<SyncAccount> modelListener) {
+
+		_syncAccountPersistence.unregisterModelListener(modelListener);
+	}
+
 	public static SyncAccount update(SyncAccount syncAccount) {
 		try {
 			_syncAccountPersistence.createOrUpdate(syncAccount);
@@ -143,9 +175,30 @@ public class SyncAccountService {
 		}
 	}
 
+	public static SyncAccount updateUIEvent(long syncAccountId, int uiEvent) {
+		try {
+			SyncAccount syncAccount = _syncAccountPersistence.queryForId(
+				syncAccountId);
+
+			syncAccount.setUiEvent(uiEvent);
+
+			_syncAccountPersistence.update(syncAccount);
+
+			return syncAccount;
+		}
+		catch (SQLException sqle) {
+			if (_logger.isDebugEnabled()) {
+				_logger.debug(sqle.getMessage(), sqle);
+			}
+
+			return null;
+		}
+	}
+
 	private static Logger _logger = LoggerFactory.getLogger(
 		SyncAccountService.class);
 
+	private static List<Long> _activeSyncAccountIds = new ArrayList<Long>();
 	private static SyncAccountPersistence _syncAccountPersistence =
 		getSyncAccountPersistence();
 
