@@ -1,3 +1,4 @@
+@import "compass";
 @import "mixins";
 
 @import url(custom_common.css);
@@ -316,10 +317,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 				}
 			}
 
-			* {
-				display: none;
-			}
-
 			> li > a {
 				padding: 4px 15px 5px;
 
@@ -397,7 +394,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 	.portlet-topper {
 		background: #D3D3D3;
 		color: #FFF;
-		padding: 0;
+		padding: 0 10px;
 
 		.portlet-title {
 			font-size: 1em;
@@ -408,6 +405,10 @@ $dockbarOpenGradientStart: #0EA6F9;
 			i, span img {
 				display: none;
 			}
+		}
+
+		.portlet-title-text {
+				line-height: 2.2;
 		}
 
 		.portlet-topper-toolbar {
