@@ -394,7 +394,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 	.portlet-topper {
 		background: #D3D3D3;
 		color: #FFF;
-		padding: 0 10px;
+		padding: 0;
 
 		.portlet-title {
 			font-size: 1em;
@@ -544,7 +544,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 	/* ---------- Hudcrumbs ---------- */
 
 	.lfr-hudcrumbs {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		z-index: 300;
 

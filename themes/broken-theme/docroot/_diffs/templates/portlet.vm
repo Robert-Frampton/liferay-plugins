@@ -6,7 +6,7 @@
 
 <section class="portlet portlet-container" id="portlet_$portlet_id">
 	<header class="portlet-topper">
-		<h1 class="portlet-title"></h1>
+		<h1 class="portlet-title">
 			<span class="portlet-title-text">$portlet_title</span>
 		</h1>
 
