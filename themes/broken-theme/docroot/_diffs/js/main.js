@@ -58,20 +58,20 @@ AUI().ready(
 		// 	}
 		// );
 
-		poweredByLink.on(
-			'click',
-			function(event) {
-				event.preventDefault();
+		// poweredByLink.on(
+		// 	'click',
+		// 	function(event) {
+		// 		event.preventDefault();
 
-				var winWidth = 750;
-				var winHeight = 600;
-				var positionLeft = (screen.availWidth/2) - (winWidth/2);
-				var positionTop = (screen.availHeight/2) - (winHeight/2);
-				var settings = 'height=' + winHeight + ',width=' + winWidth + ',top=' + positionTop + ',left=' + positionLeft + '';
-				window.open('https://www.liferay.com/', '_blank', settings);
+		// 		var winWidth = 750;
+		// 		var winHeight = 600;
+		// 		var positionLeft = (screen.availWidth/2) - (winWidth/2);
+		// 		var positionTop = (screen.availHeight/2) - (winHeight/2);
+		// 		var settings = 'height=' + winHeight + ',width=' + winWidth + ',top=' + positionTop + ',left=' + positionLeft + '';
+		// 		window.open('https://www.liferay.com/', '_blank', settings);
 
-			}
-		);
+		// 	}
+		// );
 
 		// function popup(url) {
 		// 	Liferay.Util.Window.openWindow (
@@ -91,14 +91,27 @@ AUI().ready(
 		// 	).render();
 		// }
 
-		// poweredByLink.on(
-		// 	'click',
-		// 	function(event) {
-		// 		event.preventDefault();
+		function popup(url) {
+			Liferay.Util.openWindow (
+				{
+					dialog: {
+						cache: false,
+						modal: true,
+						resizable: true
+					},
+					uri: url
+				}
+			);
+		}
 
-		// 		popup('http://www.liferay.com');
+		poweredByLink.on(
+			'click',
+			function(event) {
+				event.preventDefault();
 
-		// });
+				popup('http://www.liferay.com');
+
+		});
 
 		// var modalPopup = new A.Modal (
 		// 	{
