@@ -30,7 +30,7 @@
 
 		<ul class="dropdown-menu pull-right user-notifications-list"></ul>
 
-		<aui:script use="aui-base,aui-io-plugin-deprecated,liferay-poller">
+		<aui:script use="aui-base,aui-io-plugin-deprecated,liferay-poller,event-move,event-outside">
 			var userNotifications = A.one('#<portlet:namespace />userNotifications');
 
 			var userNotificationsCount = userNotifications.one('#<portlet:namespace />userNotificationsCount');
@@ -63,7 +63,7 @@
 			}
 
 			userNotifications.on(
-				'click',
+				'gesturemovestart',
 				function(event) {
 					var currentTarget = event.currentTarget;
 
@@ -76,9 +76,13 @@
 
 						var menuOpen = currentTarget.hasClass('open');
 
+						A.Event.defineOutside('touchstart');
+
+						var eventOutside = event._event.type + 'outside';
+
 						if (menuOpen && !handle) {
 							handle = currentTarget.on(
-								'clickoutside',
+								eventOutside,
 								function(event) {
 									Liferay.Data['<portlet:namespace />userNotificationsHandle'] = null;
 
