@@ -26,7 +26,27 @@ import com.liferay.sync.engine.service.persistence.BasePersistenceImpl;
  */
 @DatabaseTable(daoClass = BasePersistenceImpl.class, tableName = "SyncFile")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SyncFile {
+public class SyncFile extends StateAwareModel {
+
+	public static final String EVENT_ADD = "add";
+
+	public static final String EVENT_DELETE = "delete";
+
+	public static final String EVENT_GET = "get";
+
+	public static final String EVENT_MOVE = "move";
+
+	public static final String EVENT_RESTORE = "restore";
+
+	public static final String EVENT_TRASH = "trash";
+
+	public static final String EVENT_UPDATE = "update";
+
+	public static final int STATE_ERROR = 3;
+
+	public static final int STATE_IN_PROGRESS = 2;
+
+	public static final int STATE_SYNCED = 1;
 
 	public static final String TYPE_FILE = "file";
 
@@ -50,6 +70,10 @@ public class SyncFile {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public String getEvent() {
+		return event;
 	}
 
 	public String getExtension() {
@@ -238,6 +262,9 @@ public class SyncFile {
 
 	@DatabaseField(useGetSet = true, width = 16777216)
 	protected String description;
+
+	@DatabaseField(persisted = false)
+	protected String event;
 
 	@DatabaseField(useGetSet = true)
 	protected String extension;
