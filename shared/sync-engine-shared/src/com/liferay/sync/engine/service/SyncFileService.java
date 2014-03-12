@@ -16,6 +16,9 @@ package com.liferay.sync.engine.service;
 
 import com.liferay.sync.engine.documentlibrary.event.AddFileEntryEvent;
 import com.liferay.sync.engine.documentlibrary.event.AddFolderEvent;
+import com.liferay.sync.engine.documentlibrary.event.CancelCheckOutEvent;
+import com.liferay.sync.engine.documentlibrary.event.CheckInFileEntryEvent;
+import com.liferay.sync.engine.documentlibrary.event.CheckOutFileEntryEvent;
 import com.liferay.sync.engine.documentlibrary.event.MoveFileEntryEvent;
 import com.liferay.sync.engine.documentlibrary.event.MoveFileEntryToTrashEvent;
 import com.liferay.sync.engine.documentlibrary.event.MoveFolderEvent;
@@ -58,7 +61,7 @@ public class SyncFileService {
 		String mimeType = Files.probeContentType(filePath);
 
 		SyncFile syncFile = addSyncFile(
-			"1.0", checksum, name, FileUtil.getFileKey(filePath),
+			_VERSION_DEFAULT, checksum, name, FileUtil.getFileKey(filePath),
 			FilePathNameUtil.getFilePathName(filePath), mimeType, name,
 			folderId, repositoryId, syncAccountId, SyncFile.TYPE_FILE);
 
@@ -66,7 +69,7 @@ public class SyncFileService {
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
-		parameters.put("changeLog", "1.0");
+		parameters.put("changeLog", _VERSION_DEFAULT);
 		parameters.put("checksum", checksum);
 		parameters.put("description", name);
 		parameters.put("filePath", filePath);
@@ -138,8 +141,86 @@ public class SyncFileService {
 		syncFile.setRepositoryId(repositoryId);
 		syncFile.setSyncAccountId(syncAccountId);
 		syncFile.setType(type);
+		syncFile.setUiEvent(SyncFile.UI_EVENT_ADDED_LOCAL);
 
 		_syncFilePersistence.create(syncFile);
+
+		return syncFile;
+	}
+
+	public static SyncFile cancelCheckOutSyncFile(
+			long syncAccountId, SyncFile syncFile)
+		throws Exception {
+
+		// Local sync file
+
+		syncFile.setUiEvent(SyncFile.UI_EVENT_UPDATED_LOCAL);
+
+		update(syncFile);
+
+		// Remote sync file
+
+		Map<String, Object> parameters = new HashMap<String, Object>();
+
+		parameters.put("fileEntryId", syncFile.getTypePK());
+		parameters.put("syncFile", syncFile);
+
+		CancelCheckOutEvent cancelCheckOutEvent = new CancelCheckOutEvent(
+			syncAccountId, parameters);
+
+		cancelCheckOutEvent.run();
+
+		return syncFile;
+	}
+
+	public static SyncFile checkInSyncFile(
+			long syncAccountId, SyncFile syncFile)
+		throws Exception {
+
+		// Local sync file
+
+		syncFile.setUiEvent(SyncFile.UI_EVENT_UPDATED_LOCAL);
+
+		update(syncFile);
+
+		// Remote sync file
+
+		Map<String, Object> parameters = new HashMap<String, Object>();
+
+		parameters.put("changeLog", null);
+		parameters.put("fileEntryId", syncFile.getTypePK());
+		parameters.put("majorVersion", false);
+		parameters.put("syncFile", syncFile);
+
+		CheckInFileEntryEvent checkInFileEntryEvent = new CheckInFileEntryEvent(
+			syncAccountId, parameters);
+
+		checkInFileEntryEvent.run();
+
+		return syncFile;
+	}
+
+	public static SyncFile checkOutSyncFile(
+			long syncAccountId, SyncFile syncFile)
+		throws Exception {
+
+		// Local sync file
+
+		syncFile.setUiEvent(SyncFile.UI_EVENT_UPDATED_LOCAL);
+
+		update(syncFile);
+
+		// Remote sync file
+
+		Map<String, Object> parameters = new HashMap<String, Object>();
+
+		parameters.put("fileEntryId", syncFile.getTypePK());
+		parameters.put("syncFile", syncFile);
+
+		CheckOutFileEntryEvent checkOutFileEntryEvent =
+			new CheckOutFileEntryEvent(syncAccountId, parameters);
+
+		checkOutFileEntryEvent.run();
 
 		return syncFile;
 	}
@@ -150,7 +231,9 @@ public class SyncFileService {
 
 		// Local sync file
 
-		deleteSyncFile(syncFile.getSyncFileId());
+		syncFile.setUiEvent(SyncFile.UI_EVENT_DELETED_LOCAL);
+
+		deleteSyncFile(syncFile);
 
 		// Remote sync file
 
@@ -172,7 +255,9 @@ public class SyncFileService {
 
 		// Local sync file
 
-		deleteSyncFile(syncFile.getSyncFileId());
+		syncFile.setUiEvent(SyncFile.UI_EVENT_DELETED_LOCAL);
+
+		deleteSyncFile(syncFile);
 
 		// Remote sync file
 
@@ -188,14 +273,12 @@ public class SyncFileService {
 		return syncFile;
 	}
 
-	public static void deleteSyncFile(long syncFileId) {
+	public static void deleteSyncFile(SyncFile syncFile) {
 		try {
 
 			// Sync file
 
-			SyncFile syncFile = _syncFilePersistence.queryForId(syncFileId);
-
-			_syncFilePersistence.deleteById(syncFileId);
+			_syncFilePersistence.delete(syncFile);
 
 			String type = syncFile.getType();
 
@@ -206,7 +289,7 @@ public class SyncFileService {
 			// Sync files
 
 			List<SyncFile> childSyncFiles = _syncFilePersistence.queryForEq(
-				"parentFolderId", syncFileId);
+				"parentFolderId", syncFile.getSyncFileId());
 
 			for (SyncFile childSyncFile : childSyncFiles) {
 				type = childSyncFile.getType();
@@ -216,7 +299,7 @@ public class SyncFileService {
 						childSyncFile.getSyncFileId());
 				}
 				else {
-					deleteSyncFile(childSyncFile.getSyncFileId());
+					deleteSyncFile(childSyncFile);
 				}
 			}
 		}
@@ -327,6 +410,7 @@ public class SyncFileService {
 
 		syncFile.setFilePathName(FilePathNameUtil.getFilePathName(filePath));
 		syncFile.setParentFolderId(folderId);
+		syncFile.setUiEvent(SyncFile.UI_EVENT_MOVED_LOCAL);
 
 		update(syncFile);
 
@@ -354,6 +438,8 @@ public class SyncFileService {
 		throws Exception {
 
 		// Local sync file
+
+		syncFile.setUiEvent(SyncFile.UI_EVENT_MOVED_LOCAL);
 
 		updateSyncFile(filePath, parentFolderId, syncFile);
 
@@ -417,6 +503,7 @@ public class SyncFileService {
 		syncFile.setChecksum(checksum);
 		syncFile.setFilePathName(FilePathNameUtil.getFilePathName(filePath));
 		syncFile.setName(name);
+		syncFile.setUiEvent(SyncFile.UI_EVENT_UPDATED_LOCAL);
 
 		update(syncFile);
 
@@ -524,6 +611,8 @@ public class SyncFileService {
 			return null;
 		}
 	}
+
+	private static final String _VERSION_DEFAULT = "1.0";
 
 	private static Logger _logger = LoggerFactory.getLogger(
 		SyncFileService.class);

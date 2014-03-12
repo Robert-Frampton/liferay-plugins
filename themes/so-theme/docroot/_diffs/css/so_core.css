@@ -106,10 +106,27 @@ div#navigation {
 		}
 
 		.portrait-icons {
-			bottom: -5px;
-			left: 5px;
+			bottom: 0;
+			left: 0;
+			margin: 4px 0;
 			position: absolute;
 			visibility: hidden;
+			width: 100%;
+
+			.btn-group {
+				margin: 0 3%;
+				width: 94%;
+			}
+
+			.btn {
+				@include border-radius(4px);
+
+				display: block;
+				float: right;
+				padding: 4px;
+				margin-top: 4px;
+				width: 100%;
+			}
 		}
 
 		&:hover .portrait-icons {
@@ -324,34 +341,6 @@ html.aui {
 			}
 		}
 
-		.info-items, .info-link-container {
-			a {
-				background: transparent none;
-			}
-		}
-
-		.info-button .diamond {
-			border-bottom-color: transparent;
-			border-left-color: rgba(0, 0, 0, 0.5);
-			right: -12px;
-			top: 0;
-
-			&:after {
-				border-top-color: transparent;
-			}
-		}
-
-		.hide + .info-link-container .info-button .diamond {
-			border-bottom-color: rgba(0, 0, 0, 0.5);
-			border-left-color: transparent;
-			right: 0;
-			top: -12px;
-
-			&:after {
-				border-top-color: rgba(0, 0, 0, 0.5);
-			}
-		}
-
 		&.navbar-static-top .collapse, .navbar-inner .container {
 			.nav-account-controls {
 				top: 0;
@@ -361,14 +350,21 @@ html.aui {
 			}
 		}
 
+		.info-items, .info-link-container {
+			a {
+				background: transparent none;
+			}
+		}
+
 		.info-items {
 			left: auto;
 			position: absolute;
 			right: 332px;
 			top: 44px;
+			width: 360px;
 
 			.page-customization-bar .page-customization-bar-text {
-				height: 74px;
+				height: 56px;
 			}
 
 			.btn-link {
@@ -383,7 +379,35 @@ html.aui {
 			left: auto;
 			position: absolute;
 			right: 332px;
-			top: 56px;
+			top: 48px;
+
+			.info-button {
+				.info-link {
+					padding: 5px 10px;
+				}
+
+				.diamond {
+					border-bottom-color: transparent;
+					border-left-color: rgba(0, 0, 0, 0.5);
+					right: -12px;
+					top: 0;
+
+					&:after {
+						border-top-color: transparent;
+					}
+				}
+			}
+		}
+
+		.hide + .info-link-container .info-button .diamond {
+			border-bottom-color: rgba(0, 0, 0, 0.5);
+			border-left-color: transparent;
+			right: 0;
+			top: -12px;
+
+			&:after {
+				border-top-color: rgba(0, 0, 0, 0.5);
+			}
 		}
 	}
 }
@@ -408,12 +432,6 @@ html.aui {
 .aui {
 	form#hrefFm {
 		margin: 0;
-	}
-
-	fieldset {
-		@include default-border;
-
-		padding: 8px;
 	}
 
 	input[type="text"], input[type="password"], input[type="file"], input[type="submit"], input[type="button"], input[type="reset"], select, textarea, .textarea, button {
@@ -845,7 +863,7 @@ html.aui {
 	}
 }
 
-/* ---------- Portlet: Calendar ---------- */
+/* ---------- Portlet: calendar ---------- */
 
 .calendar-portlet {
 	.nav-tabs {
@@ -984,6 +1002,17 @@ html.aui {
 	}
 }
 
+.portal-popup.profile-page {
+	.fieldset.w50 {
+		display: inline;
+		width: 49%;
+	}
+
+	.form-section h3 {
+		display: none;
+	}
+}
+
 /* ---------- Portlet: document library ---------- */
 
 .portlet-document-library {
@@ -1032,8 +1061,9 @@ html.aui {
 		border-width: 0;
 		margin-bottom: 10px;
 
-		.accordion-toggle {
+		.accordion-toggle:before {
 			-webkit-font-smoothing: antialiased;
+			content: "\f0da";
 			font-family: 'fontawesome-alloy';
 			font-style: normal;
 			font-variant: normal;
@@ -1041,10 +1071,6 @@ html.aui {
 			line-height: 1;
 			speak: none;
 			text-transform: none;
-
-			&:before {
-				content: "\f0da";
-			}
 		}
 
 		.toggler-header-expanded .accordion-toggle:before {
