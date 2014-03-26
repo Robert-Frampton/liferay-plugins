@@ -1,0 +1,35 @@
+.portlet {
+  .portlet-topper {
+    display: inline;
+    position: absolute;
+    width: 100%;
+
+    .portlet-title-text {
+      font-size: 0;
+    }
+  }
+
+  .portlet-content {
+    padding: 0;
+  }
+}
+
+#footer {
+  position: relative;
+
+  .powered-by {
+    position: absolute;
+    bottom: 1%;
+    right: 6%;
+  }
+
+  #sign-in {
+    position: absolute;
+    bottom: 1%;
+    right: 8%;
+  }
+}
+
+#pages-welcome {
+  height: 900px;
+}

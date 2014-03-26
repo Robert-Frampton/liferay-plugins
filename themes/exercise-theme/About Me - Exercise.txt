@@ -1,0 +1,32 @@
+
+Notes/Design Changes
+
+
+- Portlet-Topper Changes
+
+ > I set it so that the portlet-topper would not display the title and would be (for the most part invisible),
+   however if you are logged in as an admin with Edit Controls, then you will be able to still have the drag
+   option at the top of the portlet and the menu still appears to configure the portlet. This seems to only
+   work for half of the portlets. It appears to be that one the pages with images as backgrounds the portlet
+   title does not appear. This was an issue that I placed as a lower priority to working on other things and
+   I was not able to come back to completely fix this to where it would work on all the pages.
+
+
+- Contact Page As Footer
+
+ > I kept this page as a part of the footer in the normal theme structure becase it appears as though even the
+   child pages (i.e. blog pages) have the contact portion at the bottom of them as well.
+
+- Powered By Liferay Footer
+
+ > I decided to place the 'Powered by Liferay' portion of the footer inside the Contact Us portion so that it
+   blended in and had the same styling as it's context.
+
+- Welcome Page Height Fix
+
+ > One of the main problems I was trying to tackle was the fact that the main Welcome page, once loaded, would
+   be given a height that was very small and not the normal full page. I tried to look for the script that was
+   loading this styling but after many attempts could not find it. Apporaching the end of the time alloted to
+   me for the exercise I decided to instead write a custom script to grab the current window height on load and
+   set the welcome page's height to that height. I understand this is more of a band-aid than an actual fix, but
+   with the time constraint this was what I deemed to be the best course of action.
