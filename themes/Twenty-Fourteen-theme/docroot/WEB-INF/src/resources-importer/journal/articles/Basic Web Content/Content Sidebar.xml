@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="content" type="text_area" index-type="keyword" index="0">
+		<dynamic-content language-id="en_US">
+			<![CDATA[
+			<h3 class="full">
+				VIDEOS
+			</h3>
+
+			<iframe class="youtube-player" type="text/html" width="306" height="203" src="http://www.youtube.com/embed/JaNH56Vpg-A?version=3&amp;rel=1&amp;fs=1&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" frameborder="0">
+			</iframe>
+
+			<p>
+				VIDEO POST FORMAT EXAMPLE
+			</p>
+
+			<hr> 
+
+			<iframe class="youtube-player" type="text/html" width="306" height="203" src="http://www.youtube.com/embed/SQEQr7c0-dw?version=3&amp;rel=1&amp;fs=1&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" frameborder="0"></iframe>
+
+			<p> 
+				MATT MULLENWEG ON KTEH "THIS IS US!"
+			</p>
+
+			<hr>
+
+			]]>
+		</dynamic-content>
+	</dynamic-element>
+</root>
