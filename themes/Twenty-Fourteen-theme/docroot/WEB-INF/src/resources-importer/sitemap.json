@@ -1,0 +1,221 @@
+{
+	"layoutTemplateId": "2_columns_iii",
+	"privatePages": [
+		{
+			"friendlyURL": "/home",
+			"name": "Home",
+			"title": "Home",
+			"layoutTemplateId": "3_3_2",
+			"columns": [
+				[
+					"Featured Content1.xml"
+				],
+				[
+					"Featured Content2.xml"
+				],
+				[
+					"Featured Content3.xml"
+				],
+				[
+					"Featured Content4.xml"
+				],
+				[
+					"Featured Content5.xml"
+				],
+				[
+					"Featured Content6.xml"
+				],
+				[
+					"Content.xml"
+				],
+				[
+					"Content Sidebar.xml"
+				]
+			]
+		},
+		{
+			"friendlyURL": "/dropdown menu",
+			"name": "Dropdown Menu",
+			"title": "Dropdown Menu",
+			"columns": [
+				[
+					"A Parent Page.xml"
+				],
+				[
+					"Content Sidebar.xml"
+				]
+			],
+			"layouts": [
+				{
+					"friendlyURL": "/first child",
+					"name": "First Child",
+					"title": "First Child",
+					"columns": [
+						[
+							"First Child.xml"
+						],
+						[
+							"Content Sidebar.xml"
+						]
+					]
+				},
+				{
+					"friendlyURL": "/second child",
+					"name": "Second Child",
+					"title": "Second Child",
+					"columns": [
+						[
+							"Second Child.xml"
+						],
+						[
+							"Content Sidebar.xml"
+						]
+					],
+					"layouts": [
+						{
+							"friendlyURL": "/a grandchild page",
+							"name": "A Grandchild Page",
+							"title": "A Grandchild Page"
+						},
+						{
+							"friendlyURL": "/a spoiled grandchild page",
+							"name": "A Spoiled Grandchild Page",
+							"title": "A Spoiled Grandchild Page"
+						},
+						{
+							"friendlyURL": "/another grandchild page",
+							"name": "Another Grandchild Page",
+							"title": "Another Grandchild Page"
+						}
+					]
+				},
+				{
+					"friendlyURL": "/third child",
+					"name": "Third Child",
+					"title": "Third Child",
+					"columns": [
+						[
+							"Third Child.xml"
+						],
+						[
+							"Content Sidebar.xml"
+						]
+					]
+				},
+				{
+					"friendlyURL": "/fourth child",
+					"name": "Fourth Child",
+					"title": "Fourth Child",
+					"columns": [
+						[
+							"Fourth Child.xml"
+						],
+						[
+							"Content Sidebar.xml"
+						]
+					]
+				},
+				{
+					"friendlyURL": "/a wee little baby page",
+					"name": "A Wee Little Baby Page",
+					"title": "A Wee Little Baby Page",
+					"columns": [
+						[
+							"A Wee Little Baby Page.xml"
+						],
+						[
+							"Content Sidebar.xml"
+						]
+					]
+				}
+			]
+		},
+		{
+			"friendlyURL": "/page templates",
+			"name": "Page Templates",
+			"title": "Page Templates",
+			"columns": [
+				[
+					"Default Page Templates.xml"
+				],
+				[
+					"Content Sidebar.xml"
+				]
+			],
+			"layouts": [
+				{
+					"friendlyURL": "/default page templates",
+					"name": "Default Page Templates",
+					"title": "Default Page Templates",
+					"columns": [
+						[
+							"Default Page Templates.xml"
+						],
+						[
+							"Content Sidebar.xml"
+						]
+					]
+				},
+				{
+					"friendlyURL": "/contributor page template",
+					"name": "Contributor Page Template",
+					"title": "Contributor Page Template",
+					"layoutTemplateId": "1_column",
+					"columns": [
+						[
+							"Contributor Page Template.xml"
+						]
+					]
+				},
+				{
+					"friendlyURL": "/full width page template",
+					"name": "Full Width Page Template",
+					"title": "Full Width Page Template",
+					"layoutTemplateId": "1_column",
+					"columns": [
+						[
+							"Full Width Page Template.xml"
+						]
+					]
+				}
+			]
+		},
+		{
+			"friendlyURL": "/html elements",
+			"name": "HTML Elements",
+			"title": "HTML Elements",
+			"columns": [
+				[
+					"HTML Elements.xml"
+				],
+				[
+					"Content Sidebar.xml"
+				]
+			]
+		},
+		{
+			"friendlyURL": "/image alignment and styles",
+			"name": "Image Alignment and Styles",
+			"title": "Image Alignment and Styles",
+			"columns": [
+				[
+					"Image Alignment and Styles.xml"
+				],
+				[
+					"Content Sidebar.xml"
+				]
+			]
+		},
+		{
+			"friendlyURL": "/carousel",
+			"name": "Carousel",
+			"title": "Carousel",
+			"layoutTemplateId": "1_column",
+			"columns": [
+				[
+					"Carousel.xml"
+				]
+			]
+		}
+	]
+}
