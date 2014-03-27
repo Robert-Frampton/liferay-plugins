@@ -1,0 +1,794 @@
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" name="section1" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="small">
+		<meta-data locale="en_US">
+			<entry name="label">
+				<![CDATA[Section 1]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[<div class="pages page-work" id="page-work"><div class="container">
+				<!-- Header -->
+				<header>
+					<h4 class="line-divider">Work</h4>
+					<h1>Portfolio</h1>
+					<!-- Short desciption about Work in general -->
+					<div class="row">
+						<div class="span8 offset2">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+						</div>
+					</div>
+					<!-- Sub menu -->
+					<!-- Params: plugin-filter: Defines links for filtering. -->
+					<nav class="submenu">
+						<ul>
+							<li>
+								<a class="plugin-filter active" data-filter="all" href="#">All</a>
+							</li>
+							<li>
+								<a class="plugin-filter" data-filter="typography" href="#">Typography</a>
+							</li>
+							<li>
+								<a class="plugin-filter" data-filter="illustration" href="#">Illustration</a>
+							</li>
+							<li>
+								<a class="plugin-filter" data-filter="branding" href="#">Branding</a>
+							</li>
+							<li>
+								<a class="plugin-filter" data-filter="photography" href="#">Photography</a>
+							</li>
+						</ul>
+					</nav>
+				</header>
+				<!-- End Header -->
+				<!-- Article -->
+				<article>
+					<!-- Portfolio items Params: plugin-filter-elements: Defines items for filtering, each item has class which defines filter value. portfolio-items: Customise portfolio items for hover effect. -->
+					<ul class="thumbnails plugin-filter-elements portfolio-items">
+						<li class="span4 mix illustration branding">
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_1.html">
+								<!-- Portfolio image -->
+								<img alt="Treble" src="http://placehold.it/390x300" />
+								<!-- Portfolio name, activated on hover -->
+							</a>
+							<div class="portfolio-overlay">
+								<h4>
+									<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_1.html">Vita Worldwide</a>
+								</h4>
+							</div>
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_1.html"></a>
+						</li>
+						<li class="span4 mix branding typography illustration">
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_2.html">
+								<img alt="Treble" src="http://placehold.it/390x300" />
+							</a>
+							<div class="portfolio-overlay">
+								<h4>
+									<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_2.html">Kokong Magazine</a>
+								</h4>
+							</div>
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_2.html"></a>
+						</li>
+						<li class="span4 mix photography illustration">
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_3.html">
+								<img alt="Treble" src="http://placehold.it/390x300" />
+							</a>
+							<div class="portfolio-overlay">
+								<h4>
+									<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_3.html">Escape The Grid 2</a>
+								</h4>
+							</div>
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_3.html"></a>
+						</li>
+						<li class="span4 mix photography">
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_4.html">
+								<img alt="Treble" src="http://placehold.it/390x300" />
+							</a>
+							<div class="portfolio-overlay">
+								<h4>
+									<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_4.html">Avatar</a>
+								</h4>
+							</div>
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_4.html"></a>
+						</li>
+						<li class="span4 mix photography typography branding">
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_5.html">
+								<img alt="Treble" src="http://placehold.it/390x300" />
+							</a>
+							<div class="portfolio-overlay">
+								<h4>
+									<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_5.html">A Brighter Horizon</a>
+								</h4>
+							</div>
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_5.html"></a>
+						</li>
+						<li class="span4 mix photography">
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_6.html">
+								<img alt="Treble" src="http://placehold.it/390x300" />
+							</a>
+							<div class="portfolio-overlay">
+								<h4>
+									<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_6.html">The Travelers</a>
+								</h4>
+							</div>
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_6.html"></a>
+						</li>
+						<li class="span4 mix illustration branding typography">
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_7.html">
+								<img alt="Treble" src="http://placehold.it/390x300" />
+							</a>
+							<div class="portfolio-overlay">
+								<h4>
+									<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_7.html">Tron 3</a>
+								</h4>
+							</div>
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_7.html"></a>
+						</li>
+						<li class="span4 mix photography illustration">
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_8.html">
+								<img alt="Treble" src="http://placehold.it/390x300" />
+							</a>
+							<div class="portfolio-overlay">
+								<h4>
+									<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_8.html">Vimeo Staff Picke - Rio</a>
+								</h4>
+							</div>
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_8.html"></a>
+						</li>
+						<li class="span4 mix illustration branding">
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_9.html">
+								<img alt="Treble" src="http://placehold.it/390x300" />
+							</a>
+							<div class="portfolio-overlay">
+								<h4>
+									<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_9.html">Adobe Family. 1882</a>
+								</h4>
+							</div>
+							<a data-destination="portfolio-items" data-insert="before" href="#pages/portfolio/project_9.html"></a>
+						</li>
+					</ul>
+				</article>
+				<!-- End Article -->
+				<!-- Footer -->
+				<footer>
+					<div class="show-more-cube">
+						<a data-action="remove" data-destination="plugin-filter-elements" data-insert="appendTo" href="#pages/portfolio/readmore.html">
+							<span>Show
+								<br /> More
+							</span>
+						</a>
+					</div>
+				</footer>
+				<!-- End footer -->
+			</div></div>]]>
+		</entry>
+		<entry name="tip">
+			<![CDATA[]]>
+		</entry>
+	</meta-data>
+</dynamic-element>
+<dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" name="section_2" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="small">
+	<meta-data locale="en_US">
+		<entry name="label">
+			<![CDATA[section 2]]>
+		</entry>
+		<entry name="predefinedValue">
+			<![CDATA[<div class="pages page-clients" id="page-clients"><div class="container"><h4 class="line-divider-inline center">Satisfied clients</h4>
+			<!-- Client logos -->
+			<div class="row-fluid">
+				<div class="span2 center">
+					<img src="http://placehold.it/180x70" alt="Treble">
+					</div>
+					<div class="span2 center">
+						<img src="http://placehold.it/180x70" alt="Treble">
+						</div>
+						<div class="span2 center">
+							<img src="http://placehold.it/180x70" alt="Treble">
+							</div>
+							<div class="span2 center">
+								<img src="http://placehold.it/180x70" alt="Treble">
+								</div>
+								<div class="span2 center">
+									<img src="http://placehold.it/180x70" alt="Treble">
+									</div>
+									<div class="span2 center">
+										<img src="http://placehold.it/180x70" alt="Treble">
+										</div>
+									</div>
+									<!-- Short text related to client's -->
+									<div class="row-fluid">
+										<div class="span8 offset2 center smallFontBy08">
+											<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+										</div>
+									</div>
+								</div></div>]]>
+							</entry>
+							<entry name="tip">
+								<![CDATA[]]>
+							</entry>
+						</meta-data>
+					</dynamic-element>
+					<dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" name="section3" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="small">
+						<meta-data locale="en_US">
+							<entry name="label">
+								<![CDATA[section 3]]>
+							</entry>
+							<entry name="predefinedValue">
+								<![CDATA[<div class="pages page-work" id="page-work"><div class="container">
+								<!-- Header -->
+								<header>
+									<h4 class="line-divider">Work</h4>
+									<h1>Portfolio</h1>
+									<!-- Short desciption about Work in general -->
+									<div class="row">
+										<div class="span8 offset2">
+											<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p>
+										</div>
+									</div>
+									<!-- Sub menu -->
+									<!-- Params: plugin-filter: Defines links for filtering. -->
+									<nav class="submenu">
+										<ul>
+											<li>
+												<a href="#" class="plugin-filter active" data-filter="all">All</a>
+											</li>
+											<li>
+												<a href="#" class="plugin-filter" data-filter="typography">Typography</a>
+											</li>
+											<li>
+												<a href="#" class="plugin-filter" data-filter="illustration">Illustration</a>
+											</li>
+											<li>
+												<a href="#" class="plugin-filter" data-filter="branding">Branding</a>
+											</li>
+											<li>
+												<a href="#" class="plugin-filter" data-filter="photography">Photography</a>
+											</li>
+										</ul>
+									</nav>
+								</header>
+								<!-- End Header -->
+								<!-- Article -->
+								<article>
+									<!-- Portfolio items Params: plugin-filter-elements: Defines items for filtering, each item has class which defines filter value. portfolio-items: Customise portfolio items for hover effect. -->
+									<ul class="thumbnails plugin-filter-elements portfolio-items">
+										<li class="span4 mix illustration branding">
+											<a href="#pages/portfolio/project_1.html" data-destination="portfolio-items" data-insert="before">
+												<!-- Portfolio image -->
+												<img src="http://placehold.it/390x300" alt="Treble">
+													<!-- Portfolio name, activated on hover -->
+													<div class="portfolio-overlay">
+														<h4>Vita Worldwide</h4>
+													</div>
+												</a>
+											</li>
+											<li class="span4 mix branding typography illustration">
+												<a href="#pages/portfolio/project_2.html" data-destination="portfolio-items" data-insert="before">
+													<img src="http://placehold.it/390x300" alt="Treble">
+														<div class="portfolio-overlay">
+															<h4>Kokong Magazine</h4>
+														</div>
+													</a>
+												</li>
+												<li class="span4 mix photography illustration">
+													<a href="#pages/portfolio/project_3.html" data-destination="portfolio-items" data-insert="before">
+														<img src="http://placehold.it/390x300" alt="Treble">
+															<div class="portfolio-overlay">
+																<h4>Escape The Grid 2</h4>
+															</div>
+														</a>
+													</li>
+													<li class="span4 mix photography">
+														<a href="#pages/portfolio/project_4.html" data-destination="portfolio-items" data-insert="before">
+															<img src="http://placehold.it/390x300" alt="Treble">
+																<div class="portfolio-overlay">
+																	<h4>Avatar</h4>
+																</div>
+															</a>
+														</li>
+														<li class="span4 mix photography typography branding">
+															<a href="#pages/portfolio/project_5.html" data-destination="portfolio-items" data-insert="before">
+																<img src="http://placehold.it/390x300" alt="Treble">
+																	<div class="portfolio-overlay">
+																		<h4>A Brighter Horizon</h4>
+																	</div>
+																</a>
+															</li>
+															<li class="span4 mix photography">
+																<a href="#pages/portfolio/project_6.html" data-destination="portfolio-items" data-insert="before">
+																	<img src="http://placehold.it/390x300" alt="Treble">
+																		<div class="portfolio-overlay">
+																			<h4>The Travelers</h4>
+																		</div>
+																	</a>
+																</li>
+																<li class="span4 mix illustration branding typography">
+																	<a href="#pages/portfolio/project_7.html" data-destination="portfolio-items" data-insert="before">
+																		<img src="http://placehold.it/390x300" alt="Treble">
+																			<div class="portfolio-overlay">
+																				<h4>Tron 3</h4>
+																			</div>
+																		</a>
+																	</li>
+																	<li class="span4 mix photography illustration">
+																		<a href="#pages/portfolio/project_8.html" data-destination="portfolio-items" data-insert="before">
+																			<img src="http://placehold.it/390x300" alt="Treble">
+																				<div class="portfolio-overlay">
+																					<h4>Vimeo Staff Picke - Rio</h4>
+																				</div>
+																			</a>
+																		</li>
+																		<li class="span4 mix illustration branding">
+																			<a href="#pages/portfolio/project_9.html" data-destination="portfolio-items" data-insert="before">
+																				<img src="http://placehold.it/390x300" alt="Treble">
+																					<div class="portfolio-overlay">
+																						<h4>Adobe Family. 1882</h4>
+																					</div>
+																				</a>
+																			</li>
+																		</ul>
+																	</article>
+																	<!-- End Article -->
+																	<!-- Footer -->
+																	<footer>
+																		<div class="show-more-cube">
+																			<a href="#pages/portfolio/readmore.html" data-destination="plugin-filter-elements" data-insert="appendTo" data-action="remove">
+																				<span>Show
+																					<br/>More
+																				</span>
+																			</a>
+																		</div>
+																	</footer>
+																	<!-- End footer -->
+																</div></div>]]>
+															</entry>
+															<entry name="tip">
+																<![CDATA[]]>
+															</entry>
+														</meta-data>
+													</dynamic-element>
+													<dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" name="section4" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="small">
+														<meta-data locale="en_US">
+															<entry name="label">
+																<![CDATA[Section 4]]>
+															</entry>
+															<entry name="predefinedValue">
+																<![CDATA[<div class="pages page-about" id="page-about"><div class="container">
+																<!-- Header -->
+																<header>
+																	<h4 class="line-divider">About</h4>
+																	<h1>Meet The Team</h1>
+																	<div class="row">
+																		<div class="span8 offset2">
+																			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+																		</div>
+																	</div>
+																</header>
+																<!-- End Header -->
+																<!-- Article -->
+																<article>
+																	<!-- List of people and description with their contact details which are visable on hover -->
+																	<ul class="thumbnails about-items">
+																		<li class="span4 center">
+																			<div class="item">
+																				<!-- Team member image -->
+																				<img alt="Treble" class="img-circle" src="http://placehold.it/280x280" />
+																				<!-- Team memeber details, activated on hover -->
+																				<div class="about-overlay img-circle">
+																					<div class="social-icons sicon-white">
+																						<a class="sicon-facebook" href="#">
+																							<i>Facebook</i>
+																						</a>
+																						<a class="sicon-twitter" href="#">
+																							<i>Twitter</i>
+																						</a>
+																						<a class="sicon-linkedin" href="#">
+																							<i>LinkedIn</i>
+																						</a>
+																						<a class="sicon-youtube" href="#">
+																							<i>Youtube</i>
+																						</a>
+																						<a class="sicon-pinterest" href="#">
+																							<i>Pinterest</i>
+																						</a>
+																					</div>
+																				</div>
+																			</div>
+																			<!-- Team member name and function -->
+																			<h5>Joanna doe
+																				<br />
+																				<small>Creative director</small>
+																			</h5>
+																			<!-- Team member short info -->
+																			<p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
+																		</li>
+																		<li class="span4 center">
+																			<div class="item">
+																				<img alt="Treble" class="img-circle" src="http://placehold.it/280x280" />
+																				<div class="about-overlay img-circle">
+																					<div class="social-icons sicon-white">
+																						<a class="sicon-facebook" href="#">
+																							<i>Facebook</i>
+																						</a>
+																						<a class="sicon-twitter" href="#">
+																							<i>Twitter</i>
+																						</a>
+																						<a class="sicon-linkedin" href="#">
+																							<i>LinkedIn</i>
+																						</a>
+																						<a class="sicon-youtube" href="#">
+																							<i>Youtube</i>
+																						</a>
+																						<a class="sicon-pinterest" href="#">
+																							<i>Pinterest</i>
+																						</a>
+																					</div>
+																				</div>
+																			</div>
+																			<h5>Joanna doe
+																				<br />
+																				<small>Creative director</small>
+																			</h5>
+																			<p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
+																		</li>
+																		<li class="span4 center">
+																			<div class="item">
+																				<img alt="Treble" class="img-circle" src="http://placehold.it/280x280" />
+																				<div class="about-overlay img-circle">
+																					<div class="social-icons sicon-white">
+																						<a class="sicon-facebook" href="#">
+																							<i>Facebook</i>
+																						</a>
+																						<a class="sicon-twitter" href="#">
+																							<i>Twitter</i>
+																						</a>
+																						<a class="sicon-linkedin" href="#">
+																							<i>LinkedIn</i>
+																						</a>
+																						<a class="sicon-youtube" href="#">
+																							<i>Youtube</i>
+																						</a>
+																						<a class="sicon-pinterest" href="#">
+																							<i>Pinterest</i>
+																						</a>
+																					</div>
+																				</div>
+																			</div>
+																			<h5>Joanna doe
+																				<br />
+																				<small>Creative director</small>
+																			</h5>
+																			<p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
+																		</li>
+																		<li class="span4 center">
+																			<div class="item">
+																				<img alt="Treble" class="img-circle" src="http://placehold.it/280x280" />
+																				<div class="about-overlay img-circle">
+																					<div class="social-icons sicon-white">
+																						<a class="sicon-facebook" href="#">
+																							<i>Facebook</i>
+																						</a>
+																						<a class="sicon-twitter" href="#">
+																							<i>Twitter</i>
+																						</a>
+																						<a class="sicon-linkedin" href="#">
+																							<i>LinkedIn</i>
+																						</a>
+																						<a class="sicon-youtube" href="#">
+																							<i>Youtube</i>
+																						</a>
+																						<a class="sicon-pinterest" href="#">
+																							<i>Pinterest</i>
+																						</a>
+																					</div>
+																				</div>
+																			</div>
+																			<h5>Joanna doe
+																				<br />
+																				<small>Creative director</small>
+																			</h5>
+																			<p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
+																		</li>
+																		<li class="span4 center">
+																			<div class="item">
+																				<img alt="Treble" class="img-circle" src="http://placehold.it/280x280" />
+																				<div class="about-overlay img-circle">
+																					<div class="social-icons sicon-white">
+																						<a class="sicon-facebook" href="#">
+																							<i>Facebook</i>
+																						</a>
+																						<a class="sicon-twitter" href="#">
+																							<i>Twitter</i>
+																						</a>
+																						<a class="sicon-linkedin" href="#">
+																							<i>LinkedIn</i>
+																						</a>
+																						<a class="sicon-youtube" href="#">
+																							<i>Youtube</i>
+																						</a>
+																						<a class="sicon-pinterest" href="#">
+																							<i>Pinterest</i>
+																						</a>
+																					</div>
+																				</div>
+																			</div>
+																			<h5>Joanna doe
+																				<br />
+																				<small>Creative director</small>
+																			</h5>
+																			<p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
+																		</li>
+																		<li class="span4 center">
+																			<div class="item">
+																				<img alt="Treble" class="img-circle" src="http://placehold.it/280x280" />
+																				<div class="about-overlay img-circle">
+																					<div class="social-icons sicon-white">
+																						<a class="sicon-facebook" href="#">
+																							<i>Facebook</i>
+																						</a>
+																						<a class="sicon-twitter" href="#">
+																							<i>Twitter</i>
+																						</a>
+																						<a class="sicon-linkedin" href="#">
+																							<i>LinkedIn</i>
+																						</a>
+																						<a class="sicon-youtube" href="#">
+																							<i>Youtube</i>
+																						</a>
+																						<a class="sicon-pinterest" href="#">
+																							<i>Pinterest</i>
+																						</a>
+																					</div>
+																				</div>
+																			</div>
+																			<h5>Joanna doe
+																				<br />
+																				<small>Creative director</small>
+																			</h5>
+																			<p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
+																		</li>
+																	</ul>
+																</article>
+																<!-- End Article -->
+															</div></div>]]>
+														</entry>
+														<entry name="tip">
+															<![CDATA[]]>
+														</entry>
+													</meta-data>
+												</dynamic-element>
+												<dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" name="section5" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="small">
+													<meta-data locale="en_US">
+														<entry name="label">
+															<![CDATA[Section 5]]>
+														</entry>
+														<entry name="predefinedValue">
+															<![CDATA[<div class="pages white paralax page-twitter" id="page-twitter">
+															<!-- Page overlay -->
+															<div class="overlay"></div>
+															<!-- Block content -->
+															<div class="container">
+																<div class="row-fluid">
+																	<div class="span8 offset2">
+																		<div class="twitter-devider"></div>
+																		<!-- Load Twitter boostrap container -->
+																		<div class="twitterfeed center slide" id="twitterfeed-slider"></div>
+																		<!-- Sub title / Name of twitter account -->
+																		<h5 class="center">@TheGridelicous</h5>
+																	</div>
+																</div>
+															</div></div>]]>
+														</entry>
+														<entry name="tip">
+															<![CDATA[]]>
+														</entry>
+													</meta-data>
+												</dynamic-element>
+												<dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" name="section6" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="small">
+													<meta-data locale="en_US">
+														<entry name="label">
+															<![CDATA[Section 6]]>
+														</entry>
+														<entry name="predefinedValue">
+															<![CDATA[<div class="pages black-bg white page-contact" id="page-contact"><div class="container">
+															<!-- Header -->
+															<header>
+																<h4 class="line-divider">Contact</h4>
+																<h1>Say hello!</h1>
+																<div class="row">
+																	<div class="span8 offset2">
+																		<p> We like to create things with fun, open-minded people. Feel free to say hello! We'll respond as soon as possible. </p>
+																	</div>
+																</div>
+															</header>
+															<!-- End Header -->
+															<!-- Start Article -->
+															<article>
+																<div class="row-fluid">
+																	<!-- Contact form -->
+																	<div class="span6">
+																		<h5>Drop Us A Line</h5>
+																		<form>
+																			<input type="text" class="span12" placeholder="Title" required="required">
+																				<input type="email" class="span12" placeholder="Email" required="required">
+																					<textarea rows="10" class="span12" required="required"></textarea>
+																					<button type="submit" class="btn btn-primary">Submit</button>
+																				</form>
+																			</div>
+																			<!-- End Contact form -->
+																			<!-- Contact information -->
+																			<div class="span5 offset1">
+																				<h5>Meet Us</h5>
+																				<div class="media">
+																					<div class="social-icons sicon-white pull-left">
+																						<a href="#" class="sicon-phone">
+																							<i>Phone</i>
+																						</a>
+																					</div>
+																					<div class="media-body smallFontBy08"> (+1) 502 964-0393 | (+1) 502 964-0393 (FAX) </div>
+																				</div>
+																				<div class="media">
+																					<div class="social-icons sicon-white pull-left">
+																						<a href="#" class="sicon-place">
+																							<i>Location</i>
+																						</a>
+																					</div>
+																					<div class="media-body smallFontBy08"> 1095 Columbus Ave., San Francisco, CA 94133 </div>
+																				</div>
+																				<div class="media">
+																					<div class="social-icons sicon-white pull-left">
+																						<a href="#" class="sicon-mail">
+																							<i>email</i>
+																						</a>
+																					</div>
+																					<div class="media-body smallFontBy08"> mail@crollify.com </div>
+																				</div>
+																				<div class="media">
+																					<div class="social-icons sicon-white pull-left">
+																						<a href="#" class="sicon-clock">
+																							<i>Time zone</i>
+																						</a>
+																					</div>
+																					<div class="media-body smallFontBy08"> UTC / GMT -5 </div>
+																				</div>
+																				<br/>
+																				<br/>
+																				<br/>
+																				<h5>Get social</h5>
+																				<div class="social-icons sicon-white bordered">
+																					<a href="#" class="sicon-facebook">
+																						<i>Facebook</i>
+																					</a>
+																					<a href="#" class="sicon-twitter">
+																						<i>Twitter</i>
+																					</a>
+																					<a href="#" class="sicon-linkedin">
+																						<i>LinkedIn</i>
+																					</a>
+																					<a href="#" class="sicon-youtube">
+																						<i>Youtube</i>
+																					</a>
+																					<a href="#" class="sicon-pinterest">
+																						<i>Pinterest</i>
+																					</a>
+																				</div>
+																			</div>
+																			<!-- End Contact information -->
+																		</div>
+																	</article>
+																	<!-- End Article -->
+																</div>
+																<!-- Background map image -->
+																<div id="map-image">
+																	<img src="$images_folder/custom/map_bck.jpg" alt="Treble">
+																	</div></div>]]>
+																</entry>
+																<entry name="tip">
+																	<![CDATA[]]>
+																</entry>
+															</meta-data>
+														</dynamic-element>
+														<dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" name="section7" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="small">
+															<meta-data locale="en_US">
+																<entry name="label">
+																	<![CDATA[Section 7]]>
+																</entry>
+																<entry name="predefinedValue">
+																	<![CDATA[<div class="pages black-bg white page-contact" id="page-contact"><div class="container">
+																	<!-- Header -->
+																	<header>
+																		<h4 class="line-divider">Contact</h4>
+																		<h1>Say hello!</h1>
+																		<div class="row">
+																			<div class="span8 offset2">
+																				<p> We like to create things with fun, open-minded people. Feel free to say hello! We'll respond as soon as possible. </p>
+																			</div>
+																		</div>
+																	</header>
+																	<!-- End Header -->
+																	<!-- Start Article -->
+																	<article>
+																		<div class="row-fluid">
+																			<!-- Contact form -->
+																			<div class="span6">
+																				<h5>Drop Us A Line</h5>
+																				<form>
+																					<input type="text" class="span12" placeholder="Title" required="required">
+																						<input type="email" class="span12" placeholder="Email" required="required">
+																							<textarea rows="10" class="span12" required="required"></textarea>
+																							<button type="submit" class="btn btn-primary">Submit</button>
+																						</form>
+																					</div>
+																					<!-- End Contact form -->
+																					<!-- Contact information -->
+																					<div class="span5 offset1">
+																						<h5>Meet Us</h5>
+																						<div class="media">
+																							<div class="social-icons sicon-white pull-left">
+																								<a href="#" class="sicon-phone">
+																									<i>Phone</i>
+																								</a>
+																							</div>
+																							<div class="media-body smallFontBy08"> (+1) 502 964-0393 | (+1) 502 964-0393 (FAX) </div>
+																						</div>
+																						<div class="media">
+																							<div class="social-icons sicon-white pull-left">
+																								<a href="#" class="sicon-place">
+																									<i>Location</i>
+																								</a>
+																							</div>
+																							<div class="media-body smallFontBy08"> 1095 Columbus Ave., San Francisco, CA 94133 </div>
+																						</div>
+																						<div class="media">
+																							<div class="social-icons sicon-white pull-left">
+																								<a href="#" class="sicon-mail">
+																									<i>email</i>
+																								</a>
+																							</div>
+																							<div class="media-body smallFontBy08"> mail@crollify.com </div>
+																						</div>
+																						<div class="media">
+																							<div class="social-icons sicon-white pull-left">
+																								<a href="#" class="sicon-clock">
+																									<i>Time zone</i>
+																								</a>
+																							</div>
+																							<div class="media-body smallFontBy08"> UTC / GMT -5 </div>
+																						</div>
+																						<br/>
+																						<br/>
+																						<br/>
+																						<h5>Get social</h5>
+																						<div class="social-icons sicon-white bordered">
+																							<a href="#" class="sicon-facebook">
+																								<i>Facebook</i>
+																							</a>
+																							<a href="#" class="sicon-twitter">
+																								<i>Twitter</i>
+																							</a>
+																							<a href="#" class="sicon-linkedin">
+																								<i>LinkedIn</i>
+																							</a>
+																							<a href="#" class="sicon-youtube">
+																								<i>Youtube</i>
+																							</a>
+																							<a href="#" class="sicon-pinterest">
+																								<i>Pinterest</i>
+																							</a>
+																						</div>
+																					</div>
+																					<!-- End Contact information -->
+																				</div>
+																			</article>
+																			<!-- End Article -->
+																		</div>
+																		<!-- Background map image -->
+																		<div id="map-image">
+																			<img src="assets/images/pages/contact/map_bck.jpg" alt="Treble">
+																			</div></div>]]>
+																		</entry>
+																		<entry name="tip">
+																			<![CDATA[]]>
+																		</entry>
+																	</meta-data>
+																</dynamic-element>
+															</root>

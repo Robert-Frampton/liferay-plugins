@@ -106,45 +106,45 @@ public class BBBParticipantLocalServiceClpInvoker {
 				"com.liferay.bbb.model.BBBParticipant"
 			};
 
-		_methodName46 = "getBeanIdentifier";
+		_methodName44 = "getBeanIdentifier";
 
-		_methodParameterTypes46 = new String[] {  };
+		_methodParameterTypes44 = new String[] {  };
 
-		_methodName47 = "setBeanIdentifier";
+		_methodName45 = "setBeanIdentifier";
 
-		_methodParameterTypes47 = new String[] { "java.lang.String" };
+		_methodParameterTypes45 = new String[] { "java.lang.String" };
 
-		_methodName52 = "addBBBParticipant";
+		_methodName50 = "addBBBParticipant";
 
-		_methodParameterTypes52 = new String[] {
+		_methodParameterTypes50 = new String[] {
 				"long", "long", "long", "java.lang.String", "java.lang.String",
 				"int", "int", "com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName53 = "deleteBBBParticipant";
+		_methodName51 = "deleteBBBParticipant";
 
-		_methodParameterTypes53 = new String[] {
+		_methodParameterTypes51 = new String[] {
 				"com.liferay.bbb.model.BBBParticipant"
 			};
 
-		_methodName54 = "getBBBParticipants";
+		_methodName52 = "getBBBParticipants";
 
-		_methodParameterTypes54 = new String[] { "long" };
+		_methodParameterTypes52 = new String[] { "long" };
 
-		_methodName55 = "getBBBParticipantsCount";
+		_methodName53 = "getBBBParticipantsCount";
 
-		_methodParameterTypes55 = new String[] { "long" };
+		_methodParameterTypes53 = new String[] { "long" };
 
-		_methodName56 = "updateBBBParticipant";
+		_methodName54 = "updateBBBParticipant";
 
-		_methodParameterTypes56 = new String[] {
+		_methodParameterTypes54 = new String[] {
 				"long", "long", "java.lang.String", "java.lang.String", "int",
 				"com.liferay.portal.service.ServiceContext"
 			};
 
-		_methodName57 = "updateStatus";
+		_methodName55 = "updateStatus";
 
-		_methodParameterTypes57 = new String[] { "long", "int" };
+		_methodParameterTypes55 = new String[] { "long", "int" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -236,20 +236,20 @@ public class BBBParticipantLocalServiceClpInvoker {
 			return BBBParticipantLocalServiceUtil.updateBBBParticipant((com.liferay.bbb.model.BBBParticipant)arguments[0]);
 		}
 
-		if (_methodName46.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
+		if (_methodName44.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes44, parameterTypes)) {
 			return BBBParticipantLocalServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName47.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
+		if (_methodName45.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes45, parameterTypes)) {
 			BBBParticipantLocalServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName52.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
+		if (_methodName50.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes50, parameterTypes)) {
 			return BBBParticipantLocalServiceUtil.addBBBParticipant(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Long)arguments[2]).longValue(),
@@ -259,23 +259,23 @@ public class BBBParticipantLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[7]);
 		}
 
+		if (_methodName51.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes51, parameterTypes)) {
+			return BBBParticipantLocalServiceUtil.deleteBBBParticipant((com.liferay.bbb.model.BBBParticipant)arguments[0]);
+		}
+
+		if (_methodName52.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
+			return BBBParticipantLocalServiceUtil.getBBBParticipants(((Long)arguments[0]).longValue());
+		}
+
 		if (_methodName53.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes53, parameterTypes)) {
-			return BBBParticipantLocalServiceUtil.deleteBBBParticipant((com.liferay.bbb.model.BBBParticipant)arguments[0]);
+			return BBBParticipantLocalServiceUtil.getBBBParticipantsCount(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName54.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes54, parameterTypes)) {
-			return BBBParticipantLocalServiceUtil.getBBBParticipants(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName55.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes55, parameterTypes)) {
-			return BBBParticipantLocalServiceUtil.getBBBParticipantsCount(((Long)arguments[0]).longValue());
-		}
-
-		if (_methodName56.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes56, parameterTypes)) {
 			return BBBParticipantLocalServiceUtil.updateBBBParticipant(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				(java.lang.String)arguments[2], (java.lang.String)arguments[3],
@@ -283,8 +283,8 @@ public class BBBParticipantLocalServiceClpInvoker {
 				(com.liferay.portal.service.ServiceContext)arguments[5]);
 		}
 
-		if (_methodName57.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes57, parameterTypes)) {
+		if (_methodName55.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes55, parameterTypes)) {
 			return BBBParticipantLocalServiceUtil.updateStatus(((Long)arguments[0]).longValue(),
 				((Integer)arguments[1]).intValue());
 		}
@@ -324,10 +324,14 @@ public class BBBParticipantLocalServiceClpInvoker {
 	private String[] _methodParameterTypes14;
 	private String _methodName15;
 	private String[] _methodParameterTypes15;
-	private String _methodName46;
-	private String[] _methodParameterTypes46;
-	private String _methodName47;
-	private String[] _methodParameterTypes47;
+	private String _methodName44;
+	private String[] _methodParameterTypes44;
+	private String _methodName45;
+	private String[] _methodParameterTypes45;
+	private String _methodName50;
+	private String[] _methodParameterTypes50;
+	private String _methodName51;
+	private String[] _methodParameterTypes51;
 	private String _methodName52;
 	private String[] _methodParameterTypes52;
 	private String _methodName53;
@@ -336,8 +340,4 @@ public class BBBParticipantLocalServiceClpInvoker {
 	private String[] _methodParameterTypes54;
 	private String _methodName55;
 	private String[] _methodParameterTypes55;
-	private String _methodName56;
-	private String[] _methodParameterTypes56;
-	private String _methodName57;
-	private String[] _methodParameterTypes57;
 }

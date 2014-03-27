@@ -1,0 +1,21 @@
+<div class="section-container" id="section1">
+   $section1.getData()
+</div>
+<div class="section-container" id="section2">
+    $section_2.getData()
+</div>
+<div class="image-background section-container" id="section3">
+    $section3.getData()
+</div>
+<div class="section-container" id="section4">
+    $section4.getData()
+</div>
+<div class="image-background section-container" id="section5">
+    $section5.getData()
+</div>
+<div class="section-container" id="section6">
+    $section6.getData()
+</div>
+<div class="image-background section-container" id="section7">
+    $section7.getData()
+</div>
