@@ -1,0 +1,121 @@
+{
+	"layoutTemplateId": "1_3_2_columns",
+	"privatePages":[
+		{
+			"columns": [
+				[
+					"header-1.html"
+				],
+				[
+					"Featured-1.html"
+				],
+				[
+					"Featured-2.html"
+				],
+				[
+					"Featured-3.html"
+				],
+				[
+					"main-blog.html"
+				],
+				[
+					{
+						"portletId":"3"
+					}
+				]
+			],
+			"friendlyURL": "/home",
+			"name": "Home",
+			"title": "Home"
+		},
+		{
+			"friendlyURL": "/Gallery",
+			"name": "Gallery",
+			"title": "Gallery",
+			"layouts": [
+				{
+					"title": "Tiled Gallery",
+					"name": "Tiled Gallery",
+					"friendlyURL": "/tiled-gallery",
+				},
+				{
+					"title": "Slideshow Gallery",
+					"name": "Slideshow Gallery",
+					"friendlyURL": "/slideshow-gallery",
+				},
+			]
+		},
+		{
+			"columns":[
+				[
+					"header-1.html"
+				],
+				[
+					"garlic-main.html",
+					{
+						"portletId":"107"
+					}
+				],
+				[
+					{
+						"portletId":"3"
+					}
+				],
+			],
+			"friendlyURL": "/sample-page",
+			"name": "Sample Page",
+			"title": "Sample Page"
+		},
+		{
+			"friendlyURL": "/view-pro",
+			"name": "View Pro",
+			"title": "View Pro"
+		},
+		{
+			"columns":[
+				[
+					"header-1.html"
+				],
+				[
+					"Featured-1-main.html",
+					{
+						"portletId":"107"
+					}
+				],
+				[
+					{
+						"portletId":"3"
+					}
+				],
+			],
+			"friendlyURL": "/featured-1",
+			"layoutTemplateId": "1_2_columns_ii",
+			"name": "Featured",
+			"title": "Featured-1",
+			"hidden": "true"
+		},
+		{
+			"columns":[
+				[
+					"header-1.html"
+				],
+				[
+					"garlic-main.html",
+					{
+						"portletId":"107"
+					}
+				],
+				[
+					{
+						"portletId":"3"
+					}
+				],
+			],
+			"friendlyURL": "/garlic-main",
+			"layoutTemplateId": "1_2_columns_ii",
+			"name": "Garlic",
+			"title": "Garlic",
+			"hidden": "true"
+		}
+	]
+}
