@@ -2,14 +2,14 @@ AUI().ready(
   	'aui-toggler',
  	function(A) {
   		new A.Toggler(
-    	  {
-        	container: '#myToggler',
-        	content: '.contenttoggler',
+    	{
+        	container: '#searchToggler',
+       		content: '.content-toggler',
         	expanded: false,
-        	header: '.headertoggler'
-      		}
-    	);
-  	}
+        	header: '.header-toggler'
+      	}
+      	);
+	}
  
 	/*
 	This function gets loaded when all the HTML, not including the portlets, is

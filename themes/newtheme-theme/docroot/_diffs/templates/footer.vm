@@ -1,0 +1,47 @@
+<footer id="footerWrapper" role="contentinfo">
+	<div class="layout-content" id="footerContent">
+		<div class="column column-first span3" id="footerSection1">
+			<div class="column-content column-content-first">
+				#if ($footer_section_1)
+					<section>
+						$footer_section_1
+					</section>
+				#end
+			</div>
+		</div>
+
+		<div class="column span3" id="footerSection2">
+			<div class="column-content">
+				#if ($footer_section_2)
+					<section>
+						$footer_section_2
+					</section>
+				#end
+			</div>
+		</div>
+
+		<div class="column span3" id="footerSection3">
+			<div class="column-content">
+				#if ($footer_section_3)
+					<section>
+						$footer_section_3
+					</section>
+				#end
+			</div>
+		</div>
+
+		<div class="column column-last span3" id="footerSection4">
+			<div class="column-content column-content-last">
+				#if ($footer_section_4)
+					<section>
+						$footer_section_4
+					</section>
+				#end
+			</div>
+		</div>
+	</div>
+
+	<p class="powered-by">
+		#language ("powered-by") <a href="http://www.liferay.com" rel="external">Liferay</a>
+	</p>
+</footer>
