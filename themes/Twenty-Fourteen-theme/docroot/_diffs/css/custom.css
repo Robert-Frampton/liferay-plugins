@@ -41,6 +41,7 @@
 		font: inherit;
 		font-family: monospace, serif;
 		font-size: 15px;
+		word-break: break-word;
 	}
 
 	dd, dl {
@@ -49,6 +50,10 @@
 
 	dt {
 		font-weight: bold;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 700;
 	}
 
 	input[type="button"] {
@@ -69,7 +74,7 @@
 
 	td, th {
 		border: 1px solid rgba(0, 0, 0, 0.1);
-		border-width: 0 1px 1px 0;
+		border-width: 1px;
 		padding: 8px;
 		vertical-align: baseline;
 	}
