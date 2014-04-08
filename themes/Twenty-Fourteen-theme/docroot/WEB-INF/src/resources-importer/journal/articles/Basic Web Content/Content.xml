@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="content" type="text_area" index-type="keyword" index="0">
+		<dynamic-content language-id="en_US">
+			<![CDATA[
+			<img width="672" height="372" src="[$FILE=sunset-hair.jpg$]" style="margin-left: -30px; position: relative;" />
+
+			<div style="background-color:#FFF; background-color: #FFF; margin: -40px 54px 0 54px; padding: 24px; position: relative;">
+				<h3 class="entry-title">
+					FEATURED IMAGES REALLY SHINE IN THIS THEME
+				</h3>
+			</div>
+
+			<div class="entry-content" style="margin: 0 54px 0; padding: 0 10px;">
+				<p>
+					In Twenty Fourteen, featured images make your site even better looking. Featured images work best with images at least 672px wide and 1038px wide for full-width layout. 
+				</p>
+
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur placerat cursus bibendum. Donec vel lacus mi. Aliquam massa tellus, tincidunt a sollicitudin sit amet, malesuada nec nunc. Praesent vestibulum condimentum purus, vel malesuada mi vulputate a. Sed vulputate imperdiet sapien vel fermentum. Etiam et magna est. Integer vehicula, urna non auctor consectetur, urna urna commodo sapien, ac dignissim neque lacus in metus. Sed ut metus tempor sapien pellentesque viverra. Donec sollicitudin ornare purus, ut sollicitudin lectus pharetra sollicitudin.
+				</p>
+
+				<p>
+					Nunc at justo justo. Mauris enim massa, euismod sed rutrum ac, dictum eu augue. Nulla auctor ullamcorper molestie. Nam a leo eget augue tincidunt porttitor sit amet nec diam. Phasellus vel velit dictum metus sollicitudin elementum. Morbi eget magna velit, a sollicitudin est. Cras suscipit pellentesque odio eu hendrerit. Morbi convallis eros sed tortor volutpat iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus mollis nisl eget felis viverra fermentum.
+				</p>
+
+				<p>
+					Ut sit amet purus est. Duis nunc ipsum, ornare eget blandit non, porttitor vel nunc. In hac habitasse platea dictumst. In dignissim lacus ac sapien euismod pulvinar. Suspendisse vitae sapien nec mauris consectetur ornare. Aenean ornare, nisl ut varius rhoncus, diam lorem faucibus nisi, sed aliquam lectus purus quis diam. Proin tincidunt hendrerit odio in tempor. Quisque ut semper tellus. Pellentesque ante sem, bibendum vitae suscipit rutrum, vulputate gravida tortor. Duis suscipit iaculis nunc, eu hendrerit est aliquet ut.
+				</p>
+
+				<p>
+					Donec id ante tincidunt sapien iaculis malesuada nec quis nunc. Integer porttitor, enim eu tristique scelerisque, nulla elit facilisis odio, et elementum ipsum nisi ut urna. Donec accumsan tempus magna, id placerat nisl dapibus vitae. Integer eu urna nec arcu porttitor dignissim a vel mi. Fusce aliquam, arcu vel feugiat ultrices, lectus dolor tristique leo, id mattis orci leo ac sem. Sed vitae aliquet justo. Duis pellentesque pulvinar tellus in auctor. Ut tincidunt, purus et adipiscing tincidunt, felis dui dapibus nulla, ac euismod mi dui id justo. Quisque consequat viverra porttitor. Etiam ac laoreet massa. Donec vitae urna a nibh rutrum vestibulum sit amet vitae mauris. Suspendisse tincidunt feugiat eleifend. Nullam condimentum scelerisque ipsum sit amet hendrerit. Aliquam facilisis porttitor odio sed tempor.
+				</p>
+			</div>
+			]]>
+		</dynamic-content>
+	</dynamic-element>
+</root>

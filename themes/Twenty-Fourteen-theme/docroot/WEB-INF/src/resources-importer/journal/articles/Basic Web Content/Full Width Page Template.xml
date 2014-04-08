@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="content" type="text_area" index-type="keyword" index="0">
+		<dynamic-content language-id="en_US">
+			<![CDATA[
+			<img width="978" height="577" src="[$FILE=full-width.jpg$]" style="margin: -122px 0 0 -30px; position: relative;" />
+
+			<div style="background-color:#FFF; background-color: #FFF; margin: -40px 0 0 178px; padding: 24px; position: relative; width: 494px ">
+				<h2 class="entry-title" style="font-weight: lighter;">
+					FULL WIDTH PAGE TEMPLATE
+				</h2>
+
+				<div class="entry-content" style="vertical-align: middle; padding: 5px 10px;">
+					<p>
+						This page uses full-width page template. You can display a large featured image and floated images are shift into the margins as you can see below.
+					</p>
+
+					<p>
+						Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In eleifend turpis sit amet tellus fermentum sit amet scelerisque nibh posuere. Maecenas mattis nulla et ipsum semper vel porttitor tortor pretium. Nulla tincidunt, nunc at commodo eleifend, dolor leo varius enim, vitae scelerisque eros lectus a tellus. Nam sed posuere elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla ornare nisi at mi imperdiet et fringilla augue consectetur. Vestibulum est lectus, pellentesque non suscipit pharetra, aliquet at quam. Proin ac ipsum tempor dui adipiscing rutrum.
+					</p>
+
+					<p>
+						Aenean congue tincidunt lorem id facilisis. Nulla facilisis, felis non consectetur ultricies, quam eros eleifend leo, vitae venenatis nisi mi id nunc. Duis non sem est. Nam orci massa, rhoncus in blandit ac, rhoncus euismod arcu. Sed facilisis hendrerit mi. Donec malesuada, arcu vitae rhoncus tincidunt, est quam aliquam ante, eget imperdiet justo est vel tellus. Pellentesque ullamcorper ligula eros. Fusce sit amet diam sem.
+					</p>
+
+					<p>
+						Sed aliquet cursus lacus ac scelerisque. Suspendisse potenti. Pellentesque ligula mauris, tincidunt convallis vestibulum ac, posuere nec libero. Donec sed augue sed nisl dignissim fermentum et et elit. In lacus lacus, tincidunt id elementum id, bibendum non nunc. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras eu dolor vel metus blandit suscipit a ac velit.
+					</p>
+
+					<p> 
+						In ultricies sem quis odio feugiat elementum. Maecenas scelerisque purus et tellus mollis id scelerisque nibh tristique. Maecenas nibh augue, egestas eleifend posuere id, fermentum eget massa. Donec et urna magna, nec eleifend metus. Fusce vulputate urna nec eros sagittis quis accumsan ipsum imperdiet. Proin euismod hendrerit pulvinar. Quisque semper, elit sed pretium porta, enim orci tristique tellus, non tristique odio sapien non libero. Pellentesque nisl purus, cursus in tincidunt vel, tempus at ligula. Nullam nunc ipsum, tristique sed ultricies sit amet, dapibus sed metus. Vivamus adipiscing neque sed lacus adipiscing vehicula. Aliquam ac enim id nibh pretium posuere. Nulla feugiat nibh at enim euismod euismod. Aliquam congue urna ut ipsum sodales fermentum.
+					</p>
+
+					<p>
+						Ut eget tortor arcu, sed blandit turpis. Donec dignissim bibendum sollicitudin. Sed vitae mi sit amet nulla lobortis sollicitudin sit amet a lacus. Sed quis est ac risus lobortis ornare. Aenean quis ante odio, vitae aliquet ipsum. Nullam sit amet volutpat leo. Aenean auctor, mauris eu scelerisque dignissim, dolor magna aliquam dolor, vel pulvinar urna lorem sit amet erat. Nulla non libero quam. Cras id diam nisi, eu tristique quam. Cras at diam quis justo imperdiet sollicitudin id non urna. Morbi quis augue turpis, eget consequat nisl. Integer urna turpis, ultrices sit amet ultrices eget, vehicula non eros. Maecenas id sapien metus. Mauris in ante turpis, ut ultrices dui. Duis interdum, dui molestie aliquam posuere, magna urna laoreet tellus, eget porttitor neque dolor sed dui.
+					</p>
+				</div>
+			</div>
+			]]>
+		</dynamic-content>
+	</dynamic-element>
+</root>
