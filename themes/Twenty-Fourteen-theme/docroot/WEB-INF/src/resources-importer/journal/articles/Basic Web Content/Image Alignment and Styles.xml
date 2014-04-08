@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="content" type="text_area" index-type="keyword" index="0">
+		<dynamic-content language-id="en_US">
+			<![CDATA[
+			<div class="entry-content" style="margin-left: 70px; padding: 0 10px; width: 474px">
+				<h3 class="entry-title">
+				IMAGE ALIGNMENT AND STYLES
+				</h3>
+				<p>
+					This page is filled with sample content illustrating what various image types look like. Text is lorem ipsum filler.
+				</p>
+				<hr>
+				<h2 style="font-size: 24px;">
+					Right-aligned medium
+				</h2>
+				<p>
+					<img class="right-aligned" width="300" height="199" src="[$FILE=mcm_6965.jpg$]" style="margin: 7px 0 7px 24px;" />
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel ultricies sapien. Proin eu accumsan metus. Pellentesque varius aliquet sapien, sed laoreet diam viverra vel. Phasellus condimentum congue ante. Donec porttitor eleifend erat eget faucibus. Vivamus mattis imperdiet sem a volutpat. Cras ultrices tincidunt hendrerit. Nulla facilisi. Morbi id lorem et sapien luctus eleifend. Vestibulum eleifend dapibus ornare. Ut at dui metus, in accumsan nibh. Nam ultricies turpis sit amet erat elementum nec mollis tellus vehicula. Phasellus mollis faucibus odio, id malesuada justo venenatis in. Sed ultricies, augue quis ullamcorper condimentum, diam turpis laoreet risus, quis pretium urna diam et nibh. Nunc molestie mauris vel est hendrerit tempus. Nam elit enim, pellentesque sit amet fringilla quis, bibendum at tellus. Nunc at tortor sapien. Nam feugiat libero ut nisl sodales eleifend. Nulla laoreet metus in dolor mattis vitae interdum massa.
+				</p>
+
+				<h2 style="font-size: 24px;">
+					Left-aligned medium
+				</h2>
+				<p>
+					<img class="left-aligned" width="200" height="275" src="[$FILE=mcm_2432.jpg$]" style="margin: 7px 24px 7px 0;" />
+					Duis nec elit dui, sit amet feugiat urna. Aenean interdum laoreet pellentesque. Nullam neque magna, euismod nec varius et, aliquet a neque. Ut ac vestibulum odio. Aenean non lobortis nulla. Nulla facilisi. In cursus, sem eu ultricies elementum, nulla lacus pretium diam, ac congue mauris velit ut velit. Fusce ante odio, adipiscing eu interdum sit amet, laoreet id lacus. Nam ante nulla, gravida a placerat eu, fermentum vel sem. Praesent eros augue, congue et congue a, varius sit amet ipsum.
+				</p>
+				<p>
+					Vivamus iaculis mollis fringilla. Sed convallis consectetur tincidunt. Aenean a nunc odio, a commodo elit. In quis risus id dolor porta iaculis. Sed vel felis eu neque molestie eleifend vitae et sem. Aliquam magna est, sodales et rutrum ac, ullamcorper at ipsum. Sed volutpat accumsan tortor vulputate pulvinar. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur sit amet elit a augue bibendum tempus. Praesent auctor mauris vel purus mattis vel imperdiet arcu pulvinar. Nunc est nisi, viverra in tincidunt vitae, sodales vitae mi. Quisque nisl elit, luctus viverra venenatis eget, auctor pharetra turpis. Nam vel justo arcu, sollicitudin blandit quam.
+				</p>
+				<hr>
+			</div>
+			]]>
+		</dynamic-content>
+	</dynamic-element>
+</root>
