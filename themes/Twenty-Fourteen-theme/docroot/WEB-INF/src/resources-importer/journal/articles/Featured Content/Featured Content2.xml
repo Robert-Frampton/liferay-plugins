@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="content" type="text_area" index-type="keyword" index="0">
+		<dynamic-content language-id="en_US">
+			<![CDATA[
+			<img width="347" height="192" src="[$FILE=featured2.jpg$]" />
+
+			<h6>
+				FEATURED, NATURE
+			</h6>
+
+			<h4 style="font-weight: lighter; padding: 1px;"> 
+				THIS IS FOR NOW! SEE YOU ALL NEXT SUMMER!
+			</h4>
+
+			]]>
+		</dynamic-content>
+	</dynamic-element>
+</root>

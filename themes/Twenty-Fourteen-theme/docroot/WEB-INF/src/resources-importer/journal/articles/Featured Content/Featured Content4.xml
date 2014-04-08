@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="content" type="text_area" index-type="keyword" index="0">
+		<dynamic-content language-id="en_US">
+			<![CDATA[
+			<img width="347" height="192" src="[$FILE=featured4.jpg$]" />
+
+			<h6>
+				FEATURED, TRAVEL
+			</h6>
+
+			<h4 style="font-weight: lighter; padding: 1px;"> 
+				NOTHING BEATS A SUNNY MORNING IN AUTUMN IN THE LAKE HOUSE
+			</h4>
+
+			]]>
+		</dynamic-content>
+	</dynamic-element>
+</root>

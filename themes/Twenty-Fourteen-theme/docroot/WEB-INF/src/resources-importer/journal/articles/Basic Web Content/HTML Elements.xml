@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="content" type="text_area" index-type="keyword" index="0">
+		<dynamic-content language-id="en_US">
+			<![CDATA[
+			<div class="entry-content" style="margin: 0 54px 0; padding: 0 10px;">
+				<h3 class="entry-title">
+				HTML ELEMENTS
+				</h3>
+				<p>
+					Below is just about every <abbr title="HyperText Markup Language">HTML</abbr> element you might want to use in your blog posts. Check the source code to see the many embedded elements within paragraphs.
+				</p>
+
+				<hr>
+				<h1>Heading 1</h1>
+				<h2>Heading 2</h2>
+				<h3>Heading 3</h3>
+				<h4>Heading 4</h4>
+				<h5>Heading 5</h5>
+				<h6>Heading 6</h6>
+				<hr>
+
+				<p>
+					Lorem ipsum dolor sit amet, <a title="test link" href="#" sl-processed="1">test link</a> adipiscing elit. <strong>This is strong.</strong> Nullam dignissim convallis est. Quisque aliquam. <em>This is emphasized.</em> Donec faucibus. Nunc iaculis suscipit dui. 5<sup>3</sup> = 125. Water is H<sub>2</sub>O. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. <cite>The New York Times</cite> (That’s a citation). <span style="text-decoration:underline;">Underline.</span> Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. <abbr title="HyperText Markup Language">HTML</abbr> and <abbr title="Cascading Style Sheets">CSS</abbr> are our tools. Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. To copy a file type <code>COPY <var>filename</var></code>.
+				</p>
+
+				<p>
+					<del>Dinner’s at 5:00.</del><ins>Let’s make that 7.</ins>
+				</p>
+
+				<p>
+					This <span style="text-decoration:line-through;">text</span> has been struck.
+				</p>
+				<hr>
+
+				<h2>List Types</h2>
+				<h3 style="font-weight: 700;">Definition List</h3>
+
+				<dl>
+					<dt>Definition List Title</dt>
+					<dd>This is a definition list division.</dd>
+					<dt>Definition</dt>
+					<dd>
+						An exact statement or description of the nature, scope, or meaning of something: <em>our definition of what constitutes poetry.</em>
+					</dd>
+				</dl>
+
+				<ol>
+					<li>List Item 1</li>
+					<li>List Item 2
+						<ol>
+							<li>Nested list item A</li>
+							<li>Nested list item B</li>
+						</ol>
+					</li>
+					<li>List Item 3</li>
+				</ol>
+
+				<h3 style="font-weight: 700;">Unordered List</h3>
+				<ul>
+					<li>List Item 1</li>
+					<li>List Item 2
+						<ul>
+							<li>Nested list item A</li>
+							<li>Nested list item B</li>
+							</ul>
+					</li>
+					<li>List Item 3</li>
+				</ul>
+				<hr>
+
+				<h2 style="font-weight: 700;"> Table</h2>
+				<table>
+					<tbody>
+						<tr>
+						<th>Table Header 1</th>
+						<th>Table Header 2</th>
+						<th>Table Header 3</th>
+						</tr>
+						<tr>
+							<td>Division 1</td>
+							<td>Division 2</td>
+							<td>Division 3</td>
+						</tr>
+						<tr class="even">
+							<td>Division 1</td>
+							<td>Division 2</td>
+							<td>Division 3</td>
+						</tr>
+						<tr>
+							<td>Division 1</td>
+							<td>Division 2</td>
+							<td>Division 3</td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+
+				<h2 style="font-weight: 700;">Preformatted Text</h2>
+				<p>
+					Typographically, preformatted text is not the same thing as code. Sometimes, a faithful execution of the text requires preformatted text that may not have anything to do with code. For&nbsp;example:
+				</p>
+
+				<pre>“Beware the Jabberwock, my son!
+					The jaws that bite, the claws that catch!
+					Beware the Jubjub bird, and shun
+					The frumious Bandersnatch!”
+				</pre>
+
+				<h3>Codes</h3>
+
+				<p>
+					Code can be presented inline, like <code>&lt;?php bloginfo('stylesheet_url'); ?&gt;</code>, or within a <code>&lt;pre&gt;</code> block.
+				</p>
+
+				<pre>
+					<code>
+						#container { float: left; margin: 0 -240px 0 0; width: 100%; }
+					</code>
+				</pre>
+
+				<hr>
+				<h2 style="font-weight: 700;">Blockquotes</h2>
+				<p>Let's keep it simple.</p>
+				<blockquote>
+					<p>
+						Good afternoon, gentlemen. I am a HAL 9000 computer. I became operational at the H.A.L. plant in Urbana, Illinois on the 12th of January 1992. My instructor was Mr. Langley, and he taught me to sing a song. If you’d like to hear it I can sing it for you. <cite>— <a href="http://en.wikipedia.org/wiki/HAL_9000" sl-processed="1">HAL 9000</a></cite>
+					</p>
+				</blockquote>
+
+				<p>And here's a bit of trailing text.</p>
+
+				<h2 style="font-weight: 700;">LaTeX</h2>
+				<h3 style="font-weight: 700;">Inline</h3>
+
+				<p>
+					Hello <img src="http://s0.wp.com/latex.php?zoom=1.5&amp;latex=LaTeX&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" alt="LaTeX" title="LaTeX" class="latex" width="53" height="11" src-orig="http://s0.wp.com/latex.php?latex=LaTeX&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" scale="1.5">, <a href="http://en.support.wordpress.com/latex/" sl-processed="1">how are you?</a>
+				</p>
+
+				<p>
+					This has a superscript <img src="http://s0.wp.com/latex.php?zoom=1.5&amp;latex=M%5EM&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" alt="M^M" title="M^M" class="latex" width="30" height="14" src-orig="http://s0.wp.com/latex.php?latex=M%5EM&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" scale="1.5"> in it.
+				</p>
+
+				<p>
+					This has a subscript <img src="http://s0.wp.com/latex.php?zoom=1.5&amp;latex=W_W&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" alt="W_W" title="W_W" class="latex" width="29" height="15" src-orig="http://s0.wp.com/latex.php?latex=W_W&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" scale="1.5"> in it.
+				</p>
+
+				<p>
+					This has both <img src="http://s0.wp.com/latex.php?zoom=1.5&amp;latex=M%5EM_M&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" alt="M^M_M" title="M^M_M" class="latex" width="30" height="20" src-orig="http://s0.wp.com/latex.php?latex=M%5EM_M&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" scale="1.5"> zomg.
+				</p>
+
+				<p>
+					Getting crazy <img src="http://s0.wp.com/latex.php?zoom=1.5&amp;latex=M%5E%7BM_M%7D&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" alt="M^{M_M}" title="M^{M_M}" class="latex" width="39" height="15" src-orig="http://s0.wp.com/latex.php?latex=M%5E%7BM_M%7D&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" scale="1.5"> woo.
+				</p>
+
+				<p>
+					Hey now <img src="http://s0.wp.com/latex.php?zoom=1.5&amp;latex=M_%7BM%5EM%7D&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" alt="M_{M^M}" title="M_{M^M}" class="latex" width="39" height="15" src-orig="http://s0.wp.com/latex.php?latex=M_%7BM%5EM%7D&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" scale="1.5"> stop it.
+				</p>
+
+				<p>
+					One more: <img src="http://s0.wp.com/latex.php?zoom=1.5&amp;latex=M%5EM_M++M%5E%7BM_M%7D+M_%7BM%5EM%7D&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" alt="M^M_M  M^{M_M} M_{M^M}" title="M^M_M  M^{M_M} M_{M^M}" class="latex" width="110" height="20" src-orig="http://s0.wp.com/latex.php?latex=M%5EM_M++M%5E%7BM_M%7D+M_%7BM%5EM%7D&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" scale="1.5">
+				</p>
+
+				<p>Here’s a fancy formula <img src="http://s0.wp.com/latex.php?zoom=1.5&amp;latex=displaystyle+P_nu%5E%7B-mu%7D%28z%29%3Dfrac%7Bleft%28z%5E2-1right%29%5E%7Bfrac%7Bmu%7D%7B2%7D%7D%7D%7B2%5Emu+sqrt%7Bpi%7DGammaleft%28mu%2Bfrac%7B1%7D%7B2%7Dright%29%7Dint_%7B-1%7D%5E1frac%7Bleft%281-t%5E2right%29%5E%7Bmu+-frac%7B1%7D%7B2%7D%7D%7D%7Bleft%28z%2Btsqrt%7Bz%5E2-1%7Dright%29%5E%7Bmu-nu%7D%7Ddt&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" alt="displaystyle P_nu^{-mu}(z)=frac{left(z^2-1right)^{frac{mu}{2}}}{2^mu sqrt{pi}Gammaleft(mu+frac{1}{2}right)}int_{-1}^1frac{left(1-t^2right)^{mu -frac{1}{2}}}{left(z+tsqrt{z^2-1}right)^{mu-nu}}dt" title="displaystyle P_nu^{-mu}(z)=frac{left(z^2-1right)^{frac{mu}{2}}}{2^mu sqrt{pi}Gammaleft(mu+frac{1}{2}right)}int_{-1}^1frac{left(1-t^2right)^{mu -frac{1}{2}}}{left(z+tsqrt{z^2-1}right)^{mu-nu}}dt" class="latex" width="474" height="8" src-orig="http://s0.wp.com/latex.php?latex=displaystyle+P_nu%5E%7B-mu%7D%28z%29%3Dfrac%7Bleft%28z%5E2-1right%29%5E%7Bfrac%7Bmu%7D%7B2%7D%7D%7D%7B2%5Emu+sqrt%7Bpi%7DGammaleft%28mu%2Bfrac%7B1%7D%7B2%7Dright%29%7Dint_%7B-1%7D%5E1frac%7Bleft%281-t%5E2right%29%5E%7Bmu+-frac%7B1%7D%7B2%7D%7D%7D%7Bleft%28z%2Btsqrt%7Bz%5E2-1%7Dright%29%5E%7Bmu-nu%7D%7Ddt&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" scale="1.5"> inline.
+				</p>
+
+				<p>
+					A more different fancy formula <img src="http://s0.wp.com/latex.php?zoom=1.5&amp;latex=P_nu%5E%7B-mu%7D%28z%29%3Dfrac%7Bleft%28z%5E2-1right%29%5E%7Bfrac%7Bmu%7D%7B2%7D%7D%7D%7B2%5Emu+sqrt%7Bpi%7DGammaleft%28mu%2Bfrac%7B1%7D%7B2%7Dright%29%7Dint_%7B-1%7D%5E1frac%7Bleft%281-t%5E2right%29%5E%7Bmu+-frac%7B1%7D%7B2%7D%7D%7D%7Bleft%28z%2Btsqrt%7Bz%5E2-1%7Dright%29%5E%7Bmu-nu%7D%7Ddt&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" alt="P_nu^{-mu}(z)=frac{left(z^2-1right)^{frac{mu}{2}}}{2^mu sqrt{pi}Gammaleft(mu+frac{1}{2}right)}int_{-1}^1frac{left(1-t^2right)^{mu -frac{1}{2}}}{left(z+tsqrt{z^2-1}right)^{mu-nu}}dt" title="P_nu^{-mu}(z)=frac{left(z^2-1right)^{frac{mu}{2}}}{2^mu sqrt{pi}Gammaleft(mu+frac{1}{2}right)}int_{-1}^1frac{left(1-t^2right)^{mu -frac{1}{2}}}{left(z+tsqrt{z^2-1}right)^{mu-nu}}dt" class="latex" width="474" height="9" src-orig="http://s0.wp.com/latex.php?latex=P_nu%5E%7B-mu%7D%28z%29%3Dfrac%7Bleft%28z%5E2-1right%29%5E%7Bfrac%7Bmu%7D%7B2%7D%7D%7D%7B2%5Emu+sqrt%7Bpi%7DGammaleft%28mu%2Bfrac%7B1%7D%7B2%7Dright%29%7Dint_%7B-1%7D%5E1frac%7Bleft%281-t%5E2right%29%5E%7Bmu+-frac%7B1%7D%7B2%7D%7D%7D%7Bleft%28z%2Btsqrt%7Bz%5E2-1%7Dright%29%5E%7Bmu-nu%7D%7Ddt&amp;bg=ffffff&amp;fg=2b2b2b&amp;s=0" scale="1.5">
+				</p>
+		</div>
+			]]>
+		</dynamic-content>
+	</dynamic-element>
+</root>
