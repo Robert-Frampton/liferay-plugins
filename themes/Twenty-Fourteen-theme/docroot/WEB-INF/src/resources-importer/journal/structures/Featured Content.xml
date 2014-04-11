@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
 
-<root>
-	<dynamic-element name="content" type="text_area" index-type="" repeatable="false">
-		<meta-data>
-			<entry name="displayAsTooltip"><![CDATA[false]]></entry>
-			<entry name="required"><![CDATA[false]]></entry>
-			<entry name="instructions"><![CDATA[]]></entry>
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element dataType="html" fieldNamespace="ddm" indexType="keyword" name="content" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-text-html" width="small">
+		<meta-data locale="en_US">
 			<entry name="label"><![CDATA[Content]]></entry>
 			<entry name="predefinedValue"><![CDATA[]]></entry>
+			<entry name="tip"><![CDATA[]]></entry>
 		</meta-data>
 	</dynamic-element>
 </root>
