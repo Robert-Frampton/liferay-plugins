@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -84,10 +84,14 @@ public class BasePersistenceImpl<TT extends BaseModel, TID>
 	}
 
 	@Override
-	public int update(TT model) throws SQLException {
-		notifyModelListenersOnUpdate(model);
+	public int update(TT targetModel) throws SQLException {
+		TT sourceModel = queryForId(extractId(targetModel));
 
-		return super.update(model);
+		int count = super.update(targetModel);
+
+		notifyModelListenersOnUpdate(sourceModel, targetModel);
+
+		return count;
 	}
 
 	protected String[] getSyncNotificationFieldNames(String className) {
@@ -118,12 +122,10 @@ public class BasePersistenceImpl<TT extends BaseModel, TID>
 		}
 	}
 
-	protected void notifyModelListenersOnUpdate(TT targetModel)
+	protected void notifyModelListenersOnUpdate(TT sourceModel, TT targetModel)
 		throws SQLException {
 
 		Map<String, Object> originalValues = new HashMap<String, Object>();
-
-		TT sourceModel = queryForId(extractId(targetModel));
 
 		for (String syncNotificationFieldName :
 				getSyncNotificationFieldNames(dataClass.getSimpleName())) {

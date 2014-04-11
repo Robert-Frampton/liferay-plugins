@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -23,11 +23,11 @@ import javax.portlet.ValidatorException;
  */
 public class BaseServiceSettings implements Settings {
 
-	public BaseServiceSettings(Settings settings, FallbackKeys fallbackPaths) {
-		FallbackSettings fallbackPathSettings = new FallbackSettings(
-			settings, fallbackPaths);
+	public BaseServiceSettings(Settings settings, FallbackKeys fallbackKeys) {
+		FallbackSettings fallbackSettings = new FallbackSettings(
+			settings, fallbackKeys);
 
-		typedSettings = new TypedSettings(fallbackPathSettings);
+		typedSettings = new TypedSettings(fallbackSettings);
 	}
 
 	@Override
@@ -38,6 +38,11 @@ public class BaseServiceSettings implements Settings {
 	@Override
 	public String[] getValues(String key, String[] defaultValue) {
 		return typedSettings.getValues(key, defaultValue);
+	}
+
+	@Override
+	public void reset(String key) {
+		typedSettings.reset(key);
 	}
 
 	@Override

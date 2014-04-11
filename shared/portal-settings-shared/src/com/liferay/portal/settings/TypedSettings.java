@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,20 +14,37 @@
 
 package com.liferay.portal.settings;
 
+import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
+import com.liferay.portal.kernel.util.LocaleUtil;
+import com.liferay.portal.kernel.util.LocalizationUtil;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.Validator;
 
 import java.io.IOException;
+
+import java.util.Locale;
 
 import javax.portlet.ValidatorException;
 
 /**
  * @author Iván Zaera
+ * @author Jorge Ferrer
  */
 public class TypedSettings implements Settings {
 
 	public TypedSettings(Settings settings) {
+		this(
+			settings, LocaleUtil.getSiteDefault(),
+			LanguageUtil.getAvailableLocales());
+	}
+
+	public TypedSettings(
+		Settings settings, Locale defaultLocale, Locale... availableLocales) {
+
 		_settings = settings;
+		_defaultLocale = defaultLocale;
+		_availableLocales = availableLocales;
 	}
 
 	public boolean getBooleanValue(String key) {
@@ -70,6 +87,28 @@ public class TypedSettings implements Settings {
 		return GetterUtil.getInteger(value, defaultValue);
 	}
 
+	public LocalizedValuesMap getLocalizedValuesMap(String key) {
+		LocalizedValuesMap localizedValuesMap = new LocalizedValuesMap(
+			key, _defaultLocale, _availableLocales);
+
+		for (Locale locale : _availableLocales) {
+			String localizedPreference = LocalizationUtil.getLocalizedName(
+				key, LocaleUtil.toLanguageId(locale));
+
+			localizedValuesMap.put(locale, getValue(localizedPreference, null));
+		}
+
+		String defaultValue = localizedValuesMap.get(_defaultLocale);
+
+		if (Validator.isNotNull(defaultValue)) {
+			return localizedValuesMap;
+		}
+
+		localizedValuesMap.put(_defaultLocale, getValue(key, null));
+
+		return localizedValuesMap;
+	}
+
 	public long getLongValue(String key) {
 		return getLongValue(key, 0);
 	}
@@ -96,6 +135,11 @@ public class TypedSettings implements Settings {
 	@Override
 	public String[] getValues(String key, String[] defaultValue) {
 		return _settings.getValues(key, defaultValue);
+	}
+
+	@Override
+	public void reset(String key) {
+		_settings.reset(key);
 	}
 
 	public Settings setBooleanValue(String key, boolean value) {
@@ -125,6 +169,8 @@ public class TypedSettings implements Settings {
 		_settings.store();
 	}
 
+	private Locale[] _availableLocales;
+	private Locale _defaultLocale;
 	private Settings _settings;
 
 }
