@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element instance-id="Dq2bIXiJ" name="height" type="text" index-type="">
+		<dynamic-content><![CDATA[320]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element instance-id="O4aO9a8O" name="duration" type="list" index-type="">
+		<dynamic-content><![CDATA[3]]></dynamic-content>
+	</dynamic-element>
+	<dynamic-element instance-id="qYyn3lcL" name="carousel-item" type="text" index-type="">
+		<dynamic-element instance-id="NKshI0fa" name="image" type="document_library" index-type="">
+			<dynamic-content><![CDATA[[$FILE=carousel_item1.jpg$]]]></dynamic-content>
+		</dynamic-element>
+	</dynamic-element>
+	<dynamic-element instance-id="grOgO2rI" name="carousel-item" type="text" index-type="">
+		<dynamic-element instance-id="AB6XGWIW" name="image" type="document_library" index-type="">
+			<dynamic-content><![CDATA[[$FILE=carousel_item2.jpg$]]]></dynamic-content>
+		</dynamic-element>
+	</dynamic-element>
+	<dynamic-element instance-id="qOSRCIBp" name="carousel-item" type="text" index-type="">
+		<dynamic-element instance-id="cJiqbcTO" name="image" type="document_library" index-type="">
+			<dynamic-content><![CDATA[[$FILE=carousel_item3.jpg$]]]></dynamic-content>
+		</dynamic-element>
+	</dynamic-element>
+</root>

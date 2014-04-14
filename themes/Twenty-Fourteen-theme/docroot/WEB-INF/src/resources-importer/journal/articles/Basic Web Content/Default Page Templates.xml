@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="content" type="text_area" index-type="keyword" index="0">
+		<dynamic-content language-id="en_US">
+			<![CDATA[
+			<img width="672" height="372" src="[$FILE=default-page.jpg$]" style="margin-left: -30px; position: relative;" />
+
+			<div style="background-color:#FFF; background-color: #FFF; margin: -40px 54px 0 0; padding: 24px; position: relative;">
+				<h3 class="entry-title">DEFAULT PAGE TEMPLATES</h3>
+			</div>
+
+			<div class="entry-content" style="margin: 0 54px 0 12px; padding: 0 10px;">
+				<p>
+					Tailor content pages to your needs with two extra page templates: full-width (no sidebar) and a Contributor page to show off multiple authors.
+				</p>
+			</div>
+			]]>
+		</dynamic-content>
+	</dynamic-element>
+</root>

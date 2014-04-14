@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<root available-locales="en_US" default-locale="en_US">
+	<dynamic-element name="content" type="text_area" index-type="keyword" index="0">
+		<dynamic-content language-id="en_US">
+			<![CDATA[
+			<h3 class="full" style="font-weight: lighter; margin-left: 140px;">
+				CONTRIBUTOR PAGE TEMPLATE
+			</h3>
+
+			<img width="132" height="132" src="[$FILE=avatar.jpg$]" style="float:left; border: 10px solid transparent"; />
+			
+			<h2 style="font-size: 16px; font-weight: 900;">
+				Theme Buster 
+			</h2>
+
+			<p style="margin-bottom: 24px;"> 
+				Just a Theme Demo user finding his way in this wild, wacky world of themes.
+			</p>
+			]]>
+		</dynamic-content>
+	</dynamic-element>
+</root>
