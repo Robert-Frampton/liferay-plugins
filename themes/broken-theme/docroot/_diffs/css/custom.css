@@ -1,3 +1,4 @@
+@import "compass";
 @import "mixins";
 
 @import url(custom_common.css);
@@ -316,10 +317,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 				}
 			}
 
-			* {
-				display: none;
-			}
-
 			> li > a {
 				padding: 4px 15px 5px;
 
@@ -538,12 +535,20 @@ $dockbarOpenGradientStart: #0EA6F9;
 
 	#footer {
 		text-align: right;
+
+		p span {
+			color: #2AAAE6;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 
 	/* ---------- Hudcrumbs ---------- */
 
 	.lfr-hudcrumbs {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		z-index: 300;
 

@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 #parse ($init)
 
 <html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
@@ -8,6 +10,15 @@
 	<meta content="initial-scale=1.0, width=device-width" name="viewport" />
 
 	$theme.include($top_head_include)
+
+	<script>
+		function openModal() {
+			var r = window.showModalDialog('http://www.liferay.com/', "dialogwidth:900; dialogheight: 700; resizable: yes");
+
+			document.getElementById('liferay-homepage').textContent = r;
+			alert(r);
+		}
+	</script>
 </head>
 
 <body class="$css_class">
@@ -26,7 +37,7 @@ $theme.include($body_top_include)
 					<img alt="$logo_description" height="$site_logo_height" src="$site_logo" width="$site_logo_width" />
 
 					#if ($show_site_name)
-						<span class="company-title site-name" title="#language_format ("go-to-x", [$site_name])">
+						<span class="site-name" title="#language_format ("go-to-x", [$site_name])">
 							$site_name
 						</span>
 					#end
@@ -36,7 +47,7 @@ $theme.include($body_top_include)
 		</div>
 
 		#if ($has_navigation || $is_signed_in)
-			#include ("$full_templates_path/navigation.vm")
+			#parse ("$full_templates_path/navigation.vm")
 		#end
 	</header>
 
@@ -61,9 +72,8 @@ $theme.include($body_top_include)
 	</section>
 
 	<footer class="site-footer" id="footer" role="contentinfo">
-		<p class="powered-by">
-			#language ("powered-by") <a href="http://www.liferay.com" rel="external">Liferay</a>
-		</p>
+		<p class="powered-by" onclick="openModal();">
+			#language ("powered-by") <span> Liferay </span>
 	</footer>
 </div>
 
