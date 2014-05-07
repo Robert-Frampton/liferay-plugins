@@ -1,3 +1,5 @@
+<!DOCTYPE html> 
+
 #parse ($init)
 
 <html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
@@ -12,7 +14,7 @@
 
 <body class="$css_class">
 
-<a href="#main-content" id="skip-to-content">#language ("skip-to-content")</a>
+#quick_access("#main-content")
 
 $theme.include($body_top_include)
 
@@ -26,17 +28,16 @@ $theme.include($body_top_include)
 					<img alt="$logo_description" height="$site_logo_height" src="$site_logo" width="$site_logo_width" />
 
 					#if ($show_site_name)
-						<span class="company-title site-name" title="#language_format ("go-to-x", [$site_name])">
+						<span class="site-name" title="#language_format ("go-to-x", [$site_name])">
 							$site_name
 						</span>
 					#end
 				</a>
-
 			</h1>
 		</div>
 
 		#if ($has_navigation || $is_signed_in)
-			#include ("$full_templates_path/navigation.vm")
+			#parse ("$full_templates_path/navigation.vm")
 		#end
 	</header>
 
