@@ -10,7 +10,6 @@
 	body {
 		color: #555;
 		font-weight: 200;
-		line-height: 3em;
 	}
 
 	a {
@@ -147,17 +146,15 @@
 	}
 
 	@include respond-to(phone) {
-		.form-search .input-append {
-			.btn {
-				font-size: 0;
-				padding: 4px 19px 0;
+		.form-search .input-append .btn {
+			font-size: 0;
+			padding: 4px 19px 0;
 
-				&:after {
-					content: $search;
-					font-size: 18px;
+			&:after {
+				content: $search;
+				font-size: 18px;
 
-					@include icon-FontAwesome();
-				}
+				@include icon-FontAwesome();
 			}
 		}
 	}
@@ -287,10 +284,10 @@
 					}
 
 					.user-avatar-image {
-					    position: relative;
-					    top: 2px;
-					    width: 28px;
-				    }
+						position: relative;
+						top: 2px;
+						width: 28px;
+					}
 				}
 
 				.nav-collapse {
@@ -328,7 +325,7 @@
 							&.active > a {
 								color: #FFF;
 
-								&, &:hover, &:focus {
+								&, &:focus, &:hover {
 									background: #0066B3;
 								}
 							}
@@ -357,7 +354,7 @@
 								}
 							}
 
-							ul.dropdown-menu, .site-administration-menu {
+							.site-administration-menu, ul.dropdown-menu {
 								border-width: 0;
 								margin: 0;
 
@@ -441,7 +438,7 @@
 			background: transparent;
 			border-color: #DDD;
 
-			&:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+			&:active, &.active, &.disabled, &[disabled], &:focus, &:hover{
 				background-color: #DDD;
 			}
 

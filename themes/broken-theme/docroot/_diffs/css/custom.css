@@ -1,3 +1,4 @@
+@import "compass";
 @import "mixins";
 
 @import url(custom_common.css);
@@ -102,13 +103,11 @@ $dockbarOpenGradientStart: #0EA6F9;
 					}
 				}
 
-				> li {
-					> a {
-						margin: 0 5px 0 0;
+				> li a {
+					margin: 0 5px 0 0;
 
-						&:hover {
-							background-color: #2FA4F5;
-						}
+					&:hover {
+						background-color: #2FA4F5;
 					}
 				}
 			}
@@ -148,7 +147,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 		.page-customization-bar .btn {
 			border-color: transparent;
 
-			&:hover, &:focus {
+			&:focus, &:hover {
 				background: transparent;
 				text-decoration: underline;
 			}
@@ -279,8 +278,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 		}
 
 		.brand {
-			padding: 0;
-			padding-right: 20px;
+			padding: 0 20px 0 0;
 			margin-left: 0;
 
 			img {
@@ -314,10 +312,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 				&.active > a {
 					background-color: $dockbarGradientStart;
 				}
-			}
-
-			* {
-				display: none;
 			}
 
 			> li > a {

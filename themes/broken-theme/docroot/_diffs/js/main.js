@@ -1,5 +1,5 @@
 AUI().ready(
-	'liferay-hudcrumbs', 'liferay-navigation-interaction', 'liferay-sign-in-modal',
+	'liferay-hudcrumbs', 'liferay-navigation-interaction', 'aui-io-request', 'node', 'aui-modal',
 	function(A) {
 		var navigation = A.one('#navigation');
 
@@ -7,7 +7,7 @@ AUI().ready(
 			navigation.plug(Liferay.NavigationInteraction);
 		}
 
-		var siteBreadcrumb = A.one('#breadcrumbs');
+		var siteBreadcrumbs = A.one('#breadcrumbs');
 
 		if (siteBreadcrumbs) {
 			siteBreadcrumbs.plug(A.Hudcrumbs);
@@ -20,10 +20,26 @@ AUI().ready(
 			alert(event.currentTarget.attr('title'));
 		}
 
-		var signIn = A.one('li.sign-in a');
+		A.io.request(
+			'',
+			{
+				dataType: 'json',
+				on: {
+					success: function() {
+						var data = this.get('responseData');
+						alert(data);
+					}
+				}
+			}
+		);
 
-		if (signIn && signIn.getData('redirect') !== 'true') {
-			signIn.plug(Liferay.SignInModal);
-		}
+		var signinModal = new A.Modal(
+			{
+				bodyContent: '<iframe src="http://localhost:8080/c/portal/login?p_l_id=10190"></iframe>',
+				centered: true,
+				modal: true,
+				render: '#signinModal',
+			}
+			).render();
 	}
 );
