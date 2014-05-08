@@ -1,0 +1,413 @@
+
+/* Header */
+#heading h1 span {
+	font-size: 24px; 
+	font-weight: bold;
+	font-height: 1.2em;
+	color: #222;
+	font-family: Times;
+	letter-spacing: 1px;
+	text-transform: capitalize;
+	font-family: 'Droid Sans', arial, serif;
+	vertical-align: baseline;	
+}
+
+
+.aui h1 {
+	/* Adjust line height between image and toolbar*/
+	line-height: 0px;
+}
+
+#heading {
+	background-color: #FFF;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 31px;
+	padding-right: 20px;
+	margin-right: -40px;
+	margin-left: -40px;
+	float: left;
+}
+
+/* Top Border */
+#wrapper {
+	border-top: 3px solid #b81007;
+	width: 920px;
+	padding: 0 40px 35px;
+		padding-top: 0px;
+	margin: 0 auto;
+}
+
+/* Liferay logo */
+#heading > h1 > a > img .hover {
+	border: none; 
+	text-transform: none;
+	text-decoration: none;
+}
+/*margin*/
+.aui body {
+	background-color: #eeeeee;
+	color: #666666;
+	font-family: 'Droid Sans', arial, serif;
+	font-size: 100%;
+	line-height: 1.5em;
+}
+
+/*Content */
+#content {
+	color: #666666;
+	background-color: #FFF;
+	margin-right: -40px;
+	margin-left: -40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	padding-top: 10px;
+	text-align: left;
+} 
+/* Font color throughout */
+.aui a {
+	color: #666666;
+	font-family: 'Droid Sans', arial, serif;
+	letter-spacing: 0px;
+
+}
+
+/* Heading Size for Entries*/
+.aui h3 {
+	color: #000;
+	font-size: 21px;
+	font-weight: normal;
+	margin-top: 12px;
+	margin-bottom: 8px;
+	line-height: 1.5em;
+	text-transform: capitalize;
+	letter-spacing: 1px;
+}
+
+.aui h3 > .entry-url  {
+	color: #000;
+}
+
+/*Spacing in entry p*/
+.aui p {
+	margin: 0px;
+}
+
+/*Entry Title Hover Setting*/
+.aui .entry-title .entry-url:hover, .entry-url:focus {
+	color: #b81007;
+	text-decoration: none;
+	-webkit-transition: color 0.2s ease-in-out;
+		-webkit-transition-property: color;
+		-webkit-transition-duration: 0.2s;
+		-webkit-transition-timing-function: ease-in-out;
+		-webkit-transition-delay: initial;
+	transition: color 0.2s ease-in-out;
+		transition-property: color;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-in-out;
+		transition-delay: initial;
+	}
+
+/*Portlet body and settings*/
+}
+.portlet-body {
+	color: #666;
+	font-family: 'Droid Sans', arial, serif;
+	letter-spacing: 0px; 
+	padding: 0px; 
+
+} 
+.portlet-alerts .entry-content {
+	padding: 0px; 
+	border-bottom: 1px solid #EEE;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: rgb(238, 238, 238);
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	}
+
+.portlet-alerts .entry-scope {
+	padding: 4px 9px;
+		padding-top: 4px;
+		padding-right: 9px;
+		padding-bottom: 4px;
+		padding-left: 9px;
+	text-shadow: 1px 1px #fff;
+	background: #dfdddd;
+	border-radius: 4px;
+	color: #383838;
+	margin-bottom: 2px;
+	display: block;
+	clear: both;
+	line-height: 1.5em;
+
+}
+
+/*Making menu options an inline display */
+.aui #navigation ul  {
+	display: -webkit-inline-box;
+	text-align: -webkit-left;
+	margin: 0px 15px 10px 0;
+	list-style-type: none;
+} 
+
+.aui ul, menu a{
+	font-size: 14px;
+}	
+
+/* Adjusted portlet. content padding and didn't need
+.aui .nav {
+	margin-left: 10px;
+}
+
+/*Sign In*
+.portlet-title span {
+	font-size: 21px;
+	text-decoration: color 0.2s ease-in-out;
+	transition: color 0.2s ease-in-out;
+	cursor: auto;
+	color: #000;
+	line-height: 1.5em;
+	font-weight: normal;
+	text-transform: capitalize;
+	font-family: 'Droid Sans', arial, serif;
+	text-align: center;
+	padding-left: 9px;
+
+}
+
+/*Welcome bar/tab */
+.aui .breadcrumb { 
+	font-family: 'Droid Sans', arial, serif;
+	padding: 0px; 
+	position:absolute;
+	top: -10px;
+	display: none;
+	/*
+	background: #b81007;
+	display: block;
+	position: absolute;
+		top: -10px;
+		left: 420px;
+		bottom: 10px;
+	height: 14px;
+	width: 59px;
+	float: left; */
+}
+/*Footer at bottom of page*/
+#footer {
+	font-family: 'Droid Sans', arial, serif;
+	padding-top: 40px;
+	margin-top: -30px;
+	margin-bottom: -40px;
+	font-size: 12px;
+	line-height: 1.5em;
+	color: #333;
+	background: transparent;
+	vertical-align: baseline;
+	margin-right: -40px;
+	margin-left: -40px;
+	padding-bottom: 30px;
+	background-color: #fff;
+	text-indent: 30px;
+}
+
+/*Border just above footer*/
+.aui form {
+		border-top: 1px solid #EEE;
+		border-top-width: 1px;
+		border-top-style: solid;
+		border-top-color: rgb(238, 238, 238);
+}
+
+.aui img {
+	padding-bottom: 20px;
+}
+
+/* Welcome in NavBar*/
+.aui #navigation  {
+	text-align: justify;
+	position: absolute;
+		top: 0px;
+		left: 420px;
+	
+	padding-top: 0px;
+	padding-bottom: 10px; 
+	border-color: #b81007;
+	float: left;
+}
+
+/*.aui #navigation [role=presentation] {
+	height: 40px;
+	padding: 1.5em 15px;
+
+} */
+
+
+.aui #navigation ul a:hover, .aui ul a:focus {
+	background-color: #b81007;
+	color: #FFFFFF;
+	text-decoration: none;
+	-webkit-transition: background 0.2s ease-in-out;
+		-webkit-transition-property: background;
+		-webkit-transition-duration: 0.2s;
+		-webkit-transition-timing-function: ease-in-out;
+		-webkit-transition-delay: initial;
+	-moz-transition: background 0.2s ease-in-out;
+	-o-transition: background 0.2s ease-in-out;
+	-ms-transition: background 0.2s ease-in-out;
+	transition: background 0.2s ease-in-out;
+		transition-property: background;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-in-out;
+		transition-delay: initial;
+}
+
+
+.aui #navigation {
+		background-image: initial;
+		background-position-x: initial;
+		background-position-y: initial;
+		background-size: initial;
+		background-repeat-x: initial;
+		background-repeat-y: initial;
+		background-attachment: initial;
+		background-origin: initial;
+		background-clip: initial;
+		/*background-color: rgb(184, 16, 7);*/
+}
+
+/*
+.aui #navigation .menubar ul {
+	float: left;
+	position: relative;
+	padding-left: 1.5em;
+} */
+
+/*Getting rid of list for Welcome tab*/
+.aui li {
+		display: list-item;
+		list-style-type: none;
+		text-align: -webkit-match-parent
+}
+
+/*Welcome (Specfic) Span
+.aui #navigation [role=menuitem] {
+	font-size: 100%;
+}
+*/
+.aui #navigation #layout_1 a {
+	color: #FFF;
+	background-color: #b81007;
+	padding: 1.7em 15px;
+}
+/* This one shifts the tabs upon movement on page
+.aui .modify-pages .lfr-nav-sortable > a > span {
+	padding-left: 1.7em;
+}
+*/
+.aui #navigation ul a {
+	display: block;
+	padding: 1.7em 15px;
+}
+
+.modify-pages .delete-tab {
+	display: none;
+}
+
+.aui #navigation .childmenu li ul {
+	
+}
+
+.aui #navigation li ul {
+	display: none;
+	float: none;
+}
+.aui #navigation li li { 
+	border: 1px solid #ECECEE;
+
+	}
+
+.aui #navigation li:hover ul {
+	display: block;
+	position: fixed;
+	background-color: #FFF;
+	-webkit-transition: background 0.2s ease-in-out;
+		-webkit-transition-property: background;
+		-webkit-transition-duration: 0.2s;
+		-webkit-transition-timing-function: ease-in-out;
+		-webkit-transition-delay: initial;
+	-moz-transition: background 0.2s ease-in-out;
+	-o-transition: background 0.2s ease-in-out;
+	-ms-transition: background 0.2s ease-in-out;
+	transition: background 0.2s ease-in-out;
+		transition-property: background;
+		transition-duration: 0.2s;
+		transition-timing-function: ease-in-out;
+		transition-delay: initial;
+}
+
+
+/* Portlets */
+.portlet-alerts .entry {
+	border: none;
+	padding-left: 5px;
+}
+
+/*Portlets for top toolbar*/
+.portlet-title-text {
+	display: inline-block;
+	float: left;
+}
+
+.portlet-content, .portlet-minimized .portlet-content-container{
+	padding: 0;
+}
+
+/*Column 3 Settings*/
+.aui #column-3 .portlet-title span {
+	float: none;
+	color: #666;
+	font-weight: bold;
+	font-size: 21px;
+	line-height: 1.5em;
+	letter-spacing: 1px;
+}
+
+/*Margin between img and 'entries'*/
+.aui .nav-tabs > li > a {
+	margin-top: 20px;
+}
+
+.aui #column-3 .portlet-content span {
+	margin-top: -10px;
+}
+
+.aui #column-3 h1 {
+	border-bottom: 1px solid #EEE;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	font-weight: bold;
+}
+
+
+/*Right search toolbar*/
+.aui #_3_search {
+	border-radius: 5px;
+	cursor: pointer;
+	background: none repeat scroll 0 0 #B81007;
+	border: 1px solid #9D4D2C;
+	color: #fff;
+	padding: 4px 6px;
+	text-shadow: 1px 1px 1px #300033;
+	margin-right: 4px;
+	margin-left: 4px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	height: 20px;
+}

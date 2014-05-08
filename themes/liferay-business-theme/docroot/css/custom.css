@@ -1,0 +1,91 @@
+
+/* Header */
+#heading h1 span {
+	font-size: 24px; 
+	font-weight: bold;
+	font-height: 1.2em;
+	color: #222;
+	font-family: Times;
+	letter-spacing: 1px;
+	text-transform: capitalize;
+	font-family: 'Droid Sans', arial, serif;
+}
+
+/* Top Border */ 
+#wrapper {
+	border-top: 3px solid #b81007;
+	width: 920px;
+	padding: 0 40px 35px;
+	margin: 0 auto;
+}
+
+/*margin*/
+.aui body {
+	background-color: #eeeeee;
+	color: #666666;
+	font-family: 'Droid Sans', arial, serif;
+}
+
+/* Font color throughout */
+.aui a {
+	color: #666666;
+	font-family: 'Droid Sans', arial, serif;
+}
+
+.portlet-body {
+	color: #666;
+	font-family: 'Droid Sans', arial, serif;
+}
+
+/*Sign In*/
+.portlet-title span {
+	font-size: 21px;
+	text-decoration: color 0.2s ease-in-out;
+	transition: color 0.2s ease-in-out;
+	cursor: auto;
+	color: #000;
+	line-height: 1.5em;
+	font-weight: normal;
+	text-transform: capitalize;
+	letter-spacing: 1 px;
+	font-family: 'Droid Sans', arial, serif;
+
+}
+
+/*Welcome bar*/
+.aui .breadcrumb {
+	font-family: 'Droid Sans', arial, serif;
+	background: #b81007;
+	/* padding border padding: 1.5em 15px; */
+	display: block;
+	position: absolute;
+	margin-top:-10px;
+	width:10em;
+	height: 14px;
+	width: 39px;
+
+}
+/*Footer at bottom of page*/
+#footer {
+	font-family: 'Droid Sans', arial, serif;
+	border-top: 1px solid #EEE;
+	padding-top: 18px;
+	margin-top: 10px;
+	font-size: 12px;
+	line-height: 1.5em;
+	color: #333;
+	background: transparent;
+	vertical-align: baseline;
+}
+
+/* Welcome in NavBar*/
+.aui #breadcrumbs li {
+	color: #666666;
+
+}
+
+/* Welcome Text */
+#breadcrumbs > ul > li {
+	color: #FFF;
+	text-align: center;
+}
