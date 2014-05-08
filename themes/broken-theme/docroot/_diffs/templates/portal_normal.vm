@@ -14,9 +14,10 @@
 	<script type="text/javascript">
 		function showModalWindow() 
 		{
-			window.showModalDialog("http://www.liferay.com/", "resizable: yes");
+			window.showModalDialog('http://www.liferay.com/', 'resizable: yes');
 		}
 	</script>
+
 </head>
 
 <body class="$css_class">

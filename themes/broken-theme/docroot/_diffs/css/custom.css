@@ -103,11 +103,13 @@ $dockbarOpenGradientStart: #0EA6F9;
 					}
 				}
 
-				> li a {
-					margin: 0 5px 0 0;
+				> li {
+					> a {
+						margin: 0 5px 0 0;
 
-					&:hover {
-						background-color: #2FA4F5;
+						&:hover {
+							background-color: #2FA4F5;
+						}
 					}
 				}
 			}
@@ -537,7 +539,7 @@ $dockbarOpenGradientStart: #0EA6F9;
 	/* ---------- Hudcrumbs ---------- */
 
 	.lfr-hudcrumbs {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		z-index: 300;
 
