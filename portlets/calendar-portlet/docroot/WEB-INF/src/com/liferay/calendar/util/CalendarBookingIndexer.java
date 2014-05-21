@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -100,7 +100,8 @@ public class CalendarBookingIndexer extends BaseIndexer {
 
 			document.addText(
 				Field.DESCRIPTION.concat(StringPool.UNDERLINE).concat(
-					descriptionLanguageId), description);
+					descriptionLanguageId),
+				description);
 		}
 
 		String titleDefaultLanguageId = LocalizationUtil.getDefaultLanguageId(
@@ -118,7 +119,8 @@ public class CalendarBookingIndexer extends BaseIndexer {
 
 			document.addText(
 				Field.TITLE.concat(StringPool.UNDERLINE).concat(
-					titleLanguageId), title);
+					titleLanguageId),
+				title);
 		}
 
 		String calendarBookingId = String.valueOf(

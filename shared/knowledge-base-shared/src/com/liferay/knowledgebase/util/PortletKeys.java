@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -34,6 +34,9 @@ public class PortletKeys extends com.liferay.portal.util.PortletKeys {
 
 	public static final String KNOWLEDGE_BASE_DISPLAY =
 		"2_WAR_knowledgebaseportlet";
+
+	public static final String KNOWLEDGE_BASE_NAVIGATION =
+		"6_WAR_knowledgebaseportlet";
 
 	public static final String KNOWLEDGE_BASE_SEARCH =
 		"5_WAR_knowledgebaseportlet";

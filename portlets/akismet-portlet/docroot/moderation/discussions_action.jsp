@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -29,16 +29,17 @@ long blogsPlid = PortalUtil.getPlidFromPortletId(mbMessage.getGroupId(), Portlet
 %>
 
 <liferay-ui:icon-menu>
-	<liferay-portlet:renderURL plid="<%= blogsPlid %>" portletName="<%= PortletKeys.BLOGS %>" varImpl="viewURL">
-		<portlet:param name="struts_action" value="/blogs/view_entry" />
-		<portlet:param name="entryId" value="<%= String.valueOf(mbDiscussion.getClassPK()) %>" />
-	</liferay-portlet:renderURL>
 
 	<%
 	String className = PortalUtil.getClassName(mbDiscussion.getClassNameId());
 	%>
 
 	<c:if test="<%= className.equals(BlogsEntry.class.getName()) %>">
+		<liferay-portlet:renderURL plid="<%= blogsPlid %>" portletName="<%= PortletKeys.BLOGS %>" varImpl="viewURL">
+			<portlet:param name="struts_action" value="/blogs/view_entry" />
+			<portlet:param name="entryId" value="<%= String.valueOf(mbDiscussion.getClassPK()) %>" />
+		</liferay-portlet:renderURL>
+
 		<liferay-ui:icon image="page" message="view-in-context" target="_blank" url="<%= String.valueOf(viewURL) %>" />
 	</c:if>
 

@@ -1,0 +1,113 @@
+{
+    "layoutTemplateId": "2_columns_ii",
+    "publicPages": [
+        {    
+            "columns": [
+                [
+                    "Stormybeach.html"
+                ],
+                [
+                        "About.html",
+                    
+                        "About.html",
+                    
+                        "First Paragraph.html",
+                    
+                        "First Paragraph.html"
+                ],
+                [   
+                    {
+                        "portletId": "3"
+                    },
+
+                    "Cash Contribution.html",
+
+                    "Social Media.html",
+
+                    "Links.html"
+                ]
+            ],      
+            "friendlyURL": "/home",
+            "layoutTemplateId": "1_2_columns_ii",
+            "name": "Welcome",
+            "title": "Welcome"
+        },
+        {
+            "columns": [
+                [
+                    "About.html"   
+                ],
+                [
+                    {
+                        "portletId": "3"
+                    },
+                    
+                    "Cash Contribution.html",
+
+                    "Social Media.html",
+
+                    "Links.html"
+                ]
+            ],    
+            "friendlyURL": "/about",
+            "layouts": [
+                {
+                    "friendlyURL": "/about-subpage",
+                    "name": "About Subpage",
+                    "title": "About Subpage"
+                },
+                {
+                    "friendlyURL": "/subpage",
+                    "name": "Subpage",
+                    "title": "Subpage"
+                },
+                {
+                    "friendlyURL": "/full-width",
+                    "name": "Full Width",
+                    "title": "Full Width"
+                }
+            ],
+            "layoutTemplateId": "2_columns_iii",
+            "name": "About",
+            "title": "About"
+        },
+        {
+            "columns": [
+                [
+                    "Typography.html"   
+                ],
+                [
+                    {
+                        "portletId": "3"
+                    },
+                    
+                    "Cash Contribution.html",
+
+                    "Social Media.html",
+
+                    "Links.html"
+                ]
+            ], 
+            "friendlyURL": "/typography",
+            "layoutTemplateId": "2_columns_iii",
+            "name": "Typography",
+            "title": "Typography"
+        },
+        {
+            "friendlyURL": "/block-regions",
+            "name": "Block Regions",
+            "title": "Health Plans"
+        },
+        {
+            "friendlyURL": "/blogs",
+            "name": "Blogs",
+            "title": "Blogs"
+        },
+        {
+            "friendlyURL": "/contact",
+            "name": "Contact",
+            "title": "Contact"
+        }
+    ]
+}
+
