@@ -1,0 +1,33 @@
+<body>
+
+	<script>
+	AUI().use (
+	  	'aui-carousel',
+		  	function(A) {
+		  		new A.Carousel (
+	      			{
+			        contentBox: '#myCarousel',
+			        height: 320,
+			        intervalTime: 3,
+			        width: 930
+			    	}
+	    		).render();
+	  		}
+	);   
+	</script>
+
+		<div id="myCarousel">
+			<div class="carousel-item" style="background: url(http://business-theme.techsaran.com/sites/all/themes/business/images/slide-image-3.jpg);"></div>
+			<div class="carousel-item" style="background: url(http://business-theme.techsaran.com/sites/all/themes/business/images/slide-image-1.jpg);"></div>
+			<div class="carousel-item" style="background: url(http://business-theme.techsaran.com/sites/all/themes/business/images/slide-image-2.jpg);"></div>
+		</div>
+
+
+	<style> 
+		.carousel-item {
+			height: 320px;
+			width: 930px;
+		}
+	</style>	
+
+</body> 

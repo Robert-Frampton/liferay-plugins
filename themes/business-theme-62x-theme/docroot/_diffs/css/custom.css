@@ -1,0 +1,370 @@
+@import "compass";
+@import "mixins";
+
+/* -------- Global -------- */
+
+.aui {
+	a {
+		color: #2E70B1;
+		font-family: 'Droid Sans', arial, serif;
+		letter-spacing: 0px;
+
+		&:hover, &:focus {
+			color: #B81008;
+			text-decoration: none;
+		}
+	}
+
+	body {
+		background-color: #EEE;
+		color: #666;
+		font: 100% 'Droid Sans', arial, serif;
+		line-height: 1.5em;
+	}
+
+	.breadcrumb {
+		background-color: #FFF;
+		border-bottom: 1px solid #EEE;
+		font-size: 11px;
+		margin: 0 0 20px;
+		padding: 100px 0 5px;
+	}
+
+	h1 {
+		color: #000;
+		font-size: 24px;
+		font-weight: normal;
+		letter-spacing: 1px;
+		line-height: 1.5em;
+		text-transform: capitalize;
+
+		span {
+			color: #222;
+			font: bold 24px 'Droid Sans', arial, serif; 
+			letter-spacing: 1px;
+			line-height: 1.2em;
+			text-transform: capitalize;
+		}
+	}
+
+	 h2 {
+		border-bottom: 1px solid #EEE;
+		color: #666;
+		font-size: 21px;
+		font-weight: bold;
+		letter-spacing: 1px;
+		margin: 12px 0 10px;
+		padding-bottom: 10px;
+	}
+
+	h3 {
+		color: #000;
+		font: 21px 'Droid Sans', arial, serif;;
+		letter-spacing: 1px;
+		line-height: 1.5em;
+		margin: 12px 0 8px 0;
+		text-transform: capitalize;
+	}
+
+	h3 > .entry-url {
+		color: #000;
+	}
+
+	#heading h1 {
+		margin: 0px;
+		padding: 10px 0px 0px;
+	}
+
+	li {
+		list-style-type: none;
+		text-align: left;
+	}
+
+	#navigation {
+		border-color: #B81007;
+		float: right;
+		padding-bottom: 10px; 
+		text-align: justify;
+
+		.child-menu {
+			border: 3px solid #ECECEE;
+		}
+
+		li {
+			ul {
+				display: none;
+			}
+
+			&:hover ul {
+				background-color: #FFF;
+				display: block;
+				position: fixed;
+				float: none;
+				z-index: 999;
+			}
+		}	
+
+		ul > li {
+			float: inherit;
+		}
+
+		ul {
+			display: inline; 
+			list-style-type: none;
+			margin: 0px 15px 10px 0;
+			text-align: left;
+			float: left;
+
+			a {
+				color: #666;
+				display: block;
+				padding: 1.7em 15px;
+
+				&:active, &:focus, &:hover{
+					background-color: #B81007;
+					color: #FFFFFF;
+					text-decoration: none;
+				}
+			}
+
+			ul a {
+				border: 1px solid #ECECEE;
+				padding: .75em 1.2em;
+				width: 16em;
+			}
+
+			.selected a {
+				background-color: #B81007;
+				color: #FFFFFF;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.nav-tabs > li > a {
+		margin-top: 20px;
+	}
+
+	p {
+		margin: 0 0 0.8em;
+	}
+
+	ul, menu a {
+		font-size: 14px;
+	}
+}
+
+/* -------- Wrapper / Sign-in -------- */
+
+#heading {
+	background-color: #FFF;
+	float: left;
+	position: relative;
+	padding: 5px 20px 5px 40px;
+	right: 40px;
+}
+
+.modify-pages .delete-tab {
+	display: none;
+}
+
+#sign-in {
+	font: #666 100% 'Droid Sans', arial, serif;
+	margin: 30px;
+	position: fixed;
+}
+
+#wrapper {
+	border-top: 3px solid #B81007;
+	margin: 0 auto;
+	padding: 0 40px 0px;
+	width: 920px;
+}
+
+/* -------- Content -------- */
+
+#_3_search {
+	background: none repeat scroll 0 0 #B81007;
+	border: 1px solid #9D4D2C;
+	color: #FFF;
+	cursor: pointer;
+	font-weight: bold;
+	height: 20px;
+	margin: 0px 4px 10px 4px;
+	padding: 4px 6px;
+}
+
+#column-3 {
+	h1 {
+		border-bottom: 1px solid #EEE;
+		font-weight: bold;
+		margin-bottom: 10px;
+		padding-bottom: 10px;
+	}
+
+	h2 {
+		border-bottom: 1px solid #EEE;
+		color: #666;
+		font-size: 21px;
+		font-family: 'Droid Sans', arial, serif;
+		letter-spacing: 1px;
+		line-height: 1.5em;
+		margin: 10px 0 10px;
+		padding-bottom: 10px;
+	}
+}
+
+#content {
+	color: #666;
+	background-color: #FFF;
+	margin: 0 -40px 0 -40px;
+	padding: 10px 40px 20px 40px; 
+	text-align: left;
+} 
+
+h1, h2, h3, h4 {
+	color: #000;
+	font-weight: normal;
+	letter-spacing: 1px;
+	line-height: 1.5em;
+	text-transform: capitalize;
+}
+
+.page-title {
+	display: none;
+}
+
+#portlet_3 {
+	.portlet-topper {
+		display: none;
+	}
+
+	input[type="image"] {
+		background: #B81007;
+		clear: both;
+		color: #FFF;
+		line-height: 1.5em;
+		margin: 0 0 12px 8px;
+		padding: 4px 9px;
+	}
+
+	input[type="text"] {
+		border: 1px solid #ACACAC;
+		height: 16px;
+		padding: 4px 5px;
+		width: 119px;
+	}
+
+	select {
+		display: none;
+	}
+}
+
+.portlet-body {
+	color: #333;
+	font-family: 'Droid Sans', arial, serif;
+	padding: 0 0 0px; 
+}
+
+.portlet-alerts .entry-content {
+	border-bottom: 1px solid #EEE;
+	margin-bottom: 20px;
+	padding: 0px 0px 20px 0px;
+}
+
+.portlet-alerts .entry {
+	border: none;
+	padding-left: 5px;
+}
+
+.portlet-title-text {
+	display: inline-block;
+}
+
+.portlet-content, .portlet-minimized .portlet-content-container {
+	padding: 0;
+}
+
+/* -------- Footer -------- */
+
+#footer-wrap {
+	background-color: #FFF;
+	color: #333;
+	font: 100% 'Droid Sans', arial, serif;
+	line-height: 1.5em;
+	margin: 0 -40px 0 -40px;
+
+	.footer-box {
+		float: left;
+		margin: 0 20px 20px 0;
+		width: 215px;
+	}
+}
+
+#footer-saran {
+	background: #FFF;
+	border-bottom: 1px solid #EEE;
+	margin: 0 -40px 0 -40px;
+	padding: 0 0 10px 75px;
+}
+
+#footer {
+	background-color: #FFF;
+	color: #333;
+	font: 12px 'Droid Sans', arial, serif;
+	line-height: 1.5em;
+	margin: 0 -40px 0 -40px;
+	padding: 10px 0 20px;
+	text-indent: 30px;
+	vertical-align: baseline;
+}
+
+/* ---------- Extras ---------- */
+
+.aui {
+	a {
+		&:hover, &:focus {
+			@include transition-delay(initial);
+			@include transition-duration(0.2s);
+			@include transition-property(color);
+			@include transition-timing-function(ease-in-out);
+			@include transition(color 0.2s ease-in-out);
+		}
+	}
+	#navigation {
+		li:hover ul {
+			@include transition(background 0.2s ease-in-out);
+			@include transition-property(background);
+			@include transition-duration(0.2s);
+			@include transition-timing-function(ease-in-out);
+			@include transition-delay(initial);
+		}
+		ul {
+			a {
+				&:active, &:focus, &:hover {
+					@include transition-delay(initial);
+					@include transition-duration(0.2s);
+					@include transition-property(background);
+					@include transition-timing-function(ease-in-out);
+					@include transition(background 0.2s ease-in-out);
+				}
+			}
+		}
+	}
+}
+
+#_3_search {
+	@include border-radius(5px);
+	@include text-shadow(1px 1px 1px #300033);
+}
+
+#portlet_3 {
+	input[type="image"] {
+		@include border-radius(4px);
+		@include text-shadow(1px 1px #300033);
+	}
+
+	input[type="text"] {
+		@include border-radius(3px);
+	}
+}

@@ -3,29 +3,29 @@
 
 @import url(custom_common.css);
 
-/* -------- Common color variables -------- */
+/* ---------- Common color variables ---------- */
 
 $bgColor: #DADADA;
 $textColor: #004461;
 $textShadowColor1: #FFF;
 $textShadowColor2: #333;
 
-/* -------- Dockbar color variables -------- */
+/* ---------- Dockbar color variables ---------- */
 
 $dockbarGradientEnd: #0F3F5F;
 $dockbarGradientStart: #3689AC;
 $dockbarOpenGradientEnd: #035679;
 $dockbarOpenGradientStart: #4F98B6;
 
-/* -------- Set compass defaults -------- */
+/* ---------- Set compass defaults ---------- */
 
 $default-box-shadow-blur-offset: 6px;
 $default-box-shadow-color: #999;
-$default-box-shadow-h-offset: 0px;
+$default-box-shadow-h-offset: 0;
 $default-box-shadow-spread: 1px;
 $default-box-shadow-v-offset: 1px;
 
-/* -------- Global -------- */
+/* ---------- Global ---------- */
 
 .aui {
 	a {
@@ -88,7 +88,7 @@ $default-box-shadow-v-offset: 1px;
 		}
 	}
 
-	/* -------- Wrapper -------- */
+	/* ---------- Wrapper ---------- */
 
 	#wrapper {
 		background: #FFF url(../images/custom/header_bg.png) no-repeat 0 0;
@@ -104,7 +104,7 @@ $default-box-shadow-v-offset: 1px;
 		}
 	}
 
-	/* -------- Sign-In -------- */
+	/* ---------- Sign-In ---------- */
 
 	#sign-in {
 		color: #FFF;
@@ -115,7 +115,7 @@ $default-box-shadow-v-offset: 1px;
 		top: 5px;
 	}
 
-	/* -------- Heading -------- */
+	/* ---------- Heading ---------- */
 
 	#banner #heading {
 		h1 {
@@ -138,7 +138,7 @@ $default-box-shadow-v-offset: 1px;
 		}
 	}
 
-	/* -------- Navigation -------- */
+	/* ---------- Navigation ---------- */
 
 	#navigation {
 		background: url(../images/custom/nav_bg.png) no-repeat 0 0;
@@ -200,11 +200,11 @@ $default-box-shadow-v-offset: 1px;
 		z-index: 300;
 
 		&:hover {
-			color: #FF3333;
+			color: #F33;
 		}
 	}
 
-	/* -------- Content -------- */
+	/* ---------- Content ---------- */
 
 	#content {
 		background: url(../images/custom/content_bg.png) repeat-x 0 285px;
@@ -329,11 +329,13 @@ $default-box-shadow-v-offset: 1px;
 		}
 	}
 
-	/* -------- Footer -------- */
+	/* ---------- Footer ---------- */
 
 	#footer {
 		background: url(../images/custom/footer_bg.png) repeat-x 0 0;
+		margin: -2px auto 0;
 		padding: 30px 0;
+		width: 1200px;
 
 		p {
 			background: url(../images/custom/footer_logo.png) no-repeat 0 0;
@@ -347,7 +349,7 @@ $default-box-shadow-v-offset: 1px;
 		}
 	}
 
-	/* -------- Portlet max -------- */
+	/* ---------- Portlet max ---------- */
 
 	.columns-max {
 		.portlet span {
@@ -380,7 +382,7 @@ $default-box-shadow-v-offset: 1px;
 		}
 	}
 
-	/* -------- Custom classes -------- */
+	/* ---------- Custom classes ---------- */
 
 	.left {
 		float: left;
@@ -390,7 +392,7 @@ $default-box-shadow-v-offset: 1px;
 		float: right;
 	}
 
-	/* -------- Web content -------- */
+	/* ---------- Web content ---------- */
 
 	.pod {
 		background: url(../images/custom/home_pod.png) no-repeat 0 0;
@@ -474,7 +476,11 @@ $default-box-shadow-v-offset: 1px;
 		}
 	}
 
-	/* -------- Columns -------- */
+	.portlet-boundary {
+		margin-bottom: 20px;
+	}
+
+	/* ---------- Columns ---------- */
 
 	.column-text {
 		margin-top: 33px;
@@ -515,7 +521,7 @@ $default-box-shadow-v-offset: 1px;
 		}
 	}
 
-	/* -------- Internet explorer -------- */
+	/* ---------- Internet explorer ---------- */
 
 	.ie6 {
 		#banner #heading .logo.default-logo {
@@ -662,14 +668,37 @@ $default-box-shadow-v-offset: 1px;
 		}
 	}
 
-	/* -------- Hidden accessible -------- */
+	/* ---------- Theme modules ---------- */
+
+	.banner {
+		background-color: #FAFAFA;
+
+		@include box-shadow(0 1px 1px #E7E7E7);
+		@include box-sizing(border-box);
+
+		float: left;
+		padding: 30px;
+		width: 100%;
+
+		.banner-button {
+			width: 30%;
+		}
+
+		.banner-button, .banner-message {
+			display: table-cell;
+			text-align: center;
+			vertical-align: middle;
+		}
+	}
+
+	/* ---------- Hidden accessible ---------- */
 
 	#breadcrumbs, #heading .page-title, #navigation h1, #skip-to-content {
 		clip: rect(0 0 0 0);
 		position: absolute;
 	}
 
-	/* -------- Extras -------- */
+	/* ---------- Extras ---------- */
 
 	a, a:link, a:visited, p, #navigation ul, .columns-max .portlet-topper-toolbar, .ie8 .pod.button span.description, .innovation-title, .pod {
 		@include single-text-shadow($textShadowColor1, 1px, 1px, 1px);
@@ -726,6 +755,17 @@ $default-box-shadow-v-offset: 1px;
 
 		&:hover {
 			@include box-shadow(0 1px 1px -1px #000);
+		}
+	}
+
+	/* ---------- Media queries ---------- */
+
+	@media (max-width: 979px) {
+		.banner {
+			.banner-button, .banner-message {
+				display: block;
+				width: 100%;
+			}
 		}
 	}
 }

@@ -1,0 +1,23 @@
+<script>
+	AUI().use(
+	  	'aui-rating',
+	 	function(Y) {
+	    	new Y.StarRating (
+	      		{
+	        		boundingBox: '#myRating'
+	     		 }
+	    	).render();
+	  	}
+	);
+</script> 
+
+<h2> Page Rating </h2> 
+	<div id="myRating">
+		<input type="radio" value="1" title="Amazingly Atrocious" />
+	  	<input type="radio" value="2" title="Brutally Bad" />
+	  	<input type="radio" value="3" title="Conceivably Cruddy" />
+	  	<input type="radio" value="4" title="Definitely Decent" />
+		<input type="radio" value="5" title="Exceeded Expectations" />
+		<input type="radio" value="6" title="Flippin' Fantastic" />
+		<input type="radio" value="7" title="God-authored Good" />
+	</div>

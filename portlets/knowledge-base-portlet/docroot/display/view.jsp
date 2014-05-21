@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -24,14 +24,15 @@
 
 <liferay-ui:search-container
 	searchContainer="<%= new KBArticleSearch(renderRequest, iteratorURL) %>"
-	total="<%= KBArticleServiceUtil.getSiblingKBArticlesCount(scopeGroupId, KBArticleConstants.DEFAULT_PARENT_RESOURCE_PRIM_KEY, WorkflowConstants.STATUS_APPROVED) %>"
+	total="<%= KBArticleServiceUtil.getKBArticlesCount(scopeGroupId, KBArticleConstants.DEFAULT_PARENT_RESOURCE_PRIM_KEY, WorkflowConstants.STATUS_APPROVED) %>"
 >
 	<liferay-ui:search-container-results
-		results="<%= KBArticleServiceUtil.getSiblingKBArticles(scopeGroupId, KBArticleConstants.DEFAULT_PARENT_RESOURCE_PRIM_KEY, WorkflowConstants.STATUS_APPROVED, searchContainer.getStart(), searchContainer.getEnd(), searchContainer.getOrderByComparator()) %>"
+		results="<%= KBArticleServiceUtil.getKBArticles(scopeGroupId, KBArticleConstants.DEFAULT_PARENT_RESOURCE_PRIM_KEY, WorkflowConstants.STATUS_APPROVED, searchContainer.getStart(), searchContainer.getEnd(), searchContainer.getOrderByComparator()) %>"
 	/>
 
 	<liferay-ui:search-container-row
 		className="com.liferay.knowledgebase.model.KBArticle"
+		escapedModel="<%= true %>"
 		keyProperty="resourcePrimKey"
 		modelVar="kbArticle"
 	>
@@ -115,12 +116,7 @@
 
 	<aui:button-row cssClass="float-container">
 		<c:if test="<%= DisplayPermission.contains(permissionChecker, scopeGroupId, ActionKeys.ADD_KB_ARTICLE) && DisplayPermission.contains(permissionChecker, scopeGroupId, ActionKeys.ADMINISTRATOR) %>">
-			<liferay-portlet:renderURL var="addKBArticleURL">
-				<portlet:param name="mvcPath" value="/display/edit_article.jsp" />
-				<portlet:param name="redirect" value="<%= redirect %>" />
-			</liferay-portlet:renderURL>
-
-			<aui:button href="<%= addKBArticleURL %>" value="add-article" />
+			<liferay-util:include page="/admin/common/add_article_button.jsp" servletContext="<%= application %>" />
 		</c:if>
 
 		<c:if test="<%= DisplayPermission.contains(permissionChecker, scopeGroupId, ActionKeys.PERMISSIONS) && GroupPermissionUtil.contains(permissionChecker, scopeGroupId, ActionKeys.PERMISSIONS) %>">

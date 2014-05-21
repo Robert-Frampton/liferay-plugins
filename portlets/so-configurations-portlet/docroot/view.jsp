@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This file is part of Liferay Social Office. Liferay Social Office is free
  * software: you can redistribute it and/or modify it under the terms of the GNU
@@ -113,12 +113,6 @@ int roleUsersCount = UserLocalServiceUtil.getRoleUsersCount(role.getRoleId());
 	Group userGroup = user.getGroup();
 	%>
 
-	<liferay-portlet:actionURL portletName="<%= PortletKeys.SITE_REDIRECTOR %>" var="dashboardURL" windowState="<%= LiferayWindowState.NORMAL.toString() %>">
-		<portlet:param name="struts_action" value="/my_sites/view" />
-		<portlet:param name="groupId" value="<%= String.valueOf(userGroup.getGroupId()) %>" />
-		<portlet:param name="privateLayout" value="<%= Boolean.TRUE.toString() %>" />
-	</liferay-portlet:actionURL>
-
 	Liferay.provide(
 		window,
 		'<portlet:namespace />updateRole',
@@ -126,6 +120,12 @@ int roleUsersCount = UserLocalServiceUtil.getRoleUsersCount(role.getRoleId());
 			var A = AUI();
 
 			var addAllUsers = A.one('#addAllUsers input[type=checkbox]');
+
+			<liferay-portlet:actionURL portletName="<%= PortletKeys.SITE_REDIRECTOR %>" var="dashboardURL" windowState="<%= LiferayWindowState.NORMAL.toString() %>">
+				<portlet:param name="struts_action" value="/my_sites/view" />
+				<portlet:param name="groupId" value="<%= String.valueOf(userGroup.getGroupId()) %>" />
+				<portlet:param name="privateLayout" value="<%= Boolean.TRUE.toString() %>" />
+			</liferay-portlet:actionURL>
 
 			if (addAllUsers && addAllUsers.get('checked')) {
 				if (finished) {
@@ -136,8 +136,8 @@ int roleUsersCount = UserLocalServiceUtil.getRoleUsersCount(role.getRoleId());
 				}
 			}
 			else {
-				document.<portlet:namespace />fm.<portlet:namespace />addIds.value = Liferay.Util.listCheckedExcept(document.<portlet:namespace />fm, "<portlet:namespace />allRowIds");
-				document.<portlet:namespace />fm.<portlet:namespace />removeIds.value = Liferay.Util.listUncheckedExcept(document.<portlet:namespace />fm, "<portlet:namespace />allRowIds");
+				document.<portlet:namespace />fm.<portlet:namespace />addIds.value = Liferay.Util.listCheckedExcept(document.<portlet:namespace />fm, '<portlet:namespace />allRowIds');
+				document.<portlet:namespace />fm.<portlet:namespace />removeIds.value = Liferay.Util.listUncheckedExcept(document.<portlet:namespace />fm, '<portlet:namespace />allRowIds');
 
 				if (<%= tabs1.equals("users") %>) {
 					if (finished) {

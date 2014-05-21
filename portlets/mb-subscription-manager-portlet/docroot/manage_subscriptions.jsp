@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -126,12 +126,12 @@ MBCategory mbCategory = MBCategoryLocalServiceUtil.getMBCategory(mbCategoryId);
 		window,
 		'<portlet:namespace />subscribeUsers',
 		function() {
-			var userIds = Liferay.Util.listCheckedExcept(document.<portlet:namespace />fm, "<portlet:namespace />allRowIds");
+			var userIds = Liferay.Util.listCheckedExcept(document.<portlet:namespace />fm, '<portlet:namespace />allRowIds');
 
 			if (userIds) {
 				document.<portlet:namespace />fm.<portlet:namespace />userIds.value = userIds;
 
-				submitForm(document.<portlet:namespace />fm, "<portlet:actionURL name="subscribeUsers"><portlet:param name="redirect" value="<%= portletURL.toString() %>" /></portlet:actionURL>");
+				submitForm(document.<portlet:namespace />fm, '<portlet:actionURL name="subscribeUsers"><portlet:param name="redirect" value="<%= portletURL.toString() %>" /></portlet:actionURL>');
 			}
 		},
 		['liferay-util-list-fields']
@@ -141,12 +141,12 @@ MBCategory mbCategory = MBCategoryLocalServiceUtil.getMBCategory(mbCategoryId);
 		window,
 		'<portlet:namespace />unsubscribeUsers',
 		function() {
-			var userIds = Liferay.Util.listCheckedExcept(document.<portlet:namespace />fm, "<portlet:namespace />allRowIds");
+			var userIds = Liferay.Util.listCheckedExcept(document.<portlet:namespace />fm, '<portlet:namespace />allRowIds');
 
 			if (userIds) {
 				document.<portlet:namespace />fm.<portlet:namespace />userIds.value = userIds;
 
-				submitForm(document.<portlet:namespace />fm, "<portlet:actionURL name="unsubscribeUsers"><portlet:param name="redirect" value="<%= portletURL.toString() %>" /></portlet:actionURL>");
+				submitForm(document.<portlet:namespace />fm, '<portlet:actionURL name="unsubscribeUsers"><portlet:param name="redirect" value="<%= portletURL.toString() %>" /></portlet:actionURL>');
 			}
 		},
 		['liferay-util-list-fields']

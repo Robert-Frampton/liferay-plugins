@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -181,8 +181,8 @@ for (String importer : importers) {
 
 		dynamicQuery.setProjection(ProjectionFactoryUtil.distinct(ProjectionFactoryUtil.property("name")));
 
-		Criterion layout1Criterion = RestrictionsFactoryUtil.eq("description", "Page 1");
-		Criterion layout2Criterion = RestrictionsFactoryUtil.eq("description", "Page 2");
+		Criterion layout1Criterion = RestrictionsFactoryUtil.eq("description", "Page 1 - " + pluginPackage.getVersion());
+		Criterion layout2Criterion = RestrictionsFactoryUtil.eq("description", "Page 2 - " + pluginPackage.getVersion());
 
 		dynamicQuery.add(RestrictionsFactoryUtil.or(layout1Criterion, layout2Criterion));
 
