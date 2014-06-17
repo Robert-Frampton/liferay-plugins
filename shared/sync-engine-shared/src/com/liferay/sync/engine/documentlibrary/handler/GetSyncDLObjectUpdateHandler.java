@@ -43,7 +43,7 @@ import java.util.Map;
 /**
  * @author Shinn Lok
  */
-public class GetSyncDLObjectUpdateHandler extends BaseJSONHandler {
+public class GetSyncDLObjectUpdateHandler extends BaseSyncDLObjectHandler {
 
 	public GetSyncDLObjectUpdateHandler(Event event) {
 		super(event);
@@ -54,16 +54,11 @@ public class GetSyncDLObjectUpdateHandler extends BaseJSONHandler {
 
 		Path filePath = Paths.get(filePathName);
 
-		if (Files.exists(filePath)) {
-			if (syncFile.isFolder()) {
-				return;
-			}
+		if (Files.exists(filePath) &&
+			(syncFile.isFolder() ||
+			 !FileUtil.hasFileChanged(syncFile, filePath))) {
 
-			String checksum = FileUtil.getChecksum(filePath);
-
-			if (checksum.equals(syncFile.getChecksum())) {
-				return;
-			}
+			return;
 		}
 
 		syncFile.setFilePathName(filePathName);
@@ -258,18 +253,7 @@ public class GetSyncDLObjectUpdateHandler extends BaseJSONHandler {
 			return;
 		}
 
-		String sourceFileName = String.valueOf(sourceFilePath.getFileName());
-
-		if (!sourceFileName.equals(targetSyncFile.getName())) {
-			Path targetFilePath = sourceFilePath.resolveSibling(
-				targetSyncFile.getName());
-
-			Files.move(sourceFilePath, targetFilePath);
-
-			sourceSyncFile.setFilePathName(
-				FilePathNameUtil.getFilePathName(targetFilePath));
-			sourceSyncFile.setName(targetSyncFile.getName());
-		}
+		processFilePathChange(sourceSyncFile, targetSyncFile);
 
 		sourceSyncFile.setChangeLog(targetSyncFile.getChangeLog());
 		sourceSyncFile.setChecksum(targetSyncFile.getChecksum());
@@ -287,12 +271,8 @@ public class GetSyncDLObjectUpdateHandler extends BaseJSONHandler {
 
 		SyncFileService.update(sourceSyncFile);
 
-		if (Files.exists(sourceFilePath) && !targetSyncFile.isFolder()) {
-			String checksum = FileUtil.getChecksum(sourceFilePath);
-
-			if (checksum.equals(targetSyncFile.getChecksum())) {
-				return;
-			}
+		if (Files.exists(sourceFilePath) && !targetSyncFile.isFolder() &&
+			FileUtil.hasFileChanged(targetSyncFile, sourceFilePath)) {
 
 			downloadFile(
 				sourceSyncFile, sourceVersion,

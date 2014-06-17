@@ -81,7 +81,7 @@ public class SyncFileService {
 
 		parameters.put("changeLog", _VERSION_DEFAULT);
 		parameters.put("checksum", checksum);
-		parameters.put("description", name);
+		parameters.put("description", "");
 		parameters.put("filePath", filePath);
 		parameters.put("folderId", folderId);
 		parameters.put("mimeType", mimeType);
@@ -98,6 +98,7 @@ public class SyncFileService {
 			parameters.put("serviceContext.addGuestPermissions", true);
 		}
 
+		parameters.put("serviceContext.attributes.overwrite", true);
 		parameters.put("sourceFileName", name);
 		parameters.put("syncFile", syncFile);
 		parameters.put("title", name);
@@ -133,7 +134,7 @@ public class SyncFileService {
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 
-		parameters.put("description", name);
+		parameters.put("description", "");
 		parameters.put("name", name);
 		parameters.put("parentFolderId", parentFolderId);
 		parameters.put("repositoryId", repositoryId);
@@ -149,6 +150,7 @@ public class SyncFileService {
 			parameters.put("serviceContext.addGuestPermissions", true);
 		}
 
+		parameters.put("serviceContext.attributes.overwrite", true);
 		parameters.put("syncFile", syncFile);
 
 		AddFolderEvent addFolderEvent = new AddFolderEvent(
@@ -417,6 +419,19 @@ public class SyncFileService {
 	public static List<SyncFile> findSyncFiles(long syncAccountId) {
 		try {
 			return _syncFilePersistence.findBySyncAccountId(syncAccountId);
+		}
+		catch (SQLException sqle) {
+			if (_logger.isDebugEnabled()) {
+				_logger.debug(sqle.getMessage(), sqle);
+			}
+
+			return Collections.emptyList();
+		}
+	}
+
+	public static List<SyncFile> findSyncFiles(String filePathName) {
+		try {
+			return _syncFilePersistence.findByFilePathName(filePathName);
 		}
 		catch (SQLException sqle) {
 			if (_logger.isDebugEnabled()) {

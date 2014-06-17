@@ -382,11 +382,9 @@ public class KBArticleWrapper implements KBArticle, ModelWrapper<KBArticle> {
 	* Returns the user uuid of this k b article.
 	*
 	* @return the user uuid of this k b article
-	* @throws SystemException if a system exception occurred
 	*/
 	@Override
-	public java.lang.String getUserUuid()
-		throws com.liferay.portal.kernel.exception.SystemException {
+	public java.lang.String getUserUuid() {
 		return _kbArticle.getUserUuid();
 	}
 
@@ -764,11 +762,9 @@ public class KBArticleWrapper implements KBArticle, ModelWrapper<KBArticle> {
 	* Returns the status by user uuid of this k b article.
 	*
 	* @return the status by user uuid of this k b article
-	* @throws SystemException if a system exception occurred
 	*/
 	@Override
-	public java.lang.String getStatusByUserUuid()
-		throws com.liferay.portal.kernel.exception.SystemException {
+	public java.lang.String getStatusByUserUuid() {
 		return _kbArticle.getStatusByUserUuid();
 	}
 
@@ -1010,9 +1006,15 @@ public class KBArticleWrapper implements KBArticle, ModelWrapper<KBArticle> {
 	}
 
 	@Override
-	public void persist()
-		throws com.liferay.portal.kernel.exception.SystemException {
+	public void persist() {
 		_kbArticle.persist();
+	}
+
+	@Override
+	public java.util.List<java.lang.Long> getAncestorResourcePrimaryKeys()
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _kbArticle.getAncestorResourcePrimaryKeys();
 	}
 
 	@Override
@@ -1044,6 +1046,13 @@ public class KBArticleWrapper implements KBArticle, ModelWrapper<KBArticle> {
 	@Override
 	public long getClassPK() {
 		return _kbArticle.getClassPK();
+	}
+
+	@Override
+	public com.liferay.knowledgebase.model.KBArticle getParentKBArticle()
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _kbArticle.getParentKBArticle();
 	}
 
 	@Override

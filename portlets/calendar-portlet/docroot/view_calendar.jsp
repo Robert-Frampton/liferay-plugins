@@ -17,7 +17,7 @@
 <%@ include file="/init.jsp" %>
 
 <%
-String activeView = ParamUtil.getString(request, "activeView", defaultView);
+String activeView = ParamUtil.getString(request, "activeView", sessionClicksDefaultView);
 long date = ParamUtil.getLong(request, "date", System.currentTimeMillis());
 
 List<Calendar> groupCalendars = null;
@@ -34,7 +34,7 @@ if (userCalendarResource != null) {
 
 List<Calendar> otherCalendars = new ArrayList<Calendar>();
 
-long[] calendarIds = StringUtil.split(SessionClicks.get(request, "otherCalendars", StringPool.BLANK), 0L);
+long[] calendarIds = StringUtil.split(SessionClicks.get(request, "calendar-portlet-other-calendars", StringPool.BLANK), 0L);
 
 for (long calendarId : calendarIds) {
 	Calendar calendar = CalendarServiceUtil.fetchCalendar(calendarId);
@@ -140,8 +140,16 @@ boolean columnOptionsVisible = GetterUtil.getBoolean(SessionClicks.get(request, 
 					<portlet:param name="calendarBookingId" value="{calendarBookingId}" />
 					<portlet:param name="calendarId" value="{calendarId}" />
 					<portlet:param name="date" value="{date}" />
-					<portlet:param name="endTime" value="{endTime}" />
-					<portlet:param name="startTime" value="{startTime}" />
+					<portlet:param name="endTimeDay" value="{endTimeDay}" />
+					<portlet:param name="endTimeHour" value="{endTimeHour}" />
+					<portlet:param name="endTimeMinute" value="{endTimeMinute}" />
+					<portlet:param name="endTimeMonth" value="{endTimeMonth}" />
+					<portlet:param name="endTimeYear" value="{endTimeYear}" />
+					<portlet:param name="startTimeDay" value="{startTimeDay}" />
+					<portlet:param name="startTimeHour" value="{startTimeHour}" />
+					<portlet:param name="startTimeMinute" value="{startTimeMinute}" />
+					<portlet:param name="startTimeMonth" value="{startTimeMonth}" />
+					<portlet:param name="startTimeYear" value="{startTimeYear}" />
 					<portlet:param name="titleCurrentValue" value="{titleCurrentValue}" />
 				</portlet:renderURL>
 
@@ -242,7 +250,7 @@ boolean columnOptionsVisible = GetterUtil.getBoolean(SessionClicks.get(request, 
 
 						var calendarIds = A.Array.invoke(event.newVal, 'get', 'calendarId');
 
-						Liferay.Store('otherCalendars', calendarIds.join());
+						Liferay.Store('calendar-portlet-other-calendars', calendarIds.join());
 					},
 					'scheduler-calendar:visibleChange': function(event) {
 						syncCalendarsMap();
@@ -293,7 +301,7 @@ boolean columnOptionsVisible = GetterUtil.getBoolean(SessionClicks.get(request, 
 
 	A.each(
 		Liferay.CalendarUtil.availableCalendars,
-		function(item, index, collection) {
+		function(item, index) {
 			item.on(
 				{
 					'visibleChange': function(event) {

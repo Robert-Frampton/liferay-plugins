@@ -18,19 +18,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.liferay.sync.engine.documentlibrary.event.Event;
-import com.liferay.sync.engine.documentlibrary.event.GetFileEntrySyncDLObjectEvent;
 import com.liferay.sync.engine.model.SyncAccount;
 import com.liferay.sync.engine.model.SyncFile;
 import com.liferay.sync.engine.service.SyncAccountService;
 import com.liferay.sync.engine.service.SyncFileService;
-import com.liferay.sync.engine.util.FilePathNameUtil;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -88,11 +83,7 @@ public class BaseJSONHandler extends BaseHandler {
 		String exception = exceptionJsonNode.asText();
 
 		if (_logger.isDebugEnabled()) {
-			JsonNode messageJsonNode = responseJsonNode.get("message");
-
-			_logger.debug(
-				"Handling exception {} message {}", exception,
-				messageJsonNode.asText());
+			_logger.debug("Handling exception {}", exception);
 		}
 
 		if (exception.equals(
@@ -117,37 +108,6 @@ public class BaseJSONHandler extends BaseHandler {
 		}
 		else if (exception.equals(
 					"com.liferay.portlet.documentlibrary." +
-						"DuplicateFileException")) {
-
-			SyncFile syncFile = (SyncFile)getParameterValue("syncFile");
-
-			Path filePath = Paths.get(syncFile.getFilePathName());
-
-			String parentFilePathName = FilePathNameUtil.getFilePathName(
-				filePath.getParent());
-
-			SyncFile parentSyncFile = SyncFileService.fetchSyncFile(
-				parentFilePathName, getSyncAccountId());
-
-			Map<String, Object> parameters = new HashMap<String, Object>();
-
-			parameters.put("folderId", parentSyncFile.getTypePK());
-			parameters.put("groupId", parentSyncFile.getRepositoryId());
-			parameters.put("syncFile", syncFile);
-			parameters.put("title", syncFile.getName());
-
-			GetFileEntrySyncDLObjectEvent getFileEntrySyncDLObjectEvent =
-				new GetFileEntrySyncDLObjectEvent(
-					getSyncAccountId(), parameters);
-
-			getFileEntrySyncDLObjectEvent.run();
-
-			SyncFileService.updateFileSyncFile(
-				Paths.get(syncFile.getFilePathName()), getSyncAccountId(),
-				syncFile, true);
-		}
-		else if (exception.equals(
-					"com.liferay.portlet.documentlibrary." +
 						"NoSuchFileEntryException")) {
 
 			SyncFile syncFile = (SyncFile)getParameterValue("syncFile");
@@ -169,14 +129,8 @@ public class BaseJSONHandler extends BaseHandler {
 			SyncAccountService.update(syncAccount);
 		}
 		else if (exception.equals("java.lang.SecurityException")) {
-			JsonNode messageJsonNode = responseJsonNode.get("message");
-
-			String message = messageJsonNode.asText();
-
-			if (message.equals("Authenticated access required")) {
-				throw new HttpResponseException(
-					HttpStatus.SC_UNAUTHORIZED, message);
-			}
+			throw new HttpResponseException(
+				HttpStatus.SC_UNAUTHORIZED, "Authenticated access required");
 		}
 
 		return true;
