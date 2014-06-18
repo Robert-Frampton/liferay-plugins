@@ -270,11 +270,11 @@
 	function <portlet:namespace />compare() {
 		var url = 'http://bible.gospelcom.net/cgi-bin/bible?showfn=yes&passage=' + encodeURIComponent(A.one('#<portlet:namespace />passage').val());
 
-		var versionCheckboxes = A.all('input[name=<portlet:namespace />versionCheckbox]');
+		var versionCheckboxes = A.all('input[name=<portlet:namespace />version]');
 
 		A.each(
 			versionCheckboxes,
-			function(item, index, collection) {
+			function(item, index) {
 				if (item.attr('checked')) {
 					url += '&' + item.val() + '_version=yes';
 				}
@@ -323,7 +323,7 @@
 		if (startRestrict.attr('selectedIndex') > endRestrict.attr('selectedIndex')) {
 			A.each(
 				endRestrict.all('option'),
-				function(item, index, collection) {
+				function(item, index) {
 					if (item.val() == text) {
 						endRestrict.attr('selectedIndex', index);
 					}
@@ -346,7 +346,7 @@
 		else if (startRestrict.attr('selectedIndex') > endRestrict.attr('selectedIndex')) {
 			A.each(
 				endRestrict.all('option'),
-				function(item, index, collection) {
+				function(item, index) {
 					if (item.val() == text) {
 						startRestrict.attr('selectedIndex', index);
 					}

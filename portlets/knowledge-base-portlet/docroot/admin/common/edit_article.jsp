@@ -76,7 +76,7 @@ String dirName = ParamUtil.getString(request, "dirName");
 	<aui:fieldset>
 		<aui:input name="title" />
 
-		<aui:input disabled="<%= kbArticle != null %>" name="urlTitle" />
+		<aui:input disabled="<%= kbArticle != null %>" label="friendly-url" name="urlTitle" />
 
 		<aui:field-wrapper label="content">
 			<liferay-ui:input-editor width="100%" />
@@ -96,7 +96,7 @@ String dirName = ParamUtil.getString(request, "dirName");
 			</div>
 		</aui:field-wrapper>
 
-		<c:if test="<%= Validator.isNotNull(PortletPropsValues.ADMIN_KB_ARTICLE_SECTIONS) || (parentResourcePrimKey == KBArticleConstants.DEFAULT_PARENT_RESOURCE_PRIM_KEY) %>">
+		<c:if test="<%= ArrayUtil.isNotEmpty(PortletPropsValues.ADMIN_KB_ARTICLE_SECTIONS) && (parentResourcePrimKey == KBArticleConstants.DEFAULT_PARENT_RESOURCE_PRIM_KEY) %>">
 			<aui:model-context bean="<%= null %>" model="<%= KBArticle.class %>" />
 
 			<aui:select ignoreRequestValue="<%= true %>" multiple="<%= true %>" name="sections">
