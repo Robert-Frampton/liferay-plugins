@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,6 +18,7 @@ import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.model.Group;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Dennis Ju
@@ -33,12 +34,9 @@ public class SyncContext {
 		return _portalBuildNumber;
 	}
 
-	public String getPortalEELicenseDigest() {
-		return _portalEELicenseDigest;
-	}
-
-	public String getSocialOfficeEELicenseDigest() {
-		return _socialOfficeEELicenseDigest;
+	@JSON
+	public Map<String, String> getPortletPreferencesMap() {
+		return _portletPreferencesMap;
 	}
 
 	public long getUserId() {
@@ -62,14 +60,10 @@ public class SyncContext {
 		_portalBuildNumber = portalBuildNumber;
 	}
 
-	public void setPortalEELicenseDigest(String portalEELicenseDigest) {
-		_portalEELicenseDigest = portalEELicenseDigest;
-	}
+	public void setPortletPreferencesMap(
+		Map<String, String> portletPreferencesMap) {
 
-	public void setSocialOfficeEELicenseDigest(
-		String socialOfficeEELicenseDigest) {
-
-		_socialOfficeEELicenseDigest = socialOfficeEELicenseDigest;
+		_portletPreferencesMap = portletPreferencesMap;
 	}
 
 	public void setSocialOfficeInstalled(boolean socialOfficeInstalled) {
@@ -86,8 +80,7 @@ public class SyncContext {
 
 	private String _pluginVersion;
 	private int _portalBuildNumber;
-	private String _portalEELicenseDigest;
-	private String _socialOfficeEELicenseDigest;
+	private Map<String, String> _portletPreferencesMap;
 	private boolean _socialOfficeInstalled;
 	private long _userId;
 	private List<Group> _userSitesGroups;

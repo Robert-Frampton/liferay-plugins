@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -403,6 +403,7 @@ public class CalendarICalDataHandler implements CalendarDataHandler {
 
 		serviceContext.setAddGroupPermissions(true);
 		serviceContext.setAddGuestPermissions(true);
+		serviceContext.setAttribute("sendNotification", Boolean.FALSE);
 		serviceContext.setScopeGroupId(calendar.getGroupId());
 
 		if (calendarBooking == null) {

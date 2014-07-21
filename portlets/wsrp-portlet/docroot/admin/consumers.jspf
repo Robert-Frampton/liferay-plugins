@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -17,12 +17,12 @@
 <liferay-ui:error key="restartConsumer" message="the-consumer-is-not-available" />
 <liferay-ui:error key="updateServiceDescription" message="unable-to-update-the-service-description" />
 
-<portlet:renderURL var="addConsumerURL">
-	<portlet:param name="mvcPath" value="/admin/edit_consumer.jsp" />
-	<portlet:param name="redirect" value="<%= currentURL %>" />
-</portlet:renderURL>
-
 <aui:button-row>
+	<portlet:renderURL var="addConsumerURL">
+		<portlet:param name="mvcPath" value="/admin/edit_consumer.jsp" />
+		<portlet:param name="redirect" value="<%= currentURL %>" />
+	</portlet:renderURL>
+
 	<aui:button href="<%= addConsumerURL %>" value="add-consumer" />
 </aui:button-row>
 

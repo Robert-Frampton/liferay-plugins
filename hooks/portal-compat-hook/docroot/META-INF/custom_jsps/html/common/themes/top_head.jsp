@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -207,5 +207,13 @@ StringBundler pageTopSB = OutputTag.getData(request, WebKeys.PAGE_TOP);
 </c:if>
 
 <%!
+private String _escapeCssBlock(String css) {
+	return StringUtil.replace(
+		css,
+		new String[] {"<", "expression("},
+		new String[] {"\\3c", ""}
+	);
+}
+
 private static Log _log = LogFactoryUtil.getLog("portal-web.docroot.html.common.themes.top_head_jsp");
 %>

@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This file is part of Liferay Social Office. Liferay Social Office is free
  * software: you can redistribute it and/or modify it under the terms of the GNU
@@ -20,7 +20,7 @@
 <%@ include file="/init.jsp" %>
 
 <%
-String tabs1 = ParamUtil.getString(request, "tabs1", "user-groups");
+String tabs2 = ParamUtil.getString(request, "tabs2", "user-groups");
 
 String keywords = ParamUtil.getString(request, "keywords");
 String searchFilter = ParamUtil.getString(request, "searchFilter");
@@ -31,7 +31,7 @@ RowChecker userGroupRoleChecker = (RowChecker)InstanceFactory.newInstance(Portal
 %>
 
 <liferay-portlet:renderURL varImpl="portletURL">
-	<portlet:param name="tabs1" value="<%= tabs1 %>" />
+	<portlet:param name="tabs2" value="<%= tabs2 %>" />
 	<portlet:param name="searchFilter" value="<%= searchFilter %>" />
 </liferay-portlet:renderURL>
 

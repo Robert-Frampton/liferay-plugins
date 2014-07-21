@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This file is part of Liferay Social Office. Liferay Social Office is free
  * software: you can redistribute it and/or modify it under the terms of the GNU
@@ -29,14 +29,13 @@
 			String taskHREF = null;
 
 			if (TasksEntryPermission.contains(permissionChecker, tasksEntry, ActionKeys.UPDATE)) {
-				PortletURL portletURL = renderResponse.createRenderURL();
+				LiferayPortletURL liferayPortletURL = liferayPortletResponse.createLiferayPortletURL(PortletKeys.TASKS, PortletRequest.RENDER_PHASE);
 
-				portletURL.setWindowState(LiferayWindowState.EXCLUSIVE);
+				liferayPortletURL.setParameter("mvcPath", "/tasks/view_task.jsp");
+				liferayPortletURL.setParameter("tasksEntryId", String.valueOf(tasksEntry.getTasksEntryId()));
+				liferayPortletURL.setWindowState(LiferayWindowState.POP_UP);
 
-				portletURL.setParameter("mvcPath", "/tasks/view_task.jsp");
-				portletURL.setParameter("tasksEntryId", String.valueOf(tasksEntry.getTasksEntryId()));
-
-				taskHREF = portletURL.toString();
+				taskHREF = liferayPortletURL.toString();
 			}
 
 			String cssClass = "tasks-title";
