@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -104,6 +104,18 @@ if (row != null) {
 				image="desktop"
 				message="start-meeting-with-recording"
 				url="<%= startMeetingWithRecordingURL %>"
+			/>
+		</c:if>
+
+		<c:if test="<%= bbbMeeting.getStatus() == BBBMeetingConstants.STATUS_IN_PROGRESS %>">
+			<portlet:actionURL name="joinBBBMeeting" var="joinMeetingURL">
+				<portlet:param name="bbbMeetingId" value="<%= String.valueOf(bbbMeeting.getBbbMeetingId()) %>" />
+			</portlet:actionURL>
+
+			<liferay-ui:icon
+				image="conversation"
+				message="join-meeting"
+				url="<%= joinMeetingURL %>"
 			/>
 		</c:if>
 	</c:if>

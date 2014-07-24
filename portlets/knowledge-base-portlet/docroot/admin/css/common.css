@@ -67,6 +67,10 @@
 
 	/* ---------- Portlet ---------- */
 
+	.kb-add-article-button {
+		font-weight: normal;
+	}
+
 	.kb-article-breadcrumbs {
 		margin: 0 5px 10px;
 	}
@@ -82,7 +86,7 @@
 		}
 	}
 
-	.kb-article-siblings {
+	.kb-article-child {
 		border: 1px solid #CCC;
 		margin: 15px -7px 0;
 

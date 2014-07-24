@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -173,12 +173,12 @@ String successURL = portletPreferences.getValue("successURL", StringPool.BLANK);
 					String fieldValidationErrorMessage = portletPreferences.getValue("fieldValidationErrorMessage" + i, StringPool.BLANK);
 				%>
 
-					var key = "<%= fieldName %>";
+					var key = '<%= fieldName %>';
 
 					keys[<%= i %>] = key;
 
-					fieldLabels[key] = "<%= HtmlUtil.escape(fieldLabel) %>";
-					fieldValidationErrorMessages[key] = "<%= fieldValidationErrorMessage %>";
+					fieldLabels[key] = '<%= HtmlUtil.escape(fieldLabel) %>';
+					fieldValidationErrorMessages[key] = '<%= fieldValidationErrorMessage %>';
 
 					function fieldValidationFunction<%= i %>(currentFieldValue, fieldsMap) {
 						<c:choose>

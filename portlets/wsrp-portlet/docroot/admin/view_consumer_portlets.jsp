@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -29,13 +29,13 @@ portletURL.setParameter("mvcPath", "/admin/view_consumer_portlets.jsp");
 portletURL.setParameter("wsrpConsumerId", String.valueOf(wsrpConsumerId));
 %>
 
-<portlet:renderURL var="addPortletURL">
-	<portlet:param name="mvcPath" value="/admin/edit_consumer_portlet.jsp" />
-	<portlet:param name="redirect" value="<%= currentURL %>" />
-	<portlet:param name="wsrpConsumerId" value="<%= String.valueOf(wsrpConsumer.getWsrpConsumerId()) %>" />
-</portlet:renderURL>
-
 <aui:button-row>
+	<portlet:renderURL var="addPortletURL">
+		<portlet:param name="mvcPath" value="/admin/edit_consumer_portlet.jsp" />
+		<portlet:param name="redirect" value="<%= currentURL %>" />
+		<portlet:param name="wsrpConsumerId" value="<%= String.valueOf(wsrpConsumer.getWsrpConsumerId()) %>" />
+	</portlet:renderURL>
+
 	<aui:button href="<%= addPortletURL %>" value="add-portlet" />
 </aui:button-row>
 

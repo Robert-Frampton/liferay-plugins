@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -94,10 +94,6 @@ public class DLActivityInterpreter extends SOSocialActivityInterpreter {
 
 		if (activitySet.getType() ==
 				SocialActivityKeyConstants.DL_UPDATE_FILE_ENTRY) {
-
-			if (!hasPermissions(activitySet, serviceContext)) {
-				return null;
-			}
 
 			return getBody(
 				activitySet.getClassName(), activitySet.getClassPK(),
@@ -215,8 +211,6 @@ public class DLActivityInterpreter extends SOSocialActivityInterpreter {
 			String title, ServiceContext serviceContext)
 		throws Exception {
 
-		int activityCount = activitySet.getActivityCount();
-
 		if (activitySet.getType() ==
 				SocialActivityKeyConstants.DL_UPDATE_FILE_ENTRY) {
 
@@ -224,11 +218,13 @@ public class DLActivityInterpreter extends SOSocialActivityInterpreter {
 				activitySet.getClassPK(), serviceContext);
 
 			if (Validator.isNotNull(folderLink)) {
-				return new Object[] {activityCount, folderLink};
+				return new Object[] {
+					activitySet.getActivityCount(), folderLink};
 			}
 		}
 
-		return new Object[] {activityCount};
+		return super.getTitleArguments(
+			groupName, activitySet, link, title, serviceContext);
 	}
 
 	@Override

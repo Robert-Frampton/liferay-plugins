@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,8 +14,8 @@
 
 package com.liferay.knowledgebase.hook.upgrade.v1_0_0;
 
+import com.liferay.compat.portal.kernel.upgrade.UpgradeProcess;
 import com.liferay.portal.kernel.dao.jdbc.DataAccess;
-import com.liferay.portal.kernel.upgrade.UpgradeProcess;
 import com.liferay.portal.kernel.util.StringBundler;
 
 import java.sql.Connection;
@@ -29,7 +29,9 @@ public class UpgradeRatingsStats extends UpgradeProcess {
 
 	@Override
 	protected void doUpgrade() throws Exception {
-		updateRatingsStats();
+		if (hasTable("KB_Article")) {
+			updateRatingsStats();
+		}
 	}
 
 	protected long getClassNameId(String className) throws Exception {
@@ -66,7 +68,8 @@ public class UpgradeRatingsStats extends UpgradeProcess {
 		try {
 			con = DataAccess.getConnection();
 
-			long classNameId = getClassNameId(_ARTICLE_CLASS_NAME);
+			long classNameId = getClassNameId(
+				"com.liferay.knowledgebase.model.Article");
 
 			ps = con.prepareStatement(
 				"select statsId, totalScore, averageScore from RatingsStats " +
@@ -95,8 +98,5 @@ public class UpgradeRatingsStats extends UpgradeProcess {
 			DataAccess.cleanUp(con, ps, rs);
 		}
 	}
-
-	private static final String _ARTICLE_CLASS_NAME =
-		"com.liferay.knowledgebase.model.Article";
 
 }

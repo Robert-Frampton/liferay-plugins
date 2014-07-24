@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -297,6 +297,14 @@ public class BBBParticipantLocalServiceWrapper
 			com.liferay.portal.kernel.exception.SystemException {
 		return _bbbParticipantLocalService.addBBBParticipant(userId, groupId,
 			bbbMeetingId, name, emailAddress, type, status, serviceContext);
+	}
+
+	@Override
+	public com.liferay.bbb.model.BBBParticipant fetchBBBParticipant(
+		long bbbMeetingId, java.lang.String emailAddress)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _bbbParticipantLocalService.fetchBBBParticipant(bbbMeetingId,
+			emailAddress);
 	}
 
 	@Override

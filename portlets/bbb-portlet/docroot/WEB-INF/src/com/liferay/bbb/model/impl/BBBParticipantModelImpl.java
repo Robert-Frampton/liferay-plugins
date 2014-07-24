@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -96,7 +96,8 @@ public class BBBParticipantModelImpl extends BaseModelImpl<BBBParticipant>
 				"value.object.column.bitmask.enabled.com.liferay.bbb.model.BBBParticipant"),
 			true);
 	public static long BBBMEETINGID_COLUMN_BITMASK = 1L;
-	public static long BBBPARTICIPANTID_COLUMN_BITMASK = 2L;
+	public static long EMAILADDRESS_COLUMN_BITMASK = 2L;
+	public static long BBBPARTICIPANTID_COLUMN_BITMASK = 4L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -422,7 +423,17 @@ public class BBBParticipantModelImpl extends BaseModelImpl<BBBParticipant>
 
 	@Override
 	public void setEmailAddress(String emailAddress) {
+		_columnBitmask |= EMAILADDRESS_COLUMN_BITMASK;
+
+		if (_originalEmailAddress == null) {
+			_originalEmailAddress = _emailAddress;
+		}
+
 		_emailAddress = emailAddress;
+	}
+
+	public String getOriginalEmailAddress() {
+		return GetterUtil.getString(_originalEmailAddress);
 	}
 
 	@JSON
@@ -545,6 +556,8 @@ public class BBBParticipantModelImpl extends BaseModelImpl<BBBParticipant>
 		bbbParticipantModelImpl._originalBbbMeetingId = bbbParticipantModelImpl._bbbMeetingId;
 
 		bbbParticipantModelImpl._setOriginalBbbMeetingId = false;
+
+		bbbParticipantModelImpl._originalEmailAddress = bbbParticipantModelImpl._emailAddress;
 
 		bbbParticipantModelImpl._columnBitmask = 0;
 	}
@@ -724,6 +737,7 @@ public class BBBParticipantModelImpl extends BaseModelImpl<BBBParticipant>
 	private boolean _setOriginalBbbMeetingId;
 	private String _name;
 	private String _emailAddress;
+	private String _originalEmailAddress;
 	private int _type;
 	private int _status;
 	private long _columnBitmask;

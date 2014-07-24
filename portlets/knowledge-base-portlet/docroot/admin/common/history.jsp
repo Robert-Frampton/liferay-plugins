@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -40,11 +40,6 @@ String orderByType = ParamUtil.getString(request, "orderByType", "desc");
 	<aui:input name="targetVersion" type="hidden" value="<%= targetVersion %>" />
 
 	<aui:fieldset>
-		<liferay-portlet:renderURL varImpl="iteratorURL">
-			<portlet:param name="mvcPath" value='<%= templatePath + "history.jsp" %>' />
-			<portlet:param name="resourcePrimKey" value="<%= String.valueOf(kbArticle.getResourcePrimKey()) %>" />
-			<portlet:param name="status" value="<%= String.valueOf(status) %>" />
-		</liferay-portlet:renderURL>
 
 		<%
 		RowChecker rowChecker = new RowChecker(renderResponse);
@@ -53,6 +48,12 @@ String orderByType = ParamUtil.getString(request, "orderByType", "desc");
 
 		int selStatus = KBArticlePermission.contains(permissionChecker, kbArticle, ActionKeys.UPDATE) ? WorkflowConstants.STATUS_ANY : status;
 		%>
+
+		<liferay-portlet:renderURL varImpl="iteratorURL">
+			<portlet:param name="mvcPath" value='<%= templatePath + "history.jsp" %>' />
+			<portlet:param name="resourcePrimKey" value="<%= String.valueOf(kbArticle.getResourcePrimKey()) %>" />
+			<portlet:param name="status" value="<%= String.valueOf(status) %>" />
+		</liferay-portlet:renderURL>
 
 		<liferay-ui:search-container
 			emptyResultsMessage="no-articles-were-found"
@@ -69,6 +70,7 @@ String orderByType = ParamUtil.getString(request, "orderByType", "desc");
 
 			<liferay-ui:search-container-row
 				className="com.liferay.knowledgebase.model.KBArticle"
+				escapedModel="<%= true %>"
 				keyProperty="version"
 				modelVar="curKBArticle"
 			>
@@ -170,7 +172,7 @@ String orderByType = ParamUtil.getString(request, "orderByType", "desc");
 
 			<div class="float-container kb-entity-header">
 				<div class="kb-title">
-					<%= AdminUtil.getKBArticleDiff(kbArticle.getResourcePrimKey(), sourceVersion, targetVersion, "title") %>
+					<%= HtmlUtil.escape(AdminUtil.getKBArticleDiff(kbArticle.getResourcePrimKey(), sourceVersion, targetVersion, "title")) %>
 				</div>
 
 				<div class="kb-tools">

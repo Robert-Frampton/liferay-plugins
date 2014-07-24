@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -175,7 +175,7 @@ public class AdminIndexer extends BaseIndexer {
 	@Override
 	protected void doReindex(String className, long classPK) throws Exception {
 		KBArticle kbArticle = KBArticleLocalServiceUtil.getLatestKBArticle(
-			classPK, WorkflowConstants.STATUS_APPROVED);
+			classPK, WorkflowConstants.STATUS_ANY);
 
 		reindexKBArticles(kbArticle);
 	}
@@ -197,7 +197,7 @@ public class AdminIndexer extends BaseIndexer {
 		// See KBArticlePermission#contains
 
 		List<KBArticle> kbArticles =
-			KBArticleLocalServiceUtil.getKBArticleAndAllDescendants(
+			KBArticleLocalServiceUtil.getKBArticleAndAllDescendantKBArticles(
 				kbArticle.getResourcePrimKey(),
 				WorkflowConstants.STATUS_APPROVED, null);
 

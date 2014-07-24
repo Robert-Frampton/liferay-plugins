@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -123,6 +123,9 @@ public class SyncDLObjectServiceUtil {
 			serviceContext);
 	}
 
+	/**
+	* @deprecated As of 7.0.0, with no direct replacement
+	*/
 	public static com.liferay.sync.model.SyncDLObjectUpdate getAllSyncDLObjects(
 		long repositoryId, long folderId)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -151,6 +154,14 @@ public class SyncDLObjectServiceUtil {
 		return getService().getFolderSyncDLObject(folderId);
 	}
 
+	public static com.liferay.sync.model.SyncDLObject getFolderSyncDLObject(
+		long repositoryId, long parentFolderId, java.lang.String name)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .getFolderSyncDLObject(repositoryId, parentFolderId, name);
+	}
+
 	public static java.util.List<com.liferay.sync.model.SyncDLObject> getFolderSyncDLObjects(
 		long repositoryId, long parentFolderId)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -165,8 +176,7 @@ public class SyncDLObjectServiceUtil {
 	}
 
 	public static long getLatestModifiedTime()
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException {
+		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().getLatestModifiedTime();
 	}
 

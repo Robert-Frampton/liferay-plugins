@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,13 +18,7 @@
 
 <%
 String tabs2 = ParamUtil.getString(request, "tabs2", "general");
-%>
 
-<liferay-portlet:renderURL portletConfiguration="true" var="portletURL">
-	<portlet:param name="tabs2" value="<%= tabs2 %>" />
-</liferay-portlet:renderURL>
-
-<%
 String tabs2Names = "general,display-settings";
 
 if (PortalUtil.isRSSFeedsEnabled()) {
@@ -32,15 +26,19 @@ if (PortalUtil.isRSSFeedsEnabled()) {
 }
 %>
 
+<liferay-portlet:actionURL portletConfiguration="true" var="configurationActionURL" />
+
+<liferay-portlet:renderURL portletConfiguration="true" var="configurationRenderURL">
+	<portlet:param name="tabs2" value="<%= tabs2 %>" />
+</liferay-portlet:renderURL>
+
 <liferay-ui:tabs
 	names="<%= tabs2Names %>"
 	param="tabs2"
-	url="<%= portletURL %>"
+	url="<%= configurationRenderURL %>"
 />
 
-<liferay-portlet:actionURL portletConfiguration="true" var="configurationURL" />
-
-<aui:form action="<%= configurationURL %>" method="post" name="fm">
+<aui:form action="<%= configurationActionURL %>" method="post" name="fm">
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
 	<aui:input name="tabs2" type="hidden" value="<%= tabs2 %>" />
 
@@ -128,6 +126,12 @@ if (PortalUtil.isRSSFeedsEnabled()) {
 				<aui:input label="show-comments" name="preferences--showKBArticleKBComments--" type="checkbox" value="<%= showKBArticleKBComments %>" />
 
 				<aui:input label="enable-view-count-increment" name="preferences--enableKBArticleViewCountIncrement--" type="checkbox" value="<%= enableKBArticleViewCountIncrement %>" />
+
+				<aui:input label="enable-subscriptions" name="preferences--enableKBArticleSubscriptions--" type="checkbox" value="<%= enableKBArticleSubscriptions %>" />
+
+				<aui:input label="enable-history" name="preferences--enableKBArticleHistory--" type="checkbox" value="<%= enableKBArticleHistory %>" />
+
+				<aui:input label="enable-print" name="preferences--enableKBArticlePrint--" type="checkbox" value="<%= enableKBArticlePrint %>" />
 			</c:when>
 			<c:when test='<%= tabs2.equals("rss") %>'>
 				<liferay-ui:rss-settings

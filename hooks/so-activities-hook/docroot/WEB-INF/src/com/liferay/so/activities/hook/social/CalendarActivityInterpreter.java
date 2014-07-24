@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -91,10 +91,6 @@ public class CalendarActivityInterpreter extends SOSocialActivityInterpreter {
 
 		if (activitySet.getType() ==
 				SocialActivityKeyConstants.CALENDAR_UPDATE_CALENDAR_BOOKING) {
-
-			if (!hasPermissions(activitySet, serviceContext)) {
-				return null;
-			}
 
 			return getBody(
 				activitySet.getClassName(), activitySet.getClassPK(),

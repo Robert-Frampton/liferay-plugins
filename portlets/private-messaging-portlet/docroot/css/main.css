@@ -1,4 +1,5 @@
 @import "compass";
+@import "mixins";
 
 .private-messaging-portlet {
 	.layout {
@@ -14,7 +15,7 @@
 	}
 
 	.lfr-search-container {
-		margin: 0;
+		margin: 0 0 0 -1px;
 	}
 
 	.controls {
@@ -23,12 +24,17 @@
 		padding: 5px 10px;
 
 		.check-all {
-			margin: 0 5px 0 0;
+			margin: 9px 6px 9px 0;
 		}
 	}
 
 	img.avatar {
 		width: 60px;
+	}
+
+	.body {
+		clear: right;
+		word-break: break-word;
 	}
 
 	.thread .message-container {
@@ -53,7 +59,12 @@
 	}
 
 	.message-body, .message-subject, .message-to {
-		width: 90%;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.message-body {
+		min-height: 100px;
 	}
 
 	input[type="file"] {
@@ -62,8 +73,10 @@
 		padding: 0;
 	}
 
-	.author-sender {
+	.author-sender, .name {
+		float: left;
 		font-weight: bold;
+		padding-right: 0.3em;
 	}
 
 	.message-link {
@@ -79,7 +92,9 @@
 		}
 
 		.subject {
+			clear: right;
 			color: #333;
+			word-break: break-word;
 		}
 	}
 
@@ -105,7 +120,7 @@
 		background: none;
 	}
 
-	/* Messages */
+	/* ---------- Messages ---------- */
 
 	.unread {
 		font-weight: bold;
@@ -115,7 +130,7 @@
 		}
 	}
 
-	/* Results */
+	/* ---------- Results ---------- */
 
 	.messages .table-data tr {
 		&:hover td, &:nth-child(odd) td, td {
@@ -141,16 +156,26 @@
 		margin-bottom: 0;
 	}
 
-	/* Thread */
+	/* ---------- Thread ---------- */
 
 	.thread {
 		.taglib-header {
 			border-top: 1px solid #C8C9CA;
 			margin-top: 0;
+			padding: 0 10px;
+
+			.header-title {
+				display: inline;
+
+				span {
+					white-space: normal;
+					word-break: break-all;
+				}
+			}
 		}
 
 		.body {
-			padding: 5px 60px 0 0;
+			margin-top: 5px;
 
 			.image-thumbnail {
 				float: left;
@@ -207,30 +232,6 @@
 	}
 }
 
-/* ---------- Responsive ---------- */
-
-html.aui {
-	@media (max-width: 979px) {
-		.private-messaging-portlet {
-			.btn-group, .button-holder {
-				width: auto;
-			}
-		}
-	}
-
-	@media (max-width: 767px) {
-		.private-messaging-portlet {
-			button, button:hover {
-				width: 100%;
-
-				&.close {
-					width: auto;
-				}
-			}
-		}
-	}
-}
-
 /* ---------- Extras ---------- */
 
 .private-messaging-portlet .controls {
@@ -241,5 +242,87 @@ html.aui {
 	.message-to {
 		position: relative;
 		z-index: 1;
+	}
+}
+
+/* ---------- Responsive ---------- */
+
+html.aui {
+	@include respond-to(phone, tablet) {
+		.private-messaging-portlet {
+			.btn-group, .button-holder {
+				width: auto;
+			}
+		}
+	}
+
+	@include respond-to(phone) {
+		.private-messaging-portlet {
+			.messages {
+				.button-holder{
+					padding-left: 51px;
+					position: relative;
+
+					.check-all {
+						height: 24px;
+						left: 16px;
+						margin-top: -12px;
+						position: absolute;
+						top: 50%;
+						width: 24px;
+					}
+				}
+
+				.table .first input {
+					height: 24px;
+					margin-left: 6px;
+					width: 24px;
+				}
+			}
+
+			button, button:hover {
+				margin-bottom: 5px;
+				width: 100%;
+
+				&.close {
+					width: auto;
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			.message-link {
+				padding-left: 10px;
+			}
+
+			.user-profile-image {
+				height: 45px;
+			}
+
+			.avatar {
+				width: 45px;
+			}
+
+			.author-sender, .date, .name {
+				float: none;
+			}
+
+			.date {
+				display: block;
+				font-size: 1em;
+				margin-top: 3px;
+			}
+
+			.subject {
+				margin-top: 10px;
+			}
+
+			.body {
+				clear: both;
+				margin-top: 10px;
+			}
+		}
 	}
 }

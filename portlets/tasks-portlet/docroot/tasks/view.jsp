@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This file is part of Liferay Social Office. Liferay Social Office is free
  * software: you can redistribute it and/or modify it under the terms of the GNU
@@ -35,7 +35,7 @@ portletURL.setParameter("tabs2", tabs2);
 
 <div class="control-wrapper">
 	<c:if test="<%= TasksPermission.contains(permissionChecker, themeDisplay.getScopeGroupId(), ActionKeys.ADD_ENTRY) %>">
-		<a class="add-task" href="javascript:;" onClick="Liferay.Tasks.displayPopup('<portlet:renderURL windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>"><portlet:param name="mvcPath" value="/tasks/edit_task.jsp" /></portlet:renderURL>', '<liferay-ui:message key="add-task" />');"><liferay-ui:message key="add-task" /></a>
+		<a class="add-task" href="javascript:;" onClick="Liferay.Tasks.displayPopup('<portlet:renderURL windowState="<%= LiferayWindowState.POP_UP.toString() %>"><portlet:param name="mvcPath" value="/tasks/edit_task.jsp" /></portlet:renderURL>', '<liferay-ui:message key="add-task" />');"><liferay-ui:message key="add-task" /></a>
 	</c:if>
 
 	<c:if test="<%= TasksPermission.contains(permissionChecker, themeDisplay.getScopeGroupId(), ActionKeys.PERMISSIONS) %>">

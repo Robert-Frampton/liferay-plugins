@@ -100,20 +100,27 @@ AUI.add(
 
 		var Editor = A.Component.create(
 			{
-				AUGMENTS: [Liferay.PortletBase],
-
 				ATTRS: {
 					baseRenderURL: {
 						validator: Lang.isString
 					},
+
 					editorGadgetURL: {},
+
 					gadgetPortletId: {},
+
 					gadgetServerBase: {},
+
 					publishGadgetPermission: {},
+
 					repositoryId: {},
+
 					resourceURL: {},
+
 					rootFolderId: {}
 				},
+
+				AUGMENTS: [Liferay.PortletBase],
 
 				NAME: 'gadget-editor',
 
@@ -524,7 +531,7 @@ AUI.add(
 
 							AArray.each(
 								data,
-								function(item, index, collection) {
+								function(item, index) {
 									var node = new A.TreeNodeEditor(
 										{
 											entryId: item.entryId,
@@ -829,7 +836,7 @@ AUI.add(
 									modal: true,
 									width: 600
 								},
-								title: 'Preview',
+								title: 'Preview'
 							}
 						);
 
@@ -957,7 +964,7 @@ AUI.add(
 
 									AArray.each(
 										children,
-										function(item, index, collection) {
+										function(item, index) {
 											if (item.isLeaf()) {
 												instance.fire(
 													EVENT_CLOSE_FILE_ENTRY,
@@ -1054,7 +1061,7 @@ AUI.add(
 						do {
 							duplicateLabel = AArray.some(
 								children,
-								function(item, index, collection) {
+								function(item, index) {
 									if (item.isLeaf() == leafNode && item.get(LABEL).toLowerCase() == label.toLowerCase()) {
 										i++;
 
@@ -1251,6 +1258,7 @@ AUI.add(
 						var previewButton = new A.Button(
 							{
 								icon: 'icon-eye-open',
+								label: Liferay.Language.get('preview'),
 								on: {
 									click: function(event) {
 										var entryId = instance._tabViewEditor.getSelectedTab().get(ENTRY_ID);
@@ -1262,8 +1270,7 @@ AUI.add(
 											}
 										);
 									}
-								},
-								label: Liferay.Language.get('preview')
+								}
 							}
 						);
 
@@ -1292,8 +1299,8 @@ AUI.add(
 						var searchEditorButton = new A.ToggleButton(
 							{
 								activeState: true,
-								label: Liferay.Language.get('search'),
 								icon: 'icon-search',
+								label: Liferay.Language.get('search'),
 								on: {
 									click: function(event) {
 										if (event.target.get('pressed')) {
@@ -1317,14 +1324,14 @@ AUI.add(
 										newFileEntryButton,
 										newFolderButton,
 										saveButton,
-										deleteButton,
+										deleteButton
 									],
 									[
 										previewButton
 									],
 									[
 										increaseFontSizeButton,
-										decreaseFontSizeButton,
+										decreaseFontSizeButton
 									],
 									[
 										searchEditorButton
@@ -1375,7 +1382,7 @@ AUI.add(
 									},
 									url: instance._getResourceURL(GET_FOLDER_CHILDREN)
 								},
-								publishGadgetPermission: instance.get('publishGadgetPermission'),
+								publishGadgetPermission: instance.get('publishGadgetPermission')
 							}
 						).render();
 
@@ -1676,6 +1683,16 @@ AUI.add(
 								label: Liferay.Language.get('yes'),
 								on: {
 									click: function(event) {
+										var node = args[2];
+
+										if (A.instanceOf(node, A.TreeNodeEditor)) {
+											var parentNode = node.get(PARENT_NODE);
+
+											if (parentNode) {
+												parentNode.select();
+											}
+										}
+
 										if (callback) {
 											callback.apply(instance, AArray(args, 2, true));
 										}
@@ -1742,8 +1759,8 @@ AUI.add(
 						var buttons = [
 							new A.Button(
 								{
-									label: Liferay.Language.get('find'),
 									icon: 'icon-search',
+									label: Liferay.Language.get('find'),
 									on: {
 										click: function(event) {
 											var tab = instance._tabViewEditor.getSelectedTab();
@@ -1752,13 +1769,13 @@ AUI.add(
 
 											tab.searchEditorText(searchText, false);
 										}
-									},
+									}
 								}
 							),
 							new A.Button(
 								{
-									label: Liferay.Language.get('replace'),
 									icon: 'icon-random',
+									label: Liferay.Language.get('replace'),
 									on: {
 										click: function(event) {
 											var tab = instance._tabViewEditor.getSelectedTab();
@@ -1774,8 +1791,8 @@ AUI.add(
 							),
 							new A.Button(
 								{
-									label: Liferay.Language.get('close'),
 									icon: 'icon-remove',
+									label: Liferay.Language.get('close'),
 									on: {
 										click: function(event) {
 											instance._closeSearchDialog();
@@ -1816,7 +1833,7 @@ AUI.add(
 								}
 							}
 						);
-					},
+					}
 				}
 			}
 		);

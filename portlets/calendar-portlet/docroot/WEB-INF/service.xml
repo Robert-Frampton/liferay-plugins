@@ -145,6 +145,7 @@
 
 		<!-- References -->
 
+		<reference package-path="com.liferay.portal" entity="ClassName" />
 		<reference package-path="com.liferay.portal" entity="Group" />
 		<reference package-path="com.liferay.portal" entity="ResourceAction" />
 		<reference package-path="com.liferay.portal" entity="ResourceBlock" />
@@ -267,6 +268,7 @@
 
 		<!-- References -->
 
+		<reference package-path="com.liferay.portal" entity="ClassName" />
 		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
 	</entity>
 	<exceptions>
