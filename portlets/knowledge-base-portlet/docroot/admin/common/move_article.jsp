@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -29,6 +29,7 @@ double priority = BeanParamUtil.getDouble(kbArticle, request, "priority");
 
 <liferay-ui:header
 	backURL="<%= redirect %>"
+	localizeTitle="<%= false %>"
 	title="<%= kbArticle.getTitle() %>"
 />
 
@@ -69,6 +70,6 @@ double priority = BeanParamUtil.getDouble(kbArticle, request, "priority");
 <aui:script>
 	function <portlet:namespace />selectKBArticle(parentResourcePrimKey, html) {
 		document.<portlet:namespace />fm.<portlet:namespace />parentResourcePrimKey.value = parentResourcePrimKey;
-		document.getElementById("<portlet:namespace />newParent").innerHTML = html;
+		document.getElementById('<portlet:namespace />newParent').innerHTML = html;
 	}
 </aui:script>

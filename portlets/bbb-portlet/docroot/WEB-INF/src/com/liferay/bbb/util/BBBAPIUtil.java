@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -35,6 +35,7 @@ import com.liferay.portal.kernel.xml.DocumentException;
 import com.liferay.portal.kernel.xml.Element;
 import com.liferay.portal.kernel.xml.SAXReaderUtil;
 import com.liferay.portal.service.ServiceContext;
+import com.liferay.util.ContentUtil;
 
 import java.io.IOException;
 
@@ -245,14 +246,11 @@ public class BBBAPIUtil {
 			return bbbMeeting;
 		}
 
-		StringBundler sb = new StringBundler(11);
+		StringBundler sb = new StringBundler(15);
 
 		sb.append(BBBConstants.API_PARAMETER_MEETING_ID);
 		sb.append(StringPool.EQUAL);
-		bbbMeeting.setBbbServerId(getBbbServerId());
-
 		sb.append(bbbMeeting.getBbbMeetingId());
-
 		sb.append(StringPool.AMPERSAND);
 		sb.append(BBBConstants.API_PARAMETER_NAME);
 		sb.append(StringPool.EQUAL);
@@ -264,6 +262,17 @@ public class BBBAPIUtil {
 			sb.append(StringPool.EQUAL);
 			sb.append(StringPool.TRUE);
 		}
+
+		sb.append(StringPool.AMPERSAND);
+		sb.append(BBBConstants.API_PARAMETER_WELCOME);
+		sb.append(StringPool.EQUAL);
+
+		String welcomeMessage = ContentUtil.get(
+			"com/liferay/bbb/dependencies/meeting_welcome_message.tmpl");
+
+		sb.append(HtmlUtil.escapeURL(welcomeMessage));
+
+		bbbMeeting.setBbbServerId(getBbbServerId());
 
 		Document document = execute(
 			bbbMeeting, BBBConstants.API_METHOD_CREATE, sb.toString());

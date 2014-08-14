@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -53,7 +53,7 @@ if (DLStoreUtil.hasDirectory(company.getCompanyId(), CompanyConstants.SYSTEM, di
 		fileMaxSize /= 1024;
 		%>
 
-		<liferay-ui:message arguments="<%= fileMaxSize %>" key="please-enter-a-file-with-a-valid-file-size-no-larger-than-x" />
+		<liferay-ui:message arguments="<%= fileMaxSize %>" key="please-enter-a-file-with-a-valid-file-size-no-larger-than-x" translateArguments="<%= false %>" />
 	</liferay-ui:error>
 
 	<aui:fieldset>
@@ -72,14 +72,14 @@ if (DLStoreUtil.hasDirectory(company.getCompanyId(), CompanyConstants.SYSTEM, di
 				modelVar="fileName"
 				stringKey="<%= true %>"
 			>
-				<liferay-portlet:resourceURL id="attachment" var="rowURL">
-					<portlet:param name="resourcePrimKey" value="<%= String.valueOf(resourcePrimKey) %>" />
-					<portlet:param name="fileName" value="<%= fileName %>" />
-				</liferay-portlet:resourceURL>
-
 				<liferay-ui:search-container-column-text
 					name="attachment"
 				>
+					<liferay-portlet:resourceURL id="attachment" var="rowURL">
+						<portlet:param name="resourcePrimKey" value="<%= String.valueOf(resourcePrimKey) %>" />
+						<portlet:param name="fileName" value="<%= fileName %>" />
+					</liferay-portlet:resourceURL>
+
 					<liferay-ui:icon
 						image="clip"
 						label="<%= true %>"
@@ -121,7 +121,7 @@ if (DLStoreUtil.hasDirectory(company.getCompanyId(), CompanyConstants.SYSTEM, di
 
 <aui:script>
 	function <portlet:namespace />addAttachment() {
-		document.<portlet:namespace />fm.encoding = "<%= ContentTypes.MULTIPART_FORM_DATA %>";
+		document.<portlet:namespace />fm.encoding = '<%= ContentTypes.MULTIPART_FORM_DATA %>';
 		submitForm(document.<portlet:namespace />fm, '<liferay-portlet:actionURL name="addAttachment"><portlet:param name="mvcPath" value='<%= templatePath + "select_attachments.jsp" %>' /><portlet:param name="redirect" value="<%= redirect %>" /><portlet:param name="resourcePrimKey" value="<%= String.valueOf(resourcePrimKey) %>" /><portlet:param name="status" value="<%= String.valueOf(WorkflowConstants.STATUS_ANY) %>" /><portlet:param name="dirName" value="<%= dirName %>" /></liferay-portlet:actionURL>');
 	}
 
@@ -130,5 +130,5 @@ if (DLStoreUtil.hasDirectory(company.getCompanyId(), CompanyConstants.SYSTEM, di
 		submitForm(document.<portlet:namespace />fm, '<liferay-portlet:actionURL name="deleteAttachment"><portlet:param name="mvcPath" value='<%= templatePath + "select_attachments.jsp" %>' /><portlet:param name="redirect" value="<%= redirect %>" /><portlet:param name="resourcePrimKey" value="<%= String.valueOf(resourcePrimKey) %>" /><portlet:param name="status" value="<%= String.valueOf(WorkflowConstants.STATUS_ANY) %>" /><portlet:param name="dirName" value="<%= dirName %>" /></liferay-portlet:actionURL>');
 	}
 
-	opener.<portlet:namespace />updateAttachments("<%= UnicodeFormatter.toString(dirName) %>", "<%= UnicodeFormatter.toString(html) %>");
+	opener.<portlet:namespace />updateAttachments('<%= UnicodeFormatter.toString(dirName) %>', '<%= UnicodeFormatter.toString(html) %>');
 </aui:script>

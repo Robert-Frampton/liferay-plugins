@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This file is part of Liferay Social Office. Liferay Social Office is free
  * software: you can redistribute it and/or modify it under the terms of the GNU
@@ -22,7 +22,7 @@
 <%
 boolean readEntries = ParamUtil.getBoolean(request, "readEntries", true);
 
-int flagValue = AnnouncementsFlagConstants.NOT_HIDDEN;;
+int flagValue = AnnouncementsFlagConstants.NOT_HIDDEN;
 
 if (readEntries) {
 	flagValue = AnnouncementsFlagConstants.HIDDEN;
@@ -87,7 +87,7 @@ List<AnnouncementsEntry> results = AnnouncementsEntryLocalServiceUtil.getEntries
 				boolean expanded = ParamUtil.getBoolean(request, "expanded");
 				%>
 
-				<div class="content aui-toggler-content aui-toggler-content-<%= expanded ? "expanded" : "collapsed" %>">
+				<div class="content toggler-content toggler-content-<%= expanded ? "expanded" : "collapsed" %>">
 					<%@ include file="/entry_iterator.jspf" %>
 				</div>
 

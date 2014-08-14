@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -32,26 +32,32 @@ public class KBTemplateSearchDisplayImpl implements KBTemplateSearchDisplay {
 		_curStartValues = curStartValues;
 	}
 
+	@Override
 	public int[] getCurStartValues() {
 		return _curStartValues;
 	}
 
+	@Override
 	public List<KBTemplate> getResults() {
 		return _results;
 	}
 
+	@Override
 	public int getTotal() {
 		return _total;
 	}
 
+	@Override
 	public void setCurStartValues(int[] curStartValues) {
 		_curStartValues = curStartValues;
 	}
 
+	@Override
 	public void setResults(List<KBTemplate> results) {
 		_results = results;
 	}
 
+	@Override
 	public void setTotal(int total) {
 		_total = total;
 	}

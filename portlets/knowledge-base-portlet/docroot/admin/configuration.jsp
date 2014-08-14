@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -44,7 +44,9 @@ else if (tabs2.equals("article-updated-email")) {
 }
 %>
 
-<liferay-portlet:renderURL portletConfiguration="true" var="portletURL">
+<liferay-portlet:actionURL portletConfiguration="true" var="configurationActionURL" />
+
+<liferay-portlet:renderURL portletConfiguration="true" var="configurationRenderURL">
 	<portlet:param name="tabs2" value="<%= tabs2 %>" />
 	<portlet:param name="tabs3" value="<%= tabs3 %>" />
 </liferay-portlet:renderURL>
@@ -52,12 +54,10 @@ else if (tabs2.equals("article-updated-email")) {
 <liferay-ui:tabs
 	names="general,email-from,article-added-email,article-updated-email,display-settings"
 	param="tabs2"
-	url="<%= portletURL %>"
+	url="<%= configurationRenderURL %>"
 />
 
-<liferay-portlet:actionURL portletConfiguration="true" var="configurationURL" />
-
-<aui:form action="<%= configurationURL %>" method="post" name="fm">
+<aui:form action="<%= configurationActionURL %>" method="post" name="fm">
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
 	<aui:input name="tabs2" type="hidden" value="<%= tabs2 %>" />
 	<aui:input name="tabs3" type="hidden" value="<%= tabs3 %>" />
@@ -119,6 +119,12 @@ else if (tabs2.equals("article-updated-email")) {
 							<liferay-ui:message key="category.kb" />
 						</dd>
 						<dt>
+							[$COMMUNITY_NAME$]
+						</dt>
+						<dd>
+							<liferay-ui:message key="the-site-name-associated-with-the-article" />
+						</dd>
+						<dt>
 							[$COMPANY_ID$]
 						</dt>
 						<dd>
@@ -135,12 +141,6 @@ else if (tabs2.equals("article-updated-email")) {
 						</dt>
 						<dd>
 							<liferay-ui:message key="the-company-name-associated-with-the-article" />
-						</dd>
-						<dt>
-							[$SITE_NAME$]
-						</dt>
-						<dd>
-							<liferay-ui:message key="the-site-name-associated-with-the-article" />
 						</dd>
 					</dl>
 				</div>
@@ -231,6 +231,12 @@ else if (tabs2.equals("article-updated-email")) {
 							<liferay-ui:message key="category.kb" />
 						</dd>
 						<dt>
+							[$COMMUNITY_NAME$]
+						</dt>
+						<dd>
+							<liferay-ui:message key="the-site-name-associated-with-the-article" />
+						</dd>
+						<dt>
 							[$COMPANY_ID$]
 						</dt>
 						<dd>
@@ -267,12 +273,6 @@ else if (tabs2.equals("article-updated-email")) {
 							<%= PortalUtil.getPortalURL(themeDisplay) %>
 						</dd>
 						<dt>
-							[$SITE_NAME$]
-						</dt>
-						<dd>
-							<liferay-ui:message key="the-site-name-associated-with-the-article" />
-						</dd>
-						<dt>
 							[$TO_ADDRESS$]
 						</dt>
 						<dd>
@@ -291,7 +291,7 @@ else if (tabs2.equals("article-updated-email")) {
 				<liferay-ui:tabs
 					names="article,template"
 					param="tabs3"
-					url="<%= portletURL %>"
+					url="<%= configurationRenderURL %>"
 				/>
 
 				<c:choose>
@@ -302,16 +302,18 @@ else if (tabs2.equals("article-updated-email")) {
 
 						<aui:input label="show-asset-entries" name="preferences--showKBArticleAssetEntries--" type="checkbox" value="<%= showKBArticleAssetEntries %>" />
 
-						<aui:input label="enable-comments" name="preferences--enableKBArticleKBComments--" type="checkbox" value="<%= enableKBArticleKBComments %>" />
+						<aui:input label="enable-related-assets" name="preferences--enableKBArticleAssetLinks--" type="checkbox" value="<%= enableKBArticleAssetLinks %>" />
 
-						<aui:input label="show-comments" name="preferences--showKBArticleKBComments--" type="checkbox" value="<%= showKBArticleKBComments %>" />
+						<aui:input label="enable-feedback" name="preferences--enableKBArticleKBComments--" type="checkbox" value="<%= enableKBArticleKBComments %>" />
+
+						<aui:input label="show-feedback" name="preferences--showKBArticleKBComments--" type="checkbox" value="<%= showKBArticleKBComments %>" />
 
 						<aui:input label="enable-view-count-increment" name="preferences--enableKBArticleViewCountIncrement--" type="checkbox" value="<%= enableKBArticleViewCountIncrement %>" />
 					</c:when>
 					<c:when test='<%= tabs3.equals("template") %>'>
-						<aui:input label="enable-comments" name="preferences--enableKBTemplateKBComments--" type="checkbox" value="<%= enableKBTemplateKBComments %>" />
+						<aui:input label="enable-feedback" name="preferences--enableKBTemplateKBComments--" type="checkbox" value="<%= enableKBTemplateKBComments %>" />
 
-						<aui:input label="show-comments" name="preferences--showKBTemplateKBComments--" type="checkbox" value="<%= showKBTemplateKBComments %>" />
+						<aui:input label="show-feedback" name="preferences--showKBTemplateKBComments--" type="checkbox" value="<%= showKBTemplateKBComments %>" />
 					</c:when>
 				</c:choose>
 			</c:when>

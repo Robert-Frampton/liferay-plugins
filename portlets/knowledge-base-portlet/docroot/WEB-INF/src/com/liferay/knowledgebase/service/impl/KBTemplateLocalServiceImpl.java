@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -34,11 +34,13 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.systemevent.SystemEvent;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ResourceConstants;
+import com.liferay.portal.model.SystemEventConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
 
@@ -53,6 +55,7 @@ import java.util.Map;
  */
 public class KBTemplateLocalServiceImpl extends KBTemplateLocalServiceBaseImpl {
 
+	@Override
 	public KBTemplate addKBTemplate(
 			long userId, String title, String content,
 			ServiceContext serviceContext)
@@ -100,6 +103,7 @@ public class KBTemplateLocalServiceImpl extends KBTemplateLocalServiceBaseImpl {
 		return kbTemplate;
 	}
 
+	@Override
 	public void deleteGroupKBTemplates(long groupId)
 		throws PortalException, SystemException {
 
@@ -107,11 +111,14 @@ public class KBTemplateLocalServiceImpl extends KBTemplateLocalServiceBaseImpl {
 			groupId);
 
 		for (KBTemplate kbTemplate : kbTemplates) {
-			deleteKBTemplate(kbTemplate);
+			kbTemplateLocalService.deleteKBTemplate(kbTemplate);
 		}
 	}
 
 	@Override
+	@SystemEvent(
+		action = SystemEventConstants.ACTION_SKIP,
+		type = SystemEventConstants.TYPE_DELETE)
 	public KBTemplate deleteKBTemplate(KBTemplate kbTemplate)
 		throws PortalException, SystemException {
 
@@ -145,9 +152,10 @@ public class KBTemplateLocalServiceImpl extends KBTemplateLocalServiceBaseImpl {
 		KBTemplate kbTemplate = kbTemplatePersistence.findByPrimaryKey(
 			kbTemplateId);
 
-		return deleteKBTemplate(kbTemplate);
+		return kbTemplateLocalService.deleteKBTemplate(kbTemplate);
 	}
 
+	@Override
 	public void deleteKBTemplates(long[] kbTemplateIds)
 		throws PortalException, SystemException {
 
@@ -162,10 +170,11 @@ public class KBTemplateLocalServiceImpl extends KBTemplateLocalServiceBaseImpl {
 				continue;
 			}
 
-			deleteKBTemplate(kbTemplate);
+			kbTemplateLocalService.deleteKBTemplate(kbTemplate);
 		}
 	}
 
+	@Override
 	public List<KBTemplate> getGroupKBTemplates(
 			long groupId, int start, int end,
 			OrderByComparator orderByComparator)
@@ -175,10 +184,12 @@ public class KBTemplateLocalServiceImpl extends KBTemplateLocalServiceBaseImpl {
 			groupId, start, end, orderByComparator);
 	}
 
+	@Override
 	public int getGroupKBTemplatesCount(long groupId) throws SystemException {
 		return kbTemplatePersistence.countByGroupId(groupId);
 	}
 
+	@Override
 	public List<KBTemplate> search(
 			long groupId, String title, String content, Date startDate,
 			Date endDate, boolean andOperator, int start, int end,
@@ -191,6 +202,7 @@ public class KBTemplateLocalServiceImpl extends KBTemplateLocalServiceBaseImpl {
 		return dynamicQuery(dynamicQuery, start, end, orderByComparator);
 	}
 
+	@Override
 	public KBTemplate updateKBTemplate(
 			long kbTemplateId, String title, String content,
 			ServiceContext serviceContext)
@@ -234,6 +246,7 @@ public class KBTemplateLocalServiceImpl extends KBTemplateLocalServiceBaseImpl {
 		return kbTemplate;
 	}
 
+	@Override
 	public void updateKBTemplateResources(
 			KBTemplate kbTemplate, String[] groupPermissions,
 			String[] guestPermissions)

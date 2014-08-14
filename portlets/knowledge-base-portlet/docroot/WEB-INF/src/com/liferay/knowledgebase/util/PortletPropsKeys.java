@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -50,5 +50,26 @@ public class PortletPropsKeys {
 
 	public static final String ADMIN_KB_ARTICLE_SECTIONS =
 		"admin.kb.article.sections";
+
+	public static final String KNOWLEDGE_BASE_RATINGS_NUMBER_OF_STARS =
+		"knowledge.base.ratings.number.of.stars";
+
+	public static final String KNOWLEDGE_BASE_SOCIAL_BOOKMARKS_DISPLAY_STYLE =
+		"knowledge.base.social.bookmarks.display.style";
+
+	public static final String MARKDOWN_IMPORTER_ARTICLE_EXTENSIONS =
+		"markdown.importer.article.extensions";
+
+	public static final String MARKDOWN_IMPORTER_ARTICLE_HOME =
+		"markdown.importer.article.home";
+
+	public static final String MARKDOWN_IMPORTER_ARTICLE_INTRO =
+		"markdown.importer.article.intro";
+
+	public static final String MARKDOWN_IMPORTER_IMAGE_FILE_EXTENSIONS =
+		"markdown.importer.image.file.extensions";
+
+	public static final String MARKDOWN_IMPORTER_IMAGE_FOLDER =
+		"markdown.importer.image.folder";
 
 }

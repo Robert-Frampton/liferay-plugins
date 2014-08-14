@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -15,6 +15,8 @@
 package com.liferay.knowledgebase.util;
 
 import com.liferay.portal.kernel.util.GetterUtil;
+import com.liferay.portal.kernel.util.PropsKeys;
+import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.util.portlet.PortletProps;
 
 /**
@@ -62,5 +64,37 @@ public class PortletPropsValues {
 
 	public static final String[] ADMIN_KB_ARTICLE_SECTIONS =
 		PortletProps.getArray(PortletPropsKeys.ADMIN_KB_ARTICLE_SECTIONS);
+
+	public static final int KNOWLEDGE_BASE_RATINGS_NUMBER_OF_STARS =
+		GetterUtil.getInteger(
+			PortletProps.get(
+				PortletPropsKeys.
+					KNOWLEDGE_BASE_RATINGS_NUMBER_OF_STARS),
+			GetterUtil.getInteger(
+				PropsUtil.get(PropsKeys.RATINGS_DEFAULT_NUMBER_OF_STARS)));
+
+	public static final String KNOWLEDGE_BASE_SOCIAL_BOOKMARKS_DISPLAY_STYLE =
+		PortletProps.get(
+			PortletPropsKeys.KNOWLEDGE_BASE_SOCIAL_BOOKMARKS_DISPLAY_STYLE);
+
+	public static final String[] MARKDOWN_IMPORTER_ARTICLE_EXTENSIONS =
+		PortletProps.getArray(
+			PortletPropsKeys.MARKDOWN_IMPORTER_ARTICLE_EXTENSIONS);
+
+	public static final String MARKDOWN_IMPORTER_ARTICLE_HOME =
+		GetterUtil.getString(
+			PortletProps.get(PortletPropsKeys.MARKDOWN_IMPORTER_ARTICLE_HOME));
+
+	public static final String MARKDOWN_IMPORTER_ARTICLE_INTRO =
+		GetterUtil.getString(
+			PortletProps.get(PortletPropsKeys.MARKDOWN_IMPORTER_ARTICLE_INTRO));
+
+	public static final String[] MARKDOWN_IMPORTER_IMAGE_FILE_EXTENSIONS =
+		PortletProps.getArray(
+			PortletPropsKeys.MARKDOWN_IMPORTER_IMAGE_FILE_EXTENSIONS);
+
+	public static final String MARKDOWN_IMPORTER_IMAGE_FOLDER =
+		GetterUtil.getString(
+			PortletProps.get(PortletPropsKeys.MARKDOWN_IMPORTER_IMAGE_FOLDER));
 
 }

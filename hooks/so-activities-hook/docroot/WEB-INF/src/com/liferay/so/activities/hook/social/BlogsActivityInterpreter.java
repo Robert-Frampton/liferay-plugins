@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,6 +14,8 @@
 
 package com.liferay.so.activities.hook.social;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
@@ -29,6 +31,8 @@ import com.liferay.portlet.social.service.SocialActivityLocalServiceUtil;
 import com.liferay.portlet.social.service.SocialActivitySetLocalServiceUtil;
 import com.liferay.so.activities.util.SocialActivityKeyConstants;
 
+import java.util.Date;
+
 /**
  * @author Evan Thibodeau
  * @author Matthew Kong
@@ -37,6 +41,43 @@ public class BlogsActivityInterpreter extends SOSocialActivityInterpreter {
 
 	public String[] getClassNames() {
 		return _CLASS_NAMES;
+	}
+
+	@Override
+	public void updateActivitySet(long activityId)
+		throws PortalException, SystemException {
+
+		SocialActivity activity =
+			SocialActivityLocalServiceUtil.fetchSocialActivity(activityId);
+
+		if ((activity == null) || (activity.getActivitySetId() > 0)) {
+			return;
+		}
+
+		long activitySetId = getActivitySetId(activityId);
+
+		if (activitySetId > 0) {
+			SocialActivitySetLocalServiceUtil.incrementActivityCount(
+				activitySetId, activityId);
+
+			return;
+		}
+
+		SocialActivitySet activitySet =
+			SocialActivitySetLocalServiceUtil.addActivitySet(activityId);
+
+		if (activity.getType() != SocialActivityKeyConstants.BLOGS_ADD_ENTRY) {
+			return;
+		}
+
+		BlogsEntry blogsEntry = BlogsEntryLocalServiceUtil.getBlogsEntry(
+			activity.getClassPK());
+
+		Date displayDate = blogsEntry.getDisplayDate();
+
+		activitySet.setModifiedDate(displayDate.getTime());
+
+		SocialActivitySetLocalServiceUtil.updateSocialActivitySet(activitySet);
 	}
 
 	@Override
@@ -101,10 +142,6 @@ public class BlogsActivityInterpreter extends SOSocialActivityInterpreter {
 			(activitySet.getType() ==
 				SocialActivityConstants.TYPE_ADD_COMMENT)) {
 
-			if (!hasPermissions(activitySet, serviceContext)) {
-				return null;
-			}
-
 			return getBody(
 				activitySet.getClassName(), activitySet.getClassPK(),
 				serviceContext);
@@ -123,9 +160,9 @@ public class BlogsActivityInterpreter extends SOSocialActivityInterpreter {
 		sb.append(getPageTitle(className, classPK, serviceContext));
 		sb.append("</div><div class=\"blogs-page-content\">");
 
-		BlogsEntry entry = BlogsEntryLocalServiceUtil.getEntry(classPK);
+		BlogsEntry blogsEntry = BlogsEntryLocalServiceUtil.getEntry(classPK);
 
-		String content = HtmlUtil.extractText(entry.getContent());
+		String content = HtmlUtil.extractText(blogsEntry.getContent());
 
 		sb.append(StringUtil.shorten(content, 200));
 
@@ -142,10 +179,10 @@ public class BlogsActivityInterpreter extends SOSocialActivityInterpreter {
 		String title = getPageTitle(
 			activity.getClassName(), activity.getClassPK(), serviceContext);
 
-		BlogsEntry entry = BlogsEntryLocalServiceUtil.getEntry(
+		BlogsEntry blogsEntry = BlogsEntryLocalServiceUtil.getEntry(
 			activity.getClassPK());
 
-		String content = HtmlUtil.extractText(entry.getContent());
+		String content = HtmlUtil.extractText(blogsEntry.getContent());
 
 		String body = StringUtil.shorten(content, 200);
 
@@ -199,6 +236,31 @@ public class BlogsActivityInterpreter extends SOSocialActivityInterpreter {
 		}
 
 		return StringPool.BLANK;
+	}
+
+	@Override
+	protected boolean isVisible(SocialActivity activity) throws Exception {
+		BlogsEntry blogsEntry = BlogsEntryLocalServiceUtil.fetchBlogsEntry(
+			activity.getClassPK());
+
+		if ((blogsEntry == null) || !blogsEntry.isVisible()) {
+			return false;
+		}
+
+		if ((activity.getType() ==
+				SocialActivityKeyConstants.BLOGS_ADD_COMMENT) ||
+			(activity.getType() ==
+				SocialActivityKeyConstants.BLOGS_UPDATE_ENTRY) ||
+			(activity.getType() == SocialActivityConstants.TYPE_ADD_COMMENT)) {
+
+			Date displayDate = blogsEntry.getDisplayDate();
+
+			if (activity.getCreateDate() < displayDate.getTime()) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	private static final String[] _CLASS_NAMES = {BlogsEntry.class.getName()};

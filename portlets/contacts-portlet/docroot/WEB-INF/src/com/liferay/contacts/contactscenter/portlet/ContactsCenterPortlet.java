@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This file is part of Liferay Social Office. Liferay Social Office is free
  * software: you can redistribute it and/or modify it under the terms of the GNU
@@ -71,6 +71,7 @@ import com.liferay.portal.model.EmailAddress;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.Layout;
 import com.liferay.portal.model.Phone;
+import com.liferay.portal.model.PortletConstants;
 import com.liferay.portal.model.Role;
 import com.liferay.portal.model.RoleConstants;
 import com.liferay.portal.model.User;
@@ -83,10 +84,12 @@ import com.liferay.portal.service.UserNotificationEventLocalServiceUtil;
 import com.liferay.portal.service.UserServiceUtil;
 import com.liferay.portal.theme.PortletDisplay;
 import com.liferay.portal.theme.ThemeDisplay;
+import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.comparator.UserLastNameComparator;
 import com.liferay.portlet.announcements.model.AnnouncementsDelivery;
 import com.liferay.portlet.announcements.service.AnnouncementsDeliveryLocalServiceUtil;
 import com.liferay.portlet.social.NoSuchRelationException;
+import com.liferay.portlet.social.model.SocialRelation;
 import com.liferay.portlet.social.model.SocialRequest;
 import com.liferay.portlet.social.model.SocialRequestConstants;
 import com.liferay.portlet.social.service.SocialRelationLocalServiceUtil;
@@ -331,6 +334,9 @@ public class ContactsCenterPortlet extends MVCPortlet {
 			else if (actionName.equals("updateFieldGroup")) {
 				updateFieldGroup(actionRequest, actionResponse);
 			}
+			else if (actionName.equals("updateSocialRequest")) {
+				updateSocialRequest(actionRequest, actionResponse);
+			}
 			else {
 				super.processAction(actionRequest, actionResponse);
 			}
@@ -367,10 +373,18 @@ public class ContactsCenterPortlet extends MVCPortlet {
 				continue;
 			}
 
+			JSONObject extraDataJSONObject = JSONFactoryUtil.createJSONObject();
+
+			String portletId = PortalUtil.getPortletId(actionRequest);
+
+			extraDataJSONObject.put(
+				"portletId", PortletConstants.getRootPortletId(portletId));
+
 			SocialRequest socialRequest =
 				SocialRequestLocalServiceUtil.addRequest(
 					themeDisplay.getUserId(), 0, User.class.getName(),
-					themeDisplay.getUserId(), type, StringPool.BLANK, userId);
+					themeDisplay.getUserId(), type,
+					extraDataJSONObject.toString(), userId);
 
 			sendNotificationEvent(socialRequest);
 		}
@@ -605,27 +619,39 @@ public class ContactsCenterPortlet extends MVCPortlet {
 		long userNotificationEventId = ParamUtil.getLong(
 			actionRequest, "userNotificationEventId");
 
-		SocialRequest socialRequest =
-			SocialRequestLocalServiceUtil.getSocialRequest(socialRequestId);
+		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
 
-		if (SocialRelationLocalServiceUtil.hasRelation(
-				socialRequest.getReceiverUserId(), socialRequest.getUserId(),
-				SocialRelationConstants.TYPE_UNI_ENEMY)) {
+		try {
+			SocialRequest socialRequest =
+				SocialRequestLocalServiceUtil.getSocialRequest(socialRequestId);
 
-			status = SocialRequestConstants.STATUS_IGNORE;
+			if (SocialRelationLocalServiceUtil.hasRelation(
+					socialRequest.getReceiverUserId(),
+					socialRequest.getUserId(),
+					SocialRelationConstants.TYPE_UNI_ENEMY)) {
+
+				status = SocialRequestConstants.STATUS_IGNORE;
+			}
+
+			SocialRequestLocalServiceUtil.updateRequest(
+				socialRequestId, status, themeDisplay);
+
+			if (status == SocialRequestConstants.STATUS_CONFIRM) {
+				SocialRelationLocalServiceUtil.addRelation(
+					socialRequest.getUserId(),
+					socialRequest.getReceiverUserId(), socialRequest.getType());
+			}
+
+			UserNotificationEventLocalServiceUtil.deleteUserNotificationEvent(
+				userNotificationEventId);
+
+			jsonObject.put("success", Boolean.TRUE);
+		}
+		catch (Exception e) {
+			jsonObject.put("success", Boolean.FALSE);
 		}
 
-		SocialRequestLocalServiceUtil.updateRequest(
-			socialRequestId, status, themeDisplay);
-
-		if (status == SocialRequestConstants.STATUS_CONFIRM) {
-			SocialRelationLocalServiceUtil.addRelation(
-				socialRequest.getUserId(), socialRequest.getReceiverUserId(),
-				socialRequest.getType());
-		}
-
-		UserNotificationEventLocalServiceUtil.deleteUserNotificationEvent(
-			userNotificationEventId);
+		writeJSON(actionRequest, actionResponse, jsonObject);
 	}
 
 	protected void deleteEntry(
@@ -748,6 +774,22 @@ public class ContactsCenterPortlet extends MVCPortlet {
 			}
 		}
 		else if (filterBy.equals(
+					ContactsConstants.FILTER_BY_FOLLOWERS) &&
+				 !portletId.equals(PortletKeys.MEMBERS)) {
+
+			List<SocialRelation> socialRelations =
+				SocialRelationLocalServiceUtil.getInverseRelations(
+					themeDisplay.getUserId(),
+					SocialRelationConstants.TYPE_UNI_FOLLOWER, start, end);
+
+			for (SocialRelation socialRelation : socialRelations) {
+				jsonArray.put(
+					getUserJSONObject(
+						portletResponse, themeDisplay,
+						socialRelation.getUserId1()));
+			}
+		}
+		else if (filterBy.equals(
 					ContactsConstants.FILTER_BY_TYPE_MY_CONTACTS) &&
 				 !portletId.equals(PortletKeys.MEMBERS)) {
 
@@ -776,7 +818,12 @@ public class ContactsCenterPortlet extends MVCPortlet {
 			Layout layout = themeDisplay.getLayout();
 
 			if (group.isUser() && layout.isPublicLayout()) {
-				params.put("socialRelation", new Long[] {group.getClassPK()});
+				params.put(
+					"socialRelationType",
+					new Long[] {
+						group.getClassPK(),
+						(long)SocialRelationConstants.TYPE_BI_CONNECTION
+					});
 			}
 			else if (filterBy.startsWith(ContactsConstants.FILTER_BY_TYPE)) {
 				params.put(

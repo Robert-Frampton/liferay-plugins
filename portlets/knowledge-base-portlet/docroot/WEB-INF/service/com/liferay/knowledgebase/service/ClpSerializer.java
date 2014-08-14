@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -273,6 +273,12 @@ public class ClpSerializer {
 		if (className.equals(
 					"com.liferay.knowledgebase.KBArticleContentException")) {
 			return new com.liferay.knowledgebase.KBArticleContentException(throwable.getMessage(),
+				throwable.getCause());
+		}
+
+		if (className.equals(
+					"com.liferay.knowledgebase.KBArticleImportException")) {
+			return new com.liferay.knowledgebase.KBArticleImportException(throwable.getMessage(),
 				throwable.getCause());
 		}
 

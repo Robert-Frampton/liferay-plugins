@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -18,7 +18,7 @@
 
 <p>
 	<portlet:renderURL var="actionURL">
-		<portlet:param name="mvcPath" value="/plt-26-6/action_url.jsp" />
+		<portlet:param name="mvcPath" value="/action_url.jsp" />
 		<portlet:param name="testRenderParamName" value="testRenderParamValue" />
 	</portlet:renderURL>
 
@@ -27,7 +27,7 @@
 
 <p>
 	<portlet:renderURL var="renderURL">
-		<portlet:param name="mvcPath" value="/plt-26-6/render_url.jsp" />
+		<portlet:param name="mvcPath" value="/render_url.jsp" />
 		<portlet:param name="testRenderParamName" value="testRenderParamValue" />
 	</portlet:renderURL>
 
@@ -36,7 +36,7 @@
 
 <p>
 	<portlet:renderURL var="resourceURL">
-		<portlet:param name="mvcPath" value="/plt-26-6/resource_url.jsp" />
+		<portlet:param name="mvcPath" value="/resource_url.jsp" />
 		<portlet:param name="testRenderParamName" value="testRenderParamValue" />
 	</portlet:renderURL>
 

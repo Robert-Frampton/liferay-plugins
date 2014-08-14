@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -93,10 +93,6 @@ public class BookmarksActivityInterpreter extends SOSocialActivityInterpreter {
 		if (activitySet.getType() ==
 				SocialActivityKeyConstants.BOOKMARKS_UPDATE_ENTRY) {
 
-			if (!hasPermissions(activitySet, serviceContext)) {
-				return null;
-			}
-
 			return getBody(
 				activitySet.getClassName(), activitySet.getClassPK(),
 				serviceContext);
@@ -117,7 +113,7 @@ public class BookmarksActivityInterpreter extends SOSocialActivityInterpreter {
 
 		BookmarksEntry entry = BookmarksEntryLocalServiceUtil.getEntry(classPK);
 
-		sb.append(entry.getDescription());
+		sb.append(HtmlUtil.stripHtml(entry.getDescription()));
 
 		sb.append("</div></div>");
 
@@ -165,7 +161,9 @@ public class BookmarksActivityInterpreter extends SOSocialActivityInterpreter {
 			activity.getClassName(), activity.getClassPK());
 
 		String body = StringUtil.shorten(
-			assetRenderer.getSummary(serviceContext.getLocale()), 200);
+			HtmlUtil.escape(
+				assetRenderer.getSummary(serviceContext.getLocale())),
+			200);
 
 		return new SocialActivityFeedEntry(title, body);
 	}

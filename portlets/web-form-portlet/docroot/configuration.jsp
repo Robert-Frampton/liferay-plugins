@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -17,8 +17,6 @@
 <%@ include file="/init.jsp" %>
 
 <%
-String redirect = ParamUtil.getString(renderRequest, "redirect");
-
 String titleXml = LocalizationUtil.getLocalizationXmlFromPreferences(portletPreferences, renderRequest, "title");
 String descriptionXml = LocalizationUtil.getLocalizationXmlFromPreferences(portletPreferences, renderRequest, "description");
 boolean requireCaptcha = GetterUtil.getBoolean(portletPreferences.getValue("requireCaptcha", StringPool.BLANK));
@@ -43,11 +41,13 @@ if (WebFormUtil.getTableRowsCount(company.getCompanyId(), databaseTableName) > 0
 }
 %>
 
-<liferay-portlet:actionURL portletConfiguration="true" var="configurationURL" />
+<liferay-portlet:actionURL portletConfiguration="true" var="configurationActionURL" />
 
-<aui:form action="<%= configurationURL %>" method="post" name="fm">
+<liferay-portlet:renderURL portletConfiguration="true" var="configurationRenderURL" />
+
+<aui:form action="<%= configurationActionURL %>" method="post" name="fm">
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
-	<aui:input name="redirect" type="hidden" value="<%= redirect %>" />
+	<aui:input name="redirect" type="hidden" value="<%= configurationRenderURL %>" />
 
 	<liferay-ui:error exception="<%= DuplicateColumnNameException.class %>" message="please-enter-unique-field-names" />
 
@@ -190,74 +190,68 @@ if (WebFormUtil.getTableRowsCount(company.getCompanyId(), databaseTableName) > 0
 	</aui:button-row>
 </aui:form>
 
-<%
-String modules = "aui-base";
+<c:if test="<%= !fieldsEditingDisabled %>">
+	<aui:script use="aui-base,liferay-auto-fields">
+		var toggleOptions = function(event) {
+			var select = this;
 
-if (!fieldsEditingDisabled) {
-	modules += ",liferay-auto-fields";
-}
-%>
+			var formRow = select.ancestor('.lfr-form-row');
+			var value = select.val();
 
-<aui:script use="<%= modules %>">
-	var toggleOptions = function(event) {
-		var select = this;
+			var optionsDiv = formRow.one('.options');
 
-		var formRow = select.ancestor('.lfr-form-row');
-		var value = select.val();
+			if ((value == 'options') || (value == 'radio')) {
+				optionsDiv.all('label').show();
+				optionsDiv.show();
+			}
+			else if (value == 'paragraph') {
 
-		var optionsDiv = formRow.one('.options');
+				// Show just the text field and not the labels since there
+				// are multiple choice inputs
 
-		if ((value == 'options') || (value == 'radio')) {
-			optionsDiv.all('label').show();
-			optionsDiv.show();
-		}
-		else if (value == 'paragraph') {
+				optionsDiv.all('label').hide();
+				optionsDiv.show();
+			}
+			else {
+				optionsDiv.hide();
+			}
 
-			// Show just the text field and not the labels since there
-			// are multiple choice inputs
+			var optionalControl = formRow.one('.optional-control').ancestor();
+			var labelName = formRow.one('.label-name');
 
-			optionsDiv.all('label').hide();
-			optionsDiv.show();
-		}
-		else {
-			optionsDiv.hide();
-		}
+			if (value == 'paragraph') {
+				var inputName = labelName.one('input.field');
 
-		var optionalControl = formRow.one('.optional-control').ancestor();
-		var labelName = formRow.one('.label-name');
+				var formFieldsIndex = select.attr('id').match(/\d+$/);
 
-		if (value == 'paragraph') {
-			var inputName = labelName.one('input.field');
+				inputName.val('<liferay-ui:message key="paragraph" />' + formFieldsIndex);
+				inputName.fire('change');
 
-			var formFieldsIndex = select.attr('id').match(/\d+$/);
+				labelName.hide();
+				optionalControl.hide();
 
-			inputName.val('<liferay-ui:message key="paragraph" />' + formFieldsIndex);
-			inputName.fire('change');
+				optionalControl.all('input[type="checkbox"]').attr('checked', 'true');
+				optionalControl.all('input[type="hidden"]').attr('value', 'true');
+			}
+			else {
+				optionalControl.show();
+				labelName.show();
+			}
+		};
 
-			labelName.hide();
-			optionalControl.hide();
+		var webFields = A.one('.webFields');
 
-			optionalControl.all('input[type="checkbox"]').attr('checked', 'true');
-			optionalControl.all('input[type="hidden"]').attr('value', 'true');
-		}
-		else {
-			optionalControl.show();
-			labelName.show();
-		}
-	};
+		webFields.all('select').each(toggleOptions);
 
-	var toggleValidationOptions = function(event) {
-		this.next().toggle();
-	};
-
-	var webFields = A.one('.webFields');
-
-	webFields.all('select').each(toggleOptions);
-
-	<c:if test="<%= !fieldsEditingDisabled %>">
 		webFields.delegate(['change', 'click', 'keydown'], toggleOptions, 'select');
 
-		webFields.delegate('click', toggleValidationOptions, '.validation-link');
+		<c:if test="<%= PortletPropsValues.VALIDATION_SCRIPT_ENABLED %>">
+			var toggleValidationOptions = function(event) {
+				this.next().toggle();
+			};
+
+			webFields.delegate('click', toggleValidationOptions, '.validation-link');
+		</c:if>
 
 		webFields.delegate(
 			'change',
@@ -273,18 +267,19 @@ if (!fieldsEditingDisabled) {
 			'.label-name input'
 		);
 
-		<liferay-portlet:renderURL portletConfiguration="true" var="editFieldURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>">
-			<portlet:param name="<%= Constants.CMD %>" value="<%= Constants.ADD %>" />
-		</liferay-portlet:renderURL>
-
 		new Liferay.AutoFields(
 			{
 				contentBox: webFields,
 				fieldIndexes: '<portlet:namespace />formFieldsIndexes',
 				sortable: true,
 				sortableHandle: '.field-label',
+
+				<liferay-portlet:renderURL portletConfiguration="true" var="editFieldURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>">
+					<portlet:param name="<%= Constants.CMD %>" value="<%= Constants.ADD %>" />
+				</liferay-portlet:renderURL>
+
 				url: '<%= editFieldURL %>'
 			}
 		).render();
-	</c:if>
-</aui:script>
+	</aui:script>
+</c:if>

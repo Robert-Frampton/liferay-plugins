@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -28,9 +28,11 @@ import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.systemevent.SystemEvent;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
+import com.liferay.portal.model.SystemEventConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
 
@@ -42,6 +44,7 @@ import java.util.List;
  */
 public class KBCommentLocalServiceImpl extends KBCommentLocalServiceBaseImpl {
 
+	@Override
 	public KBComment addKBComment(
 			long userId, long classNameId, long classPK, String content,
 			boolean helpful, ServiceContext serviceContext)
@@ -88,6 +91,7 @@ public class KBCommentLocalServiceImpl extends KBCommentLocalServiceBaseImpl {
 	}
 
 	@Override
+	@SystemEvent(type = SystemEventConstants.TYPE_DELETE)
 	public KBComment deleteKBComment(KBComment kbComment)
 		throws PortalException, SystemException {
 
@@ -110,9 +114,10 @@ public class KBCommentLocalServiceImpl extends KBCommentLocalServiceBaseImpl {
 		KBComment kbComment = kbCommentPersistence.findByPrimaryKey(
 			kbCommentId);
 
-		return deleteKBComment(kbComment);
+		return kbCommentLocalService.deleteKBComment(kbComment);
 	}
 
+	@Override
 	public void deleteKBComments(String className, long classPK)
 		throws PortalException, SystemException {
 
@@ -122,10 +127,11 @@ public class KBCommentLocalServiceImpl extends KBCommentLocalServiceBaseImpl {
 			classNameId, classPK);
 
 		for (KBComment kbComment : kbComments) {
-			deleteKBComment(kbComment);
+			kbCommentLocalService.deleteKBComment(kbComment);
 		}
 	}
 
+	@Override
 	public KBComment getKBComment(long userId, String className, long classPK)
 		throws PortalException, SystemException {
 
@@ -134,6 +140,7 @@ public class KBCommentLocalServiceImpl extends KBCommentLocalServiceBaseImpl {
 		return kbCommentPersistence.findByU_C_C(userId, classNameId, classPK);
 	}
 
+	@Override
 	public List<KBComment> getKBComments(
 			String className, long classPK, int start, int end,
 			OrderByComparator orderByComparator)
@@ -145,6 +152,7 @@ public class KBCommentLocalServiceImpl extends KBCommentLocalServiceBaseImpl {
 			classNameId, classPK, start, end, orderByComparator);
 	}
 
+	@Override
 	public int getKBCommentsCount(String className, long classPK)
 		throws SystemException {
 
@@ -153,6 +161,7 @@ public class KBCommentLocalServiceImpl extends KBCommentLocalServiceBaseImpl {
 		return kbCommentPersistence.countByC_C(classNameId, classPK);
 	}
 
+	@Override
 	public KBComment updateKBComment(
 			long kbCommentId, long classNameId, long classPK, String content,
 			boolean helpful, ServiceContext serviceContext)

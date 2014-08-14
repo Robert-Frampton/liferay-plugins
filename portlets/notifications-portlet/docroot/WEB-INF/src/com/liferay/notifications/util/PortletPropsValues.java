@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -22,9 +22,12 @@ import com.liferay.util.portlet.PortletProps;
  */
 public class PortletPropsValues {
 
-	public static final boolean NOTIFICATIONS_DOCKBAR_DISPLAY_ENABLED =
+	public static final boolean USER_NOTIFICATIONS_DOCKBAR_DISPLAY_ENABLED =
 		GetterUtil.getBoolean(
 			PortletProps.get(
-				PortletPropsKeys.NOTIFICATIONS_DOCKBAR_DISPLAY_ENABLED));
+				PortletPropsKeys.USER_NOTIFICATIONS_DOCKBAR_DISPLAY_ENABLED));
+
+	public static final String[] USER_NOTIFICATIONS_PORTLET_IDS =
+		PortletProps.getArray(PortletPropsKeys.USER_NOTIFICATIONS_PORTLET_IDS);
 
 }

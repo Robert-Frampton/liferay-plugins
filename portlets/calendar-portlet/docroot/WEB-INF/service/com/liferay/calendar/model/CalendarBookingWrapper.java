@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -1405,6 +1405,11 @@ public class CalendarBookingWrapper implements CalendarBooking,
 	}
 
 	@Override
+	public int getInstanceIndex() {
+		return _calendarBooking.getInstanceIndex();
+	}
+
+	@Override
 	public com.liferay.calendar.model.CalendarBooking getParentCalendarBooking()
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -1422,6 +1427,13 @@ public class CalendarBookingWrapper implements CalendarBooking,
 	}
 
 	@Override
+	public java.util.TimeZone getTimeZone()
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _calendarBooking.getTimeZone();
+	}
+
+	@Override
 	public boolean isMasterBooking() {
 		return _calendarBooking.isMasterBooking();
 	}
@@ -1429,6 +1441,11 @@ public class CalendarBookingWrapper implements CalendarBooking,
 	@Override
 	public boolean isRecurring() {
 		return _calendarBooking.isRecurring();
+	}
+
+	@Override
+	public void setInstanceIndex(int instanceIndex) {
+		_calendarBooking.setInstanceIndex(instanceIndex);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -23,6 +23,12 @@ PortletURL portletURL = renderResponse.createRenderURL();
 
 portletURL.setParameter("tabs1", tabs1);
 %>
+
+<div class="alert alert-success hide" id="<portlet:namespace />alert">
+	<button class="close" data-dismiss="alert" type="button">&times;</button>
+
+	<span class="message-placeholder"></span>
+</div>
 
 <c:if test="<%= themeDisplay.isSignedIn() %>">
 	<liferay-ui:tabs
