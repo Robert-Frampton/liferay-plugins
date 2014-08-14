@@ -11,8 +11,7 @@
 
 		#heading {
 			bottom: 100%;
-			margin-top: -2em;
-			position: relative;
+			position: absolute;
 
 			.site-title {
 				font-size: 26px;
@@ -23,8 +22,26 @@
 			}
 		}
 
+		#navigation {
+			display: none;
+
+			&.open {
+				display: block;
+			}
+
+			.nav {
+				margin: 0;
+			}
+		}
+
 		#navigation.open .navbar-inner {
-			background: #009AE5;
+			border-radius: 3px;
+			padding: 10px;
+		}
+
+		.nav-collapse, .nav-collapse.collapse {
+			height: auto;
+			overflow: visible;
 		}
 
 		.dockbar .navbar-inner .container .nav-collapse .nav-add-controls ul.dropdown-menu {
@@ -42,6 +59,11 @@
 		}
 
 		.dockbar-split .dockbar, .dockbar {
+			float: right;
+			height: auto;
+			position: relative;
+			z-index: 401;
+
 			.info-items {
 				height: auto;
 				position: static;
@@ -51,11 +73,59 @@
 			.navbar-inner {
 				width: auto;
 
+				.nav-add-controls > li {
+					margin: 0;
+
+					> a {
+						.nav-item-label {
+							background: transparent;
+							display: inline;
+							left: 0;
+							margin-left: 0;
+							margin-top: 0;
+							padding: 0;
+							position: relative;
+						}
+					}
+
+					> a:hover .nav-item-label {
+						display: inline;
+					}
+				}
+
+				.nav-add-controls {
+					> li {
+						&.toggle-controls a {
+							position: static;
+							visibility: visible;
+						}
+
+						> a.toggle-controls-link [class*=" icon-"] {
+							color: #FFF;
+						}
+
+						> a [class*= "icon-"] {
+							font-size: 22px;
+							margin-top: 0;
+						}
+					}
+				}
+
 				.container {
 					.btn-navbar {
 						background: transparent;
 						border-width: 0;
 						font-size: 24px;
+						float: left;
+						padding: 12px 15px;
+
+						&.open {
+							background-color: #F5AF45;
+
+							&:hover {
+								background-color: #F5AF45;
+							}
+						}
 
 						&:hover, &.nav-account-controls-btn.open, &.nav-add-controls-btn.open, &.nav-navigation-btn:focus {
 							background-color: #5BBAE8;
@@ -68,8 +138,22 @@
 
 					.nav-collapse {
 						> .nav {
-							background: transparent;
+							background: #009AE5;
 							border-width: 0;
+							left: auto;
+							margin: 0;
+							min-width: 160px;
+							padding: 0 5px;
+							position: absolute;
+							right: 0;
+							z-index: 400;
+
+							> li > a {
+								background: transparent;
+								margin: 5px 0;
+								padding: 6px 15px;
+								text-align: left;
+							}
 
 							.nav-item-icon {
 								font-size: 26px;
@@ -157,7 +241,8 @@
 									color: #FFF;
 									font-size: 16px;
 									line-height: 20px;
-									padding: 12px;
+									margin: 5px 0;
+									padding: 6px 15px;
 
 									&:focus, &:hover {
 										background-color: #5BBAE8;

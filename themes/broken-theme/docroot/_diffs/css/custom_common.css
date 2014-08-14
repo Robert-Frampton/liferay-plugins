@@ -10,7 +10,6 @@
 	body {
 		color: #555;
 		font-weight: 200;
-		line-height: 3em;
 	}
 
 	a {
@@ -314,7 +313,7 @@
 						> li {
 							> a {
 								color: #FFF;
-								line-height: 31px;
+								line-height: 27px;
 
 								@include respond-to(phone, tablet) {
 									line-height: 20px;
@@ -494,16 +493,6 @@
 		padding: 3px 15px 2px;
 
 		li {
-			a {
-				display: inline-block;
-
-				@include ellipsis;
-
-				line-height: normal;
-				max-width: 300px;
-				vertical-align: text-bottom;
-			}
-
 			span.divider {
 				color: #999;
 				font-weight: bold;
@@ -525,9 +514,6 @@
 		}
 
 		@include respond-to(phone, tablet) {
-			padding-left: 5px;
-			padding-right: 5px;
-
 			li {
 				display: none;
 
@@ -815,6 +801,10 @@
 					color: #BBB;
 				}
 			}
+
+			.btn-toolbar .btn-group .btn {
+				height: 30px;
+			}
 		}
 
 		.lfr-page-template .lfr-page-template-title {
@@ -867,7 +857,7 @@
 
 	@include respond-to(phone, tablet) {
 		#navigation.open .navbar-inner .nav-collapse li a {
-			@include border-radius(0);
+			@include border-radius(3);
 		}
 	}
 
