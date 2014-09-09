@@ -1,0 +1,10 @@
+.aui .dockbar .navbar-inner .site-administration-menu li {
+	a {
+		color: #7A8288;
+	}
+
+	a:hover {
+		background-image: linear-gradient(to bottom, #272b30, #1c1e22);
+		color: #BBBFC2;
+	}
+}
