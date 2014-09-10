@@ -1,11 +1,100 @@
-.aui .dockbar .navbar-inner .site-administration-menu li {
-	a {
-		color: #7A8288;
+.aui {
+	legend, label, h1, h2, h3, h4, h5, h6 {
+		text-shadow: none;
 	}
 
-	a:hover {
-		background-image: linear-gradient(to bottom, #272b30, #1c1e22);
-		color: #BBBFC2;
+
+	.dockbar .navbar-inner .site-administration-menu li {
+		a {
+			color: #7A8288;
+		}
+
+		a:hover {
+			background-image: linear-gradient(to bottom, #272B30, #1C1E22);
+			color: #BBBFC2;
+		}
+	}
+
+	.lfr-admin-panel {
+		background-color: #3A3F44;
+
+		.button-holder {
+			background-color: #3A3F44;
+		}
+	}
+
+	.lfr-add-panel .add-content-menu {
+		.lfr-page-template:hover .lfr-page-template-options {
+			background-color: #272B30;
+		}
+		
+		.accordion-group {
+			border-color: #3A3F44;
+			border-radius: 0;
+			margin-bottom: 0;
+
+			.accordion-heading {
+				background-color: #272B30;
+			}
+		}
+
+		.toggler-content {
+			background-color: #3A3F44;
+
+			.accordion-inner {
+				border: none;
+
+				.nav {
+					box-shadow: none;
+
+					li:hover {
+						background-color: #272B30;
+						color: #FFF;
+					}
+				}
+			}
+		}
+
+		.lfr-page-template {
+			.toggler-header.active.lfr-page-template-title label {
+				background-color: #272B30;
+			}
+
+			&:hover {
+				background-color: #272B30;
+			}
+		}
+	}
+
+	.lfr-device-preview-panel .lfr-device-item {
+		&.selected {
+			background-color: #272B30;
+		}
+
+		&:hover {
+			background-color: #272B30;
+			color: #FFF;
+		}
+	}
+
+	.edit-layout-form .accordion-group {
+		background-color: #3A3F44;
+		border-color: #000;
+		margin-bottom: 0;
+
+		.toggler-header-expanded {
+			background-color: #272B30;
+		}
+
+		.toggler-content-expanded {
+			.accordion-inner {
+				border-top: 1px solid #000;
+			}
+		}
+
+		&:hover {
+			background-color: #272B30;
+		}
 	}
 }
 
