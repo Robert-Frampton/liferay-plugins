@@ -4,7 +4,7 @@
 #set ($portlet_title = $portlet_display.getTitle())
 #set ($portlet_back_url = $htmlUtil.escapeAttribute($portlet_display.getURLBack()))
 
-<section class="portlet" id="portlet_$portlet_id">
+<section class="portlet well" id="portlet_$portlet_id">
 	<header class="portlet-topper">
 		<h1 class="portlet-title">
 			$theme.portletIconPortlet() <span class="portlet-title-text">$portlet_title</span>
