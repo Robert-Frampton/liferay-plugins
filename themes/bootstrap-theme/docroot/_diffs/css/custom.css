@@ -32,10 +32,6 @@
 			border-color: #3A3F44;
 			border-radius: 0;
 			margin-bottom: 0;
-
-			.accordion-heading {
-				background-color: #272B30;
-			}
 		}
 
 		.toggler-content {
@@ -55,7 +51,13 @@
 			}
 		}
 
+		#addApplicationPanelContainer .accordion-heading {
+			background-color: #272B30;
+		}
+
 		.lfr-page-template {
+			background-color: #3A3F44;
+
 			.toggler-header.active.lfr-page-template-title label {
 				background-color: #272B30;
 			}
@@ -90,10 +92,6 @@
 			.accordion-inner {
 				border-top: 1px solid #000;
 			}
-		}
-
-		&:hover {
-			background-color: #272B30;
 		}
 	}
 }
