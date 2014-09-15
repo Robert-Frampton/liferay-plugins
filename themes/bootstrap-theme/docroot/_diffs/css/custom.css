@@ -18,6 +18,11 @@
 	.lfr-admin-panel {
 		background-color: #3A3F44;
 
+		.btn.close {
+			color: #FFF;
+			text-shadow: none;
+		}
+
 		.button-holder {
 			background-color: #3A3F44;
 		}
@@ -64,6 +69,48 @@
 
 			&:hover {
 				background-color: #272B30;
+			}
+		}
+
+		.fieldset.template-selector legend {
+			color: #C8C8C8;
+		}
+
+		#_145_addContentForm {
+			.accordion-group {
+				.accordion-heading {
+					background-color: #272B30;
+				}
+
+				.accordion-inner {
+					border: 1px solid #272B30;
+
+					.nav-list {
+						box-shadow: none;
+					}
+				}
+
+				.lfr-content-item:hover {
+					background-color: #272B30;
+				}
+			}
+
+			select {
+				color: #3A3F44;
+			}
+		}
+
+		.control-group {
+			.control-label {
+				color: #C8C8C8;
+			}
+
+			&.error .control-label {
+				color: #B94A48;
+			}
+
+			&.success .control-label {
+				color: #468847;
 			}
 		}
 	}
